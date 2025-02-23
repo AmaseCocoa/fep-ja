@@ -30,7 +30,7 @@ A string is considered a hashtag if it meets the following criteria:
 2. It is followed by one or more alphanumeric characters (letters A-Z, a-z, or digits 0-9).
 3. It may include underscores (`_`) but must not include any other special characters, spaces, or punctuation within the hashtag itself.
 
-## Examples
+## 例
 
 The following examples illustrate how hashtags should be identified and
 highlighted:

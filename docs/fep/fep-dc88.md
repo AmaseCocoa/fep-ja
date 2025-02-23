@@ -109,7 +109,7 @@ attribute `display="block"`, it may choose the delimiters `$$` and `$$`,
 and if `displaystyle="inline"` it may choose `$` and `$` to match the
 TeX typesetting system. 
 
-## Examples
+## 例
 ```json
 {"@context": ["https://www.w3.org/ns/activitystreams", {"@language": "en"}],
  "type": "Note",

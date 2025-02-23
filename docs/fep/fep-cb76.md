@@ -57,7 +57,7 @@ We can now use this hash to extend ActivityPub [AP] with a `Message` activity:
 
 ## 2. Storing FEP extension terms within the FEP Git repository
 
-(This section is non-normative.)
+(このセクションは非規範的です。)
 
 A directory named `context/` should be created to store content addressed vocabulary extensions associated with FEPs. FEPs that propose vocabulary extensions MUST create a text file called `fep-abcd_property.txt` within this directory, where `abcd` is the identifier of the associated FEP, `property` is the recommended shorthand name of the property, and the contents of the text file are the specification text. FEP authors SHOULD try to use unique property names within the existing FEP vocabulary, unless an FEP is intended to supersede or replace an older FEP.
 

@@ -18,7 +18,7 @@ In a [Github-issue] filed against the normative AS2 context, it was pointed out 
 
 ## Prior art in `items` vs `orderedItems`
 
-(This section is non-normative.)
+(このセクションは非規範的です。)
 
 In the [AS2-vocab], there is `items`, which is used to express the items included in a Collection or OrderedCollection. However, in [ActivityPub], the OrderedCollection type is mandated to be reverse chronological order. Tangentially, it is valid to have a Collection with `items` that are either ordered or unordered.
 

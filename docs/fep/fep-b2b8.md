@@ -195,7 +195,7 @@ As with other AS2 object types, the `to`, `cc`, `bcc`, `bto`, and `audience` pro
 
 The addressing properties provide an access control mechanism for AS2. Publishers and consumers should not disclose the properties of any AS2 object type, including the `Article` type, with anyone except the addressees, listed in these addressing properties, or the creator(s), listed in the `attributedTo` property.
 
-## Examples
+## 例
 
 This section includes examples of long-form text objects. Note that for brevity, the content is not actually multi-paragraph text.
 

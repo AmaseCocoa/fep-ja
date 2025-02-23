@@ -105,7 +105,7 @@ The processing of unauthenticated embedded activities is strongly discouraged. I
 >[!WARNING]
 >Sometimes activities have non-dereferenceable identifiers. That may prevent their authentication.
 
-## Examples
+## 例
 
 Example of an `Add` activity for a reply to a followers-only post:
 

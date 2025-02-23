@@ -33,9 +33,9 @@ If an object's `name`, `summary`, or `content` has qualified links to other obje
 - `name` (OPTIONAL): the `name` SHOULD match the microsyntax used in object's content.
 - `rel` (OPTIONAL): if relevant, the `rel` SHOULD specify how the link is related to the current resource. Using `rel` can provide additional purpose to object links by signaling specific intended use-cases.
 
-## Examples
+## 例
 
-(This section is non-normative.)
+(このセクションは非規範的です。)
 
 A link to an issue in a bug tracker:
 

@@ -81,7 +81,7 @@ If both `proof` and `signature` are present in a received object, the linked dat
 
 The controller of the verification method MUST match the actor of activity, or be associated with that actor.
 
-## Examples
+## 例
 
 ### Signed object
 

@@ -32,7 +32,7 @@ The `FEDERATION.md` file can have arbitrary structure and content. The only requ
 
 ## Template
 
-(This section is non-normative.)
+(このセクションは非規範的です。)
 
 ```markdown
 # Federation

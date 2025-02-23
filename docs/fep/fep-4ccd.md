@@ -64,7 +64,7 @@ The context document for this specification is `https://purl.archive.org/socialw
 }
 ```
 
-## Examples
+## 例
 
 A publisher can include the `pendingFollowers` and `pendingFollowing` collection in the properties of an actor.
 

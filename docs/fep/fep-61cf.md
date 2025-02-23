@@ -119,7 +119,7 @@ If found, this token identifies the remote user, and the target instance logs th
 
 ## What Next?
 
-*(This section is non-normative.)*
+*(このセクションは非規範的です。)*
 
 What does the target instance allow the user to do, now that they have signed in? The simplest option is to treat them as though they had signed in using a local username and password, but this isn't really enough.
 

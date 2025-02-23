@@ -92,7 +92,7 @@ The tree structure of the thread should be maintained; every object in the threa
 
 The `replies` property of objects in the thread collection MAY be maintained by other processors. Curation of the `replies` collections or of the `thread` collection may mean that objects may be omitted from one collection or the other. However, the `replies` collection of the original post SHOULD be a subset of the `thread` collection.
 
-## Examples
+## 例
 
 ### Example 1
 

@@ -50,7 +50,7 @@ Actor metadata fields may also take the form of a link rather than a content val
 
 ## 4. Backwards compatibility with legacy implementations of profile fields using incorrect schema.org IRIs
 
-(This section is non-normative.)
+(このセクションは非規範的です。)
 
 Existing implementations currently using the incorrect IRIs `http://schema.org#PropertyValue` and `http://schema.org#value` may wish to maintain backwards compatibility during a transitional period by serving both legacy representations as well as representations according to this FEP. The following algorithm may be used to support the legacy implementations while also favoring the implementation within this FEP:
 

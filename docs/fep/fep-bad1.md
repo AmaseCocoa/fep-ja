@@ -18,9 +18,9 @@ discussionsTo: https://codeberg.org/fediverse/fep/issues/124
 
 Particularly in example 32, we see an object being Created, Updated, and Deleted. However, there is no property dedicated to advertising a collection fit for this purpose. This FEP attempts to define one.
 
-## Examples taken from ActivityStreams 2.0
+## 例 taken from ActivityStreams 2.0
 
-(This section is non-normative.)
+(このセクションは非規範的です。)
 
 For convenience, the following examples are reproduced from the ActivityStreams 2.0 [AS2-Core] specification. Examples 18 and 19 are found in normative sections; example 32 is found in a non-normative section.
 

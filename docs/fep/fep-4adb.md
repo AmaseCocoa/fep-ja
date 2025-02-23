@@ -34,7 +34,7 @@ We will denote this object by `ActivityStreams(URI, domain)`. There are now two 
 
 In case 1, it is clear that we associate `ActivityStreams(URI, domain(URI))` to the URI. In case 2, we will use the domain associated with the `@id` of the document the document the URI appeared in. If the document was received through a POST request and doesn't contain an `id`, or the `id` is an URI, the domain the POST request originated from should be used. In this case a verification that the URI can be associated with the object MUST be performed. This can for example be achieved through [FEP-c390](https://codeberg.org/fediverse/fep/src/branch/main/feps/fep-c390.md).
 
-## Examples
+## 例
 
 We start with the [acct URI Scheme](https://www.rfc-editor.org/rfc/rfc7565.html). In order to deliver the activity
 

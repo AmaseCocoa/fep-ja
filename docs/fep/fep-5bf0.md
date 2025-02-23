@@ -41,7 +41,7 @@ The method of sorting applied to the CollectionView can be indicated via its "so
 
 If there is no "sort" property, the order is the same as that of the original Collection.
 
-## Examples
+## 例
 
 Here, an Actor's Inbox returns all Activities posted by the Actor, and the server also provides filtered versions as streams for client consumption.
 

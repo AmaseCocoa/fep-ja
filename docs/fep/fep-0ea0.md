@@ -37,7 +37,7 @@ Payment link is an object with the following properties:
 
 Payment links MUST be added to `attachment` array of an actor or an object.
 
-## Examples
+## 例
 
 Payment link attached to an actor:
 
@@ -84,7 +84,7 @@ Payment link attached to an object:
 
 ## Payment links as actor metadata
 
-(This section is non-normative.)
+(このセクションは非規範的です。)
 
 Implementers may treat payment links attached to actor object in the same way as actor metadata fields. In that case, `name` translates into field label and `href` translates into field value.
 

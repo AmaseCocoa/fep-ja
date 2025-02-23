@@ -44,7 +44,7 @@ If no objects are present for an activity, a client should assume a server suppo
 
 If no properties are present for an object, a client should assume a server supports all common properties. If a limited number of properties are present, a client should assume a server only supports those properties.
 
-## Examples
+## 例
 
 The following examples are simplified versions of what most servers should support. Most popular servers will support more activity and object types than this, but these examples keep the list short for readability. Other common activities include `Follow`, `Undo`, `Accept`, `Block`, and others as listed in the Activity Vocabulary specification.
 

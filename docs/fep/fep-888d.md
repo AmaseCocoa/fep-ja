@@ -19,7 +19,7 @@ It is considered best practice in the linked-data ecosystem to have IRIs be HTTP
 
 ## Acknowledgements
 
-(This section is non-normative.)
+(このセクションは非規範的です。)
 
 The core idea behind this FEP is attributed to helge on SocialHub [1][1]. Specifically, the proposal to register `fep` at the W3ID service is adopted wholesale, with alterations made to the specifics of implementing the redirect mappings using .htaccess rules. These alterations are intended to allow easier sub-namespace allocation for each FEP.
 
@@ -29,7 +29,7 @@ The key words "MUST", "SHOULD", "MAY" are to be interpreted as described in [RFC
 
 ## Introduction
 
-(This section is non-normative.)
+(このセクションは非規範的です。)
 
 The Resource Description Framework (RDF), of which JSON-LD is a serialization, uses URIs to identify nodes on a graph, define properties of those nodes, and create relationships between those nodes. Each statement in RDF represents a fact that is constructed by linking a subject to an object with a predicate; for example, in the statement "Alice knows Bob", the subject `Alice` is related to the object `Bob` by the predicate `knows`. To avoid ambiguity, we can specify a URI for what it means to "know" someone. Such a URI represents a named property or named predicate, and it exists within a namespace, often associated with some ontology or vocabulary. [ActivityStreams 2.0][AS2-Core] provides and defines the [Activity Vocabulary][AS2-Vocab] at `https://www.w3.org/ns/activitystreams`, and terms defined within may use either the base IRI `https://www.w3.org/ns/activitystreams#` or the compact IRI `as:`.
 
@@ -43,7 +43,7 @@ The aim of this FEP is to provide a vendor-independent namespace under which ext
 
 ## Prior art
 
-(This section is non-normative.)
+(このセクションは非規範的です。)
 
 Within the XMPP ecosystem, the core XMPP specification is defined within an RFC, and further functionality is afforded by the "eXtensible" nature of XMPP. The XMPP Standards Foundation (XSF) maintains the process for stewarding new extensions via XMPP Extension Protocols (XEPs). XML namespacing for such extensions is provided by `urn:xmpp:`, as the XML ecosystem generally prefers using URNs rather than using HTTPS URIs. Such URNs are fully location-independent and not vulnerable to DNS expiry, lapsing, or insolvency. Instead, they are assigned within the authority of the XSF. The XSF maintains an XMPP Registrar and allows XEPs to request and define sub-namespaces beneath `urn:xmpp:`. In exchange, these URNs are not generally dereferencable without a resolver that looks up the URN within the XEP database.
 
@@ -82,7 +82,7 @@ At the time of writing this FEP, the Codeberg repository at `https://codeberg.or
 
 #### Example
 
-(This section is non-normative.)
+(このセクションは非規範的です。)
 
 An example .htaccess file is co-located with this FEP, and reproduced below for convenience:
 
@@ -167,7 +167,7 @@ Once the FEP is marked `FINAL`, the context document MAY be cached forever if re
 
 #### Example using paths
 
-(This section is non-normative.)
+(このセクションは非規範的です。)
 
 For example, say we wanted to define the following terms within the current FEP-888d:
 
@@ -202,7 +202,7 @@ A folder within the FEP's directory should be used to provide additional documen
 
 #### Example using fragment identifiers
 
-(This section is non-normative.)
+(このセクションは非規範的です。)
 
 Depending on convenience or preference, the context document might instead look like this:
 
@@ -234,7 +234,7 @@ In such a case, the FEP document should include an element with an HTML identifi
 
 ## Defining terms in a machine-readable way
 
-(This section is non-normative.)
+(このセクションは非規範的です。)
 
 If terms are defined within HTML using RDFa, and this HTML is embedded in the Markdown contents of the FEP document, then these term definitions can be used to programmatically generate machine-readable term definitions, schemas, and ontologies in multiple formats. A Python script is provided within the FEP repository at `scripts/make_definitions.py` for convenience.
 
@@ -350,7 +350,7 @@ The script will operate according to the following logic:
 
 ## Example terms defined by this FEP
 
-(This section is non-normative.)
+(このセクションは非規範的です。)
 
 Using the same fictitious terms from the above examples:
 

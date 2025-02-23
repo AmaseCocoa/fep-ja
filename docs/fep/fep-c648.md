@@ -58,7 +58,7 @@ The context document for the `blocked` property is as follows:
 
 The context document is available at the URL `https://purl.archive.org/socialweb/blocked`.
 
-## Examples
+## 例
 
 A publisher can include the `blocked` collection in the properties of an actor.
 

@@ -93,7 +93,7 @@ The context document for this specification is at `https://purl.archive.org/soci
 }
 ```
 
-## Examples
+## 例
 
 ### Follower recommender
 

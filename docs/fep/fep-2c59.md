@@ -66,7 +66,7 @@ The context document for this specification is `https://purl.archive.org/socialw
 }
 ```
 
-## Examples
+## 例
 
 A publisher can include the `webfinger` property for an actor.
 

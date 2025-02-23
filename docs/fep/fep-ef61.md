@@ -278,7 +278,7 @@ WebFinger address of a portable actor can be obtained by the reverse discovery a
 
 ## Discussion
 
-(This section is non-normative.)
+(このセクションは非規範的です。)
 
 ### 'ap' URL syntax
 

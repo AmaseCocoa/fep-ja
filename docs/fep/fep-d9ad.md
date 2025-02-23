@@ -227,7 +227,7 @@ Inspired by
 * [ACT Rule Identifier](https://www.w3.org/TR/act-rules-format/#rule-identifier)
 * [ActivityStreams 2.0 id](https://www.w3.org/TR/activitystreams-vocabulary/#dfn-id)
 
-##### Examples
+##### 例
 
 * `urn:uuid:93bafe14-b13f-4a9a-9d47-0a9316d50c97`
 * `https://bengo.is/fep/d9ad`

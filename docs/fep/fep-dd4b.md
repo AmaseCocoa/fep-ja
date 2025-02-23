@@ -36,7 +36,7 @@ This FEP describes how to use the `content` property to provide this commentary,
 - An `Announce` activity with an `inReplyTo` property SHOULD be included in the `replies` collection of the object being replied to.
 - `Announce` activities SHOULD be counted as part of the `shares` collection of the shared content, regardless of any additional properties, as defined in [7.11 Announce Activity (sharing)](https://www.w3.org/TR/activitypub/#announce-activity-inbox).
 
-## Examples
+## 例
 
 ### Basic Quote Post
 
