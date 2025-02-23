@@ -7,11 +7,11 @@ relatedFeps: FEP-400e
 trackingIssue: https://codeberg.org/fediverse/fep/issues/313
 discussionsTo: https://codeberg.org/fediverse/fep/issues/313
 ---
+# FEP-db0e: Authentication mechanism for non-public groups
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-db0e.md)から翻訳に協力することができます。
-# FEP-db0e: Authentication mechanism for non-public groups
 
 ## Summary
 

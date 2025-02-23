@@ -6,12 +6,12 @@ dateReceived: 2023-04-18
 trackingIssue: https://codeberg.org/fediverse/fep/issues/88
 discussionsTo: https://codeberg.org/fediverse/fep/issues/88
 ---
+# FEP-0ea0: Payment Links
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-0ea0.md)から翻訳に協力することができます。
-# FEP-0ea0: Payment Links
-
+    
 ## Summary
 
 This FEP describes a way to attach payment information to [ActivityPub](https://www.w3.org/TR/activitypub/) actors and objects. That information might be a link to donation page, a link for buying an artwork, or anything else that can be represented with a URI.

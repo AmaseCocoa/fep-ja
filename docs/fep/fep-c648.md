@@ -6,11 +6,11 @@ dateReceived: 2023-06-14
 trackingIssue: https://codeberg.org/fediverse/fep/issues/123
 discussionsTo: https://codeberg.org/fediverse/fep/issues/123
 ---
+# FEP-c648: Blocked Collection
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-c648.md)から翻訳に協力することができます。
-# FEP-c648: Blocked Collection
 
 ## Summary
 

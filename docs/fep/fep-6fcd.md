@@ -6,12 +6,12 @@ dateReceived: 2024-07-11
 discussionsTo: https://socialhub.activitypub.rocks/t/fep-6fcd-account-export-container-format/4355
 trackingIssue: https://codeberg.org/fediverse/fep/issues/357
 ---
+
+# FEP-6fcd: Account Export Container Format
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-6fcd.md)から翻訳に協力することができます。
-# FEP-6fcd: Account Export Container Format
-
 ## Summary
 
 This FEP describes a lightweight general purpose account export container format,

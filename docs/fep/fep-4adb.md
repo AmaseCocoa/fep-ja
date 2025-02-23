@@ -6,12 +6,12 @@ dateReceived: 2023-05-13
 trackingIssue: https://codeberg.org/fediverse/fep/issues/100
 discussionsTo: https://codeberg.org/fediverse/fep/issues/100
 ---
+# FEP-4adb: Dereferencing identifiers with webfinger
+
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-4adb.md)から翻訳に協力することができます。
-# FEP-4adb: Dereferencing identifiers with webfinger
-
 ## Summary
 
 In this FEP, we will formalize the process of dereferencing an URI using webfinger in order for usage in ActivityPub. The main goal is to enable the usage of URIs of the form `acct:user@domain` or `did:example:12345` as ids for objects used in ActivityPub. While this FEP only discusses this in the context of actors, it should be applicable for general objects. In order for a smooth introduction, it is recommended to start deployment with actor objects.

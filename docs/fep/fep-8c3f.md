@@ -7,12 +7,12 @@ dateWithdrawn: 2023-10-27
 trackingIssue: https://codeberg.org/fediverse/fep/issues/3
 discussionsTo: https://codeberg.org/fediverse/fep/issues/3
 ---
+
+# FEP-8c3f: Web Monetization
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-8c3f.md)から翻訳に協力することができます。
-# FEP-8c3f: Web Monetization
-
 
 ## Summary
 

@@ -6,12 +6,13 @@ dateReceived: 2023-09-22
 trackingIssue: https://codeberg.org/fediverse/fep/issues/171
 discussionsTo: https://codeberg.org/fediverse/fep/issues/171
 ---
+
+# FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-07d7.md)から翻訳に協力することができます。
-# FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources
-
+    
 - [Summary](#summary)
 - [Motivation](#motivation)
 - [Context](#context)

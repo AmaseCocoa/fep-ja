@@ -6,11 +6,11 @@ dateReceived: 2024-06-29
 trackingIssue: https://codeberg.org/fediverse/fep/issues/346
 discussionsTo: https://codeberg.org/fediverse/fep/issues/346
 ---
+# FEP-e3e9: Actor-Relative URLs
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-e3e9.md)から翻訳に協力することができます。
-# FEP-e3e9: Actor-Relative URLs
 
 ## Summary
 

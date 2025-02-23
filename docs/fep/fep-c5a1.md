@@ -6,11 +6,11 @@ dateReceived: 2024-01-31
 trackingIssue: https://codeberg.org/fediverse/fep/issues/256
 discussionsTo: https://codeberg.org/fediverse/fep/issues/256
 ---
+# FEP-c5a1: To-do's
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-c5a1.md)から翻訳に協力することができます。
-# FEP-c5a1: To-do's
 
 ## Summary
 

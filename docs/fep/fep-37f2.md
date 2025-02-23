@@ -6,12 +6,12 @@ dateReceived: 2023-09-28
 trackingIssue: https://codeberg.org/fediverse/fep/issues/184
 discussionsTo: https://codeberg.org/fediverse/fep/issues/184
 ---
+# FEP-37f2: a policy for calls for consensus on SWICG group decisions
+
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-37f2.md)から翻訳に協力することができます。
-
-# FEP-37f2: a policy for calls for consensus on SWICG group decisions
 
 ## Summary
 

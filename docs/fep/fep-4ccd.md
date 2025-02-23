@@ -6,12 +6,12 @@ dateReceived: 2023-06-21
 trackingIssue: https://codeberg.org/fediverse/fep/issues/129
 discussionsTo: https://codeberg.org/fediverse/fep/issues/129
 ---
+# FEP-4ccd: Pending Followers Collection and Pending Following Collection
+
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-4ccd.md)から翻訳に協力することができます。
-# FEP-4ccd: Pending Followers Collection and Pending Following Collection
-
 ## Summary
 
 This specification defines two collections, `pendingFollowers` and `pendingFollowing`, with which users can review and manage their pending follow requests.

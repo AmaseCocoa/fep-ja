@@ -7,12 +7,11 @@ discussionsTo: https://socialhub.activitypub.rocks/t/fep-c893-doap/4363
 title: DOAP
 trackingIssue: https://codeberg.org/fediverse/fep/issues/372
 ---
+# FEP-c893: DOAP
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-c893.md)から翻訳に協力することができます。
-
-# FEP-c893: DOAP
 
 ## Summary
 

@@ -6,11 +6,11 @@ status: DRAFT
 trackingIssue: https://codeberg.org/fediverse/fep/issues/282
 discussionsTo: https://codeberg.org/fediverse/fep/issues/282
 ---
+# FEP-9fde: Mechanism for servers to expose supported operations
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-9fde.md)から翻訳に協力することができます。
-# FEP-9fde: Mechanism for servers to expose supported operations
 
 | Version | Date       | Changes                                                                                                                                                                                                                |
 | ------- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

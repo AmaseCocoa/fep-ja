@@ -6,11 +6,11 @@ dateReceived: 2022-11-29
 trackingIssue: https://codeberg.org/fediverse/fep/issues/41
 discussionsTo: https://codeberg.org/fediverse/fep/issues/41
 ---
+# FEP-cb76: Content Addressed Vocabulary
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-cb76.md)から翻訳に協力することができます。
-# FEP-cb76: Content Addressed Vocabulary
 
 ## Summary
 

@@ -6,12 +6,11 @@ dateReceived: 2024-10-04
 discussionsTo: https://codeberg.org/evanp/fep/issues
 trackingIssue: https://codeberg.org/fediverse/fep/issues/407
 ---
+# FEP-76ea: Conversation Threads
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-76ea.md)から翻訳に協力することができます。
-# FEP-76ea: Conversation Threads
-
 ## Summary
 
 This FEP defines a way to identify the conversation thread of an object with Activity Streams 2.0.

@@ -7,11 +7,11 @@ dateReceived: 2024-10-19
 trackingIssue: https://codeberg.org/fediverse/fep/issues/424
 discussionsTo: https://socialhub.activitypub.rocks/t/fediverse-relays/4626
 ---
+# FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-ae0c.md)から翻訳に協力することができます。
-# FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub
 
 ## Summary
 

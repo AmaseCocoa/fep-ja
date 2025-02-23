@@ -6,12 +6,12 @@ dateReceived: 2024-01-04
 trackingIssue: https://codeberg.org/fediverse/fep/issues/226
 discussionsTo: https://codeberg.org/fediverse/fep/issues/226
 ---
+# FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor
+
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-2c59.md)から翻訳に協力することができます。
-# FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor
-
 ## Summary
 
 [Webfinger][Webfinger] is used on the fediverse to abstract out variations in [ActivityPub][ActivityPub] actor URL formats, giving a uniform way of addressing an actor. With a Webfinger address, a client can discover the actor's ActivityPub actor URL. This specification defines an explicit way to reverse the process, and discover a preferred Webfinger address from an ActivityPub actor URL.

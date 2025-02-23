@@ -6,11 +6,11 @@ dateReceived: 2022-12-09
 trackingIssue: https://codeberg.org/fediverse/fep/issues/45
 discussionsTo: https://codeberg.org/fediverse/fep/issues/45
 ---
+# FEP-fb2a: Actor metadata
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-fb2a.md)から翻訳に協力することができます。
-# FEP-fb2a: Actor metadata
 
 
 ## Summary

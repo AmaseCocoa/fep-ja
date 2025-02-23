@@ -6,12 +6,11 @@ dateReceived: 2024-07-11
 trackingIssue: https://codeberg.org/fediverse/fep/issues/366
 discussionsTo: https://codeberg.org/fediverse/fep/issues/366
 ---
+# FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-c551.md)から翻訳に協力することができます。
-
-# FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals
 
 ## Summary
 

@@ -6,11 +6,11 @@ dateReceived: 2023-01-16
 trackingIssue: https://codeberg.org/fediverse/fep/issues/57
 discussionsTo: https://codeberg.org/fediverse/fep/issues/57
 ---
+# FEP-c118: Content licensing support
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-c118.md)から翻訳に協力することができます。
-# FEP-c118: Content licensing support
 
 ## Summary
 

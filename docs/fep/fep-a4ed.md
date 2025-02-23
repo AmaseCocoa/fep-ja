@@ -7,11 +7,11 @@ dateFinalized: 2021-01-18
 trackingIssue: https://codeberg.org/fediverse/fep/issues/201
 discussionsTo: https://codeberg.org/fediverse/fep/issues/201
 ---
+# FEP-a4ed: The Fediverse Enhancement Proposal Process
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-a4ed.md)から翻訳に協力することができます。
-# FEP-a4ed: The Fediverse Enhancement Proposal Process
 
 ## Summary
 

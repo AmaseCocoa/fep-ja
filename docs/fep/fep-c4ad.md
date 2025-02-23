@@ -8,12 +8,11 @@ title: Viewership History
 date: 2024-07-15
 trackingIssue: https://codeberg.org/fediverse/fep/issues/367
 ---
+# FEP-c4ad: Viewership History
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-c4ad.md)から翻訳に協力することができます。
-
-# FEP-c4ad: Viewership History
 
 ## Summary
 

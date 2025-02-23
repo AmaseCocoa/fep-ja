@@ -6,11 +6,11 @@ dateReceived: 2024-11-07
 discussionsTo: https://codeberg.org/evanp/fep/issues
 trackingIssue: https://codeberg.org/fediverse/fep/issues/441
 ---
+# FEP-b2b8: Long-form Text
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-b2b8.md)から翻訳に協力することができます。
-# FEP-b2b8: Long-form Text
 
 
 ## Summary

@@ -7,12 +7,12 @@ dateFinalized: 2024-09-22
 trackingIssue: https://codeberg.org/fediverse/fep/issues/157
 discussionsTo: https://socialhub.activitypub.rocks/t/fep-67ff-federation-md/3555
 ---
+
+# FEP-67ff: FEDERATION.md
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-67ff.md)から翻訳に協力することができます。
-# FEP-67ff: FEDERATION.md
-
 ## Summary
 
 `FEDERATION.md` is a file containing information necessary for achieving interoperability with a federated service. It was originally proposed by Darius Kazemi on SocialHub forum in [Documenting federation behavior in a semi-standard way?](https://socialhub.activitypub.rocks/t/documenting-federation-behavior-in-a-semi-standard-way/453) topic.

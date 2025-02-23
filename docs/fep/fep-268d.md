@@ -7,11 +7,11 @@ discussionsTo: https://socialhub.activitypub.rocks/t/fep-268d-search-consent-sig
 relatedFeps: FEP-5feb
 trackingIssue: https://codeberg.org/fediverse/fep/issues/421
 ---
+# FEP-268d: Search consent signals for objects
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-268d.md)から翻訳に協力することができます。
-# FEP-268d: Search consent signals for objects
 
 ## Summary
 

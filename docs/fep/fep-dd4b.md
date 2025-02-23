@@ -6,11 +6,11 @@ discussionsTo: https://codeberg.org/evanp/fep/issues
 dateReceived: 2025-02-21
 trackingIssue: https://codeberg.org/fediverse/fep/issues/511
 ---
+# FEP-dd4b: Quote Posts
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-dd4b.md)から翻訳に協力することができます。
-# FEP-dd4b: Quote Posts
 
 ## Summary
 

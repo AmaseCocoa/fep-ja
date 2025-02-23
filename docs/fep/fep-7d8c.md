@@ -6,12 +6,13 @@ discussionsTo: https://socialhub.activitypub.rocks/t/fep-repo-rights/4797/3
 dateReceived: 2025-01-20
 trackingIssue: https://codeberg.org/fediverse/fep/issues/470
 ---
+
+# FEP-7d8c: Documentation: Automation of FEP
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-7d8c.md)から翻訳に協力することができます。
-# FEP-7d8c: Documentation: Automation of FEP
-
+    
 ## Summary
 
 This FEP discusses scripts and woodpecker configuration used to automate parts of the FEP process. The FEP process is described in [FEP-a4ed][a4ed].

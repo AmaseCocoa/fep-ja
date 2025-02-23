@@ -6,11 +6,11 @@ discussionsTo: https://socialhub.activitypub.rocks/t/fep-efda-followable-objects
 dateReceived: 2025-02-13
 trackingIssue: https://codeberg.org/fediverse/fep/issues/492
 ---
+# FEP-efda: Followable objects
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-efda.md)から翻訳に協力することができます。
-# FEP-efda: Followable objects
 
 
 ## Summary

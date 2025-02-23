@@ -6,12 +6,12 @@ dateReceived: 2024-06-09
 trackingIssue: https://codeberg.org/fediverse/fep/issues/327
 discussionsTo: https://socialhub.activitypub.rocks/t/fep-5e53-opt-out-preference-signals/4323
 ---
+
+# FEP-5e53: Opt-out Preference Signals
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-5e53.md)から翻訳に協力することができます。
-# FEP-5e53: Opt-out Preference Signals
-
 
 ## Summary
 

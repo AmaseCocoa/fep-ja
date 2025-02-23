@@ -6,11 +6,11 @@ dateReceived: 2022-11-12
 trackingIssue: https://codeberg.org/fediverse/fep/issues/29
 discussionsTo: https://socialhub.activitypub.rocks/t/fep-8b32-object-integrity-proofs/2725
 ---
+# FEP-8b32: オブジェクト整合性証明
 !!! Warning
     このFEPはまだ翻訳が完了していません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-8b32.md)から翻訳に協力することができます。
-# FEP-8b32: オブジェクト整合性証明
 
 ## 概要
 この提案では、[ActivityPub](https://www.w3.org/TR/activitypub/)サーバーとクライアントが自己認証アクティビティとオブジェクトを作成する方法について説明します。

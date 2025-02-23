@@ -6,11 +6,11 @@ dateReceived: 2023-06-15
 trackingIssue: https://codeberg.org/fediverse/fep/issues/124
 discussionsTo: https://codeberg.org/fediverse/fep/issues/124
 ---
+# FEP-bad1: Object history collection
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-bad1.md)から翻訳に協力することができます。
-# FEP-bad1: Object history collection
 
 ## Summary
 

@@ -7,12 +7,12 @@ dateFinalized: 2023-02-09
 trackingIssue: https://codeberg.org/fediverse/fep/issues/22
 discussionsTo: https://codeberg.org/fediverse/fep/issues/22
 ---
+# FEP-1b12: Group federation
+
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-1b12.md)から翻訳に協力することができます。
-# FEP-1b12: Group federation
-
 
 ## Summary
 

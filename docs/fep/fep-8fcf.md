@@ -7,12 +7,11 @@ dateFinalized: 2022-02-07
 trackingIssue: https://codeberg.org/fediverse/fep/issues/6
 discussionsTo: https://codeberg.org/fediverse/fep/issues/6
 ---
+# FEP-8fcf: Followers collection synchronization across servers
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-8fcf.md)から翻訳に協力することができます。
-# FEP-8fcf: Followers collection synchronization across servers
-
 ## Summary
 
 In ActivityPub, follow relationships are established, updated and removed by

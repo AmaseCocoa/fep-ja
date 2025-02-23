@@ -7,11 +7,11 @@ relatedFeps: FEP-8b32
 trackingIssue: https://codeberg.org/fediverse/fep/issues/34
 discussionsTo: https://codeberg.org/fediverse/fep/issues/34
 ---
+# FEP-c390: Identity Proofs
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-c390.md)から翻訳に協力することができます。
-# FEP-c390: Identity Proofs
 
 ## Summary
 

@@ -7,11 +7,11 @@ dateFinalized: 2023-12-03
 trackingIssue: https://codeberg.org/fediverse/fep/issues/14
 discussionsTo: https://socialhub.activitypub.rocks/t/fep-e232-object-links/2722
 ---
+# FEP-e232: Object Links
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-e232.md)から翻訳に協力することができます。
-# FEP-e232: Object Links
 
 ## Summary
 

@@ -6,11 +6,11 @@ discussionsTo: https://socialhub.activitypub.rocks/t/proposed-fep-a974-all-actor
 dateReceived: 2025-02-05
 trackingIssue: https://codeberg.org/fediverse/fep/issues/487
 ---
+# FEP-a974: All Actor types should be followable
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-a974.md)から翻訳に協力することができます。
-# FEP-a974: All Actor types should be followable
 
 ## Summary
 

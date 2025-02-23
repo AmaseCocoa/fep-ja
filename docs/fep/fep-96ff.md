@@ -6,11 +6,11 @@ dateReceived: 2024-02-17
 trackingIssue: https://codeberg.org/fediverse/fep/issues/272
 discussionsTo: https://codeberg.org/fediverse/fep/issues/272
 ---
+# FEP-96ff: Explicit signalling of ActivityPub Semantics
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-96ff.md)から翻訳に協力することができます。
-# FEP-96ff: Explicit signalling of ActivityPub Semantics
 ## Summary
 A number of vulnerabilities have occurred in ActivityPub implementations due to
 "type confusion" attacks - where unrelated files on the same hostnmae as an ActivityPub

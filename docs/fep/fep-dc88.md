@@ -6,11 +6,11 @@ dateReceived: 2023-09-12
 trackingIssue: https://codeberg.org/fediverse/fep/issues/161
 discussionsTo: https://codeberg.org/fediverse/fep/issues/161
 ---
+# FEP-dc88: Formatting Mathematics
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-dc88.md)から翻訳に協力することができます。
-# FEP-dc88: Formatting Mathematics
 
 
 ## Summary

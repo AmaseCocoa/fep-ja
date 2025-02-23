@@ -6,11 +6,11 @@ dateReceived: 2023-04-18
 trackingIssue: https://codeberg.org/fediverse/fep/issues/89
 discussionsTo: https://codeberg.org/fediverse/fep/issues/89
 ---
+# FEP-612d: Identifying ActivityPub Objects through DNS
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-612d.md)から翻訳に協力することができます。
-# FEP-612d: Identifying ActivityPub Objects through DNS
 
 ## Summary
 

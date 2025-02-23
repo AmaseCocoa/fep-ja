@@ -6,12 +6,11 @@ dateReceived: 2024-02-06
 trackingIssue: https://codeberg.org/fediverse/fep/issues/263
 discussionsTo: https://codeberg.org/fediverse/fep/issues/263
 ---
+# FEP-61cf: The OpenWebAuth Protocol
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-61cf.md)から翻訳に協力することができます。
-# FEP-61cf: The OpenWebAuth Protocol
-
 ## Summary
 
 OpenWebAuth is the "single sign-on" mechanism used by Hubzilla, (streams) and other related projects. It allows a browser-based user to log in to services across the Fediverse using a single identity. Once logged in, they can be recognised by other OpenWebAuth-compatible services, without third-party cookies and often without any explicit user interaction.

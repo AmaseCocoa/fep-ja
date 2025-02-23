@@ -6,11 +6,11 @@ dateReceived: 2023-12-06
 trackingIssue: https://codeberg.org/fediverse/fep/issues/209
 discussionsTo: https://socialhub.activitypub.rocks/t/fep-ef61-portable-objects/3738
 ---
+# FEP-ef61: Portable Objects
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-ef61.md)から翻訳に協力することができます。
-# FEP-ef61: Portable Objects
 
 ## Summary
 

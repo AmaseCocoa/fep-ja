@@ -7,12 +7,12 @@ relatedFeps: FEP-4adb, FEP-888d
 trackingIssue: https://codeberg.org/fediverse/fep/issues/302
 discussionsTo: https://codeberg.org/fediverse/fep/issues/302
 ---
+# FEP-3b86: Activity Intents
+
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-3b86.md)から翻訳に協力することができます。
-
-# FEP-3b86: Activity Intents
 
 ## Summary
 "Activity Intents" extend the capabilities of an ActivityPub server beyond a user's outbox, and enable direct interactions with content on the wider social web. They do this by publishing a machine-readable list of public URLs where users can perform key activities (such as `Follow`, `Like`, or `Announce`)  allowing other websites to initiate remote social interactions without cumbersome copying/pasting of URL strings.

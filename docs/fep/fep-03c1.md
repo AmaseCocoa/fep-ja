@@ -6,12 +6,12 @@ dateReceived: 2023-11-10
 trackingIssue: https://codeberg.org/fediverse/fep/issues/205
 discussionsTo: https://codeberg.org/fediverse/fep/issues/205
 ---
+# FEP-03c1: Actors without acct-URI
+
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-03c1.md)から翻訳に協力することができます。
-# FEP-03c1: Actors without acct-URI
-
 ## Summary
 
 Most current Fediverse applications use an acct-URI as unique display name

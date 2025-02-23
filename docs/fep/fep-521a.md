@@ -7,11 +7,11 @@ dateReceived: 2023-07-08
 trackingIssue: https://codeberg.org/fediverse/fep/issues/130
 discussionsTo: https://socialhub.activitypub.rocks/t/fep-521a-representing-actors-public-keys/3380
 ---
+# FEP-521a: Representing actor's public keys
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-521a.md)から翻訳に協力することができます。
-# FEP-521a: Representing actor's public keys
 
 ## Summary
 

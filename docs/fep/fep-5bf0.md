@@ -6,13 +6,13 @@ dateReceived: 2023-04-10
 trackingIssue: https://codeberg.org/fediverse/fep/issues/80
 discussionsTo: https://codeberg.org/fediverse/fep/issues/80
 ---
+
+# FEP-5bf0: Collection sorting and filtering
+
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-5bf0.md)から翻訳に協力することができます。
-
-# FEP-5bf0: Collection sorting and filtering
-
 ## Summary
 
 This proposal would allow Collections to have a `streams` property, as Actors do. The streams would be of the type CollectionView, a proposed vocabulary extension that represents a sorted and/or filtered version of a Collection. ActivityPub clients could then render CollectionViews without having to perform such filtering or sorting operations themselves.

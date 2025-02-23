@@ -7,11 +7,11 @@ dateReceived: 2024-01-20
 trackingIssue: https://codeberg.org/fediverse/fep/issues/243
 discussionsTo: https://codeberg.org/fediverse/fep/issues/243
 ---
+# FEP-d556: Server-Level Actor Discovery Using WebFinger
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-d556.md)から翻訳に協力することができます。
-# FEP-d556: Server-Level Actor Discovery Using WebFinger
 
 ## Summary
 

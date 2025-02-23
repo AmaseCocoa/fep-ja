@@ -26,12 +26,12 @@ respec:
     latestVersion: https://codeberg.org/fediverse/fep/src/branch/main/fep/521a/fep-521a-test-case.md
 
 ---
+
+# Actor Objects must express signing key as assertionMethod Multikey
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-521a-test-case.md)から翻訳に協力することができます。
-
-# Actor Objects must express signing key as assertionMethod Multikey
 
 ## Background
 

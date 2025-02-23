@@ -6,11 +6,11 @@ dateReceived: 2024-07-05
 discussionsTo: https://socialhub.activitypub.rocks/t/fep-0f2a-announce-activity-for-migrations-and-tombstone-events/4349
 trackingIssue: https://codeberg.org/fediverse/fep/issues/352
 ---
+# FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-e965.md)から翻訳に協力することができます。
-# FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events
 
 ## Summary
 

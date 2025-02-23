@@ -6,11 +6,11 @@ dateReceived: 2023-09-17
 trackingIssue: https://codeberg.org/fediverse/fep/issues/165
 discussionsTo: https://codeberg.org/fediverse/fep/issues/165
 ---
+# FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-d8c2.md)から翻訳に協力することができます。
-# FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API
 
 ## Summary
 

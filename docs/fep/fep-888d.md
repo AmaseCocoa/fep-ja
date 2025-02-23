@@ -6,12 +6,12 @@ dateReceived: 2023-04-10
 trackingIssue: https://codeberg.org/fediverse/fep/issues/83
 discussionsTo: https://socialhub.activitypub.rocks/t/fep-888d-using-w3id-org-fep-as-a-namespace-for-extension-terms-and-for-fep-documents/3098
 ---
+
+# FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-888d.md)から翻訳に協力することができます。
-
-# FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces
 
 ## Summary
 

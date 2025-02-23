@@ -7,12 +7,11 @@ dateReceived: 2024-02-07
 trackingIssue: https://codeberg.org/fediverse/fep/issues/265
 discussionsTo: https://codeberg.org/fediverse/fep/issues/265
 ---
+# FEP-73cd: Migration User Stories
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-73cd.md)から翻訳に協力することができます。
-# FEP-73cd: Migration User Stories
-
 ## Summary
 
 In the interest of clarifying and aligning on the problem-space of user account migration, multiple-account management, and export/import/migration of content/activity history, these user stories are offered to organize discussion and solution-sharing.

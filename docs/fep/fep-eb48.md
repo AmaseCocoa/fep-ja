@@ -8,12 +8,12 @@ authors: AvidSeeker <avidseeker7@protonmail.com>
 status: DRAFT
 trackingIssue: https://codeberg.org/fediverse/fep/issues/373
 ---
+# FEP-eb48: Hashtags
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-eb48.md)から翻訳に協力することができます。
 
-# FEP-eb48: Hashtags
 
 ## Summary
 

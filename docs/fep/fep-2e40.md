@@ -7,12 +7,12 @@ dateWithdrawn: 2023-09-04
 trackingIssue: https://codeberg.org/fediverse/fep/issues/62
 discussionsTo: https://codeberg.org/fediverse/fep/issues/62
 ---
+# FEP-2e40: The FEP Vocabulary Extension Process
+
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-2e40.md)から翻訳に協力することができます。
-# FEP-2e40: The FEP Vocabulary Extension Process
-
 ## Summary
 
 Current usage of ActivityPub relies on the ActivityStreams namespace [AS-NS]

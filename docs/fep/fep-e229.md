@@ -6,11 +6,11 @@ dateReceived: 2024-04-02
 trackingIssue: https://codeberg.org/fediverse/fep/issues/293
 discussionsTo: https://codeberg.org/fediverse/fep/issues/293
 ---
+# FEP-e229: Best practices for extensibility
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-e229.md)から翻訳に協力することができます。
-# FEP-e229: Best practices for extensibility
 
 ## Summary
 

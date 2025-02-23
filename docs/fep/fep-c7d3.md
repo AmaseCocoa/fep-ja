@@ -7,11 +7,11 @@ dateWithdrawn: 2025-02-21
 discussionsTo: https://socialhub.activitypub.rocks/t/fep-c7d3-ownership/4292
 trackingIssue: https://codeberg.org/fediverse/fep/issues/323
 ---
+# FEP-c7d3: Ownership
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-c7d3.md)から翻訳に協力することができます。
-# FEP-c7d3: Ownership
 
 ## Summary
 

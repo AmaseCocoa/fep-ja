@@ -6,11 +6,11 @@ dateReceived: 2024-07-25
 discussionsTo: https://socialhub.activitypub.rocks/t/fep-eb22-supported-activitystreams-types-with-nodeinfo/4469
 trackingIssue: https://codeberg.org/fediverse/fep/issues/386
 ---
+# FEP-eb22: Supported ActivityStreams types with NodeInfo
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-eb22.md)から翻訳に協力することができます。
-# FEP-eb22: Supported ActivityStreams types with NodeInfo
 
 ## Summary
 

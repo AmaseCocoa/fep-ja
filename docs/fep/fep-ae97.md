@@ -6,11 +6,11 @@ dateReceived: 2023-08-14
 trackingIssue: https://codeberg.org/fediverse/fep/issues/148
 discussionsTo: https://socialhub.activitypub.rocks/t/fep-ae97-client-side-activity-signing/3502
 ---
+# FEP-ae97: Client-side activity signing
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-ae97.md)から翻訳に協力することができます。
-# FEP-ae97: Client-side activity signing
 
 ## Summary
 

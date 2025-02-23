@@ -6,12 +6,12 @@ dateReceived: 2023-09-06
 trackingIssue: https://codeberg.org/fediverse/fep/issues/154
 discussionsTo: https://codeberg.org/fediverse/fep/issues/154
 ---
+
+# FEP-5feb: Search indexing consent for actors
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-5feb.md)から翻訳に協力することができます。
-# FEP-5feb: Search indexing consent for actors
-
 ## Summary
 
 This FEP introduces an actor-level attribute that can be used to explicitly express an actor's consent (or lack thereof) to their public objects being indexed for search purposes.

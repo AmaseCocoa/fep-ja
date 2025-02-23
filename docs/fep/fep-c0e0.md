@@ -7,11 +7,11 @@ dateReceived: 2024-08-08
 discussionsTo: https://socialhub.activitypub.rocks/t/fep-c0e0-emoji-reactions/4443
 trackingIssue: https://codeberg.org/fediverse/fep/issues/384
 ---
+# FEP-c0e0: Emoji reactions
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-c0e0.md)から翻訳に協力することができます。
-# FEP-c0e0: Emoji reactions
 
 ## Summary
 

@@ -7,11 +7,11 @@ dateFinalized: 2023-06-02
 trackingIssue: https://codeberg.org/fediverse/fep/issues/50
 discussionsTo: https://codeberg.org/fediverse/fep/issues/50
 ---
+# FEP-f1d5: NodeInfo in Fediverse Software
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-f1d5.md)から翻訳に協力することができます。
-# FEP-f1d5: NodeInfo in Fediverse Software
 
 ## Summary
 

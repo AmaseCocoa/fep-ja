@@ -8,12 +8,11 @@ title: Web Syndication Methods
 date: 2024-07-15
 trackingIssue: https://codeberg.org/fediverse/fep/issues/368
 ---
+# FEP-a5c5: Web Syndication Methods
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-a5c5.md)から翻訳に協力することができます。
-
-# FEP-a5c5: Web Syndication Methods
 
 ## Summary
 

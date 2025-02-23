@@ -6,11 +6,11 @@ dateReceived: 2023-06-13
 trackingIssue: https://codeberg.org/fediverse/fep/issues/121
 discussionsTo: https://codeberg.org/fediverse/fep/issues/121
 ---
+# FEP-a070: Ordered properties for plain JSON consumers
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-a070.md)から翻訳に協力することができます。
-# FEP-a070: Ordered properties for plain JSON consumers
 
 ## Summary
 

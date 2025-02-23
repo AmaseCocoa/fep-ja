@@ -26,13 +26,11 @@ respec:
     latestVersion: https://codeberg.org/fediverse/fep/src/branch/main/fep/e965/fep-e965.md
 
 ---
+# Actor Object Migration and Deactivation Syntax
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-e965-test-case.md)から翻訳に協力することができます。
-
-# Actor Object Migration and Deactivation Syntax
-
 ## Background
 
 This proposal extends and combines prior FEPs to define syntax and parsing rules for Actor objects which unambiguously express exactly one of the three following states:

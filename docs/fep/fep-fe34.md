@@ -6,11 +6,11 @@ dateReceived: 2024-11-15
 discussionsTo: https://socialhub.activitypub.rocks/t/fep-c7d3-ownership/4292
 trackingIssue: https://codeberg.org/fediverse/fep/issues/445
 ---
+# FEP-fe34: Origin-based security model
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-fe34.md)から翻訳に協力することができます。
-# FEP-fe34: Origin-based security model
 
 ## Summary
 

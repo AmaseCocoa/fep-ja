@@ -7,11 +7,11 @@ dateWithdrawn: 2024-02-03
 trackingIssue: https://codeberg.org/fediverse/fep/issues/76
 discussionsTo: https://codeberg.org/fediverse/fep/issues/76
 ---
+# FEP-d767: Extend ActivityPub with Valueflows
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-d767.md)から翻訳に協力することができます。
-# FEP-d767: Extend ActivityPub with Valueflows
 
 ## Summary
 

@@ -7,11 +7,11 @@ dateFinalized: 2022-02-04
 trackingIssue: https://codeberg.org/fediverse/fep/issues/5
 discussionsTo: https://codeberg.org/fediverse/fep/issues/5
 ---
+# FEP-400e: Publicly-appendable ActivityPub collections
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-400e.md)から翻訳に協力することができます。
-# FEP-400e: Publicly-appendable ActivityPub collections
 
 
 ## Summary

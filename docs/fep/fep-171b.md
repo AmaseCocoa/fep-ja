@@ -7,13 +7,13 @@ dateReceived: 2024-11-23
 discussionsTo: https://socialhub.activitypub.rocks/t/fep-171b-conversation-containers/4766
 trackingIssue: https://codeberg.org/fediverse/fep/issues/449
 ---
+
+# FEP-171b: Conversation Containers
+
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-171b.md)から翻訳に協力することができます。
-
-# FEP-171b: Conversation Containers
-
 ## Summary
 
 This document specifies a model for managing conversations in [ActivityPub] network. It is based on the implementation of [Conversation Containers][Containers] in [Streams](https://codeberg.org/streams/streams).

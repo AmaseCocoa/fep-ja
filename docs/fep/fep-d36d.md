@@ -6,11 +6,11 @@ dateReceived: 2023-07-01
 trackingIssue: https://codeberg.org/fediverse/fep/issues/125
 discussionsTo: https://codeberg.org/fediverse/fep/issues/125
 ---
+# FEP-d36d: Sharing Content Across Federated Forums
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-d36d.md)から翻訳に協力することができます。
-# FEP-d36d: Sharing Content Across Federated Forums
 
 ## Summary
 

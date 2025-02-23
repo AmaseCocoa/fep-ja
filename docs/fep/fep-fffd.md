@@ -6,12 +6,12 @@ dateReceived: 2023-04-29
 trackingIssue: https://codeberg.org/fediverse/fep/issues/95
 discussionsTo: https://codeberg.org/fediverse/fep/issues/95
 ---
+
+# FEP-fffd: Proxy Objects
 !!! Warning
     このFEPはまだ翻訳されていません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-fffd.md)から翻訳に協力することができます。
-
-# FEP-fffd: Proxy Objects
 
 
 ## Summary
@@ -128,10 +128,6 @@ A post relayed by a third-party Twitter-to-ActivityPub bridge. Because the `cano
 ```
 
 ---
-!!! Warning
-    このFEPはまだ翻訳されていません。
-
-    [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-fffd.md)から翻訳に協力することができます。
 
 A post published to ActivityPub, Diaspora, and Nostr simultaneously. Because there is one non-proxy `Link` in `url` with an `https` protocol, this non-proxy link should be used as a clickable link to the original post.
 
@@ -179,10 +175,6 @@ An ActivityPub Note copied from a user's old instance to a new instance when mov
 ```
 
 ---
-!!! Warning
-    このFEPはまだ翻訳されていません。
-
-    [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-fffd.md)から翻訳に協力することができます。
 
 ## References
 
