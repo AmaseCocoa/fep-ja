@@ -1,4 +1,9 @@
 site_name: FEP 非公式日本語訳
-theme: readthedocs
-docs_dir: translated
+theme: 
+  name: readthedocs
+  locale: ja
+docs_dir: docs
 repo_url: https://github.com/AmaseCocoa/fep-ja
+
+markdown_extensions:
+  - admonition
