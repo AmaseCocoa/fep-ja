@@ -1,0 +1,4 @@
+site_name: FEP 非公式日本語訳
+theme: readthedocs
+docs_dir: translated
+repo_url: https://github.com/AmaseCocoa/fep-ja
