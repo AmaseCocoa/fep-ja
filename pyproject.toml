@@ -6,7 +6,7 @@ authors = [
     {name = "AmaseCocoa", email = "cocoa@amase.cc"},
 ]
 dependencies = ["mkdocs>=1.6.1"]
-requires-python = "==3.11.*"
+requires-python = ">=3.10"
 readme = "README.md"
 license = {text = "MIT"}
 
