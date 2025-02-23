@@ -20,7 +20,7 @@ This FEP describes a way to attach payment information to [ActivityPub](https://
 
 [PeerTube](https://docs.joinpeertube.org/api/activitypub#video) videos may have `support` property, which contains a text explaining how to support the content creator.
 
-[FEP-8c3f: Web Monetization](https://codeberg.org/fediverse/fep/src/branch/main/fep/8c3f/fep-8c3f.md) was published in 2022. The ensuing discussion on SocialHub forum led to the creation of Payment Links proposal.
+[FEP-8c3f: Web Monetization](fep-8c3f.md) was published in 2022. The ensuing discussion on SocialHub forum led to the creation of Payment Links proposal.
 
 ## Requirements
 
@@ -91,7 +91,7 @@ Implementers may treat payment links attached to actor object in the same way as
 ## References
 
 - [ActivityPub] Christine Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
-- [FEP-8c3f: Web Monetization] Diogo Peralta Cordeiro, Phablulo Joel, [FEP-8c3f: Web Monetization](https://codeberg.org/fediverse/fep/src/branch/main/fep/8c3f/fep-8c3f.md), 2022
+- [FEP-8c3f: Web Monetization] Diogo Peralta Cordeiro, Phablulo Joel, [FEP-8c3f: Web Monetization](fep-8c3f.md), 2022
 - [Link Relations Registry] IANA, [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml), 2005
 
 ## Copyright

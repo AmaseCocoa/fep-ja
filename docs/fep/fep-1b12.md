@@ -169,10 +169,10 @@ The `audience` field is an exception as it is not in use yet. Lemmy will add sup
 
 ## References
 
-- [FEP-400e] Gregory Klyushnikov, [FEP-400e: Publicly-appendable ActivityPub collections](https://codeberg.org/fediverse/fep/src/branch/main/fep/400e/fep-400e.md)
+- [FEP-400e] Gregory Klyushnikov, [FEP-400e: Publicly-appendable ActivityPub collections](fep-400e.md)
 - [RFC-2119] S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels](https://tools.ietf.org/html/rfc2119.html)
 - [Activity Vocabulary], James M Snell, Evan Prodromou, [Activity Vocabulary](https://www.w3.org/TR/activitystreams-vocabulary/)
-- [Object Integrity Proofs] silverpill, [FEP-8b32: Object Integrity Proofs](https://codeberg.org/fediverse/fep/src/branch/main/fep/8b32/fep-8b32.md)
+- [Object Integrity Proofs] silverpill, [FEP-8b32: Object Integrity Proofs](fep-8b32.md)
 
 ## Copyright
 

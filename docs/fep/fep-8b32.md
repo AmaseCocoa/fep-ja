@@ -7,46 +7,48 @@ trackingIssue: https://codeberg.org/fediverse/fep/issues/29
 discussionsTo: https://socialhub.activitypub.rocks/t/fep-8b32-object-integrity-proofs/2725
 ---
 !!! Warning
-    このFEPはまだ翻訳されていません。
+    このFEPはまだ翻訳が完了していません。
 
     [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-8b32.md)から翻訳に協力することができます。
-# FEP-8b32: Object Integrity Proofs
+# FEP-8b32: オブジェクト整合性証明
 
-## Summary
+## 概要
+この提案では、[ActivityPub](https://www.w3.org/TR/activitypub/)サーバーとクライアントが自己認証アクティビティとオブジェクトを作成する方法について説明します。
 
-This proposal describes how [ActivityPub][ActivityPub] servers and clients could create self-authenticating activities and objects.
+HTTP 署名は、サーバー間のやり取り中の認証によく使用されます。ただし、これにより認証がアクティビティの配信に結び付けられ、プロトコルの柔軟性が制限されます。
 
-HTTP signatures are often used for authentication during server-to-server interactions. However, this ties authentication to activity delivery, and limits the flexibility of the protocol.
+整合性証明は、デジタル署名とそれを検証するために必要なパラメータを表す属性のセットです。これらの証明は任意のアクティビティまたはオブジェクトに追加でき、受信者はアクターの ID とデータの整合性を検証できます。これにより、認証がトランスポートから切り離され、アクティビティのリレー、埋め込みオブジェクト、クライアント側の署名など​​、さまざまなプロトコルの改善が可能になります。
 
-Integrity proofs are sets of attributes that represent digital signatures and parameters required to verify them. These proofs can be added to any activity or object, allowing recipients to verify the identity of the actor and integrity of the data. That decouples authentication from the transport, and enables various protocol improvements such as activity relaying, embedded objects and client-side signing.
+## 歴史
 
-## History
+Mastodon は[2017年から](https://github.com/mastodon/mastodon/pull/4687)Linked Data 署名をサポートしており、その後、他の多くのプラットフォームでもサポートが追加されました。これらの署名は整合性証明に似ていますが、他の標準に置き換えられた古い[Linked Data Signatures 1.0](https://github.com/w3c-ccg/ld-signatures/)仕様に基づいています。
 
-Mastodon supports Linked Data signatures [since 2017](https://github.com/mastodon/mastodon/pull/4687), and a number of other platforms added support for them later. These signatures are similar to integrity proofs, but are based on outdated [Linked Data Signatures 1.0](https://github.com/w3c-ccg/ld-signatures/) specification, which has been superseded by other standards.
 
-## Requirements
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC-2119][RFC-2119].
+## 要件
 
-## Integrity proofs
+このドキュメント内のキーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「MAY」、および「OPTIONAL」は、[RFC-2119][RFC-2119]で説明されているとおりに解釈されます。
 
-The proposed authentication mechanism is based on [Data Integrity][Data Integrity] specification.
+## 完全性の証明
+提案された認証メカニズムは、[データ整合性][Data Integrity]仕様に基づいています。
 
-### Proof generation
+### 証明の生成
 
-The proof MUST be created according to the *Data Integrity* specification, section [4.2 Add Proof](https://w3c.github.io/vc-data-integrity/#add-proof).
+証明は、データ整合性仕様の[セクション4.2「証明の追加」](https://w3c.github.io/vc-data-integrity/#add-proof)に従って作成する必要があります。
 
-The process of proof generation consists of the following steps:
 
-- **Canonicalization** is a transformation of a JSON object into the form suitable for hashing, according to some deterministic algorithm.
-- **Hashing** is a process that calculates an identifier for the transformed data using a cryptographic hash function.
-- **Signature generation** is a process that calculates a value that protects the integrity of the input data from modification.
+証明生成のプロセスは、次の手順で構成されます。
 
-The resulting proof is added to the original JSON object under the key `proof`. Objects MAY contain multiple proofs.
+- **正規化**は、何らかの決定論的アルゴリズムに従って、JSON オブジェクトをハッシュに適した形式に変換することです。
+- **ハッシュ化**は、暗号ハッシュ関数を使用して変換されたデータの識別子を計算するプロセスです。
 
-The list of attributes used in integrity proof is defined in *Data Integrity* specification, section [2.1 Proofs](https://w3c.github.io/vc-data-integrity/#proofs). The proof type SHOULD be `DataIntegrityProof`, as specified in section [3.1 DataIntegrityProof](https://w3c.github.io/vc-data-integrity/#dataintegrityproof). The value of `proofPurpose` attribute MUST be `assertionMethod`.
+- **署名生成**は、入力データの整合性を変更から保護する値を計算するプロセスです。
 
-The value of the `verificationMethod` attribute of the proof can be an HTTP(S) URL of a public key or a [DID URL][DID-URL]. The [controller document][ControllerDocument] where verification method is expressed MUST be an actor object or another document that can be provably associated with an [ActivityPub] actor (e.g. a [DID][DIDs] document). The verification method MUST be associated with the `assertionMethod` property of the controller document. If controller document is an actor object, implementers SHOULD use `assertionMethod` property as described in [FEP-521a].
+結果の証明は、元のJSONオブジェクトの`proof`キーに追加されます。オブジェクトには複数の証明が含まれる場合があります。
+
+整合性証明で使用される属性のリストは、データ整合性仕様の[セクション2.1 証明](https://w3c.github.io/vc-data-integrity/#proofs)で定義されています。証明タイプはセクション3.1 `DataIntegrityProof`で指定されているように`DataIntegrityProof`である必要があります。`proofPurpose`属性の値は`assertionMethod`でなければなりません。
+
+証明の`verificationMethod`属性の値は、公開鍵のHTTP(S)URLまたは[DID URL][DID-URL]とすることができる。検証方法を表現する[コントローラドキュメント][ControllerDocument]は、アクターオブジェクト、または[ActivityPub]アクターに証明的に関連付けることができる他のドキュメント([DID][DIDs]ドキュメントなど)でなければならない[MUST]。検証メソッドは、コントローラドキュメントの`assertionMethod`プロパティと関連付けなければならない[MUST]。コントローラドキュメントがアクターオブジェクトである場合、実装者は、[FEP-521a]に記載されているように、`assertionMethod`プロパティを使用すべきである[SHOULD]。
 
 ### Proof verification
 

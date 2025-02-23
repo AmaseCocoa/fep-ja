@@ -197,10 +197,10 @@ Example of a container of a followers-only conversation:
 [ActivityPub]: https://www.w3.org/TR/activitypub/
 [Containers]: https://fediversity.site/help/develop/en/Containers
 [RFC-2119]: https://tools.ietf.org/html/rfc2119.html
-[FEP-400e]: https://codeberg.org/fediverse/fep/src/branch/main/fep/400e/fep-400e.md
-[FEP-e232]: https://codeberg.org/fediverse/fep/src/branch/main/fep/e232/fep-e232.md
-[FEP-fe34]: https://codeberg.org/fediverse/fep/src/branch/main/fep/fe34/fep-fe34.md
-[FEP-8b32]: https://codeberg.org/fediverse/fep/src/branch/main/fep/8b32/fep-8b32.md
+[FEP-400e]: fep-400e.md
+[FEP-e232]: fep-e232.md
+[FEP-fe34]: fep-fe34.md
+[FEP-8b32]: fep-8b32.md
 
 ## Copyright
 

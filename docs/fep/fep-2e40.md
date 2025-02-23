@@ -193,7 +193,7 @@ The comments by _aschrijver_ and _trwnh_ on SocialHub have helped me greatly in 
 - [AS-Git] M. Sporny  [Add alsoKnownAs property to AS vocabulary #511](https://github.com/w3c/activitystreams/issues/511), 2020
 - [Canon] A. Rundgren, B. Jordan, S. Erdtman [RFC 8785 JSON Canonicalization Scheme (JCS)](https://www.rfc-editor.org/rfc/rfc8785), 2020
 - [DID Reg] Orie Steele, Manu Sporny [DID Specification Registries](https://www.w3.org/TR/did-spec-registries), 2023
-- [FEP-a4ed] pukkamustard [FEP-a4ed: The Fediverse Enhancement Proposal Process](https://codeberg.org/fediverse/fep/src/branch/main/feps/fep-a4ed.md)
+- [FEP-a4ed] pukkamustard [FEP-a4ed: The Fediverse Enhancement Proposal Process](fep-a4ed.md)
 - [FEP-61ce] Helge Krueger [FEP-61CE: Server Sent Events for Actor], in preparation
 - [JSON-LD] Gregg Kellogg, Pierre-Antoine Champin, Dave Longley [JSON-LD](https://www.w3.org/TR/json-ld/), 2020
 - [LD-API]  Gregg Kellogg, Pierre-Antoine Champin, Dave Longley [JSON-LD-API](https://www.w3.org/TR/json-ld-api/), 2020

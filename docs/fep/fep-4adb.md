@@ -32,7 +32,7 @@ We will denote this object by `ActivityStreams(URI, domain)`. There are now two 
 1. The URI determines the domain denoted by `domain(URI)`
 2. The URI doesn't determine the domain
 
-In case 1, it is clear that we associate `ActivityStreams(URI, domain(URI))` to the URI. In case 2, we will use the domain associated with the `@id` of the document the document the URI appeared in. If the document was received through a POST request and doesn't contain an `id`, or the `id` is an URI, the domain the POST request originated from should be used. In this case a verification that the URI can be associated with the object MUST be performed. This can for example be achieved through [FEP-c390](https://codeberg.org/fediverse/fep/src/branch/main/feps/fep-c390.md).
+In case 1, it is clear that we associate `ActivityStreams(URI, domain(URI))` to the URI. In case 2, we will use the domain associated with the `@id` of the document the document the URI appeared in. If the document was received through a POST request and doesn't contain an `id`, or the `id` is an URI, the domain the POST request originated from should be used. In this case a verification that the URI can be associated with the object MUST be performed. This can for example be achieved through [FEP-c390](fep-c390.md).
 
 ## 例
 
@@ -90,7 +90,7 @@ is made. The resulting ActivityStreams object should contain
 }
 ```
 
-following [FEP-c390](https://codeberg.org/fediverse/fep/src/branch/main/feps/fep-c390.md) so that the authority of ben to use the did can be verified.
+following [FEP-c390](fep-c390.md) so that the authority of ben to use the did can be verified.
 
 ## Background
 
@@ -168,7 +168,7 @@ a new generation of Fediverse software will then be able to display the account 
 
 ### DNS Names
 
-Continuing with Alyssa from above, by relying on [FEP-612d](https://codeberg.org/fediverse/fep/src/branch/main/feps/fep-612d.md), she may even associate `@alyssa.cool` with her account. Unfortunately, a proper URI format is still missing.
+Continuing with Alyssa from above, by relying on [FEP-612d](fep-612d.md), she may even associate `@alyssa.cool` with her account. Unfortunately, a proper URI format is still missing.
 
 ### Using did:key
 
@@ -194,7 +194,7 @@ Let's return to Ben and him wanting to use a decentralized identifier, see [did-
 }
 ```
 
-The problem here is that, we do not know if the the did-key belongs to BEN. To remedy this, we will use [FEP-c390](https://codeberg.org/fediverse/fep/src/branch/main/feps/fep-c390.md). This means that we need to add
+The problem here is that, we do not know if the the did-key belongs to BEN. To remedy this, we will use [FEP-c390](fep-c390.md). This means that we need to add
 
 ```json
     "attachment": {
@@ -215,8 +215,8 @@ with an appropriate proof to Ben's actor object.
 - [alsoKnownAs and acct:](https://socialhub.activitypub.rocks/t/alsoknownas-and-acct/3132?u=helge) on SocialHub
 - [did-core] Manu Sporny, Dave Longley, Markus Sabadell, Drummond Reed, Orie Steele, Christopher Allen, [Decentralized Identifiers](https://www.w3.org/TR/did-core/) (DIDs) v1.0, 2022
 - [did-method-key], Dave Longley, Dmitri Zagidulin, Manu Sporny, [did-method-key](https://w3c-ccg.github.io/did-method-key/) 20221
-- [FEP-c390] silverpill, [FEP-c390](https://codeberg.org/fediverse/fep/src/branch/main/feps/fep-c390.md), 2022
-- [FEP-612d] Helge, [FEP-612d](https://codeberg.org/fediverse/fep/src/branch/main/feps/fep-612d.md) 2023
+- [FEP-c390] silverpill, [FEP-c390](fep-c390.md), 2022
+- [FEP-612d] Helge, [FEP-612d](fep-612d.md) 2023
 - [MastoGuide] jippi  [Use your own user @ domain for Mastodon discoverability](https://guide.toot.as/guide/use-your-own-domain/)
 - [Webfinger] P. Jones, G. Salgueiro, M. Jones, J. Smarr, [RFC 7033](https://datatracker.ietf.org/doc/html/rfc7033),2013
 

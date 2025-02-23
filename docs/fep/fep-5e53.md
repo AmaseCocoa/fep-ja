@@ -100,7 +100,7 @@ None so far.
 
 ## Related proposal
 
-[FEP-c118](https://codeberg.org/fediverse/fep/src/branch/main/fep/c118/fep-c118.md) suggests establishing
+[FEP-c118](fep-c118.md) suggests establishing
 a content licensing framework. This may be possible by adapting this FEP to include the license header
 from [WebLinking].
 
