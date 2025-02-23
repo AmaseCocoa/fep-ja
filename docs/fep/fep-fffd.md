@@ -176,7 +176,7 @@ An ActivityPub Note copied from a user's old instance to a new instance when mov
 
 ---
 
-## References
+## 参考文献
 
 - [ActivityPub] Christine Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
 - [RFC-2119] S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels](https://tools.ietf.org/html/rfc2119.html), 1997
@@ -185,8 +185,7 @@ An ActivityPub Note copied from a user's old instance to a new instance when mov
 - [DID URL Syntax] Manu Sporny, Markus Sabadello, Drummond Reed, Orie Steele, Christopher Allen, [Decentralized Identifiers (DIDs) v1.0](https://www.w3.org/TR/did-core/#did-url-syntax), 2022
 - [AT URI Scheme] Bluesky, [ATProto Documentation](https://atproto.com/specs/at-uri-scheme), 2023
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

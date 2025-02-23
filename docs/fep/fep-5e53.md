@@ -92,7 +92,7 @@ Some jurisdictions require privacy OOPSs to be registered in order to have legal
 FEP is accepted, the author intends to pursue registration.
 
 
-## Implementations
+## 実装
 
 None so far.
 
@@ -105,7 +105,7 @@ a content licensing framework. This may be possible by adapting this FEP to incl
 from [WebLinking].
 
 
-## References
+## 参考文献
 
 - Christine Lemmer Webber, Jessica Tallon, [ActivityPub][ActivityPub], 2018
 - DeviantArt team, [UPDATE All Deviations Are Opted Out of AI Datasets][noai], 2022
@@ -122,8 +122,7 @@ from [WebLinking].
 [RobotsMeta]: https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag
 [WebLinking]: https://datatracker.ietf.org/doc/html/rfc5988
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

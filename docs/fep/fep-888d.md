@@ -528,7 +528,7 @@ We can formulate the following machine-readable term definition blocks, which ar
 
 
 
-## References
+## 参考文献
 
 - [ActivityPub] Christine Lemmer Webber, Jessica Tallon, [ActivityPub][ActivityPub], 2018
 - [AS2-Core] James M Snell, Evan Prodromou, [Activity Streams 2.0][AS2-Core], 2017
@@ -552,8 +552,7 @@ We can formulate the following machine-readable term definition blocks, which ar
 
 [1]: https://socialhub.activitypub.rocks/t/fep-2e40-the-fep-vocabulary-extension-process/2972
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication 
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

@@ -93,14 +93,14 @@ This proposal describes how to represent actor's public keys. The corresponding 
 
 See [fep-521a.feature](./fep-521a.feature)
 
-## Implementations
+## 実装
 
 - Mitra
 - streams
 - Hubzilla
 - Fedify
 
-## References
+## 参考文献
 
 - Christine Lemmer Webber, Jessica Tallon, [ActivityPub][ActivityPub], 2018
 - Ivan Herman, Manu Sporny, Dave Longley, [Security Vocabulary][SecurityVocabulary], 2023
@@ -120,8 +120,7 @@ See [fep-521a.feature](./fep-521a.feature)
 [Multicodec]: https://github.com/multiformats/multicodec/
 [FEP-fe34]: https://codeberg.org/fediverse/fep/src/branch/main/fep/fe34/fep-fe34.md
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

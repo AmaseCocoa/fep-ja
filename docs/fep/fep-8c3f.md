@@ -69,14 +69,13 @@ and it consists on a [payment pointer](https://paymentpointers.org/#syntax/).
 > Payment Pointers start with a `$` character to distinguish them from other identifiers and make it obvious that they are related to payments. To convert a Payment Pointer to a URL the $ is replaced with the standard prefix of a secure URL, `https://`.
 
 
-## References
+## 参考文献
 
 - [ActivityPub] Christine Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
 - [Web Monetization] Adrian Hope-Bailie, Ben Sharafian, Nick Dudfield, [Web Monetization](https://webmonetization.org/), 2021
 
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

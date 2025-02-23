@@ -442,11 +442,10 @@ These links were helpful when researching conformance testing
 
 &horbar;[w3.org - QA Framework: Specification Guidelines](https://www.w3.org/TR/qaframe-spec/#specify-conformance)
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。
 
 [FEP]: https://codeberg.org/fediverse/fep/src/branch/main/fep/a4ed/fep-a4ed.md#fep-a4ed-the-fediverse-enhancement-proposal-process
 [ActivityPub]: https://www.w3.org/TR/activitypub/]

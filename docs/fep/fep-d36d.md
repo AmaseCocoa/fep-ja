@@ -54,7 +54,7 @@ only once across related forums and a forum can provide navigation to an origina
 
 If the incoming activity is deemed valid, the group MUST handle it according to FEP-1b12 handling of valid activities.
 
-## References
+## 参考文献
 [FEP-1b12] Felix Ableitner, [FEP-1b12: Group federation](https://codeberg.org/fediverse/fep/src/branch/main/fep/1b12/fep-1b12.md)
 
 ## Copyright

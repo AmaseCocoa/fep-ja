@@ -386,7 +386,7 @@ An example of a long-form text object without a `name` property displayed in a s
 
 ![Article in stream, no title](in-stream-no-title.drawio.svg)
 
-## References
+## 参考文献
 
 - James Snell, Evan Prodromou, [Activity Streams 2.0][AS2], 2017
 - James Snell, Evan Prodromou, [Activity Vocabulary][Activity Vocabulary], 2017
@@ -398,8 +398,7 @@ An example of a long-form text object without a `name` property displayed in a s
 [Activity Vocabulary]: https://www.w3.org/TR/activitystreams-vocabulary/
 [RSS2]: https://cyber.harvard.edu/rss/rss.html
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

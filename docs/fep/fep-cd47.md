@@ -62,7 +62,7 @@ One form of location-independent addressing is "content-addressing", the most co
 4. Similarly, how are attachments, links, images, videos, etc canonicalized for hashing in content-type-aware ways? How to deal with filesystems, bucket storage, etc? How are arbitrary files (uploads?) canonicalized?
 5. Is there a property for Actor objects to backlink to previous `id`s? How to deduplicate across migrations that change `id` property?
 
-## References
+## 参考文献
 
 Normative
 
@@ -88,8 +88,7 @@ Informational
 [openengiadina]: https://openengiadina.net/papers/content-addressable-rdf.html
 [RDF-CBOR]: https://openengiadina.codeberg.page/rdf-cbor/
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

@@ -125,7 +125,7 @@ Arbitrary file creation through media attachments (Mastodon)
 
 These lists are likely not exhaustive.
 
-## References
+## 参考文献
 - [ActivityPub][AP] Christine Lemmer Webber, Jessica Tallon et al, 2018
 - [Linked Data Platform 1.0][LDP], Steve Speicher, John Arwe, Ashok Malhotra, 2015
 

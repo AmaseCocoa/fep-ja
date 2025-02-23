@@ -113,7 +113,7 @@ When ownership changes, the new owner ID MUST have the same origin as the old ow
 
 When a protected object is fetched, the `GET` request MUST contain a [HTTP signature][HttpSig] created using a key whose owner SHOULD belong to object's intended audience. If key owner doesn't belong to intended audience, its ID MUST have the same origin as one of the actors in object's intended audience.
 
-## References
+## 参考文献
 
 - Christine Lemmer Webber, Jessica Tallon, [ActivityPub][ActivityPub], 2018
 - James M Snell, Evan Prodromou, [Activity Vocabulary][ActivityVocabulary], 2017
@@ -129,8 +129,7 @@ When a protected object is fetched, the `GET` request MUST contain a [HTTP signa
 [FEP-8b32]: https://codeberg.org/fediverse/fep/src/branch/main/fep/8b32/fep-8b32.md
 [HttpSig]: https://swicg.github.io/activitypub-http-signature/
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

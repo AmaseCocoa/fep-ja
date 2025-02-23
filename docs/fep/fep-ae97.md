@@ -48,12 +48,12 @@ Client receives activities by polling the actor's inbox.
 
 Requests to inbox endpoint MUST have an HTTP signature created using the RSA secret key generated during registration.
 
-## Implementations
+## 実装
 
 - [fep-ae97-client](https://codeberg.org/silverpill/fep-ae97-client) (client)
 - Mitra (server)
 
-## References
+## 参考文献
 
 - Christine Lemmer Webber, Jessica Tallon, [ActivityPub][ActivityPub], 2018
 - S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels][RFC-2119], 1997
@@ -69,8 +69,7 @@ Requests to inbox endpoint MUST have an HTTP signature created using the RSA sec
 [FEP-521a]: https://codeberg.org/fediverse/fep/src/branch/main/fep/521a/fep-521a.md
 [DataIntegrity]: https://www.w3.org/TR/vc-data-integrity/
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

@@ -64,7 +64,7 @@ Given an object O and a recursion limit L, a general algorithm for following it 
 
 Additional requirements for the ACTIVITY can be defined at a protocol level, but the exact protocol and those requirements are out-of-scope for this FEP. The scope of this FEP is limited to determining which objects can be followed, and where to send the Follow.
 
-## References
+## 参考文献
 
 - James M Snell, Evan Prodromou, [Activity Vocabulary][AS2-Vocab], 2017
 - Christine Lemmer Webber, Jessica Tallon, [ActivityPub][ActivityPub], 2018
@@ -74,8 +74,7 @@ Additional requirements for the ACTIVITY can be defined at a protocol level, but
 [ActivityPub]: https://www.w3.org/TR/activitypub/
 [UNRESOLVED]: https://socialhub.activitypub.rocks/t/unresolved-issues-surrounding-follow-activities/114
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

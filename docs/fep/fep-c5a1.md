@@ -220,7 +220,7 @@ The `Commitment` can alternatively be marked as `finished`, without recording an
 }
 ```
 
-## References
+## 参考文献
 
 - [ActivityPub] Christine Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
 - [Valueflows] Lynn Foster, elf Pavlik, Bob Haugen [Valueflows](https://valueflo.ws/), 2024
@@ -228,8 +228,7 @@ The `Commitment` can alternatively be marked as `finished`, without recording an
 - [Activity Vocabulary] James M Snell, Evan Prodromou, [Activity Vocabulary](https://www.w3.org/TR/activitystreams-vocabulary/), 2017
 - [Ontology of units of Measure] Hajo Rijgersberg, Don Willems, Xin-Ying Ren, Mari Wigham, Jan Top, [Ontology of units of Measure](http://www.ontology-of-units-of-measure.org/), 2017
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

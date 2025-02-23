@@ -334,7 +334,7 @@ A relay server often hosts a single actor, but any number of relay actors may be
 
 Some servers implement dynamic relay actor creation. A relay actor's `inbox` URI might be based on a hashtag or a topic name. When a client actor subscribes to this kind of inbox URI, the relay actor is created automatically. Obviously, there are risks to this approach when used by misbehaved clients.
 
-## References
+## 参考文献
 
 - Christine Lemmer Webber, Jessica Tallon, [ActivityPub][ActivityPub], 2018
 - James M Snell, Evan Prodromou, [Activity Vocabulary][AS2-Vocab], 2017
@@ -369,11 +369,10 @@ Some servers implement dynamic relay actor creation. A relay actor's `inbox` URI
 [litepub]: https://litepub.social/
 [pub-relay]: https://github.com/noellabo/pub-relay
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。
 
 
 

@@ -88,14 +88,13 @@ Payment link attached to an object:
 
 Implementers may treat payment links attached to actor object in the same way as actor metadata fields. In that case, `name` translates into field label and `href` translates into field value.
 
-## References
+## 参考文献
 
 - [ActivityPub] Christine Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
 - [FEP-8c3f: Web Monetization] Diogo Peralta Cordeiro, Phablulo Joel, [FEP-8c3f: Web Monetization](fep-8c3f.md), 2022
 - [Link Relations Registry] IANA, [Link Relations](https://www.iana.org/assignments/link-relations/link-relations.xhtml), 2005
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

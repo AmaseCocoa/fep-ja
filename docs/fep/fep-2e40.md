@@ -186,7 +186,7 @@ By including the primary FEP vocabulary, it is ensured that changes to the prima
 
 The comments by _aschrijver_ and _trwnh_ on SocialHub have helped me greatly in clarifying and formulating the concepts discussed in this FEP.
 
-## References
+## 参考文献
 
 - [ActivityPub] Christine Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
 - [AS-NS] Amy Guy [ActivityStreams 2.0 Terms](https://www.w3.org/ns/activitystreams), 2018
@@ -201,8 +201,7 @@ The comments by _aschrijver_ and _trwnh_ on SocialHub have helped me greatly in 
 - [RFC-2119] S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels](https://tools.ietf.org/html/rfc2119.html)
 - [W3-ID] Contibutors [Permanent Identifiers for the Web](https://github.com/perma-id/w3id.org)
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

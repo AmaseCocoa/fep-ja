@@ -243,7 +243,7 @@ Although the definition isn't clear, the "Application Actor" in [FEP-2677] appea
 
 [FEP-4adb] discusses dereferencing identifiers with WebFinger. It's similar to this proposal but not specifically related to discovering server-level actors.
 
-## References
+## 参考文献
 
 - Christine Lemmer Webber, Jessica Tallon, [ActivityPub], 2018
 - James M Snell, Evan Prodromou, [ActivityStreams Vocabulary][ActivityVocabulary], 2017
@@ -255,11 +255,10 @@ Although the definition isn't clear, the "Application Actor" in [FEP-2677] appea
 - Brad Fitzpatrick, [WebFinger], 2013
 - WebFinger\.net [Link Relations][WebFingerRels]
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。
 
 [ActivityPub]: https://www.w3.org/TR/activitypub/ "The ActivityPub protocol is a decentralized social networking protocol based upon the ActivityStreams 2.0 data format. It provides a client to server API for creating, updating and deleting content, as well as a federated server to server API for delivering notifications and content."
 [ActivityVocabulary]: https://www.w3.org/TR/activitystreams-vocabulary "This specification describes the Activity vocabulary. It is intended to be used in the context of the ActivityStreams 2.0 format and provides a foundational vocabulary for activity structures, and specific activity types."

@@ -161,21 +161,20 @@ If an group or group follower supports moderation, it MUST validate incoming mod
 
 Implementations SHOULD also accept moderation activities which come from the same server where the community is hosted, under the assumption that these are sent by server administrators. These moderation activities also need to be wrapped in `Announce` by the group.
 
-## Implementations
+## 実装
 
 This document is written based on existing group implementations in Lemmy, Friendica, Hubzilla, Lotide and Peertube. These already federate successfully in production.
 
 The `audience` field is an exception as it is not in use yet. Lemmy will add support for it in version 0.17.0.
 
-## References
+## 参考文献
 
 - [FEP-400e] Gregory Klyushnikov, [FEP-400e: Publicly-appendable ActivityPub collections](fep-400e.md)
 - [RFC-2119] S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels](https://tools.ietf.org/html/rfc2119.html)
 - [Activity Vocabulary], James M Snell, Evan Prodromou, [Activity Vocabulary](https://www.w3.org/TR/activitystreams-vocabulary/)
 - [Object Integrity Proofs] silverpill, [FEP-8b32: Object Integrity Proofs](fep-8b32.md)
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

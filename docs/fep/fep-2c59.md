@@ -139,7 +139,7 @@ The publisher can include the `webfinger` property for an actor with an `acct:` 
 
 The source of the `webfinger` property is important. A third party may spoof, intentionally or unintentionally, the `webfinger` property of another actor. The property should only be treated as the preferred Webfinger address for the actor if it comes from the actor `id` URL, or if it is delivered with the actor's [HTTP Signature][HTTP Signature] via the ActivityPub protocol.
 
-## References
+## 参考文献
 
 - [Webfinger] Brad Fitzpatrick, [WebFinger](https://tools.ietf.org/html/rfc7033), 2013
 - [ActivityPub] Christine Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
@@ -147,8 +147,7 @@ The source of the `webfinger` property is important. A third party may spoof, in
 - [Mastodon Webfinger], Mastodon contributors, [Webfinger - Mastodon documentation](https://docs.joinmastodon.org/spec/webfinger/), 2018
 - [HTTP Signature], Cavage, M., [HTTP Signatures](https://tools.ietf.org/html/draft-cavage-http-signatures-10), 2017
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

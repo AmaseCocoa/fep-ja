@@ -152,7 +152,7 @@ Minor changes (i.e. a correction of a typo or of a broken link) can be accepted 
 
 The process and format described in this proposal is influenced by other community driven documentation efforts such as the [BitTorrent Enhancement Proposal Process][BEP-1], [Scheme Request for Implementation][SRFI] and the [IETF RFC Series][RFC-8729].
 
-## References
+## 参考文献
 
 - Dave Mason, [Scheme Request For Implementation - Process][SRFI]
 - David Harrison, [The BitTorrent Enhancement Proposal Process][BEP-1], 2008
@@ -166,8 +166,7 @@ The process and format described in this proposal is influenced by other communi
 [CommonMark]: https://spec.commonmark.org/0.29/
 [Internet-Draft-terminology]: https://tools.ietf.org/html/draft-knodel-terminology
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

@@ -70,7 +70,7 @@ After top-level post of a conversation is discovered, the whole conversation can
 - If `context` property is present, retrieve collection of posts and stop.
 - If `replies` property is present, retrieve collection of replies, and repeat this step for every reply.
 
-## Implementations
+## 実装
 
 Collection of posts:
 
@@ -83,7 +83,7 @@ Collection of activities:
 - Streams
 - Hubzilla
 
-## References
+## 参考文献
 
 - a, [FEP-7888: Demystifying the context property][FEP-7888], 2023
 - S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels][RFC-2119], 1997
@@ -96,8 +96,7 @@ Collection of activities:
 [FEP-171b]: https://codeberg.org/fediverse/fep/src/branch/main/fep/171b/fep-171b.md
 [FEP-bad1]: https://codeberg.org/fediverse/fep/src/branch/main/fep/bad1/fep-bad1.md
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

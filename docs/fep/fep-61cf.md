@@ -146,7 +146,7 @@ This endpoint should accept both GET and POST requests. Some home instances will
 
 The implementation of this endpoint needs to request a login token from the target instance. This requires it to prove possession of the user's private key, first to calculate a signature for the request and then to decrypt the returned token. These are the only places in the protocol where the private key is needed, implying that only the home instance needs to be a Fediverse instance. The target instance only needs access to public keys, meaning that OpenWebAuth can be used to allow users to log into things that are not instances.
 
-## Implementations
+## 実装
 
 OpenWebAuth was developed as part of the Hubzilla / Streams family of projects. More recently it has been added to Friendica and proposed for inclusion in Mastodon and PixelFed.
 
@@ -162,7 +162,7 @@ Unused `owt=` login tokens are deleted after a couple of minutes. This protects 
 
 The `zid=` query parameter may make a [MixUpAttack] easier to launch, as discussed briefly above.
 
-## References
+## 参考文献
 
 - Christine Lemmer Webber, Jessica Tallon, [ActivityPub][ActivityPub], 2018
 - Ryan Barrett, nightpool, [ActivityPub and HTTP Signatures][ActPubSig], 2024
@@ -172,8 +172,7 @@ The `zid=` query parameter may make a [MixUpAttack] easier to launch, as discuss
 [ActPubSig]: https://swicg.github.io/activitypub-http-signature/
 [MixUpAttack]: https://www.hackmanit.de/en/blog-en/132-how-to-protect-your-oauth-client-against-mix-up-attacks
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

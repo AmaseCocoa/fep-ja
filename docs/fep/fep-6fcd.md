@@ -172,7 +172,7 @@ contents:
     url: https://indieweb.org/blog_archive_format
 ```
 
-## References
+## 参考文献
 
 * [FEP-521a: Representing actor's public keys][FEP-521a]
 * Christine Lemmer Webber, Jessica Tallon, [ActivityPub][AP], 2018

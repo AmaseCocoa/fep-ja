@@ -688,7 +688,7 @@ Remote servers MAY also account for applications that do not publish Activity In
 * [Emissary](https://emissary.dev) will support this FEP once its syntax is finalized.
 * Add your name to this list and win a cookie 🍪
 
-## References
+## 参考文献
 * [Activity Vocabulary](https://www.w3.org/TR/activitystreams-vocabulary/#activity-types)
 * [Twitter: Web Intents](https://developer.twitter.com/en/docs/twitter-for-websites/web-intents/overview)
 * [Facebook: Share Button](https://developers.facebook.com/docs/plugins/share-button/)

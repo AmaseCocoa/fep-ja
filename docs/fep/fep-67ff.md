@@ -57,7 +57,7 @@ The `FEDERATION.md` file can have arbitrary structure and content. The only requ
 <!-- Add links to documentation pages. -->
 ```
 
-## Implementations
+## 実装
 
 - [gathio](https://github.com/lowercasename/gathio/blob/main/FEDERATION.md)
 - [Streams](https://codeberg.org/streams/streams/src/branch/dev/FEDERATION.md)
@@ -82,7 +82,7 @@ The `FEDERATION.md` file can have arbitrary structure and content. The only requ
 - [NeoDB](https://github.com/neodb-social/neodb/blob/main/FEDERATION.md)
 - [FIRM](https://github.com/steve-bate/firm/blob/main/FEDERATION.md)
 
-## References
+## 参考文献
 
 - Darius Kazemi, [Documenting federation behavior in a semi-standard way?][Documenting federation behavior in a semi-standard way?], 2020
 - S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels][RFC-2119], 1997
@@ -90,8 +90,7 @@ The `FEDERATION.md` file can have arbitrary structure and content. The only requ
 [Documenting federation behavior in a semi-standard way?]: https://socialhub.activitypub.rocks/t/documenting-federation-behavior-in-a-semi-standard-way/453
 [RFC-2119]: https://tools.ietf.org/html/rfc2119.html
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

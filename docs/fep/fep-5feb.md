@@ -64,16 +64,15 @@ Whenever an actor is updated and its attribute is set to `indexable: false`, its
 
 Considering this attribute is purely advisory, special care SHOULD be given to the user interface to make sure users are not made to believe the attribute will ensure they never get indexed.
 
-## Implementations
+## 実装
 
 - Mastodon, as of v4.2.0
 
-## References
+## 参考文献
 
 - [RFC-2119] S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels](https://tools.ietf.org/html/rfc2119.html)
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication 
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

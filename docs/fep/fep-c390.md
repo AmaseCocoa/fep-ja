@@ -99,11 +99,11 @@ Servers MUST present identity proofs to clients in their original form. Clients 
 
 TBD
 
-## Implementations
+## 実装
 
 - [Mitra](https://codeberg.org/silverpill/mitra/src/commit/351de5f2dd9f42995dca3ba20f1c0b017f463d07/FEDERATION.md#identity-proofs)
 
-## References
+## 参考文献
 
 - Christine Lemmer Webber, Jessica Tallon, [ActivityPub][ActivityPub], 2018
 - Manu Sporny, Dave Longley, Markus Sabadell, Drummond Reed, Orie Steele, Christopher Allen, [Decentralized Identifiers (DIDs) v1.0][DIDs], 2022
@@ -113,8 +113,7 @@ TBD
 [DIDs]: https://www.w3.org/TR/did-core/
 [DataIntegrity]: https://w3c.github.io/vc-data-integrity/
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

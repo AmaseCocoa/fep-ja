@@ -127,18 +127,17 @@ By default, implementations SHOULD NOT allow read access to the `blocked` collec
 
 Some users may want to share their blocklist with other actors. Shared blocklists are an important tool for user safety on monolithic social networks and on the social web. Implementations MAY allow a user to share their `blocked` collection with other actors. Implementations SHOULD inform the user of the risks of sharing their blocklist with the wrong actors.
 
-## Implementations
+## 実装
 
 The [onepage.pub] server implements the `blocked` collection.
 
-## References
+## 参考文献
 
 - [ActivityPub] Christine Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
 - [onepage.pub] Evan Prodromou, [onepage.pub](https://github.com/evanp/onepage.pub/), 2023
 - [activitypub-express](https://github.com/immers-space/activitypub-express)
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

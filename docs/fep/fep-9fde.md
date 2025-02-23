@@ -638,15 +638,14 @@ Not an exhaustive list:
 - FEPs
 	- [FEP 6481 - # Specifying ActivityPub extension support with NodeInfo](https://codeberg.org/fediverse/fep/src/branch/main/fep/6481/fep-6481.md)
 
-## References
+## 参考文献
 
 - [NodeInfo](http://nodeinfo.diaspora.software/)
 - [RFC-2119 - Key words for use in RFCs to Indicate Requirement Levels](https://datatracker.ietf.org/doc/html/rfc2119.html)
 - [RFC 3490 - Internationalizing Domain Names in Applications (IDNA)](https://datatracker.ietf.org/doc/rfc3490/)
 - [Semantic Versioning](https://semver.org/)
 - [OpenAPI Specification](https://swagger.io/specification/)
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

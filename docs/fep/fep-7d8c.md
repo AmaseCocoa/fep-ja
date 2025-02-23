@@ -100,14 +100,13 @@ See [here](https://codeberg.org/fediverse/fep/settings/keys).
 
 One can add these secrets on [woodpecker](https://ci.codeberg.org/repos/12388), then selecting the settings wheel -> `secrets` -> `add secret`. The secrets only need to available for the `push` action (corresponding to a merged pull request).
 
-## References
+## 参考文献
 
 - pukkamustard, [FEP-a4ed: The Fediverse Enhancement Proposal Process][a4ed], 2020
 
 [a4ed]: https://codeberg.org/fediverse/fep/src/branch/main/fep/a4ed/fep-a4ed.md
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

@@ -158,17 +158,16 @@ server, the receiving end:
 - SHOULD send an `Undo Follow` for any other local follower listed in the
   partial followers collection but not known locally.
 
-## Implementations
+## 実装
 
 This proposal is implemented by Mastodon since the following Pull Request: https://github.com/tootsuite/mastodon/pull/14510
 
-## References
+## 参考文献
 
 - [RFC-2119] S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels](https://tools.ietf.org/html/rfc2119.html
 - [HTTP-Signatures] A. Backman, J. Richer, M. Sporny, [Signing HTTP Messages](https://tools.ietf.org/html/draft-ietf-httpbis-message-signatures-00.html)
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

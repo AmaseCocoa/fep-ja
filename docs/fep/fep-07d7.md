@@ -181,18 +181,17 @@ If a client will retrieve the linked object itself, the client MUST adhere to th
 Because there is no way to know or control which application will ultimately handle any `web+activitypub:` link, creators SHOULD NOT include private or sensitive information in the link. Creators MUST NOT include any type of authenticating token or credential in the link. And handling applications themselves MUST apply all the normal and appropriate access controls when retrieving and displaying resources linked this way.
 
 
-## References
+## 参考文献
 
 - [ActivityPub] Christine Lemmer Webber, Jessica Tallon, [ActivityPub][ActivityPubRef], 2018
 - [Web-based Protocol Handlers] Mozilla Developer Network, [Web-based Protocol Handlers][HandlersRef]
 - [HTML Living Standard] WHATWG, [HTML], 2023
 - [Fedilinks] Fedilinks Authors, [Fedilinks][FedilinksRef]
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。
 
 
 [RFC-2119]: https://www.rfc-editor.org/rfc/rfc2119

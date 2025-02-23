@@ -206,7 +206,7 @@ A common representation of quote posts is to include the `object` of the `Announ
 
 For all `Announce` activities, it's important to consider how much of the shared content to expose to the recipient of the `Announce` activity. Using an URL as a reference, or including a limited set of metadata as in the examples in this FEP, allows the publishing server for the shared content to control access to the content. See [Inclusion of the shared object](https://www.w3.org/wiki/ActivityPub/Primer/Announce_activity#Inclusion_of_the_shared_object) in the [ActivityPub Primer][Primer] for more information.
 
-## References
+## 参考文献
 
 - James Snell, Evan Prodromou, et al. [Activity Streams 2.0][AS2]. W3C Recommendation. 8 May 2018.
 - James Snell, Evan Prodromou, et al. [Activity Streams Vocabulary][Vocabulary]. W3C Recommendation. 8 May 2018.
@@ -220,8 +220,7 @@ For all `Announce` activities, it's important to consider how much of the shared
 [Miscellany]: https://swicg.github.io/miscellany/
 [Primer]: https://www.w3.org/wiki/ActivityPub/Primer
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

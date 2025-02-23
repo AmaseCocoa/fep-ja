@@ -179,12 +179,12 @@ Example of a container of a followers-only conversation:
 - [FEP-1b12](https://codeberg.org/fediverse/fep/src/branch/main/fep/1b12/fep-1b12.md): `Announce` activity is used instead of `Add`. Conversation and related activities are synchronized between participants, but conversation backfilling mechanism is not specified.
 - [GoToSocial Interaction Policy](https://docs.gotosocial.org/en/latest/federation/posts/#interaction-policy): conversation is managed separately for each post (in a conversation container the owner has authority over the entire thread). `Accept` or `Reject` activity is generated for every interaction (in a conversation container `Add` activity is generated when activity is approved, and rejected activities are ignored). Conversation is not synchronized between participants, but can be backfilled by recursively fetching `replies` collections.
 
-## Implementations
+## 実装
 
 - [Streams](https://codeberg.org/streams/streams)
 - [Hubzilla](https://hub.somaton.com/item/0145da10-b608-4b19-b1d5-89a461e473d0)
 
-## References
+## 参考文献
 
 - Christine Lemmer Webber, Jessica Tallon, [ActivityPub], 2018
 - Mike Macgirvin, [Containers], 2024
@@ -202,8 +202,7 @@ Example of a container of a followers-only conversation:
 [FEP-fe34]: fep-fe34.md
 [FEP-8b32]: fep-8b32.md
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

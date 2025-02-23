@@ -83,14 +83,13 @@ The text file is then stored at `context/fep-0ac6_Message.txt`, and when it is f
 }
 ```
 
-## References
+## 参考文献
 
 - [AS2V] James M Snell, Evan Prodromou, [Activity Vocabulary](https://www.w3.org/TR/activitystreams-vocabulary), 2017
 - [AP] Christine Lemmer-Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub), 2018
 - [CAV] Christine Lemmer-Webber, [Content Addressed Vocabulary](https://dustycloud.org/blog/content-addressed-vocabulary/), 2020
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication 
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

@@ -175,14 +175,13 @@ There have been a few other attempts at addressing how to describe what a server
 * [FEP-6481: Specifying ActivityPub extension support with NodeInfo](https://codeberg.org/fediverse/fep/src/branch/main/fep/6481/fep-6481.md): This lists "extensions" to the common ActivityStreams types. BookWyrm, for example, adds a book "Review" type that could be documented in this way.
 * [Micropub: Query for Supported Vocabulary](https://indieweb.org/Micropub-extensions#Query_for_Supported_Vocabulary): From the IndieWeb community, the Micropub API is an interface for posting to a web site. This Micropub extension returns a list of post types that a server supports.
 
-## References
+## 参考文献
 
 * [ActivityStreams 2.0](https://www.w3.org/TR/activitystreams-core)
 * [Activity Vocabulary](https://www.w3.org/TR/activitystreams-vocabulary/)
 * [BookWyrm ActivityPub](https://docs.joinbookwyrm.com/activitypub.html)
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

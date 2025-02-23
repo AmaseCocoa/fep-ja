@@ -363,7 +363,7 @@ Throughout this service provider migration, the external indirect `id` of the
 object _does not change_, for the purposes of all other AP mechanisms such as
 Inbox delivery, Likes and Reposts, and so on.
 
-## References
+## 参考文献
 
 * [FEP-8b32: Object Integrity Proofs][FEP-8b32]
 

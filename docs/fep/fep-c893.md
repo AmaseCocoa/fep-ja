@@ -96,7 +96,7 @@ Here is an example structure for the `doap.jsonld` file:
 }
 ```
 
-## References
+## 参考文献
 
 - [Description of a Project (DOAP) Specification](http://usefulinc.com/ns/doap#)
 - [XEP-0453: DOAP Usage in XMPP](https://xmpp.org/extensions/xep-0453.html)

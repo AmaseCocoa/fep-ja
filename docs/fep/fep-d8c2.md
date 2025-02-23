@@ -335,7 +335,7 @@ Note that the `object` property of the `Create` activity has an `id` property wi
 - As with any protocol that requires fetching a client-provided URI, the server should take care in dereferencing the `client_id` parameter to avoid attacks such as very large responses, responses that take a long time to generate, or responses with poorly-formatted content.
 - The ActivityPub object used to define the client includes metadata that can be spoofed, like the `name` or `icon`. An attacker could use the name, icon, or publisher of a popular application to trick users into authorizing the attacker's application. Tools such as shared blocklists, reputation systems, and user education can help mitigate this risk.
 
-## References
+## 参考文献
 
 - [OAuth2] Dick Hardt, [The OAuth 2.0 Authorization Framework](https://www.ietf.org/rfc/rfc6749.txt), 2012
 - [OAuth20Simplified], Aaron Parecki, [OAuth 2.0 Simplified](https://www.oauth.com/), 2016
@@ -344,8 +344,7 @@ Note that the `object` property of the `Create` activity has an `id` property wi
 - [ActivityPubAuth] Various authors. [SocialCG/ActivityPub/Authentication Authorization](https://www.w3.org/wiki/SocialCG/ActivityPub/Authentication_Authorization), 2017
 
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

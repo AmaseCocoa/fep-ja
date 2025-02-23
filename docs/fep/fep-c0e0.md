@@ -129,11 +129,11 @@ The list of emoji reactions to an object can be exposed using the `emojiReaction
 
 The URL specified by this property MUST resolve to a `Collection` object containing `Like` (with `content`) and `EmojiReact` activities.
 
-## Implementations
+## 実装
 
 This document is based on implementations of emoji reactions in Misskey, Pleroma and Fedibird.
 
-## References
+## 参考文献
 
 - Christine Lemmer Webber, Jessica Tallon, [ActivityPub][ActivityPub], 2018
 - S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels][RFC-2119], 1997
@@ -145,8 +145,7 @@ This document is based on implementations of emoji reactions in Misskey, Pleroma
 [LitePub]: https://litepub.social/
 [MastoPub]: https://docs.joinmastodon.org/spec/activitypub
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

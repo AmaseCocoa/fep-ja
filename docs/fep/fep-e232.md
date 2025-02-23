@@ -75,7 +75,7 @@ An inline quote:
 
 Note that the `content` includes the `RE: <url>` microsyntax but consuming implementations are not required to parse that in order to make the appropriate associations.
 
-## Implementations
+## 実装
 
 - (streams)
 - FoundKey
@@ -87,7 +87,7 @@ Note that the `content` includes the `RE: <url>` microsyntax but consuming imple
 - [Hollo](https://hollo.social/@hollo/01920132-739e-7eff-9f5f-424282884eee)
 - [Iceshrimp.NET](https://iceshrimp.dev/iceshrimp/Iceshrimp.NET/src/commit/bdfd3a8d4e788ef3bdec06f32f444ed7fcffc3c7/FEDERATION.md#supported-feps)
 
-## References
+## 参考文献
 
 - Christine Lemmer Webber, Jessica Tallon, [ActivityPub][ActivityPub], 2018
 - S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels][RFC-2119], 1997
@@ -97,8 +97,7 @@ Note that the `content` includes the `RE: <url>` microsyntax but consuming imple
 [RFC-2119]: https://tools.ietf.org/html/rfc2119.html
 [ActivityVocabulary]: https://www.w3.org/TR/activitystreams-vocabulary/
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

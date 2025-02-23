@@ -76,13 +76,12 @@ Feel free to PR in links to blog posts or other tutorials that explain a given i
     * if so, does "this content was originally uploaded to another server" belong in a new FEP or what?
 * migrating accounts should probably migrate [PENDING follows as per FEP-4ccd](https://codeberg.org/fediverse/fep/src/branch/main/fep/4ccd/fep-4ccd.md), and/or do a full [follower sync as per FEP-8fcf](https://codeberg.org/fediverse/fep/src/branch/main/fep/8fcf/fep-8fcf.md)
 
-## References
+## 参考文献
 
 * [ActivityPub] Christine Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
 * [ABC] Alyssa P. Hacker, [An example proposal](http://abc.example/abc.html), 2020
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

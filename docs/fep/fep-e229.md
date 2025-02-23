@@ -169,7 +169,7 @@ Alternatively, to avoid importing the entire Schema.org context:
 }
 ```
 
-## References
+## 参考文献
 
 - [AP] Christine Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
 - [AS2-Context] [ActivityStreams 2.0 Terms](https://www.w3.org/ns/activitystreams), 2017
@@ -181,8 +181,7 @@ Alternatively, to avoid importing the entire Schema.org context:
 - [RDFa-Context] Ivan Herman, [RDFa Core Initial Context](https://www.w3.org/2011/rdfa-context/rdfa-1.1), 2011
 - [WebAnnotations] Robert Sanderson, Paolo Ciccarese, Benjamin Young, [Web Annotations Data Model](https://www.w3.org/TR/annotation-model/), 2017
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

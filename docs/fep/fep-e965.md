@@ -121,7 +121,7 @@ If a receiving server persists redirects or aliases to more smoothly remain awar
 2. Announce Activity example
 3. Address Actor Equivalence Attestation objects explicitly, or leave up to implementer imagination?
 
-## References
+## 参考文献
 
 * [FEP-521a: Representing actor's public keys][FEP-521a]
 * [FEP-73cd: Migration User Stories][FEP-73cd]

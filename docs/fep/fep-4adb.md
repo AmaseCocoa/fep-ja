@@ -207,7 +207,7 @@ The problem here is that, we do not know if the the did-key belongs to BEN. To r
 
 with an appropriate proof to Ben's actor object.
 
-## References
+## 参考文献
 
 - [acct URI Scheme] P. Saint-Andre [RFC 7565](https://www.rfc-editor.org/rfc/rfc7565.html), 2015
 - [ActivityPub] Christine Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
@@ -220,8 +220,7 @@ with an appropriate proof to Ben's actor object.
 - [MastoGuide] jippi  [Use your own user @ domain for Mastodon discoverability](https://guide.toot.as/guide/use-your-own-domain/)
 - [Webfinger] P. Jones, G. Salgueiro, M. Jones, J. Smarr, [RFC 7033](https://datatracker.ietf.org/doc/html/rfc7033),2013
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

@@ -91,7 +91,7 @@ prescriptive:
 * The `localPosts` and `localComments` are required, which is problematic for
   software that does not have comments, or does not have posts.
 
-## Implementations
+## 実装
 
 ### Servers
 
@@ -122,7 +122,7 @@ This list is not comprehensive:
 * [The-Federation.Info](https://the-federation.info/)
 * [Hello Matrix Public Servers](https://www.hello-matrix.net/public_servers.php)
 
-## References
+## 参考文献
 
 - Christine Lemmer Webber, Jessica Tallon, [ActivityPub][ActivityPub], 2018
 - Jonne Haß, [jhass/nodeinfo][NodeInfoRepository], 2014

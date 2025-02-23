@@ -425,7 +425,7 @@ An outcome can be one of the three following types:
     * when test target `assertionMethod` has outcome `failed`, requirement is not satisfied
     * when test target `assertionMethod` has outcome `inapplicable`, further testing is needed to determine whether this requirement is satisfied
 
-## References
+## 参考文献
 
 [FEP-e965]: https://codeberg.org/fediverse/fep/src/branch/main/fep/521a/fep-e965.md
 [FEP-7628]: https://codeberg.org/fediverse/fep/src/branch/main/fep/7628/fep-7628.md

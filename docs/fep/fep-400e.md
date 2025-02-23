@@ -108,18 +108,17 @@ When moving an object between collections, the collection owner SHOULD send a `M
 
 The requirement of an `Add` activity sent by a collection owner largely prevents a bad actor from effectively adding something to a collection against the collection owner's will while also helping data consistency across servers. However, there's still one case when this is possible. When a server fetches an object that has a `target` field directly, for example when a user has entered its URL into a search box or when it is referenced by a field such as `inReplyTo`, there's presently no reliable way to verify whether the object actually belongs to the collection.
 
-## Implementations
+## 実装
 
 This proposal is implemented in Smithereen for both user and group walls since the following commit: https://github.com/grishka/Smithereen/commit/de013593dde06a3091ecfbd32960a694d79c146e
 
-## References
+## 参考文献
 
 - [RFC-2119] S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels](https://tools.ietf.org/html/rfc2119.html)
 - [Activity Vocabulary], James M Snell, Evan Prodromou, [Activity Vocabulary](https://www.w3.org/TR/activitystreams-vocabulary/)
 
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication 
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

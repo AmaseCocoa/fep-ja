@@ -145,21 +145,20 @@ Implementation according to this FEP might result in a simpler and more semantic
 }
 ```
 
-## Implementations
+## 実装
 
 - WordPress
 - Streams
 - NodeBB
 
-## References
+## 参考文献
 
 - [ActivityPub] Christine Lemmer Webber, Jessica Tallon, [ActivityPub](https://www.w3.org/TR/activitypub/), 2018
 - [1] Gargron, [Add bio fields (#6645)](https://github.com/mastodon/mastodon/pull/6645)
 - [2] mei23, [Show user fields (#3590)](https://github.com/misskey-dev/misskey/pull/3590)
 - [3] minibikini, [Add custom profile fields (!1488)](https://git.pleroma.social/pleroma/pleroma/-/merge_requests/1488)
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication 
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。

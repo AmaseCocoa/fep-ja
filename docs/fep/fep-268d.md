@@ -167,14 +167,14 @@ If an object has at least one `searchableBy` value, the property SHALL take prec
 
 As mentioned in the normative section, consuming implementations should take care to ignore JSON entries with an empty array value (`"searchableBy": []`). Failure to do so would have a security implication if the implementation is verifying RDF-based signatures of objects, because the empty array value does not affect the RDF dataset (and hence the resulting signature value), so that an attacker can remove/insert a `"searchableBy": []` entry from/to a signed object without making the signature verification fail, allowing them to tamper with the object's searchability if the empty array value were handled differently from "undefined".
 
-## Implementations
+## 実装
 
 *This section is non-normative.*
 
 - [Fedibird](https://github.com/fedibird/mastodon/tree/fedibird)
 - [kmyblue](https://github.com/kmycode/mastodon)
 
-## References
+## 参考文献
 
 - [Activity Streams 2.0] James M Snell, Evan Prodromou, <cite>[Activity Streams 2.0](https://www.w3.org/TR/activitystreams-core/)</cite>, 2017
 - [FEP-5feb] Claire, <cite>[FEP-5feb: Search indexing consent for actors](https://w3id.org/fep/5feb)</cite>, 2023
@@ -184,8 +184,7 @@ As mentioned in the normative section, consuming implementations should take car
 - [ROBOTSTXT-META] Martijn Koster, <cite>[About the Robots \<META> tag](https://www.robotstxt.org/meta.html)</cite>, 2007
 - [GOOGLE-ROBOTS] Google, <cite>[Robots Meta Tags Specifications](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag#xrobotstag)</cite>
 
-## Copyright
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
 
-CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
-
-To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。
