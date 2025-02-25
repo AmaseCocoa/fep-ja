@@ -1,49 +1,47 @@
----
-slug: "e232"
-authors: silverpill <@silverpill@mitra.social>
-status: FINAL
-dateReceived: 2022-08-01
-dateFinalized: 2023-12-03
-trackingIssue: https://codeberg.org/fediverse/fep/issues/14
-discussionsTo: https://socialhub.activitypub.rocks/t/fep-e232-object-links/2722
----
-# FEP-e232: Object Links
-!!! Warning
-    このFEPはまだ翻訳されていません。
 
-    [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-e232.md)から翻訳に協力することができます。
+# FEP-e232: オブジェクトリンク
 
-## Summary
+|                    |                                                            |
+|--------------------|------------------------------------------------------------|
+| authors            | silverpill <@silverpill@mitra.social>                      |
+| status             | FINAL                                                      |
+| dateReceived       | 2022-08-01                                                 |
+| dateFinalized      | 2023-12-03                                                 |
+| trackingIssue      | [https://codeberg.org/fediverse/fep/issues/14](https://codeberg.org/fediverse/fep/issues/14) |
+| discussionsTo      | [https://socialhub.activitypub.rocks/t/fep-e232-object-links/2722](https://socialhub.activitypub.rocks/t/fep-e232-object-links/2722) | 
+| original           | [https://codeberg.org/fediverse/fep/src/branch/main/fep/e232/fep-e232.md](https://codeberg.org/fediverse/fep/src/branch/main/fep/e232/fep-e232.md) |
 
-This document proposes a way to represent text-based links to [ActivityPub][ActivityPub] objects which are similar to mentions. One example of such link is inline quote within the value of the `content` property, but this proposal is not limited to any particular use case.
+## 概要
 
-## Requirements
+この文書は、[ActivityPub][ActivityPub]オブジェクトへのテキストベースのリンクを表現する方法を提案します。これはメンションに類似しています。例えば、`content`プロパティの値内のインライン引用などがありますが、この提案は特定のユースケースに限定されるものではありません。
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC-2119][RFC-2119].
+## 要件
 
-## Object links
+この文書における「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「MAY」、「OPTIONAL」というキーワードは、[RFC-2119][RFC-2119]に記載された通りに解釈されます。
 
-It is expected that software will allow users to define object links using some kind of microsyntax, similar to `@mention` and `#hashtag` microsyntaxes. The exact way of defining object links may vary depending on the use case and is out of scope of this document.
+## オブジェクトリンク
 
-If an object's `name`, `summary`, or `content` has qualified links to other objects, that object SHOULD have the `tag` property, where each object link is represented as a `Link` object, as suggested by [Activity Vocabulary][ActivityVocabulary]. The properties of this `Link` object are:
+ソフトウェアは、`@mention`や`#hashtag`のマイクロシンタックスに類似した方法で、ユーザーがオブジェクトリンクを定義できるようにすることが期待されます。オブジェクトリンクの定義方法はユースケースによって異なる可能性があり、この文書の範囲外です。
 
-- `type` (REQUIRED): the type MUST be `Link` or a subtype.
-- `mediaType` (REQUIRED): the media type MUST be `application/ld+json; profile="https://www.w3.org/ns/activitystreams"`. This specification only deals with ActivityPub objects but in practice the media type can be different and servers MAY accept object links which do not comply with the requirement. For example, a media type of `application/activity+json` SHOULD be treated as equivalent.
-- `href` (REQUIRED): the href property MUST contain the URI of the referenced object.
-- `name` (OPTIONAL): the `name` SHOULD match the microsyntax used in object's content.
-- `rel` (OPTIONAL): if relevant, the `rel` SHOULD specify how the link is related to the current resource. Using `rel` can provide additional purpose to object links by signaling specific intended use-cases.
+オブジェクトの`name`、`summary`、または`content`に他のオブジェクトへのリンクが含まれている場合、そのオブジェクトは`tag`プロパティを持つべきであり、各オブジェクトリンクは[Activity Vocabulary][ActivityVocabulary]に基づいて`Link`オブジェクトとして表現されます。この`Link`オブジェクトのプロパティは以下の通りです：
+
+- `type` (必須): タイプは`Link`またはそのサブタイプでなければならない。
+- `mediaType` (必須): メディアタイプは`application/ld+json; profile="https://www.w3.org/ns/activitystreams"`でなければならない。この仕様はActivityPubオブジェクトのみを扱いますが、実際にはメディアタイプが異なる場合があり、サーバーはこの要件に準拠しないオブジェクトリンクを受け入れる可能性があります。例えば、`application/activity+json`のメディアタイプは同等と見なされるべきです。
+- `href` (必須): `href`プロパティには参照されるオブジェクトのURIが含まれていなければならない。
+- `name` (任意): `name`はオブジェクトのコンテンツで使用されるマイクロシンタックスと一致するべきである。
+- `rel` (任意): 関連する場合、`rel`はリンクが現在のリソースにどのように関連しているかを指定すべきである。`rel`を使用することで、特定の用途を示すことにより、オブジェクトリンクに追加の目的を提供することができる。
 
 ## 例
 
 (このセクションは非規範的です。)
 
-A link to an issue in a bug tracker:
+バグトラッカーの問題へのリンク：
 
 ```json
 {
     "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Note",
-    "content": "The bug was reported in #1374",
+    "content": "バグは #1374 で報告されました",
     "tag": [
         {
             "type": "Link",
@@ -55,13 +53,13 @@ A link to an issue in a bug tracker:
 }
 ```
 
-An inline quote:
+インライン引用：
 
 ```json
 {
     "@context": "https://www.w3.org/ns/activitystreams",
     "type": "Note",
-    "content": "This is a quote:<br>RE: https://server.example/objects/123",
+    "content": "これは引用です:<br>RE: https://server.example/objects/123",
     "tag": [
         {
             "type": "Link",
@@ -73,7 +71,7 @@ An inline quote:
 }
 ```
 
-Note that the `content` includes the `RE: <url>` microsyntax but consuming implementations are not required to parse that in order to make the appropriate associations.
+`content`には`RE: <url>`のマイクロシンタックスが含まれていますが、消費する実装は適切な関連付けを行うためにそれを解析する必要はありません。
 
 ## 実装
 
@@ -81,7 +79,7 @@ Note that the `content` includes the `RE: <url>` microsyntax but consuming imple
 - FoundKey
 - Mitra
 - Pleroma ([via MRF](https://git.pleroma.social/pleroma/pleroma/-/blob/v2.6.0/lib/pleroma/web/activity_pub/mrf/quote_to_link_tag_policy.ex))
-- Threads ([announcement](https://engineering.fb.com/2024/03/21/networking-traffic/threads-has-entered-the-fediverse/))
+- Threads ([発表](https://engineering.fb.com/2024/03/21/networking-traffic/threads-has-entered-the-fediverse/))
 - [Friendica](https://github.com/friendica/friendica/pull/14032)
 - Bridgy Fed
 - [Hollo](https://hollo.social/@hollo/01920132-739e-7eff-9f5f-424282884eee)
@@ -90,12 +88,12 @@ Note that the `content` includes the `RE: <url>` microsyntax but consuming imple
 ## 参考文献
 
 - Christine Lemmer Webber, Jessica Tallon, [ActivityPub][ActivityPub], 2018
-- S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels][RFC-2119], 1997
+- S. Bradner, [RFCでの要件レベルを示すためのキーワード][RFC-2119], 1997
 - James M Snell, Evan Prodromou, [Activity Vocabulary][ActivityVocabulary], 2017
 
 [ActivityPub]: https://www.w3.org/TR/activitypub/
 [RFC-2119]: https://tools.ietf.org/html/rfc2119.html
-[ActivityVocabulary]: https://www.w3.org/TR/activitystreams-vocabulary/
+[ActivityVocabulary]: https://www.w3.org/TR/activitystreams-vocabulary/ 
 
 ## 著作権
 CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン

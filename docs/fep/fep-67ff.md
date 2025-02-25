@@ -1,60 +1,57 @@
----
-slug: "67ff"
-authors: silverpill <@silverpill@mitra.social>
-status: FINAL
-dateReceived: 2023-09-05
-dateFinalized: 2024-09-22
-trackingIssue: https://codeberg.org/fediverse/fep/issues/157
-discussionsTo: https://socialhub.activitypub.rocks/t/fep-67ff-federation-md/3555
----
-
 # FEP-67ff: FEDERATION.md
-!!! Warning
-    このFEPはまだ翻訳されていません。
+|               |                                                                  |
+|---------------------|--------------------------------------------------------------------|
+| slug                | "67ff"                                                             |
+| authors             | silverpill <@silverpill@mitra.social>                             |
+| status              | FINAL                                                              |
+| dateReceived        | 2023-09-05                                                         |
+| dateFinalized       | 2024-09-22                                                         |
+| trackingIssue       | [Tracking Issue](https://codeberg.org/fediverse/fep/issues/157)    |
+| discussionsTo       | [Discussions To](https://socialhub.activitypub.rocks/t/fep-67ff-federation-md/3555) |
+| original           | [https://codeberg.org/fediverse/fep/src/branch/main/fep/67ff/fep-67ff.md](https://codeberg.org/fediverse/fep/src/branch/main/fep/67ff/fep-67ff.md) |
 
-    [ここ](https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-67ff.md)から翻訳に協力することができます。
-## Summary
+## 概要
 
-`FEDERATION.md` is a file containing information necessary for achieving interoperability with a federated service. It was originally proposed by Darius Kazemi on SocialHub forum in [Documenting federation behavior in a semi-standard way?](https://socialhub.activitypub.rocks/t/documenting-federation-behavior-in-a-semi-standard-way/453) topic.
+`FEDERATION.md` は、連携サービスとの相互運用性を達成するために必要な情報を含むファイルです。この提案は、Darius Kazemi によって SocialHub フォーラムの [ドキュメント化された連携の挙動についての半標準的な方法？](https://socialhub.activitypub.rocks/t/documenting-federation-behavior-in-a-semi-standard-way/453) というトピックで最初に提案されました。
 
-## Requirements
+## 要件
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC-2119](https://tools.ietf.org/html/rfc2119.html).
+この文書におけるキーワード「MUST」「MUST NOT」「REQUIRED」「SHALL」「SHALL NOT」「SHOULD」「SHOULD NOT」「RECOMMENDED」「MAY」「OPTIONAL」は、[RFC-2119](https://tools.ietf.org/html/rfc2119.html) に記載された通りに解釈されます。
 
-## Structure
+## 構造
 
-The `FEDERATION.md` file can have arbitrary structure and content. The only requirements are:
+`FEDERATION.md` ファイルは任意の構造と内容を持つことができます。唯一の要件は以下の通りです：
 
-- It MUST be a valid Markdown document.
-- It MUST be located in the root of a project's code repository. If project's documentation is located in another place, the `FEDERATION.md` file may contain a link to that location.
-- It SHOULD include a list of implemented federation protocols.
-- It SHOULD include a list of supported Fediverse Enhancement Proposals (FEPs).
+- 有効な Markdown ドキュメントでなければなりません。
+- プロジェクトのコードリポジトリのルートに存在しなければなりません。プロジェクトのドキュメントが他の場所にある場合、`FEDERATION.md` ファイルはその場所へのリンクを含めることができます。
+- 実装された連携プロトコルのリストを含むべきです。
+- サポートされている Fediverse Enhancement Proposals (FEPs) のリストを含むべきです。
 
-## Template
+## テンプレート
 
 (このセクションは非規範的です。)
 
 ```markdown
 # Federation
 
-## Supported federation protocols and standards
+## サポートされている連携プロトコルと標準
 
-- [ActivityPub](https://www.w3.org/TR/activitypub/) (Server-to-Server)
+- [ActivityPub](https://www.w3.org/TR/activitypub/) (サーバー間)
 - [WebFinger](https://webfinger.net/)
 - [Http Signatures](https://datatracker.ietf.org/doc/html/draft-cavage-http-signatures)
 - [NodeInfo](https://nodeinfo.diaspora.software/)
 
-## Supported FEPs
+## サポートされているFEPs
 
-- [FEP-f1d5: NodeInfo in Fediverse Software](https://codeberg.org/fediverse/fep/src/branch/main/fep/f1d5/fep-f1d5.md)
+- [FEP-f1d5: FediverseソフトウェアにおけるNodeInfo](https://codeberg.org/fediverse/fep/src/branch/main/fep/f1d5/fep-f1d5.md)
 
 ## ActivityPub
 
-<!-- Describe activities and extensions. -->
+<!-- アクティビティと拡張について説明します。 -->
 
-## Additional documentation
+## 追加のドキュメント
 
-<!-- Add links to documentation pages. -->
+<!-- ドキュメントページへのリンクを追加します。 -->
 ```
 
 ## 実装
@@ -84,11 +81,8 @@ The `FEDERATION.md` file can have arbitrary structure and content. The only requ
 
 ## 参考文献
 
-- Darius Kazemi, [Documenting federation behavior in a semi-standard way?][Documenting federation behavior in a semi-standard way?], 2020
-- S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels][RFC-2119], 1997
-
-[Documenting federation behavior in a semi-standard way?]: https://socialhub.activitypub.rocks/t/documenting-federation-behavior-in-a-semi-standard-way/453
-[RFC-2119]: https://tools.ietf.org/html/rfc2119.html
+- Darius Kazemi, [ドキュメント化された連携の挙動についての半標準的な方法？](https://socialhub.activitypub.rocks/t/documenting-federation-behavior-in-a-semi-standard-way/453), 2020
+- S. Bradner, [RFCにおける要件レベルを示すためのキーワード](https://tools.ietf.org/html/rfc2119.html), 1997
 
 ## 著作権
 CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
