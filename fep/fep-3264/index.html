@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-3264: Federated Work Coordination - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-3264: Federated Work Coordination";
+        var mkdocs_page_input_path = "fep/fep-3264.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-3264: Federated Work Coordination</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#history">History</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#planning-a-project-or-some-work">Planning a project or some work</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#accepting-a-commitment">Accepting a Commitment</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rejecting-a-commitment">Rejecting a Commitment</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#adding-a-commitment-to-the-plan">Adding a Commitment to the Plan</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#recording-what-actually-was-done">Recording what actually was done</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">著作権</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-3264: Federated Work Coordination</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-3264.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-3264-federated-work-coordination">FEP-3264: Federated Work Coordination</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-3264.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p>This document describes an implementation of project planning and work coordination based on <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a> protocol and <a href="https://valueflo.ws/">Valueflows</a> vocabulary. It includes planning what people want to do, and (optionally) recording what is done.</p>
+<h2 id="history">History</h2>
+<p>This is a parallel submission to <a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/c5a1/fep-c5a1.md">FEP-c5a1 To-do's</a>, which supports much simpler planning. Both planning submissions continue the idea of Valueflows extensions to ActivityPub/ActivityStreams based on use case, started by silverpill with <a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/0837/fep-0837.md"> FEP-0837 Federated Marketplace</a>.</p>
+<h2 id="requirements">Requirements</h2>
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="https://tools.ietf.org/html/rfc2119.html">RFC-2119</a>.</p>
+<h2 id="planning-a-project-or-some-work">Planning a project or some work</h2>
+<p>This FEP will support work plans or projects of any size, using a Plan with one or more Processes, each with one or more input and/or output Commitments.</p>
+<p>Consuming implementations which don't have planning features MAY display plan-related objects similarly to <code>Note</code> objects.</p>
+<p>In all cases, the objects can also be discussed using <code>Note</code> objects and <code>replyTo</code>.</p>
+<p>Valueflows defines a <code>Plan</code> as <strong>a logical collection of processes that constitute a body of scheduled work with defined deliverable(s).</strong></p>
+<p>The representation of a plan is a JSON document with the following properties:</p>
+<ul>
+<li><code>id</code> (REQUIRED): the plan's unique global identifier.</li>
+<li><code>type</code> (REQUIRED): the type of the object SHOULD be <code>Plan</code>. If interoperability with other ActivityPub services is desirable, implementers MAY also use object types from <a href="https://www.w3.org/TR/activitystreams-vocabulary/#object-types">Activity Vocabulary</a>, such as <code>Note</code>.</li>
+<li><code>attributedTo</code> (REQUIRED): the actor who published the plan.</li>
+<li><code>name</code> (REQUIRED): the title of the plan.</li>
+<li><code>content</code> (OPTIONAL): the description of the plan. The type of content SHOULD be <code>text/html</code>.</li>
+<li><code>published</code> (RECOMMENDED): the date and time at which the plan was published.</li>
+<li><code>to</code> (REQUIRED): the audience of the plan.</li>
+<li><code>planIncludes</code> (REQUIRED): the processes that are part of this plan (see below).</li>
+</ul>
+<p>A <code>Process</code> is defined as <strong>An activity that changes inputs into outputs, by transforming or transporting economic resource(s).</strong>  Processes that are part of a plan can be part of a series (graph) of processes that produce the final output(s) at the end; and/or they can be unrelated to each other, and produce separate final output(s) for the plan.</p>
+<p>The representation of a process is a JSON document with the following properties:</p>
+<ul>
+<li><code>id</code> (REQUIRED): the process's unique global identifier.</li>
+<li><code>type</code> (REQUIRED): the type of the object MUST be <code>Process</code>.</li>
+<li><code>name</code> (REQUIRED): an informal or formal textual identifier for a process.</li>
+<li><code>hasBeginning</code> (OPTIONAL): the date and time the process is planned to begin.</li>
+<li><code>hasEnd</code> (OPTIONAL): the date and time the process is planned to end.</li>
+<li><code>content</code> (OPTIONAL): the description of what is to be done in the process. The type of content SHOULD be <code>text/html</code>.</li>
+<li><code>hasInput</code> (OPTIONAL): the input commitment(s) of the process (see below).</li>
+<li><code>hasOutput</code> (OPTIONAL): the output commitment(s) of the process (see below).</li>
+</ul>
+<p>A <code>Commitment</code> is defined as <strong>A planned economic flow that has been promised by an agent to another agent.</strong></p>
+<ul>
+<li><code>id</code> (REQUIRED): the commitment's unique global identifier.</li>
+<li><code>type</code> (REQUIRED): the type of the object MUST be <code>Commitment</code>.</li>
+<li><code>action</code> (REQUIRED): the type of economic transaction. If the commitment is an input, the value of this property SHOULD be one of: <code>work</code>, <code>use</code>, <code>consume</code>, <code>cite</code>, <code>pickup</code>, <code>accept</code>.  It the commitment is an output, the value of this property SHOULD be one of: <code>produce</code>, <code>deliverService</code>, <code>dropoff</code>, <code>modify</code>.  See <a href="https://www.valueflo.ws/concepts/actions/">the action definitions and behaviors</a> for more information.</li>
+<li><code>resourceConformsTo</code> (RECOMMENDED): the type of an economic resource (can be a skill or type of work for the <code>work</code> action). Could be any URI.</li>
+<li><code>resourceQuantity</code> (OPTIONAL): the amount and unit of the non-effort-based economic resource.  Either <code>resourceQuantity</code> or <code>effortQuantity</code> is RECOMMENDED, and both can be included in case of <code>use</code>. This is an object with two properties:</li>
+<li><code>hasUnit</code> (REQUIRED): name of the unit, according to <a href="http://www.ontology-of-units-of-measure.org/">Ontology of units of Measure</a> classification.</li>
+<li><code>hasNumericalValue</code> (REQUIRED): amount of the resource.</li>
+<li><code>effortQuantity</code> (OPTIONAL): the amount and unit of the work or use effort-based action. This is an object with two properties:</li>
+<li><code>hasUnit</code> (REQUIRED): name of the unit, according to <a href="http://www.ontology-of-units-of-measure.org/">Ontology of units of Measure</a> classification.</li>
+<li><code>hasNumericalValue</code> (REQUIRED): amount of the effort.</li>
+<li><code>provider</code> (RECOMMENDED): the actor who commits to providing the resource. If not included, it is assumed to be the <code>attributedTo</code> actor.</li>
+<li><code>receiver</code> (RECOMMENDED): the actor who commits to receiving the resource.  If not included, it is assumed to be the <code>to</code> actor.</li>
+<li><code>content</code> (OPTIONAL): the description of what is to be done for this commitment. The type of content SHOULD be <code>text/html</code>.</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    {
+      &quot;om2&quot;: &quot;http://www.ontology-of-units-of-measure.org/resource/om-2/&quot;,
+      &quot;vf&quot;: &quot;https://w3id.org/valueflows/ont/vf#&quot;,
+      &quot;Plan&quot;: &quot;vf:Plan&quot;,
+      &quot;Process&quot;: &quot;vf:Process&quot;,
+      &quot;Commitment&quot;: &quot;vf:Commitment&quot;,
+      &quot;receiver&quot;: &quot;vf:receiver&quot;,
+      &quot;provider&quot;: &quot;vf:provider&quot;,
+      &quot;action&quot;: &quot;vf:action&quot;,
+      &quot;resourceConformsTo&quot;: &quot;vf:resourceConformsTo&quot;,
+      &quot;resourceQuantity&quot;: &quot;vf:resourceQuantity&quot;,
+      &quot;effortQuantity&quot;: &quot;vf:effortQuantity&quot;,
+      &quot;hasUnit&quot;: &quot;om2:hasUnit&quot;,
+      &quot;hasNumericalValue&quot;: &quot;om2:hasNumericalValue&quot;,
+      &quot;planIncludes&quot;: &quot;vf:planIncludes&quot;,
+      &quot;hasBeginning&quot;: &quot;vf:hasBeginning&quot;,
+      &quot;hasEnd&quot;: &quot;vf:hasEnd&quot;,
+      &quot;hasInput&quot;: &quot;vf:hasInput&quot;,
+      &quot;hasOutput&quot;: &quot;vf:hasOutput&quot;
+    }
+  ],
+  &quot;type&quot;: &quot;Plan&quot;,
+  &quot;id&quot;: &quot;https://project.example/plans/ddde9d6f-6f3b-4770-a966-3a18ef006931&quot;,
+  &quot;attributedTo&quot;: &quot;https://project.example/actors/alice&quot;,
+  &quot;name&quot;: &quot;Making Apple Cider&quot;,
+  &quot;content&quot;: &quot;Annual weekend of community apple cider making&quot;,
+  &quot;published&quot;: &quot;2024-09-18T19:22:03.918737Z&quot;,
+  &quot;to&quot;: &quot;https://project.example/actors/gleaning-collective&quot;,
+  &quot;planIncludes&quot;: [
+    {
+      &quot;type&quot;: &quot;Process&quot;,
+      &quot;id&quot;: &quot;https://project.example/processes/ddde9d6f-6f3b-4770-a966-3a18ef006931#pick&quot;,
+      &quot;name&quot;: &quot;Pick Apples&quot;,
+      &quot;hasBeginning&quot;: &quot;2024-10-18T09:00:00.000000Z&quot;,
+      &quot;hasEnd&quot;: &quot;2024-10-18T18:00:00.000000Z&quot;,
+      &quot;content&quot;: &quot;Meet at the orchard, bring your own basket and a lunch, and be ready for some outdoor fall work and fun.&quot;,
+      &quot;hasInput&quot;: [
+        {
+          &quot;type&quot;: &quot;Commitment&quot;,
+          &quot;id&quot;: &quot;https://project.example/inputs/ddde9d6f-6f3b-4770-a966-3a18ef006931#pick1&quot;,
+          &quot;action&quot;: &quot;work&quot;,
+          &quot;resourceConformsTo&quot;: &quot;https://www.wikidata.org/wiki/Q112729805&quot;,
+          &quot;effortQuantity&quot;: {
+            &quot;hasUnit&quot;: &quot;hour&quot;,
+            &quot;hasNumericalValue&quot;: &quot;6&quot;
+          },
+          &quot;provider&quot;: &quot;https://project.example/actors/bob&quot;,
+          &quot;receiver&quot;: &quot;https://project.example/actors/gleaning-collective&quot;
+        },
+        {
+          &quot;type&quot;: &quot;Commitment&quot;,
+          &quot;id&quot;: &quot;https://project.example/inputs/ddde9d6f-6f3b-4770-a966-3a18ef006931#pick2&quot;,
+          &quot;action&quot;: &quot;work&quot;,
+          &quot;resourceConformsTo&quot;: &quot;https://www.wikidata.org/wiki/Q112729805&quot;,
+          &quot;effortQuantity&quot;: {
+            &quot;hasUnit&quot;: &quot;hour&quot;,
+            &quot;hasNumericalValue&quot;: &quot;6&quot;
+          },
+          &quot;provider&quot;: &quot;https://project.example/actors/chiam&quot;,
+          &quot;receiver&quot;: &quot;https://project.example/actors/gleaning-collective&quot;
+        },
+        {
+          &quot;type&quot;: &quot;Commitment&quot;,
+          &quot;id&quot;: &quot;https://project.example/inputs/ddde9d6f-6f3b-4770-a966-3a18ef006931#pick3&quot;,
+          &quot;action&quot;: &quot;work&quot;,
+          &quot;resourceConformsTo&quot;: &quot;https://www.wikidata.org/wiki/Q112729805&quot;,
+          &quot;effortQuantity&quot;: {
+            &quot;hasUnit&quot;: &quot;hour&quot;,
+            &quot;hasNumericalValue&quot;: &quot;6&quot;
+          },
+          &quot;provider&quot;: &quot;https://project.example/actors/alice&quot;,
+          &quot;receiver&quot;: &quot;https://project.example/actors/gleaning-collective&quot;
+        }
+      ],
+      &quot;hasOutput&quot;: [
+        {
+          &quot;type&quot;: &quot;Commitment&quot;,
+          &quot;id&quot;: &quot;https://project.example/outputs/ddde9d6f-6f3b-4770-a966-3a18ef006931#pick4&quot;,
+          &quot;action&quot;: &quot;produce&quot;,
+          &quot;resourceConformsTo&quot;: &quot;https://www.wikidata.org/wiki/Q89&quot;,
+          &quot;resourceQuantity&quot;: {
+            &quot;hasUnit&quot;: &quot;pound&quot;,
+            &quot;hasNumericalValue&quot;: &quot;500&quot;
+          },
+          &quot;provider&quot;: &quot;https://project.example/actors/gleaning-collective&quot;,
+          &quot;receiver&quot;: &quot;https://project.example/actors/gleaning-collective&quot;
+        }
+      ]
+    },
+    {
+      &quot;type&quot;: &quot;Process&quot;,
+      &quot;id&quot;: &quot;https://project.example/processes/ddde9d6f-6f3b-4770-a966-3a18ef006931#cider&quot;,
+      &quot;name&quot;: &quot;Make Cider&quot;,
+      &quot;hasBeginning&quot;: &quot;2024-10-19T09:00:00.000000Z&quot;,
+      &quot;hasEnd&quot;: &quot;2024-10-19T16:00:00.000000Z&quot;,
+      &quot;content&quot;: &quot;Meet at the community building, be prepared to get messy.  We will press the apples, then clean the press.&quot;,
+      &quot;hasInput&quot;: [
+        {
+          &quot;type&quot;: &quot;Commitment&quot;,
+          &quot;id&quot;: &quot;https://project.example/inputs/ddde9d6f-6f3b-4770-a966-3a18ef006931#cider1&quot;,
+          &quot;action&quot;: &quot;consume&quot;,
+          &quot;resourceConformsTo&quot;: &quot;https://www.wikidata.org/wiki/Q89&quot;,
+          &quot;resourceQuantity&quot;: {
+            &quot;hasUnit&quot;: &quot;pound&quot;,
+            &quot;hasNumericalValue&quot;: &quot;500&quot;
+          },
+          &quot;provider&quot;: &quot;https://project.example/actors/gleaning-collective&quot;,
+          &quot;receiver&quot;: &quot;https://project.example/actors/gleaning-collective&quot;,
+          &quot;content&quot;: &quot;The apples picked the day before.&quot;
+        },
+        {
+          &quot;type&quot;: &quot;Commitment&quot;,
+          &quot;id&quot;: &quot;https://project.example/inputs/ddde9d6f-6f3b-4770-a966-3a18ef006931#cider2&quot;,
+          &quot;action&quot;: &quot;use&quot;,
+          &quot;resourceConformsTo&quot;: &quot;https://www.wikidata.org/wiki/Q674484&quot;,
+          &quot;effortQuantity&quot;: {
+            &quot;hasUnit&quot;: &quot;hour&quot;,
+            &quot;hasNumericalValue&quot;: &quot;7&quot;
+          },
+          &quot;provider&quot;: &quot;https://project.example/actors/diego&quot;,
+          &quot;receiver&quot;: &quot;https://project.example/actors/gleaning-collective&quot;,
+          &quot;content&quot;: &quot;Diego will drop his cider press off early in the morning, and pick it up later, preferably nice and clean.&quot;
+        },
+        {
+          &quot;type&quot;: &quot;Commitment&quot;,
+          &quot;id&quot;: &quot;https://project.example/inputs/ddde9d6f-6f3b-4770-a966-3a18ef006931#cider3&quot;,
+          &quot;action&quot;: &quot;work&quot;,
+          &quot;resourceConformsTo&quot;: &quot;https://www.wikidata.org/wiki/Q3485549&quot;,
+          &quot;effortQuantity&quot;: {
+            &quot;hasUnit&quot;: &quot;hour&quot;,
+            &quot;hasNumericalValue&quot;: &quot;4&quot;
+          },
+          &quot;provider&quot;: &quot;https://project.example/actors/chiam&quot;,
+          &quot;receiver&quot;: &quot;https://project.example/actors/gleaning-collective&quot;
+        },
+        {
+          &quot;type&quot;: &quot;Commitment&quot;,
+          &quot;id&quot;: &quot;https://project.example/inputs/ddde9d6f-6f3b-4770-a966-3a18ef006931#cider4&quot;,
+          &quot;action&quot;: &quot;work&quot;,
+          &quot;resourceConformsTo&quot;: &quot;https://www.wikidata.org/wiki/Q3485549&quot;,
+          &quot;effortQuantity&quot;: {
+            &quot;hasUnit&quot;: &quot;hour&quot;,
+            &quot;hasNumericalValue&quot;: &quot;6&quot;
+          },
+          &quot;provider&quot;: &quot;https://project.example/actors/bob&quot;,
+          &quot;receiver&quot;: &quot;https://project.example/actors/gleaning-collective&quot;
+        }
+      ],
+      &quot;hasOutput&quot;: [
+        {
+          &quot;type&quot;: &quot;Commitment&quot;,
+          &quot;id&quot;: &quot;https://project.example/outputs/ddde9d6f-6f3b-4770-a966-3a18ef006931#cider5&quot;,
+          &quot;action&quot;: &quot;produce&quot;,
+          &quot;resourceConformsTo&quot;: &quot;https://www.wikidata.org/wiki/Q5977438&quot;,
+          &quot;resourceQuantity&quot;: {
+            &quot;hasUnit&quot;: &quot;gallon-US&quot;,
+            &quot;hasNumericalValue&quot;: &quot;15&quot;
+          },
+          &quot;provider&quot;: &quot;https://project.example/actors/gleaning-collective&quot;,
+          &quot;receiver&quot;: &quot;https://project.example/actors/food-pantry&quot;
+        },
+        {
+          &quot;type&quot;: &quot;Commitment&quot;,
+          &quot;id&quot;: &quot;https://project.example/outputs/ddde9d6f-6f3b-4770-a966-3a18ef006931#cider6&quot;,
+          &quot;action&quot;: &quot;produce&quot;,
+          &quot;resourceConformsTo&quot;: &quot;https://www.wikidata.org/wiki/Q2836947&quot;,
+          &quot;resourceQuantity&quot;: {
+            &quot;hasUnit&quot;: &quot;pound&quot;,
+            &quot;hasNumericalValue&quot;: &quot;100&quot;
+          },
+          &quot;provider&quot;: &quot;https://project.example/actors/gleaning-collective&quot;,
+          &quot;receiver&quot;: &quot;https://project.example/actors/singing-trees-farm&quot;,
+          &quot;content&quot;: &quot;The apple remains will be great pig food, leave it in the big bin, and they will pick it up.&quot;
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<h2 id="accepting-a-commitment">Accepting a Commitment</h2>
+<p>The <code>object</code> of <code>Accept</code> activity MUST be the <code>id</code> of the <code>Commitment</code> in the <code>Plan</code> object previously sent to the actor.</p>
+<p>Activity MAY contain <code>content</code> property for further coordination.</p>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;type&quot;: &quot;Accept&quot;,
+  &quot;id&quot;: &quot;https://project.example/activities/059f08fa-31b1-4136-8d76-5987d705a0ac&quot;,
+  &quot;actor&quot;: &quot;https://project.example/actors/bob&quot;,
+  &quot;object&quot;: &quot;https://project.example/inputs/ddde9d6f-6f3b-4770-a966-3a18ef006931#cider4&quot;,
+  &quot;content&quot;: &quot;I'll come early to help unload the cider press.&quot;,
+  &quot;to&quot;: &quot;https://project.example/actors/alice&quot;
+}
+</code></pre>
+<h2 id="rejecting-a-commitment">Rejecting a Commitment</h2>
+<p>The <code>object</code> of <code>Reject</code> activity MUST be the <code>id</code> of the <code>Commitment</code> in the <code>Plan</code> object previously sent to the actor.</p>
+<p>Activity MAY contain <code>content</code> property indicating the reason for rejection.</p>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;type&quot;: &quot;Reject&quot;,
+  &quot;id&quot;: &quot;https://project.example/activities/8c05f97f-1531-4b70-9ca8-4ee4a09f36a4&quot;,
+  &quot;actor&quot;: &quot;https://project.example/actors/chiam&quot;,
+  &quot;object&quot;: &quot;https://project.example/inputs/ddde9d6f-6f3b-4770-a966-3a18ef006931#cider3&quot;,
+  &quot;content&quot;: &quot;Sorry, already working elsewhere that day, will check with Eleanore.&quot;,
+  &quot;to&quot;: &quot;https://project.example/actors/alice&quot;
+}
+</code></pre>
+<h2 id="adding-a-commitment-to-the-plan">Adding a Commitment to the Plan</h2>
+<p>In some cases, an actor might want to add a new commitment to the plan.</p>
+<p>The representation of a commitment is a JSON document with the following properties:</p>
+<ul>
+<li><code>id</code> (REQUIRED): the commitment's unique global identifier.</li>
+<li><code>type</code> (REQUIRED): the type of the object SHOULD be <code>Commitment</code>. If interoperability with other ActivityPub services is desirable, implementers MAY also use object types from <a href="https://www.w3.org/TR/activitystreams-vocabulary/#object-types">Activity Vocabulary</a>, such as <code>Note</code>.</li>
+<li><code>attributedTo</code> (REQUIRED): the actor who published the commitment.</li>
+<li><code>content</code> (OPTIONAL): the description of the commitment or communication about the commitment. The type of content SHOULD be <code>text/html</code>.</li>
+<li><code>published</code> (RECOMMENDED): the date and time at which the commitment was published.</li>
+<li><code>to</code> (REQUIRED): the audience of the commitment.</li>
+<li><code>action</code> (REQUIRED): the type of economic transaction. If the commitment is an input, the value of this property SHOULD be one of: <code>work</code>, <code>use</code>, <code>consume</code>, <code>cite</code>, <code>pickup</code>, <code>accept</code>.  It the commitment is an output, the value of this property SHOULD be one of: <code>produce</code>, <code>deliverService</code>, <code>dropoff</code>, <code>modify</code>.  See <a href="https://www.valueflo.ws/concepts/actions/">the action definitions and behaviors</a> for more information.</li>
+<li><code>inputOf</code>: the process for which this commitment is an input.  Either <code>inputOf</code> or <code>outputOf</code> is REQUIRED.</li>
+<li><code>outputOf</code>: the process for which this commitment is an output.  Either <code>inputOf</code> or <code>outputOf</code> is REQUIRED.</li>
+<li><code>context</code> (OPTIONAL): the plan the commitment is part of.</li>
+<li><code>resourceConformsTo</code> (RECOMMENDED): the type of an economic resource (can be a skill or type of work for the <code>work</code> action). Could be any URI.</li>
+<li><code>resourceQuantity</code>: the amount and unit of the non-effort-based economic resource.  Either <code>resourceQuantity</code> or <code>effortQuantity</code> is RECOMMENDED, and both can be included in case of <code>use</code>. This is an object with two properties:</li>
+<li><code>hasUnit</code> (REQUIRED): name of the unit, according to <a href="http://www.ontology-of-units-of-measure.org/">Ontology of units of Measure</a> classification.</li>
+<li><code>hasNumericalValue</code> (REQUIRED): amount of the resource.</li>
+<li><code>effortQuantity</code>: the amount and unit of the work or use effort-based action.  Either <code>resourceQuantity</code> or <code>effortQuantity</code> is RECOMMENDED, and both can be included in case of <code>use</code>. This is an object with two properties:</li>
+<li><code>hasUnit</code> (REQUIRED): name of the unit, according to <a href="http://www.ontology-of-units-of-measure.org/">Ontology of units of Measure</a> classification.</li>
+<li><code>hasNumericalValue</code> (REQUIRED): amount of the resource.</li>
+<li><code>provider</code> (RECOMMENDED): the actor who commits to providing the resource. If not included, it is assumed to be the <code>attributedTo</code> actor.</li>
+<li><code>receiver</code> (RECOMMENDED): the actor who commits to receiving the resource.  If not included, it is assumed to be the <code>to</code> actor.</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    {
+      &quot;om2&quot;: &quot;http://www.ontology-of-units-of-measure.org/resource/om-2/&quot;,
+      &quot;vf&quot;: &quot;https://w3id.org/valueflows/ont/vf#&quot;,
+      &quot;Commitment&quot;: &quot;vf:Commitment&quot;,
+      &quot;inputOf&quot;: &quot;vf:inputOf&quot;,
+      &quot;receiver&quot;: &quot;vf:receiver&quot;,
+      &quot;provider&quot;: &quot;vf:provider&quot;,
+      &quot;action&quot;: &quot;vf:action&quot;,
+      &quot;resourceConformsTo&quot;: &quot;vf:resourceConformsTo&quot;,
+      &quot;effortQuantity&quot;: &quot;vf:effortQuantity&quot;,
+      &quot;hasUnit&quot;: &quot;om2:hasUnit&quot;,
+      &quot;hasNumericalValue&quot;: &quot;om2:hasNumericalValue&quot;
+    }
+  ],
+  &quot;type&quot;: &quot;Create&quot;,
+  &quot;id&quot;: &quot;https://project.example/activities/ad2f7ee1-6567-413e-a10b-72650cbdc743/create&quot;,
+  &quot;actor&quot;: &quot;https://project.example/actors/eleanore&quot;,
+  &quot;object&quot;: {
+    &quot;type&quot;: &quot;Commitment&quot;,
+    &quot;id&quot;: &quot;https://project.example/inputs/ad2f7ee1-6567-413e-a10b-72650cbdc743&quot;,
+    &quot;attributedTo&quot;: &quot;https://project.example/actors/eleanore&quot;,
+    &quot;context&quot;: &quot;https://project.example/plans/ddde9d6f-6f3b-4770-a966-3a18ef006931&quot;,
+    &quot;published&quot;: &quot;2024-09-21T14:13:41.843794Z&quot;,
+    &quot;inputOf&quot;: &quot;https://project.example/processes/ddde9d6f-6f3b-4770-a966-3a18ef006931#cider&quot;,
+    &quot;action&quot;: &quot;work&quot;,
+    &quot;resourceConformsTo&quot;: &quot;https://www.wikidata.org/wiki/Q3485549&quot;,
+    &quot;effortQuantity&quot;: {
+      &quot;hasUnit&quot;: &quot;hour&quot;,
+      &quot;hasNumericalValue&quot;: &quot;5&quot;
+    },
+    &quot;provider&quot;: &quot;https://project.example/actors/eleanore&quot;,
+    &quot;receiver&quot;: &quot;https://project.example/actors/gleaning-collective&quot;
+  },
+  &quot;to&quot;: &quot;https://project.example/actors/alice&quot;
+}
+</code></pre>
+<h2 id="recording-what-actually-was-done">Recording what actually was done</h2>
+<p>Actual economic activity is represented with EconomicEvents in Valueflows.  Economic events can be recorded as fulfilling a planned commitment, or by themselves if they were not explicitly planned.  In either case, in the scope of this FEP, they are also inputs or outputs of a process.</p>
+<p>This FEP does <em>not</em> include creating and updating of actual resource inventory, which is also effected through economic events.</p>
+<p>The representation of an economic event is a JSON document with the following properties:</p>
+<ul>
+<li><code>id</code> (REQUIRED): the economic event's unique global identifier.</li>
+<li><code>type</code> (REQUIRED): the type of the object SHOULD be <code>EconomicEvent</code>. If interoperability with other ActivityPub services is desirable, implementers MAY also use object types from <a href="https://www.w3.org/TR/activitystreams-vocabulary/#object-types">Activity Vocabulary</a>, such as <code>Note</code>.</li>
+<li><code>attributedTo</code> (REQUIRED): the actor who published the economic event.</li>
+<li><code>content</code> (OPTIONAL): the description of the economic event or communication about the economic event. The type of content SHOULD be <code>text/html</code>.</li>
+<li><code>published</code> (RECOMMENDED): the date and time at which the economic event was published.</li>
+<li><code>to</code> (REQUIRED): the audience of the economic event.</li>
+<li><code>action</code> (REQUIRED): the type of economic transaction. If the economic event is an input, the value of this property SHOULD be one of: <code>work</code>, <code>use</code>, <code>consume</code>, <code>cite</code>, <code>pickup</code>, <code>accept</code>.  It the economic event is an output, the value of this property SHOULD be one of: <code>produce</code>, <code>deliverService</code>, <code>dropoff</code>, <code>modify</code>.  See <a href="https://www.valueflo.ws/concepts/actions/">the action definitions and behaviors</a> for more information.</li>
+<li><code>fulfills</code>: the commitment the economic event is completely or partially fulfilling, REQUIRED if there is sucn a commitment, otherwise N/A.</li>
+<li><code>inputOf</code>: the process for which this economic event is an input.  Either <code>inputOf</code> or <code>outputOf</code> is REQUIRED.</li>
+<li><code>outputOf</code>: the process for which this commitment is an output.  Either <code>inputOf</code> or <code>outputOf</code> is REQUIRED.</li>
+<li><code>context</code> (OPTIONAL): the plan the economic event is part of.</li>
+<li><code>resourceConformsTo</code> (RECOMMENDED): the type of an economic resource (can be a skill or type of work for the <code>work</code> action). Could be any URI.</li>
+<li><code>resourceQuantity</code>: the amount and unit of the non-effort-based economic resource.  Either <code>resourceQuantity</code> or <code>effortQuantity</code> is RECOMMENDED, and both can be included in case of <code>use</code>. This is an object with two properties:</li>
+<li><code>hasUnit</code> (REQUIRED): name of the unit, according to <a href="http://www.ontology-of-units-of-measure.org/">Ontology of units of Measure</a> classification.</li>
+<li><code>hasNumericalValue</code> (REQUIRED): amount of the resource.</li>
+<li><code>effortQuantity</code>: the amount and unit of the work or use effort-based action.  Either <code>resourceQuantity</code> or <code>effortQuantity</code> is RECOMMENDED, and both can be included in case of <code>use</code>. This is an object with two properties:</li>
+<li><code>hasUnit</code> (REQUIRED): name of the unit, according to <a href="http://www.ontology-of-units-of-measure.org/">Ontology of units of Measure</a> classification.</li>
+<li><code>hasNumericalValue</code> (REQUIRED): amount of the resource.</li>
+<li><code>provider</code> (RECOMMENDED): the actor who provided the resource. If not included, it is assumed to be the <code>attributedTo</code> actor.</li>
+<li><code>receiver</code> (RECOMMENDED): the actor who received the resource.  If not included, it is assumed to be the <code>to</code> actor.</li>
+<li><code>finished</code> (OPTIONAL): set to true if this economic event completes the commitment. (Note more than one economic event can be recorded against the same commitment.)</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    {
+      &quot;om2&quot;: &quot;http://www.ontology-of-units-of-measure.org/resource/om-2/&quot;,
+      &quot;vf&quot;: &quot;https://w3id.org/valueflows/ont/vf#&quot;,
+      &quot;EconomicEvent&quot;: &quot;vf:EconomicEvent&quot;,
+      &quot;inputOf&quot;: &quot;vf:inputOf&quot;,
+      &quot;receiver&quot;: &quot;vf:receiver&quot;,
+      &quot;provider&quot;: &quot;vf:provider&quot;,
+      &quot;action&quot;: &quot;vf:action&quot;,
+      &quot;resourceConformsTo&quot;: &quot;vf:resourceConformsTo&quot;,
+      &quot;effortQuantity&quot;: &quot;vf:effortQuantity&quot;,
+      &quot;hasUnit&quot;: &quot;om2:hasUnit&quot;,
+      &quot;hasNumericalValue&quot;: &quot;om2:hasNumericalValue&quot;,
+      &quot;finished&quot;: &quot;vf:finished&quot;
+    }
+  ],
+  &quot;type&quot;: &quot;Create&quot;,
+  &quot;id&quot;: &quot;https://project.example/activities/ad2f7ee1-6567-413e-a10b-72650cbdc932/create&quot;,
+  &quot;actor&quot;: &quot;https://project.example/actors/bob&quot;,
+  &quot;object&quot;: {
+    &quot;type&quot;: &quot;EconomicEvent&quot;,
+    &quot;id&quot;: &quot;https://project.example/inputs/ad2f7ee1-6567-413e-a10b-72650cbdc932&quot;,
+    &quot;attributedTo&quot;: &quot;https://project.example/actors/bob&quot;,
+    &quot;context&quot;: &quot;https://project.example/plans/ddde9d6f-6f3b-4770-a966-3a18ef006931&quot;,
+    &quot;published&quot;: &quot;2024-10-21T14:16:41.843794Z&quot;,
+    &quot;fulfills&quot;: &quot;https://project.example/inputs/ddde9d6f-6f3b-4770-a966-3a18ef006931#cider4&quot;,
+    &quot;inputOf&quot;: &quot;https://project.example/processes/ddde9d6f-6f3b-4770-a966-3a18ef006931#cider&quot;,
+    &quot;action&quot;: &quot;work&quot;,
+    &quot;resourceConformsTo&quot;: &quot;https://www.wikidata.org/wiki/Q3485549&quot;,
+    &quot;effortQuantity&quot;: {
+      &quot;hasUnit&quot;: &quot;hour&quot;,
+      &quot;hasNumericalValue&quot;: &quot;6.5&quot;
+    },
+    &quot;provider&quot;: &quot;https://project.example/actors/bob&quot;,
+    &quot;receiver&quot;: &quot;https://project.example/actors/gleaning-collective&quot;,
+    &quot;finished&quot;: true
+  },
+  &quot;to&quot;: &quot;https://project.example/actors/alice&quot;
+}
+</code></pre>
+<h2 id="_1">参考文献</h2>
+<ul>
+<li>[ActivityPub] Christine Lemmer Webber, Jessica Tallon, <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>, 2018</li>
+<li>[Valueflows] Lynn Foster, elf Pavlik, Bob Haugen <a href="https://valueflo.ws/">Valueflows</a>, 2024</li>
+<li>[RFC-2119] S. Bradner, <a href="https://tools.ietf.org/html/rfc2119.html">Key words for use in RFCs to Indicate Requirement Levels</a>, 1997</li>
+<li>[Activity Vocabulary] James M Snell, Evan Prodromou, <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Activity Vocabulary</a>, 2017</li>
+<li>[Ontology of units of Measure] Hajo Rijgersberg, Don Willems, Xin-Ying Ren, Mari Wigham, Jan Top, <a href="http://www.ontology-of-units-of-measure.org/">Ontology of units of Measure</a>, 2017</li>
+</ul>
+<h2 id="_2">著作権</h2>
+<p>CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン</p>
+<p>法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-2e40/" class="btn btn-neutral float-left" title="FEP-2e40: The FEP Vocabulary Extension Process"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-37f2/" class="btn btn-neutral float-right" title="FEP-37f2: a policy for calls for consensus on SWICG group decisions">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-2e40/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-37f2/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

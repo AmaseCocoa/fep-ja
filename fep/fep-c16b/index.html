@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-c16b: MFM機能のフォーマット - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-c16b: MFM\u6a5f\u80fd\u306e\u30d5\u30a9\u30fc\u30de\u30c3\u30c8";
+        var mkdocs_page_input_path = "fep/fep-c16b.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-c16b: MFM機能のフォーマット</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">概要</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">根拠</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">謝辞</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">歴史</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mfm">MFM機能</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">例</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mfm-html">MFM 機能の HTML 表現</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_6">例</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mfm_1">その他のMFMコンポーネント</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">発見</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#htmlmfm">htmlMfm</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_8">例</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_9">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_10">著作権</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-c16b: MFM機能のフォーマット</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-c16b.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-c16b-mfm">FEP-c16b: MFM機能のフォーマット</h1>
+<h2 id="_1">概要</h2>
+<p>この FEP では、カスタムクラスと [data-* 属性] を使用した HTML を使用して ActivityPub 投稿コンテンツで MFM をフォーマットする方法を推奨しています。さらに、この FEP では、この HTML 表現が使用されていることを示す新しい拡張用語を提供します。</p>
+<h2 id="_2">根拠</h2>
+<p>この文書のキーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「MAY」、および「OPTIONAL」は、<a href="https://tools.ietf.org/html/rfc2119.html">RFC-2119</a>で説明されているように解釈されます。「Fediverse 実装」または「実装」は、<a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>で説明されているように、ActivityPub 準拠のクライアント、ActivityPub 準拠のサーバー、または ActivityPub 準拠の連合サーバーとして解釈されます。</p>
+<h2 id="_3">謝辞</h2>
+<p>(このセクションは非規範的です。)</p>
+<p>このFEPの核となるアイデアは、Foundkey issue tracker [1]のJohan150によるものです。具体的には、カスタムクラスと<code>data-*</code>属性を持つ<code>span</code>要素を使ってHTMLでMFM関数を表現する提案です。</p>
+<h2 id="_4">歴史</h2>
+<p>(このセクションは非規範的です。)</p>
+<p>Fediverse 実装では、テキストの入力としてマークアップ言語を許可するのが一般的です。このコンテンツの統合は、通常、このテキスト入力を別の実装が簡単に理解できる適切な HTML 表現に変換することによって行われます。この HTML 表現は、<a href="https://www.w3.org/TR/activitystreams-core">ActivityStreams</a> オブジェクトの<code>content</code>プロパティを使用して ActivityPub 上で統合されます。一方、ActivityPub によって追加された<code>source</code>プロパティは、オプションで元の入力と入力形式を提供するために使用できます。</p>
+<p>Misskey は独自の <a href="https://misskey-hub.net/ja/docs/for-users/features/mfm/">Markup language For Misskey</a> (MFM とも呼ばれる) を使用しています。MFM は主に HTML、Markdown、Katex、および<code>$[name content]</code>形式のカスタム MFM 関数の組み合わせで構成されています。これらの MFM 関数の意図を適切に表示するには、通常、複雑なCSSやJavascriptが必要です。そのため、<code>content</code>では簡略化された HTML表現のみが提供されます。この表現では多くの情報が削除されるため、受信側の実装では作成者が伝えようとした内容を常に適切に表示できるとは限りません。MFMを正しく表示したい受信側の実装の唯一のオプションは、<code>mediaType</code>プロパティの値が<code>text/x.misskeymarkdown</code>の場合に<code>source</code>プロパティの<code>content</code>を再解析することです。これにより、不要なオーバーヘッドが発生するだけでなく、特に 2 つの実装が異なるパーサーを使用している場合に互換性の問題も発生します。</p>
+<h2 id="mfm">MFM機能</h2>
+<p>(このセクションは非規範的です。)</p>
+<p>MFM機能は、名前、オプションで値を持つ場合と持たない場合がある一つ以上の属性、及びコンテンツで構成されます。形式は<code>$[name.attribute1,attribute2=value content]</code>です。</p>
+<h3 id="_5">例</h3>
+<p>(このセクションは非規範的です。)</p>
+<pre><code>$[x2 Misskey expands the world of the Fediverse]
+$[jelly.speed=2s Misskey expands the world of the Fediverse]
+$[spin.x,speed=0.5s Misskey expands the world of the Fediverse]
+</code></pre>
+<h2 id="mfm-html">MFM 機能の HTML 表現</h2>
+<p>HTML で MFM 関数を表す場合、<code>span</code>要素を使用する必要があります。<code>span</code>要素には、 MFM 関数の名前であるクラスが必要です。MFM 関数に属性がある場合、要素には各属性の属性が必要です。ここでは、該当する属性の名前です。MFM 関数の属性に値がある場合、属性には同じ値が必要です。<code>mfm-name``name``span``data-*``data-mfm-attributename``attributename``data-*</code></p>
+<h3 id="_6">例</h3>
+<p>(このセクションは非規範的です。)</p>
+<p>これにより、前の例は次のようになります。</p>
+<pre><code>&lt;span class=&quot;mfm-x2&quot;&gt;Misskey expands the world of the Fediverse&lt;/span&gt;
+&lt;span class=&quot;mfm-jelly&quot; data-mfm-speed=&quot;2s&quot;&gt;Misskey expands the world of the Fediverse&lt;/span&gt;
+&lt;span class=&quot;mfm-flip&quot; data-mfm-x data-mfm-speed=&quot;0.5s&quot;&gt;Misskey expands the world of the Fediverse&lt;/span&gt;
+</code></pre>
+<h2 id="mfm_1">その他のMFMコンポーネント</h2>
+<p>この FEP は MFM 機能の表現に重点を置いていますが、MFM はこれらの MFM 機能だけで構成されるわけではありません。<code>content</code>プロパティ内の HTML 表現は、受信側の実装が MFM が伝える内容を正しく表示できるように、正確かつ完全である必要があります。</p>
+<p>HTML と Markdown は、<code>content</code>プロパティ内で一般的に正しく表現されており、どちらも Fediverse で広く使用されています。したがって、MFM 関数と同じ意味では問題とは見なされません。</p>
+<p>Katex は、一般的にプロパティで適切に表現されないという同じ問題を抱えていますcontent。 Katex 入力を HTML として適切に表現するには、<a href="../fep-dc88/">FEP-dc88</a> を使用する必要があります。</p>
+<h2 id="_7">発見</h2>
+<p>(このセクションは非規範的です。)</p>
+<p>MFM 対応だが FEP-c16b 非準拠の実装との互換性が必要な場合、<code>"mediaType": "text/x.misskeymarkdown"</code>を使用して<code>source</code>を連合する必要がある可能性があります。一方、この実装からの受信ソースは再解析する必要がある可能性があります。そのため、 <code>content</code>を直接使用できることを FEP-c16b 準拠の実装に通知するための検出メカニズムが必要です。</p>
+<p>この目的のために、<a href="../fep-888d/">FEP-888d</a>で説明されているように、新しい拡張用語が提案されています。</p>
+<h3 id="htmlmfm">htmlMfm</h3>
+<p><code>content</code>がFEP-c16bに準拠していることを示すために、実装では<code>htmlMfm</code>が<code>true</code>な値を持つ拡張項を使用できます。<code>content</code>がFEP-c16bに準拠していない場合、実装では<code>htmlMfm</code>値を持つ拡張項を使用してはなりませんが、<code>htmlMfm</code>値を持つ拡張項を使用できます。</p>
+<ul>
+<li>説明: <code>content</code>がFEP-c16bに準拠していることを示すフラグ</li>
+<li>URI: <code>https://w3id.org/fep/c16b#htmlMfm</code></li>
+<li>ドメイン: <a href="https://www.w3.org/ns/activitystreams#Object"><code>as:Object</code></a></li>
+<li>範囲: ブール値</li>
+</ul>
+<h2 id="_8">例</h2>
+<p>(このセクションは非規範的です。)</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: [
+        &quot;https://www.w3.org/ns/activitystreams&quot;,
+        {
+            &quot;htmlMfm&quot;: &quot;https://w3id.org/fep/c16b#htmlMfm&quot;
+        }
+    ],
+    &quot;content&quot;: &quot;&lt;span class=\&quot;mfm-spin\&quot; data-mfm-x data-mfm-speed=\&quot;0.5s\&quot;&gt;Misskey expands the world of the Fediverse&lt;/span&gt;&quot;,
+    &quot;source&quot;: {
+        &quot;content&quot;: &quot;$[spin.x,speed=0.5s Misskey expands the world of the Fediverse]&quot;,
+        &quot;mediaType&quot;: &quot;text/x.misskeymarkdown&quot;
+    },
+    &quot;htmlMfm&quot;: true
+}
+</code></pre>
+<h2 id="_9">参考文献</h2>
+<ul>
+<li>[data-* attributes]: Part of the <a href="https://html.spec.whatwg.org/multipage/dom.html#embedding-custom-non-visible-data-with-the-data-*-attributes">HTML Living Standard</a></li>
+<li>[RFC-2119] S. Bradner, <a href="https://datatracker.ietf.org/doc/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>, 1997</li>
+<li>[ActivityPub] Christine Lemmer Webber, Jessica Tallon, <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>, 2018</li>
+<li>[1] Johan150, <a href="https://akkoma.dev/FoundKeyGang/FoundKey/issues/343#issuecomment-7344">Federate MFM in content field using HTML</a>, 2023</li>
+<li>[ActivityStreams] James M Snell, Evan Prodromou, <a href="https://www.w3.org/TR/activitystreams-core">ActivityStreams 2.0</a>, 2017</li>
+<li>[Markup language For Misskey], <a href="https://misskey-hub.net/ja/docs/for-users/features/mfm/">MFM</a></li>
+<li>[FEP-dc88] Calvin Lee, <a href="https://codeberg.org/ilja/fep/src/branch/main/fep/dc88/fep-dc88.md">FEP-dc88: Formatting Mathematics</a>, 2023</li>
+<li>[FEP-888d] a, <a href="https://codeberg.org/ilja/fep/src/branch/main/fep/888d/fep-888d.md">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>, 2023</li>
+</ul>
+<h2 id="_10">著作権</h2>
+<p>CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン</p>
+<p>法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-c118/" class="btn btn-neutral float-left" title="FEP-c118: Content licensing support"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-c390/" class="btn btn-neutral float-right" title="FEP-c390: Identity Proofs">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-c118/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-c390/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-76ea: Conversation Threads - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-76ea: Conversation Threads";
+        var mkdocs_page_input_path = "fep/fep-76ea.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-76ea: Conversation Threads</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#context">Context</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#terms">Terms</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#thread">thread</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#root">root</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#thread-maintenance">Thread maintenance</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">例</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#example-1">Example 1</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-2">Example 2</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-3">Example 3</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-4">Example 4</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-5">Example 5</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-76ea: Conversation Threads</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-76ea.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-76ea-conversation-threads">FEP-76ea: Conversation Threads</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-76ea.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p>This FEP defines a way to identify the conversation thread of an object with Activity Streams 2.0.</p>
+<h2 id="motivation">Motivation</h2>
+<p>Threaded conversations are a common data structure for social software. This is defined as a tree with the <strong>original post</strong> at its root, replies to that post as child nodes, all replies to those replies as their children, and so on recursively.</p>
+<p>Some social software restricts the depth of the thread, while others allow for unlimited depth.</p>
+<p>Identifying the thread that an AS2 object is part of allows for the construction of a conversation view of the thread.</p>
+<p>It is possible with Activity Streams 2.0 to construct a conversation thread by following the <code>inReplyTo</code> property of an object until the original post is found, and then expanding the <code>replies</code> property of the original post recursively. With ActivityPub, however, this can require a lot of different HTTPS requests to different servers, which can be slow and inefficient.</p>
+<p>This FEP defines an extension property, <code>thread</code>, that can be used to identify the conversation thread of an object.</p>
+<p><a href="https://www.w3.org/TR/activitypub/">ActivityPub</a> is the primary use case for Activity Streams 2.0, but not the only one. Where specific processing requirements of ActivityPub implementations are made, they are specifically noted. General processing hints for other use cases are also provided.</p>
+<h2 id="context">Context</h2>
+<p>The context URL for this FEP is <code>https://purl.archive.org/socialweb/thread</code>.</p>
+<p>The context is as follows:</p>
+<pre><code>{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;thr&quot;: &quot;https://purl.archive.org/socialweb/thread#&quot;,
+  &quot;thread&quot;: {
+    &quot;@id&quot;: &quot;thr:thread&quot;,
+    &quot;@type&quot;: &quot;@id&quot;
+  },
+  &quot;root&quot;: {
+    &quot;@id&quot;: &quot;thr:root&quot;,
+    &quot;@type&quot;: &quot;@id&quot;
+  }
+}
+</code></pre>
+<h2 id="terms">Terms</h2>
+<p>The context defines two properties.</p>
+<h3 id="thread"><code>thread</code></h3>
+<p>The <code>thread</code> property is an <code>OrderedCollection</code> that contains all of the objects in the conversation thread. The collection is ordered in reverse chronological order, with the most recent object first.</p>
+<p>The <code>thread</code> collection does not directly represent the tree structure of the conversation thread; it is a flat list of objects. The tree structure can be reconstructed by following the <code>inReplyTo</code> and/or <code>replies</code> properties of each
+object in the collection.</p>
+<p>The <code>thread</code> property extends the <code>context</code> property from the Activity Vocabulary.</p>
+<p>The <code>thread</code> property does not replace the <code>replies</code> property of an object. <code>replies</code> contains the possibly curated collection of direct replies to the object; <code>thread</code> contains the full conversation tree, up- and down-thread.</p>
+<h3 id="root"><code>root</code></h3>
+<p>The <code>root</code> property is an <code>Object</code> that is the original post of the conversation thread. The <code>root</code> property is usually the last (earliest) object in the <code>thread</code> collection.</p>
+<p>This property gives an easy way for a consumer to find the root post of the thread without having to search the <code>orderedItems</code> collection, navigate through multiple <code>OrderedCollectionPage</code> pages, or traverse the <code>inReplyTo</code> properties of the objects in the collection.</p>
+<p>Note that <code>thread</code> and <code>root</code> are partially inverse properties. The <code>thread</code> property of the <code>root</code> property of a collection SHOULD contain the <code>id</code> of the <code>thread</code> collection. However, the <code>root</code> property of the <code>thread</code> property of an object MAY not contain the object's <code>id</code>, because the object is in the thread, but is not the root.</p>
+<h2 id="thread-maintenance">Thread maintenance</h2>
+<p>As with the <code>replies</code> property, the processor implementing the original post of a thread SHOULD maintain the <code>thread</code> collection by adding new objects to the collection as they are received.</p>
+<p>In <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>, this could be done when the processor receives an object with an <code>inReplyTo</code> property that matches an object in the <code>thread</code> collection.</p>
+<p>To facilitate collection synchronization, the processor SHOULD distribute an <code>Add</code> activity to the audience of the original object with the new object as the <code>object</code> property and the thread as the <code>target</code> property.</p>
+<p>However, private replies "down-thread" may not be addressed to the author of the original post and may not be available to the processor for the original post.</p>
+<p>The processor implementing the original post MAY curate the thread collection by filtering objects from the collection. This could be done to remove spam, off-topic, or abusive content from the thread.</p>
+<p>In <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>, if an object is removed from the thread, he processor SHOULD distribute a <code>Remove</code> activity to the audience of the original object with the new object as the <code>object</code> property and the thread as the <code>target</code> property.</p>
+<p>The tree structure of the thread should be maintained; every object in the thread collection, except the root, should have an <code>inReplyTo</code> property that matches the <code>id</code> of another object in the collection. If the processor removes an object from the collection, it SHOULD remove all objects that are in reply to that object, and their replies, and so on.</p>
+<p>The <code>replies</code> property of objects in the thread collection MAY be maintained by other processors. Curation of the <code>replies</code> collections or of the <code>thread</code> collection may mean that objects may be omitted from one collection or the other. However, the <code>replies</code> collection of the original post SHOULD be a subset of the <code>thread</code> collection.</p>
+<h2 id="_1">例</h2>
+<h3 id="example-1">Example 1</h3>
+<p>An example of a <code>Note</code> object with a <code>thread</code> property:</p>
+<pre><code>{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;https://purl.archive.org/socialweb/thread&quot;
+  ],
+  &quot;id&quot;: &quot;https://example.com/note/123&quot;,
+  &quot;type&quot;: &quot;Note&quot;,
+  &quot;attributedTo&quot;: &quot;https://example.com/user/1&quot;,
+  &quot;to&quot;: [
+    &quot;https://remote.example/user/17&quot;,
+    &quot;https://remote.example/user/17/followers&quot;
+  ],
+  &quot;content&quot;: &quot;I concur!&quot;,
+  &quot;thread&quot;: &quot;https://remote.example/thread/117&quot;,
+  &quot;inReplyTo&quot;: &quot;https://remote.example/note/117&quot;
+}
+</code></pre>
+<h3 id="example-2">Example 2</h3>
+<p>An example of an <code>Image</code> object with a <code>thread</code> property. The <code>Image</code> is a root or original post with no <code>inReplyTo</code> property:</p>
+<pre><code>{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;https://purl.archive.org/socialweb/thread&quot;
+  ],
+  &quot;id&quot;: &quot;https://example.com/image/123&quot;,
+  &quot;type&quot;: &quot;Image&quot;,
+  &quot;name&quot;: &quot;A photo of a cat&quot;,
+  &quot;attributedTo&quot;: &quot;https://example.com/user/1&quot;,
+  &quot;to&quot;: &quot;https://example.com/user/1/followers&quot;,
+  &quot;url&quot;: {
+    &quot;type&quot;: &quot;Link&quot;,
+    &quot;mediaType&quot;: &quot;image/jpeg&quot;,
+    &quot;href&quot;: &quot;https://example.com/image/123.jpg&quot;
+  },
+  &quot;replies&quot;: &quot;https://example.com/replies/123&quot;,
+  &quot;thread&quot;: {
+    &quot;id&quot;: &quot;https://example.com/thread/123&quot;,
+    &quot;to&quot;: &quot;https://example.com/user/1/followers&quot;,
+    &quot;type&quot;: &quot;OrderedCollection&quot;,
+    &quot;totalItems&quot;: 4,
+    &quot;orderedItems&quot;: [
+      {
+        &quot;id&quot;: &quot;https://fourth.example/note/721&quot;,
+        &quot;attributedTo&quot;: &quot;https://fourth.example/user/4&quot;,
+        &quot;to&quot;: [
+          &quot;https://example.com/user/1&quot;,
+          &quot;https://example.com/user/1/followers&quot;,
+          &quot;https://other.example/user/2&quot;
+        ],
+        &quot;inReplyTo&quot;: &quot;https://other.example/note/338&quot;
+      },
+      {
+        &quot;id&quot;: &quot;https://third.example/note/992&quot;,
+        &quot;attributedTo&quot;: &quot;https://third.example/user/3&quot;,
+        &quot;to&quot;: &quot;https://example.com/user/1&quot;,
+        &quot;inReplyTo&quot;: &quot;https://example.com/image/123&quot;
+      },
+      {
+        &quot;id&quot;: &quot;https://other.example/note/338&quot;,
+        &quot;attributedTo&quot;: &quot;https://other.example/user/2&quot;,
+        &quot;to&quot;: [
+          &quot;https://example.com/user/1&quot;,
+          &quot;https://example.com/user/1/followers&quot;
+        ],
+        &quot;inReplyTo&quot;: &quot;https://example.com/image/123&quot;
+      },
+      &quot;https://example.com/image/123&quot;
+    ]
+  }
+}
+</code></pre>
+<p>Note that not all objects in the <code>thread</code> collection need to be addressed to the same audience. The audience of the <code>thread</code> collection is the audience of the original post.</p>
+<h3 id="example-3">Example 3</h3>
+<p>This is a <code>Note</code> object that is a reply to two different objects, and thus is part of two different threads.</p>
+<pre><code>{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;https://purl.archive.org/socialweb/thread&quot;
+  ],
+  &quot;id&quot;: &quot;https://example.com/note/789&quot;,
+  &quot;attributedTo&quot;: &quot;https://example.com/user/1&quot;,
+  &quot;to&quot;: &quot;as:Public&quot;,
+  &quot;content&quot;: &quot;These are both good points.&quot;,
+  &quot;inReplyTo&quot;: [
+    &quot;https://remote.example/note/57&quot;,
+    &quot;https://other.example/note/456&quot;
+  ],
+  &quot;thread&quot;: [
+    &quot;https://remote.example/thread/57&quot;,
+    &quot;https://other.example/thread/456&quot;
+  ]
+}
+</code></pre>
+<h3 id="example-4">Example 4</h3>
+<p>Objects in a thread that have been deleted by their author can be represented in the <code>thread</code> collection with a <code>Tombstone</code> object.</p>
+<pre><code>{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;https://purl.archive.org/socialweb/thread&quot;
+  ],
+  &quot;id&quot;: &quot;https://example.com/note/345&quot;,
+  &quot;attributedTo&quot;: &quot;https://example.com/user/1&quot;,
+  &quot;to&quot;: &quot;as:Public&quot;,
+  &quot;content&quot;: &quot;Activity Streams 2.0 is awesome!&quot;,
+  &quot;replies&quot;: &quot;https://example.com/replies/345&quot;,
+  &quot;thread&quot;: {
+    &quot;id&quot;: &quot;https://example.com/thread/345&quot;,
+    &quot;to&quot;: &quot;as:Public&quot;,
+    &quot;type&quot;: &quot;OrderedCollection&quot;,
+    &quot;orderedItems&quot;: [
+      {
+        &quot;id&quot;: &quot;https://third.example/note/567&quot;,
+      },
+      {
+        &quot;type&quot;: &quot;Tombstone&quot;,
+        &quot;id&quot;: &quot;https://remote.example/note/456&quot;,
+        &quot;inReplyTo&quot;: &quot;https://example.com/note/345&quot;,
+        &quot;deleted&quot;: &quot;2024-10-03T00:00:00Z&quot;
+      },
+      &quot;https://example.com/note/345&quot;
+    ]
+  }
+}
+</code></pre>
+<h3 id="example-5">Example 5</h3>
+<p>The <code>thread</code> collection can be paged, as with other collections.</p>
+<pre><code>{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;https://purl.archive.org/socialweb/thread&quot;
+  ],
+  &quot;id&quot;: &quot;https://example.com/note/678&quot;,
+  &quot;attributedTo&quot;: &quot;https://example.com/user/1&quot;,
+  &quot;to&quot;: &quot;as:Public&quot;,
+  &quot;content&quot;: &quot;Is Wario A Libertarian?&quot;,
+  &quot;replies&quot;: &quot;https://example.com/replies/678&quot;,
+  &quot;thread&quot;: {
+    &quot;id&quot;: &quot;https://example.com/thread/678&quot;,
+    &quot;to&quot;: &quot;as:Public&quot;,
+    &quot;type&quot;: &quot;OrderedCollection&quot;,
+    &quot;totalItems&quot;: 244780,
+    &quot;first&quot;: &quot;https://example.com/thread/678/page/12239&quot;,
+    &quot;last&quot;: &quot;https://example.com/thread/678/page/1&quot;
+  }
+}
+</code></pre>
+<h1 id="example-6">Example 6</h1>
+<p>The <code>root</code> property can be used to identify the original post of a thread.</p>
+<pre><code>{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;https://purl.archive.org/socialweb/thread&quot;
+  ],
+  &quot;id&quot;: &quot;https://example.com/thread/654&quot;,
+  &quot;type&quot;: &quot;OrderedCollection&quot;,
+  &quot;totalItems&quot;: 457,
+  &quot;first&quot;: &quot;https://example.com/thread/654/page/23&quot;,
+  &quot;last&quot;: &quot;https://example.com/thread/654/page/1&quot;,
+  &quot;root&quot;: &quot;https://example.com/note/654&quot;
+}
+</code></pre>
+<h2 id="security-considerations">Security Considerations</h2>
+<p>Not all objects in the <code>thread</code> collection may be addressed to the same audience. Representations of the collection SHOULD NOT include the <code>content</code> property or other sensitive information from objects in the collection that are not addressed to the recipient of the representation.</p>
+<p>In <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>, the <code>orderedItems</code> property of the <code>thread</code> collection MAY be filtered for the recipient of the representation.</p>
+<h2 id="previous-work">Previous work</h2>
+<p>The <code>ostatus:conversation</code> property is used in Mastodon and elsewhere to identify the thread of an object, but it is not necessarily dereferenceable.</p>
+<p>Some implementations of ActivityPub use the <code>context</code> property to represent the thread of an object. This FEP provides a more specific property, which frees up the "intentionally vague" <code>context</code> property for other uses. It also avoids the confusing clash with the <code>@context</code> property of JSON-LD.</p>
+<h2 id="_2">参考文献</h2>
+<ul>
+<li>Christine Lemmer Webber, Jessica Tallon, <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>, 2018</li>
+</ul>
+<h2 id="_3">著作権</h2>
+<p>CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン</p>
+<p>法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-7628/" class="btn btn-neutral float-left" title="FEP-7628: Move actor"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-7888/" class="btn btn-neutral float-right" title="FEP-7888: Demystifying the context property">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-7628/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-7888/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

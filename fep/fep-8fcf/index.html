@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-8fcf: Followers collection synchronization across servers - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-8fcf: Followers collection synchronization across servers";
+        var mkdocs_page_input_path = "fep/fep-8fcf.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-8fcf: Followers collection synchronization across servers</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#partial-follower-collection">Partial follower collection</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#partial-follower-collection-digest">Partial follower collection digest</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-collection-synchronization-http-header">The Collection-Synchronization HTTP Header</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#collection-synchronization-header-parameters">Collection Synchronization Header Parameters</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#synchronization-procedure">Synchronization procedure</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#on-the-sender-end">On the sender end</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#on-the-receiving-end">On the receiving end</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">実装</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">著作権</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-8fcf: Followers collection synchronization across servers</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-8fcf.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-8fcf-followers-collection-synchronization-across-servers">FEP-8fcf: Followers collection synchronization across servers</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-8fcf.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p>In ActivityPub, follow relationships are established, updated and removed by
+sending activities such as <code>Follow</code>, <code>Accept</code> or <code>Reject</code>, which are assumed to
+be correctly and promptly processed upon receipt.</p>
+<p>However, due to incompatible protocol extensions, software bugs, server crashes
+or database rollbacks, the two ends of a <code>Follow</code> relationship may end up out of
+sync.</p>
+<p>This can be especially damaging when a remote instance has outdated information
+about follow relationships that should have been revoked, as some
+implementations may deliver activities addressed to the sender's <code>followers</code>
+collection by using the <code>sharedInbox</code> mechanism and letting the recipient use
+the sender's <code>followers</code> collection for local delivery and access control.</p>
+<p>This proposal describes an optional mechanism for detecting discrepancies in
+following relationships across instances, with minimal overhead and without loss
+of privacy.</p>
+<h2 id="requirements">Requirements</h2>
+<p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”,
+“SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this
+specification are to be interpreted as described in [RFC-2119].</p>
+<p>The proposed protocol for followers collection synchronization makes a number of
+assumptions that may not be suitable to every implementation or deployment.</p>
+<p>Implementations and deployments MUST NOT implement the mechanisms described in
+this proposal unless they match the following requirements:
+- actors managed by an instance are required to all share the same exact URI
+  scheme and authority for their <code>id</code>, <code>inbox</code> and <code>sharedInbox</code> URIs
+- such instances are required to manage all actors using the same URI scheme and
+  authority for either their <code>id</code>, <code>inbox</code> or <code>sharedInbox</code> URIs (that is, for
+  instance, two fediverse implementations cannot implement this proposal if they
+  are set up on the same exact same domain name, unless implementing an
+  additional mechanism to share follower information between them, which is out
+  of scope for this proposal).</p>
+<p>The reason for those requirements is to prevent the partial followers collection
+described below from missing legitimate followers, which could result in
+followers being removed for no reason.</p>
+<p>Failing to implement this proposed synchronization mechanism should not impact
+compatibility with other implementations, as it is completely optional.</p>
+<h2 id="partial-follower-collection">Partial follower collection</h2>
+<p>For efficiency and privacy purposes, we consider a subset of an actor's
+followers collection. This subset is the set of an actor's followers whose <code>id</code>
+shares an instance's specific URI scheme and authority.</p>
+<p>For instance, if <code>https://example.org/users/1</code> has the following followers:
+- <code>https://example.org/users/2</code>
+- <code>https://testing.example.org/users/1</code>
+- <code>https://next.example.org/users/foo</code>
+- <code>https://testing.example.org/users/2</code></p>
+<p>The partial follower collection of <code>https://example.org/users/1</code> for the
+instance serving <code>https://testing.example.org/users/1</code> is:
+- <code>https://testing.example.org/users/1</code>
+- <code>https://testing.example.org/users/2</code></p>
+<h3 id="partial-follower-collection-digest">Partial follower collection digest</h3>
+<p>To enable quick checking of partial followers consistency across instances, a
+partial follower collection digest is computed.</p>
+<p>This digest is created by XORing together the individual SHA256 digests of each
+follower's <code>id</code>.</p>
+<pre><code>partialCollectionDigest = SHA256(follower1) XOR SHA256(follower2) XOR ... XOR SHA256(followerN)
+</code></pre>
+<p>For instance, the partial follower collection digest of
+<code>https://example.org/users/1</code> for the instance serving
+<code>https://testing.example.org/users/1</code> is:
+<code>3a06e99569547f444c352ab7f52e4bab207abec5ca6f07b0045cfdc9723f8fa9 XOR f939a1585d4a8f02ee339210dbe7315d7003476663d6095f7d996fc4bc7a49b6 = c33f48cd341ef046a206b8a72ec97af65079f9a3a9b90eef79c5920dce45c61f</code></p>
+<h2 id="the-collection-synchronization-http-header">The <code>Collection-Synchronization</code> HTTP Header</h2>
+<p>The <code>Collection-Synchronization</code> HTTP header provides a mechanism for quickly
+checking whether the sender's followers collection part that is relevant to the
+recipient is consistent with the recipient's knowledge.</p>
+<p>The header field name is <code>Collection-Synchronization</code> and its value is a list of
+parameters and values, formatted according to the <code>signature</code> syntax defined in
+[HTTP-Signatures], Section 4.1.</p>
+<p>Example:</p>
+<pre><code>Collection-Synchronization: collectionId=&quot;https://example.org/users/1/followers&quot;, url=&quot;https://example.org/users/1/followers_synchronization&quot;, digest=&quot;c33f48cd341ef046a206b8a72ec97af65079f9a3a9b90eef79c5920dce45c61f&quot;
+</code></pre>
+<h3 id="collection-synchronization-header-parameters">Collection Synchronization Header Parameters</h3>
+<p>The <code>Collection-Synchronization</code> header's parameters are defined as follows:</p>
+<ul>
+<li><code>collectionId</code>: this is URI of the collection that supports synchronization.
+  It must be the sender's <code>followers</code> collection.</li>
+<li><code>url</code>: this is the URL of the partial followers collection intended for the
+  receiving instance.
+  Accessing it should require authentication from the receiving instance.</li>
+<li><code>digest</code>: the partial follower collection digest intended for the receiving
+  instance.</li>
+</ul>
+<h2 id="synchronization-procedure">Synchronization procedure</h2>
+<h3 id="on-the-sender-end">On the sender end</h3>
+<p>When delivering an Activity to an <code>inbox</code> (or <code>sharedInbox</code>), an instance MAY
+set a <code>Collection-Synchronization</code> header intended for the corresponding
+instance (determined by the <code>inbox</code> URI scheme and authority).</p>
+<p>When exactly to set this header is up to the sender, but it is recommended to
+at least send it for any <code>Create</code> activity addressed specifically to the
+sender's <code>followers</code> collection.</p>
+<h3 id="on-the-receiving-end">On the receiving end</h3>
+<p>On the receiving end, upon receiving an Activity delivery with a
+signed <code>Collection-Synchronization</code> header, the receiver MUST check that:
+- the <code>collectionId</code> attribute matches the sender's <code>followers</code> collection <code>id</code>
+- the <code>url</code> attribute also matches the same authority (so that the instance
+  cannot get tricked into requesting the followers list of a third-party
+  individual)</p>
+<p>If any of those checks fails, the receiver MUST ignore the
+<code>Collection-Synchronization</code> header.</p>
+<p>The receiver SHOULD then compute the partial collection digest for the sender's
+followers based on its own knowledge. If the digest does not match the <code>digest</code>
+attribute of the header, it SHOULD then query the <code>url</code>, authenticating itself
+to the remote server using [HTTP-Signatures] or another method.</p>
+<p>Having fetched the up-to-date partial followers collection from the autoritative
+server, the receiving end:
+- SHOULD remove from its local copy of the followers collection any local actor
+  not listed in the partial followers collection.
+- MAY consider any pending outgoing follow listed in the partial followers
+  collection as accepted.
+- SHOULD send an <code>Undo Follow</code> for any other local follower listed in the
+  partial followers collection but not known locally.</p>
+<h2 id="_1">実装</h2>
+<p>This proposal is implemented by Mastodon since the following Pull Request: https://github.com/tootsuite/mastodon/pull/14510</p>
+<h2 id="_2">参考文献</h2>
+<ul>
+<li>[RFC-2119] S. Bradner, [Key words for use in RFCs to Indicate Requirement Levels](https://tools.ietf.org/html/rfc2119.html</li>
+<li>[HTTP-Signatures] A. Backman, J. Richer, M. Sporny, <a href="https://tools.ietf.org/html/draft-ietf-httpbis-message-signatures-00.html">Signing HTTP Messages</a></li>
+</ul>
+<h2 id="_3">著作権</h2>
+<p>CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン</p>
+<p>法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-8c3f/" class="btn btn-neutral float-left" title="FEP-8c3f: Web Monetization"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-9091/" class="btn btn-neutral float-right" title="FEP-9091: Export Actor Service Endpoint">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-8c3f/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-9091/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

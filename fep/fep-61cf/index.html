@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-61cf: The OpenWebAuth Protocol - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-61cf: The OpenWebAuth Protocol";
+        var mkdocs_page_input_path = "fep/fep-61cf.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-61cf: The OpenWebAuth Protocol</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#starting-the-login-flow">Starting the login flow</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#operation-of-the-protocol">Operation of the protocol</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-redirection-to-home-instance">1. Redirection to home instance</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-home-instance-requests-a-token">2. Home instance requests a token</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-target-instance-provides-a-token">3. Target instance provides a token</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-home-instance-receives-the-token">4. Home instance receives the token</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5-user-returns-to-target-instance">5. User returns to target instance</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-next">What Next?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#additional-notes">Additional notes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#http-signatures">HTTP Signatures</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#target-instances-login-check">Target instance's login check</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#target-instances-token-endpoint">Target instance's token endpoint</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#home-instances-magic-endpoint">Home instance's /magic endpoint</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">実装</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#security-considerations">Security Considerations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">著作権</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-61cf: The OpenWebAuth Protocol</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-61cf.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-61cf-the-openwebauth-protocol">FEP-61cf: The OpenWebAuth Protocol</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-61cf.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p>OpenWebAuth is the "single sign-on" mechanism used by Hubzilla, (streams) and other related projects. It allows a browser-based user to log in to services across the Fediverse using a single identity. Once logged in, they can be recognised by other OpenWebAuth-compatible services, without third-party cookies and often without any explicit user interaction.</p>
+<p>This is not a specification, a proposal, or a "best practice" document. The aim is to describe the existing protocol in detail as an aid to implementers, evaluators, and anyone who wants to understand its operation. It is mostly based on reverse-engineering the existing implementations and focuses on the minimal requirements for basic interoperability.</p>
+<p>In OpenWebAuth, each user is identified by a public/private key pair. The protocol relies on there being a mechanism for other nodes on the network to discover a user's public key. This document assumes that ActivityPub actor objects will be used for this purpose. OpenWebAuth can also work with other protocols such as Zot6 and Nomad but these are not considered here.</p>
+<h2 id="overview">Overview</h2>
+<p>The protocol takes place between two participants:</p>
+<ul>
+<li>
+<p>The <em>home instance</em>, which hosts the user's identity, and is equivalent to the Identity Provider (IdP) in SAML and OpenID Connect.</p>
+</li>
+<li>
+<p>The <em>target instance</em>, which allows remote users to log in to it using the provided identity. This is equivalent to the Relying Party (RP) in SAML and OpenID Connect.</p>
+</li>
+</ul>
+<h3 id="starting-the-login-flow">Starting the login flow</h3>
+<p>The OpenWebAuth login flow can begin in one of two ways:</p>
+<ul>
+<li>
+<p>The user visits the target instance and sees a login screen. They type their Fediverse ID into a form field and click "Login".</p>
+</li>
+<li>
+<p>The user follows a link to the target instance. This link has a query parameter, <code>zid=</code>, which specifies the user's Fediverse ID.</p>
+</li>
+</ul>
+<p>This <code>zid=</code> mechanism is not necessarily specific to OpenWebAuth. It can be used to start an OAuth2-based login flow in just the same way. Implementers should note, though, that it can make attacks easier to launch; an attacker who can trick a victim into clicking a malicious link can cause them to start the login flow using a maliciously constructed identity, perhaps leading to a <a href="https://www.hackmanit.de/en/blog-en/132-how-to-protect-your-oauth-client-against-mix-up-attacks">MixUpAttack</a>.</p>
+<h2 id="operation-of-the-protocol">Operation of the protocol</h2>
+<p>The protocol can be summarised in a sequence diagram as below. This diagram shows the <code>zid=</code> case, where the user is not prompted to log in.</p>
+<pre><code class="language-mermaid">sequenceDiagram
+  participant browser as Browser
+  participant target as Target instance
+  participant home as Home instance
+
+  browser -&gt;&gt; target: GET /page?zid=user@home
+  target -&gt;&gt; home: webfinger user@home
+  home --&gt;&gt; target: location of redirection endpoint
+  target --&gt;&gt; browser: Location: https://home.example/magic?...
+  browser -&gt;&gt; home: GET /magic?...
+  Note over home: Check user is logged in,&lt;br/&gt;eg by checking session cookie
+  home -&gt;&gt; target: webfinger /
+  target --&gt;&gt; home: location of token endpoint
+  rect rgb(216, 255, 216)
+  Note over home,target: Protected by actor's private key
+  home -&gt;&gt; target: GET /token&lt;br/&gt;(signed)
+  target --&gt;&gt; home: &lt;token&gt;&lt;br/&gt;(encrypted)
+  end
+  home --&gt;&gt; browser: Location: https://target.example/page?owt=&lt;token&gt;
+  browser -&gt;&gt; target: GET /page?owt=&lt;token&gt;
+  target --&gt;&gt; browser: &lt;contents of page&gt;
+</code></pre>
+<p>Regardless of how the flow is started, the protocol begins with the user's browser making a request to the target instance.</p>
+<h3 id="1-redirection-to-home-instance">1. Redirection to home instance</h3>
+<p>First the target instance identifies the home instance's "redirection endpoint".</p>
+<p>Some existing implementations hard-code this to <code>/magic</code>. New implementations should perform a webfinger lookup on the provided user ID looking for a link with <code>rel</code> set to <code>http://purl.org/openwebauth/v1#redirect</code>. If found, this link's <code>href</code> should be used as the redirection endpoint.</p>
+<p>The target instance constructs a URL from the redirection endpoint with the following query parameters:
+- <code>owa</code>: must be set to 1
+- <code>bdest</code>: The URL which the browser will be returned to after acquiring a token. This is encoded as UTF-8 and then converted to a hexadecimal string. This is equivalent to the <code>redirect_uri</code> in OAuth2. The <code>bdest</code> URL can include query parameters.</p>
+<p>The user's browser is redirected to this URL. The target instance should check that the URL has the same origin as the webfinger ID, to avoid acting as an open redirector.</p>
+<h3 id="2-home-instance-requests-a-token">2. Home instance requests a token</h3>
+<p>The <code>/magic</code> endpoint at the user's home instance first checks that the user's browser has a valid session cookie.</p>
+<p>If so, it decodes the <code>bdest</code> destination URL. It performs a webfinger lookup on the root URL of the destination site and looks for a link with <code>rel</code> set to <code>http://purl.org/openwebauth/v1</code>. This identifies the target instance's "token endpoint".</p>
+<p>The home instance constructs and issues a signed HTTPS request to this endpoint. The request also contains an additional signed header, <code>X-Open-Web-Auth</code>, containing a random string. Target instances do not use this header; it is provided to add additional entropy to the signature calculation.</p>
+<h3 id="3-target-instance-provides-a-token">3. Target instance provides a token</h3>
+<p>The target instance's token endpoint extracts the <code>keyId</code>, fetches the actor record, extracts the public key and verifies the signature.</p>
+<p>On success, it generates an URL-safe random string to use as a token. This token is stored locally, associated with the actor who signed the message. The token is also encrypted using the actor's public key and the RSA PKCS #1 v1.5 encryption scheme. The encrypted result is encoded as URL-safe Base64 with no '=' padding bytes.</p>
+<p>Next it constructs the following JSON object in response:</p>
+<pre><code>{
+   &quot;success&quot;: true,
+   &quot;encrypted_token&quot;: &lt;the base64-encoded token&gt;
+}
+</code></pre>
+<p>On failure it can also return a result with <code>success</code> set to false.</p>
+<h3 id="4-home-instance-receives-the-token">4. Home instance receives the token</h3>
+<p>The signed request issued in step 2 completes. The home instance decodes the JSON response and verifies that <code>success</code> is true. Next it decodes the Base64-encoded encrypted token and decrypts it using the actor's private key.</p>
+<p>If successful, it takes the <code>bdest</code> destination URL, adds the query parameter: <code>owt=&lt;decrypted token&gt;</code>, and redirects the user's browser to it.</p>
+<h3 id="5-user-returns-to-target-instance">5. User returns to target instance</h3>
+<p>The user arrives back at the target instance. The target instance sees the <code>owt=</code> query parameter and checks its local storage for the token which it saved in step 3.</p>
+<p>If found, this token identifies the remote user, and the target instance logs them in, overriding any existing login they may have. The token is also deleted from local storage so that it cannot be redeemed more than once.</p>
+<h2 id="what-next">What Next?</h2>
+<p><em>(このセクションは非規範的です。)</em></p>
+<p>What does the target instance allow the user to do, now that they have signed in? The simplest option is to treat them as though they had signed in using a local username and password, but this isn't really enough.</p>
+<p>In an <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a> context, a remotely authenticated user will expect to be able to post to the target instance using their existing identity. This poses the question of how the target instance should sign the post, since it does not have access to the user's private key. Hubzilla solves this by attributing the post to the user's identity, but signing it with a key belonging to the target instance; any other instance which receives the post must be aware of this mechanism, or the signature will be rejected.</p>
+<h2 id="additional-notes">Additional notes</h2>
+<h3 id="http-signatures">HTTP Signatures</h3>
+<p>An OpenWebAuth signed request must have an <code>Authorization</code> header starting with the word <code>Signature</code> followed by the encoded HTTP signature. See <a href="https://swicg.github.io/activitypub-http-signature/">ActPubSig</a> for more details on signing Fediverse requests.</p>
+<h3 id="target-instances-login-check">Target instance's login check</h3>
+<p>To support logged in users, the target instance needs some logic to identify their requests. Normally this is done by checking for a valid session cookie. To support OpenWebAuth this logic must be extended to also check for the <code>zid=</code> and <code>owt=</code> query parameters.</p>
+<p>Some corner cases are possible here. For instance, the user could already be logged in to the target instance when the OWA login flow begins.</p>
+<p>When the OpenWebAuth flow succeeds, the <code>owt=</code> query parameter will identify the user who is logged in to the home instance. This will be a user from the domain in the original <code>zid=</code> parameter, but may not be the exact same user.</p>
+<h3 id="target-instances-token-endpoint">Target instance's token endpoint</h3>
+<p>This endpoint should accept both GET and POST requests. Some home instances will issue POSTs with random bodies.</p>
+<h3 id="home-instances-magic-endpoint">Home instance's <code>/magic</code> endpoint</h3>
+<p>The implementation of this endpoint needs to request a login token from the target instance. This requires it to prove possession of the user's private key, first to calculate a signature for the request and then to decrypt the returned token. These are the only places in the protocol where the private key is needed, implying that only the home instance needs to be a Fediverse instance. The target instance only needs access to public keys, meaning that OpenWebAuth can be used to allow users to log into things that are not instances.</p>
+<h2 id="_1">実装</h2>
+<p>OpenWebAuth was developed as part of the Hubzilla / Streams family of projects. More recently it has been added to Friendica and proposed for inclusion in Mastodon and PixelFed.</p>
+<p>There is a <a href="https://hz.eenoog.org/wiki/pascal/Fediverse%2820%29OpenWebAuth%2820%29support/Home">wiki page</a> which lists the current implementation status and links to the relevant pull requests.</p>
+<h2 id="security-considerations">Security Considerations</h2>
+<p>The purpose of OpenWebAuth is to provide a strong guarantee of a user's identity to the web sites that they visit. This is often considered undesirable and consideration should be given to preventing this information from leaking to sites which may not be acting in the user's best interests.</p>
+<p>This consideration may involve policies such as displaying a consent screen to the user or otherwise allowing them to choose which target instances they are willing to authenticate themselves to. The user's browser is redirected to their home instance at step 2, giving it an opportunity to implement policies such as these.</p>
+<p>Unused <code>owt=</code> login tokens are deleted after a couple of minutes. This protects against a potential DoS attack which could fill up the target instance's storage with unused tokens.</p>
+<p>The <code>zid=</code> query parameter may make a <a href="https://www.hackmanit.de/en/blog-en/132-how-to-protect-your-oauth-client-against-mix-up-attacks">MixUpAttack</a> easier to launch, as discussed briefly above.</p>
+<h2 id="_2">参考文献</h2>
+<ul>
+<li>Christine Lemmer Webber, Jessica Tallon, <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>, 2018</li>
+<li>Ryan Barrett, nightpool, <a href="https://swicg.github.io/activitypub-http-signature/">ActivityPub and HTTP Signatures</a>, 2024</li>
+<li>Karsten Meyer zu Selhausen, <a href="https://www.hackmanit.de/en/blog-en/132-how-to-protect-your-oauth-client-against-mix-up-attacks">How to Protect Your OAuth Client Against Mix-Up Attacks</a>, 2020</li>
+</ul>
+<h2 id="_3">著作権</h2>
+<p>CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン</p>
+<p>法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-612d/" class="btn btn-neutral float-left" title="FEP-612d: Identifying ActivityPub Objects through DNS"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-6481/" class="btn btn-neutral float-right" title="FEP-6481: Specifying ActivityPub extension support with NodeInfo">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-612d/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-6481/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

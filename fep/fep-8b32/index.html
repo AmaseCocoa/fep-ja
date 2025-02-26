@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-8b32: オブジェクト整合性証明 - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-8b32: \u30aa\u30d6\u30b8\u30a7\u30af\u30c8\u6574\u5408\u6027\u8a3c\u660e";
+        var mkdocs_page_input_path = "fep/fep-8b32.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-8b32: オブジェクト整合性証明</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">概要</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">歴史</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">要件</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">完全性の証明</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">証明の生成</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#proof-verification">Proof verification</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#algorithms">Algorithms</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#backward-compatibility">Backward compatibility</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#special-cases">Special cases</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#activities">Activities</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">例</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#signed-object">Signed object</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#signed-activity">Signed activity</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#signed-activity-with-embedded-signed-object">Signed activity with embedded signed object</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#test-vectors">Test vectors</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">実装</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#use-cases">Use cases</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_8">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_9">著作権</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-8b32: オブジェクト整合性証明</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-8b32.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-8b32">FEP-8b32: オブジェクト整合性証明</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳が完了していません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-8b32.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="_1">概要</h2>
+<p>この提案では、<a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>サーバーとクライアントが自己認証アクティビティとオブジェクトを作成する方法について説明します。</p>
+<p>HTTP 署名は、サーバー間のやり取り中の認証によく使用されます。ただし、これにより認証がアクティビティの配信に結び付けられ、プロトコルの柔軟性が制限されます。</p>
+<p>整合性証明は、デジタル署名とそれを検証するために必要なパラメータを表す属性のセットです。これらの証明は任意のアクティビティまたはオブジェクトに追加でき、受信者はアクターの ID とデータの整合性を検証できます。これにより、認証がトランスポートから切り離され、アクティビティのリレー、埋め込みオブジェクト、クライアント側の署名など​​、さまざまなプロトコルの改善が可能になります。</p>
+<h2 id="_2">歴史</h2>
+<p>Mastodon は<a href="https://github.com/mastodon/mastodon/pull/4687">2017年から</a>Linked Data 署名をサポートしており、その後、他の多くのプラットフォームでもサポートが追加されました。これらの署名は整合性証明に似ていますが、他の標準に置き換えられた古い<a href="https://github.com/w3c-ccg/ld-signatures/">Linked Data Signatures 1.0</a>仕様に基づいています。</p>
+<h2 id="_3">要件</h2>
+<p>このドキュメント内のキーワード「MUST」、「MUST NOT」、「REQUIRED」、「SHALL」、「SHALL NOT」、「SHOULD」、「SHOULD NOT」、「RECOMMENDED」、「MAY」、および「OPTIONAL」は、<a href="https://tools.ietf.org/html/rfc2119.html">RFC-2119</a>で説明されているとおりに解釈されます。</p>
+<h2 id="_4">完全性の証明</h2>
+<p>提案された認証メカニズムは、<a href="https://w3c.github.io/vc-data-integrity/">データ整合性</a>仕様に基づいています。</p>
+<h3 id="_5">証明の生成</h3>
+<p>証明は、データ整合性仕様の<a href="https://w3c.github.io/vc-data-integrity/#add-proof">セクション4.2「証明の追加」</a>に従って作成する必要があります。</p>
+<p>証明生成のプロセスは、次の手順で構成されます。</p>
+<ul>
+<li><strong>正規化</strong>は、何らかの決定論的アルゴリズムに従って、JSON オブジェクトをハッシュに適した形式に変換することです。</li>
+<li>
+<p><strong>ハッシュ化</strong>は、暗号ハッシュ関数を使用して変換されたデータの識別子を計算するプロセスです。</p>
+</li>
+<li>
+<p><strong>署名生成</strong>は、入力データの整合性を変更から保護する値を計算するプロセスです。</p>
+</li>
+</ul>
+<p>結果の証明は、元のJSONオブジェクトの<code>proof</code>キーに追加されます。オブジェクトには複数の証明が含まれる場合があります。</p>
+<p>整合性証明で使用される属性のリストは、データ整合性仕様の<a href="https://w3c.github.io/vc-data-integrity/#proofs">セクション2.1 証明</a>で定義されています。証明タイプはセクション3.1 <code>DataIntegrityProof</code>で指定されているように<code>DataIntegrityProof</code>である必要があります。<code>proofPurpose</code>属性の値は<code>assertionMethod</code>でなければなりません。</p>
+<p>証明の<code>verificationMethod</code>属性の値は、公開鍵のHTTP(S)URLまたは<a href="https://www.w3.org/TR/did-core/#did-url-syntax">DID URL</a>とすることができる。検証方法を表現する<a href="https://www.w3.org/TR/controller-document/">コントローラドキュメント</a>は、アクターオブジェクト、または<a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>アクターに証明的に関連付けることができる他のドキュメント(<a href="https://www.w3.org/TR/did-core/">DID</a>ドキュメントなど)でなければならない[MUST]。検証メソッドは、コントローラドキュメントの<code>assertionMethod</code>プロパティと関連付けなければならない[MUST]。コントローラドキュメントがアクターオブジェクトである場合、実装者は、<a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/521a/fep-521a.md">FEP-521a</a>に記載されているように、<code>assertionMethod</code>プロパティを使用すべきである[SHOULD]。</p>
+<h3 id="proof-verification">Proof verification</h3>
+<p>Recipients of an object SHOULD perform proof verification if it contains integrity proofs. Verification process MUST follow the <em>Data Integrity</em> specification, section <a href="https://w3c.github.io/vc-data-integrity/#verify-proof">4.4 Verify Proof</a>. It starts with the removal of the <code>proof</code> value from the JSON object. Then verification method is retrieved from the controller document as described in <em>Controller Documents</em> specification, section <a href="https://www.w3.org/TR/controller-document/#retrieve-verification-method">3.3 Retrieve Verification Method</a>. Then the object is canonicalized, hashed and signature verification is performed according to the parameters specified in the proof.</p>
+<p>If both HTTP signature and integrity proof are used, the integrity proof MUST be given precedence over HTTP signature. The HTTP signature MAY be dismissed.</p>
+<h3 id="algorithms">Algorithms</h3>
+<p>Implementers are expected to pursue broad interoperability when choosing algorithms for integrity proofs.</p>
+<p><a href="https://w3c.github.io/vc-di-eddsa/#eddsa-jcs-2022">eddsa-jcs-2022</a> cryptosuite is RECOMMENDED:</p>
+<ul>
+<li>Canonicalization: <a href="https://www.rfc-editor.org/rfc/rfc8785">JCS</a></li>
+<li>Hashing: SHA-256</li>
+<li>Signatures: EdDSA</li>
+</ul>
+<blockquote>
+<p>[!WARNING]
+<code>eddsa-jcs-2022</code> cryptosuite specification is not stable and may change before it becomes a W3C Recommendation.</p>
+</blockquote>
+<h3 id="backward-compatibility">Backward compatibility</h3>
+<p>Integrity proofs and linked data signatures can be used together, as they rely on different properties (<code>proof</code> and <code>signature</code>, respectively).</p>
+<p>If compatiblity with legacy systems is desired, the integrity proof MUST be created and inserted before the generation of the linked data signature.</p>
+<p>If both <code>proof</code> and <code>signature</code> are present in a received object, the linked data signature MUST be removed before the verification of the integrity proof.</p>
+<h3 id="special-cases">Special cases</h3>
+<h4 id="activities">Activities</h4>
+<p>The controller of the verification method MUST match the actor of activity, or be associated with that actor.</p>
+<h2 id="_6">例</h2>
+<h3 id="signed-object">Signed object</h3>
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;https://w3id.org/security/data-integrity/v1&quot;
+  ],
+  &quot;id&quot;: &quot;https://server.example/objects/1&quot;,
+  &quot;type&quot;: &quot;Note&quot;,
+  &quot;attributedTo&quot;: &quot;https://server.example/users/alice&quot;,
+  &quot;content&quot;: &quot;Hello world&quot;,
+  &quot;proof&quot;: {
+    &quot;@context&quot;: [
+      &quot;https://www.w3.org/ns/activitystreams&quot;,
+      &quot;https://w3id.org/security/data-integrity/v1&quot;
+    ],
+    &quot;type&quot;: &quot;DataIntegrityProof&quot;,
+    &quot;cryptosuite&quot;: &quot;eddsa-jcs-2022&quot;,
+    &quot;verificationMethod&quot;: &quot;https://server.example/users/alice#ed25519-key&quot;,
+    &quot;proofPurpose&quot;: &quot;assertionMethod&quot;,
+    &quot;proofValue&quot;: &quot;...&quot;,
+    &quot;created&quot;: &quot;2023-02-24T23:36:38Z&quot;
+  }
+}
+</code></pre>
+<h3 id="signed-activity">Signed activity</h3>
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;https://w3id.org/security/data-integrity/v1&quot;
+  ],
+  &quot;id&quot;: &quot;https://server.example/activities/1&quot;,
+  &quot;type&quot;: &quot;Create&quot;,
+  &quot;actor&quot;: &quot;https://server.example/users/alice&quot;,
+  &quot;object&quot;: {
+    &quot;id&quot;: &quot;https://server.example/objects/1&quot;,
+    &quot;type&quot;: &quot;Note&quot;,
+    &quot;attributedTo&quot;: &quot;https://server.example/users/alice&quot;,
+    &quot;content&quot;: &quot;Hello world&quot;
+  },
+  &quot;proof&quot;: {
+    &quot;@context&quot;: [
+      &quot;https://www.w3.org/ns/activitystreams&quot;,
+      &quot;https://w3id.org/security/data-integrity/v1&quot;
+    ],
+    &quot;type&quot;: &quot;DataIntegrityProof&quot;,
+    &quot;cryptosuite&quot;: &quot;eddsa-jcs-2022&quot;,
+    &quot;verificationMethod&quot;: &quot;https://server.example/users/alice#ed25519-key&quot;,
+    &quot;proofPurpose&quot;: &quot;assertionMethod&quot;,
+    &quot;proofValue&quot;: &quot;...&quot;,
+    &quot;created&quot;: &quot;2023-02-24T23:36:38Z&quot;
+  }
+}
+</code></pre>
+<h3 id="signed-activity-with-embedded-signed-object">Signed activity with embedded signed object</h3>
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;https://w3id.org/security/data-integrity/v1&quot;,
+    {
+      &quot;object&quot;: {
+        &quot;@id&quot;: &quot;as:object&quot;,
+        &quot;@type&quot;: &quot;@json&quot;
+      }
+    }
+  ],
+  &quot;id&quot;: &quot;https://server.example/activities/1&quot;,
+  &quot;type&quot;: &quot;Create&quot;,
+  &quot;actor&quot;: &quot;https://server.example/users/alice&quot;,
+  &quot;object&quot;: {
+    &quot;@context&quot;: [
+      &quot;https://www.w3.org/ns/activitystreams&quot;,
+      &quot;https://w3id.org/security/data-integrity/v1&quot;
+    ],
+    &quot;id&quot;: &quot;https://server.example/objects/1&quot;,
+    &quot;type&quot;: &quot;Note&quot;,
+    &quot;attributedTo&quot;: &quot;https://server.example/users/alice&quot;,
+    &quot;content&quot;: &quot;Hello world&quot;,
+    &quot;proof&quot;: {
+      &quot;@context&quot;: [
+        &quot;https://www.w3.org/ns/activitystreams&quot;,
+        &quot;https://w3id.org/security/data-integrity/v1&quot;
+      ],
+      &quot;type&quot;: &quot;DataIntegrityProof&quot;,
+      &quot;cryptosuite&quot;: &quot;eddsa-jcs-2022&quot;,
+      &quot;verificationMethod&quot;: &quot;https://server.example/users/alice#ed25519-key&quot;,
+      &quot;proofPurpose&quot;: &quot;assertionMethod&quot;,
+      &quot;proofValue&quot;: &quot;...&quot;,
+      &quot;created&quot;: &quot;2023-02-24T23:36:38Z&quot;
+    }
+  },
+  &quot;proof&quot;: {
+    &quot;@context&quot;: [
+      &quot;https://www.w3.org/ns/activitystreams&quot;,
+      &quot;https://w3id.org/security/data-integrity/v1&quot;
+    ],
+    &quot;type&quot;: &quot;DataIntegrityProof&quot;,
+    &quot;cryptosuite&quot;: &quot;eddsa-jcs-2022&quot;,
+    &quot;verificationMethod&quot;: &quot;https://server.example/users/alice#ed25519-key&quot;,
+    &quot;proofPurpose&quot;: &quot;assertionMethod&quot;,
+    &quot;proofValue&quot;: &quot;...&quot;,
+    &quot;created&quot;: &quot;2023-02-24T23:36:38Z&quot;
+  }
+}
+</code></pre>
+<h2 id="test-vectors">Test vectors</h2>
+<p>See <a href="./fep-8b32.feature">fep-8b32.feature</a></p>
+<h2 id="_7">実装</h2>
+<ul>
+<li><a href="https://codeberg.org/silverpill/mitra/src/commit/f096ed54e350f4a0121289bcc0d1d5f83b5bbf8b/FEDERATION.md#object-integrity-proofs">Mitra</a></li>
+<li>Vervis
+  (<a href="https://codeberg.org/ForgeFed/Vervis/commit/e8e587af26944d3ea8d91f5c47cc3058cf261387">generation</a>,
+  <a href="https://codeberg.org/ForgeFed/Vervis/commit/621275e25762a1c1e5860d07a6ff87b147deed4f">verification</a>)</li>
+<li>Streams</li>
+<li><a href="https://hub.somaton.com/channel/mario?mid=4214a375-3a18-4acb-b546-75c6c4818e2f">Hubzilla</a></li>
+<li><a href="https://todon.eu/users/hongminhee/statuses/112638238338153870">Fedify</a></li>
+</ul>
+<h2 id="use-cases">Use cases</h2>
+<ul>
+<li><a href="https://www.w3.org/TR/activitypub/#inbox-forwarding">Forwarding from inbox</a></li>
+<li><a href="https://fediversity.site/help/develop/en/Containers">Conversation Containers</a></li>
+<li><a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/ef61/fep-ef61.md">FEP-ef61: Portable Objects</a></li>
+<li><a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/ae97/fep-ae97.md">FEP-ae97: Client-side activity signing</a></li>
+</ul>
+<h2 id="_8">参考文献</h2>
+<ul>
+<li>Christine Lemmer Webber, Jessica Tallon, <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>, 2018</li>
+<li>S. Bradner, <a href="https://tools.ietf.org/html/rfc2119.html">Key words for use in RFCs to Indicate Requirement Levels</a>, 1997</li>
+<li>Dave Longley, Manu Sporny, <a href="https://w3c.github.io/vc-data-integrity/">Verifiable Credential Data Integrity 1.0</a>, 2024</li>
+<li>Manu Sporny, Dave Longley, Markus Sabadello, Drummond Reed, Orie Steele, Christopher Allen, <a href="https://www.w3.org/TR/did-core/">Decentralized Identifiers (DIDs) v1.0</a>, 2022</li>
+<li>Dave Longley, Manu Sporny, Markus Sabadello, Drummond Reed, Orie Steele, Christopher Allen, <a href="https://www.w3.org/TR/controller-document/">Controller Documents 1.0</a>, 2024</li>
+<li>silverpill, <a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/521a/fep-521a.md">FEP-521a: Representing actor's public keys</a>, 2023</li>
+<li>Dave Longley, Manu Sporny, <a href="https://w3c.github.io/vc-di-eddsa/#eddsa-jcs-2022">Data Integrity EdDSA Cryptosuites v1.0</a>, 2024</li>
+<li>A. Rundgren, B. Jordan, S. Erdtman, <a href="https://www.rfc-editor.org/rfc/rfc8785">JSON Canonicalization Scheme (JCS)</a>, 2020</li>
+</ul>
+<h2 id="_9">著作権</h2>
+<p>CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン</p>
+<p>法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-888d/" class="btn btn-neutral float-left" title="FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-8c3f/" class="btn btn-neutral float-right" title="FEP-8c3f: Web Monetization">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-888d/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-8c3f/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

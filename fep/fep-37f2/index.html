@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-37f2: a policy for calls for consensus on SWICG group decisions - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-37f2: a policy for calls for consensus on SWICG group decisions";
+        var mkdocs_page_input_path = "fep/fep-37f2.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#proposal">Proposal</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#context">Context</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#w3c-groups-with-similar-decision-policies">W3C Groups with Similar Decision Policies</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#w3c-community-group-process">W3C Community Group Process</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#related-reading">Related Reading</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#editorial-notes">Editorial Notes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#copyright">Copyright</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-37f2: a policy for calls for consensus on SWICG group decisions</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-37f2.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-37f2-a-policy-for-calls-for-consensus-on-swicg-group-decisions">FEP-37f2: a policy for calls for consensus on SWICG group decisions</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-37f2.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p>A FEP proposing that W3C Social Web Incubator Community Group <a href="https://en.wikipedia.org/wiki/Harmonization_(standards)">harmonize</a> its process with other W3C Groups as well as the Fediverse Enhancement Process on socialhub.activitypub.rocks by:
+* posting Calls for Consensus on the SWICG mailing list public-swicg@w3.org
+* engaging other SWICG fora like socialhub.activitypub.rocks (linked to as "Forum" from the <a href="https://www.w3.org/community/socialcg/">SWICG Webpage</a>)
+* having a shared response period</p>
+<h2 id="introduction">Introduction</h2>
+<p>The Social Web Incubation Community Group is missing an explicit decision-making policy, which essentially all other W3C community groups have to ensure asynchronous and healthy consensus mechanisms across timezones and participatory modes.</p>
+<h2 id="proposal">Proposal</h2>
+<p><a href="SWICG">W3C SWICG</a> will seek to make decisions through consensus and due process, per the <a href="https://www.w3.org/2023/Process-20230612/#Consensus">W3C Process Document, §5.2.1 Consensus</a>.</p>
+<p>To afford asynchronous decisions and organizational deliberation, any resolution (including publication decisions) taken in a face-to-face meeting or teleconference will be considered provisional.</p>
+<p>A call for consensus (CFC) will be issued for all resolutions via email to <a href="mailto:public-swicg@w3.org">public-swicg@w3.org</a> (<a href="https://lists.w3.org/Archives/Public/public-swicg/">archives</a>). The presence of formal resolutions will be indicated by a "CFC" prefix in the subject line of the email. Additional outreach to community venues for more affirmative consent is strongly encouraged. There will be a response period of 14 days. If no sustained objections are raised by the end of the response period, the resolution will be considered to have consensus as a resolution of the Community Group, i.e. a group decision.</p>
+<p>All decisions made by the group should be considered resolved unless and until new information becomes available or unless reopened at the discretion of the Chairs or the Director.</p>
+<p>This policy is an operational agreement per the <a href="https://www.w3.org/community/about/process/">W3C Community and Business Group Process</a>.</p>
+<h2 id="context">Context</h2>
+<h3 id="w3c-groups-with-similar-decision-policies">W3C Groups with Similar Decision Policies</h3>
+<p>These community groups and working groups have similar decision policies with tentative meeting resolutions and confirmation of calls for consensus via email:</p>
+<ul>
+<li><a href="https://webassembly.github.io/cg-charter/#decision">WebAssembly Community Group Charter</a></li>
+<li><a href="https://www.w3.org/community/credentials/charter/">Credentials Community Group Charter</a> (see section "Transparency")</li>
+<li><a href="https://github.com/w3c/webextensions/blob/main/charter.md#decision-process">Web Extensions Community Group Charter</a></li>
+<li><a href="https://www.w3.org/2021/12/wot-ig-2021.html#decisions">Web of Things Interest Group Charter</a></li>
+<li><a href="https://www.w3.org/2022/06/html-wg-charter.html#decisions">HTML Working Group Charter</a></li>
+<li><a href="https://www.w3.org/2017/08/webplatform-charter.html#decisions">Web Platform Working Group Charter</a></li>
+<li><a href="https://www.w3.org/2022/04/webapps-wg-charter.html#decisions">Web Applications Working Group Charter</a></li>
+<li><a href="https://www.w3.org/2023/06/media-wg-charter.html#decisions">Media Working Group Charter</a></li>
+<li><a href="https://www.w3.org/2021/02/webperf.html#decisions">Web Performance Working Group Charter</a></li>
+<li><a href="https://www.w3.org/2023/01/sw-charter.html#decisions">Service Workers Working Group Charter</a></li>
+<li><a href="https://www.w3.org/2022/06/verifiable-credentials-wg-charter.html#decisions">Verifiable Credentials Working Group Charter</a></li>
+<li><a href="https://www.w3.org/2018/03/jsonld-wg-charter.html#decisions">JSON-LD Working Group Charter</a></li>
+<li><a href="https://www.w3.org/2020/03/webassembly-wg-charter.html#decisions">WebAssembly Working Group Charter</a></li>
+<li><a href="https://www.w3.org/2022/04/webauthn-wg-charter.html#decisions">Web Authentication Working Group Charter</a></li>
+<li><a href="https://www.w3.org/2022/07/immersive-web-wg-charter.html#decisions">Immersive Web Working Group Charter</a></li>
+<li><a href="https://www.w3.org/2017/08/webplatform-charter.html#decisions">Web Payments Working Group Charter</a></li>
+<li><a href="https://www.w3.org/2022/11/das-wg-charter.html#decisions">Devices and Sensors Working Group Charter</a></li>
+<li><a href="https://www.w3.org/2023/05/distributed-tracing-wg-charter.html#decisions">Distributed Tracing Working Group Charter</a></li>
+<li><a href="https://www.w3.org/2023/09/webediting-charter-2023.html#decisions">Web Editing Working Group Charter</a></li>
+<li><a href="https://www.w3.org/International/groups/wg/charter.html#decisions">Internationalization Working Group Charter</a></li>
+<li><a href="https://www.w3.org/2023/06/pmwg-charter.html#decisions">Publishing Maintenance Working Group Charter</a></li>
+<li><a href="https://www.w3.org/community/solid/charter/">Solid Community Group Charter</a> (see section "Decision Policy")</li>
+<li><a href="https://www.w3.org/2020/12/did-wg-charter.html#decisions">Decentralized Identifier Working Group Charter</a></li>
+</ul>
+<p>Proposal processes on SWICG Forum with identical response period:</p>
+<ul>
+<li><a href="https://socialhub.activitypub.rocks/t/fep-a4ed-the-fediverse-enhancement-proposal-process/1171/1">FEP-a4ed: The Fediverse Enhancement Proposal Process</a></li>
+</ul>
+<h3 id="w3c-community-group-process">W3C Community Group Process</h3>
+<p><a href="https://www.w3.org/community/socialcg/">W3C SWICG</a> is a W3C Community Group (CG).</p>
+<p>CGs are described in <a href="https://www.w3.org/community/about/process/">their process document</a> as follows (excerpted for concision):</p>
+<blockquote>
+<p>This document defines W3C Community Groups, where anyone may develop Specifications, hold discussions, develop tests, and so on, with no participation fee. …</p>
+<p>Community Groups that develop specifications do so under policies designed to strike a balance between ease of participation and safety for implementers and patent holders …</p>
+<p>A Community Group may adopt operational agreements&hellip; that establish the group’s scope of work, decision-making processes, communications preferences, and other operations. …</p>
+<p>The following rules govern Community Group operational agreements:
+* They must be publicly documented.
+* They must be fair and must not unreasonably favor or discriminate against any group participant or their employer.
+* They must not conflict with or modify this Community and Business Group Process, the <a href="https://www.w3.org/community/about/process/cla/">Community Contributor License Agreement (CLA)</a>, or the <a href="https://www.w3.org/community/about/process/final/">Final Specification Agreement</a>. …</p>
+<p>the Chair determines the means by which the group adopts and modifies operational agreements. The Chair must give actual notice to the participants of any material changes to the agreements. Participants may resign from the group if they do not wish to participate under the new agreements. …</p>
+<p><strong>Note</strong>: W3C encourages groups adopt decision-making policies that promote consensus. …</p>
+<p>Each Community Group must have at least one Chair who is responsible for ensuring the group fulfills the requirements of this document as well as the group’s operational agreements.</p>
+</blockquote>
+<h2 id="related-reading">Related Reading</h2>
+<ul>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc7282">IETF RFC7282 On Consensus and Humming in the IETF</a></li>
+<li>Doty, Nick, and Deirdre K. Mulligan. 2013. <a href="http://www.jthtl.org/content/articles/V11I1/JTHTLv11i1_MulliganDoty.PDF">"Internet Multistakeholder Processes and Techno-Policy Standards: Initial Reflections on Privacy at the World Wide Web Consortium"</a> Journal on Telecommunications and High Technology Law 11.</li>
+<li><a href="https://en.wikipedia.org/wiki/Harmonization_(standards)">Harmonization (standards), en.wikipedia.org</a></li>
+</ul>
+<h3 id="editorial-notes">Editorial Notes</h3>
+<p>The title of this proposal was generated in line with norms established by <a href="https://socialhub.activitypub.rocks/t/content-addressed-vocabulary-for-extensions/539/1">Content addressed vocabulary for extensions</a> and <a href="https://socialhub.activitypub.rocks/t/fep-a4ed-the-fediverse-enhancement-proposal-process/1171#proposal-title-and-identifier-5">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>.</p>
+<pre><code class="language-bash">⚡ P='a policy for calls for consensus on SWICG group decisions'
+⚡ echo &quot;SWIP-$(echo -n &quot;$P&quot; | sha256sum | cut -c-4): $P&quot;
+SWIP-37f2: a policy for calls for consensus on group decisions
+</code></pre>
+<p>The 'SW' in 'SWIP' stands for 'Social Web'.</p>
+<p>This proposal was initially published at:
+* https://socialweb.coop/SWIP/37f2/a-policy-for-calls-for-consensus-on-swicg-group-decisions/</p>
+<h2 id="copyright">Copyright</h2>
+<p>CC0 1.0 Universal (CC0 1.0) Public Domain Dedication</p>
+<p>To the extent possible under law, the authors of this Proposal have waived all copyright and related or neighboring rights to this work.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-3264/" class="btn btn-neutral float-left" title="FEP-3264: Federated Work Coordination"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-3b86/" class="btn btn-neutral float-right" title="FEP-3b86: Activity Intents">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-3264/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-3b86/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

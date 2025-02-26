@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-4adb: Dereferencing identifiers with webfinger - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-4adb: Dereferencing identifiers with webfinger";
+        var mkdocs_page_input_path = "fep/fep-4adb.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-4adb: Dereferencing identifiers with webfinger</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-algorithm">The algorithm</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">例</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#background">Background</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#applications-to-the-actor-object">Applications to the Actor Object</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#preferred-account">Preferred Account</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dns-names">DNS Names</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#using-didkey">Using did:key</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">著作権</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-4adb: Dereferencing identifiers with webfinger</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-4adb.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-4adb-dereferencing-identifiers-with-webfinger">FEP-4adb: Dereferencing identifiers with webfinger</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-4adb.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p>In this FEP, we will formalize the process of dereferencing an URI using webfinger in order for usage in ActivityPub. The main goal is to enable the usage of URIs of the form <code>acct:user@domain</code> or <code>did:example:12345</code> as ids for objects used in ActivityPub. While this FEP only discusses this in the context of actors, it should be applicable for general objects. In order for a smooth introduction, it is recommended to start deployment with actor objects.</p>
+<p>This FEP first presents the algorithm and examples, then discusses the usage in the context of the Fediverse. This means the first two sections are for people wanting to implement this FEP, the following sections are for people wanting to decide if this FEP is a good idea.</p>
+<h2 id="the-algorithm">The algorithm</h2>
+<p>[Webfinger] allows us to associate an ActivityStreams object with
+a pair given by an URI and a domain. This is done through the following steps:</p>
+<ol>
+<li>Fetch <code>GET https://domain/.well-known/webfinger?resource={URI}</code>.</li>
+<li>Determine the link property with <code>"type":"application/activity+json"</code>.</li>
+<li>Dereference this object.</li>
+</ol>
+<p>We will denote this object by <code>ActivityStreams(URI, domain)</code>. There are now two cases to resolve an URI:</p>
+<ol>
+<li>The URI determines the domain denoted by <code>domain(URI)</code></li>
+<li>The URI doesn't determine the domain</li>
+</ol>
+<p>In case 1, it is clear that we associate <code>ActivityStreams(URI, domain(URI))</code> to the URI. In case 2, we will use the domain associated with the <code>@id</code> of the document the document the URI appeared in. If the document was received through a POST request and doesn't contain an <code>id</code>, or the <code>id</code> is an URI, the domain the POST request originated from should be used. In this case a verification that the URI can be associated with the object MUST be performed. This can for example be achieved through <a href="../fep-c390/">FEP-c390</a>.</p>
+<h2 id="_1">例</h2>
+<p>We start with the <a href="https://www.rfc-editor.org/rfc/rfc7565.html">acct URI Scheme</a>. In order to deliver the activity</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;type&quot;: &quot;Follow&quot;,
+  &quot;actor&quot;: &quot;https://chatty.example/ben/&quot;,
+  &quot;object&quot;: &quot;acct:alyssa@social.example&quot;,
+  &quot;to&quot;: &quot;acct:alyssa@social.example&quot;,
+}
+</code></pre>
+<p>the ActivityPub server should perform the lookup for <code>ActivityStreams("acct:alyssa@social.example", "social.example")</code>, i.e. the request</p>
+<pre><code class="language-http">GET https://social.example/.well-known/webfinger?resource=acct:alyssa@social.example
+</code></pre>
+<p>We now turn our attention to <a href="https://www.w3.org/TR/did-core/">DIDs</a>.
+In order to resolve the author of</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://chatty.example/ben/456&quot;,
+  &quot;type&quot;: &quot;Note&quot;,
+  &quot;attributedTo&quot;: &quot;did:key:z6MkekwC6R9bj9ErToB7AiZJfyCSDhaZe1UxhDbCqJrhqpS5&quot;,
+  &quot;to&quot;: &quot;acct:alyssa@social.example&quot;,
+  &quot;content&quot;: &quot;Hello&quot;
+}
+</code></pre>
+<p>one has to resolve the URI <code>did:key:z6MkekwC6R9bj9ErToB7AiZJfyCSDhaZe1UxhDbCqJrhqpS5</code>. As this URI does not contain a domain, the domain from the id, i.e. <code>chatty.example</code> is used, so the request</p>
+<pre><code class="language-http">GET https://chatty.example/.well-known/webfinger?resource=did:key:z6MkekwC6R9bj9ErToB7AiZJfyCSDhaZe1UxhDbCqJrhqpS5
+</code></pre>
+<p>is made. The resulting ActivityStreams object should contain</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://chatty.example/bnm789&quot;,
+  &quot;attachment&quot;: {
+    &quot;type&quot;: &quot;VerifiableIdentityStatement&quot;,
+    &quot;subject&quot;: &quot;did:key:z6MkekwC6R9bj9ErToB7AiZJfyCSDhaZe1UxhDbCqJrhqpS5&quot;,
+    &quot;alsoKnownAs&quot;: &quot;https://chatty.social/bnm789&quot;,
+    &quot;proof&quot;: { ... }
+  },
+  ...
+}
+</code></pre>
+<p>following <a href="../fep-c390/">FEP-c390</a> so that the authority of ben to use the did can be verified.</p>
+<h2 id="background">Background</h2>
+<p>Let's start with <a href="https://www.w3.org/TR/activitypub/#obj-id">Section 3.1</a> of ActivityPub. It starts with the sentence</p>
+<blockquote>
+<p>All Objects in [ActivityStreams] should have unique global identifiers.</p>
+</blockquote>
+<p>We first note that the word <em>unique</em> does not appear in [ActivityStreams]. Second it is unclear why it is there and what it means:</p>
+<ul>
+<li>Does it mean that there is exactly one identifier associated with the object?</li>
+<li>Does it mean that the global identifier is only used for one object?</li>
+</ul>
+<p>We will assume that it is the second interpretation. In particular, this means that we can associated multiple identifiers with the same ActivityStreams object.</p>
+<p>Next comes the following line in [ActivityPub]</p>
+<blockquote>
+<p>Publicly dereferencable URIs, such as HTTPS URIs, with their authority belonging to that of their originating server. (Publicly facing content SHOULD use HTTPS URIs).</p>
+</blockquote>
+<p>The essential point of this FEP is to extend the range of <em>publicly dereferencable URIs</em> to contain basically any URI by using [Webfinger].</p>
+<p>The current usage of Webfinger in the Fediverse is asymmetric. As discussed in <a href="https://guide.toot.as/guide/use-your-own-domain/">MastoGuide</a>, one can associate many URIs of the form <code>acct:user@domain.tld</code> with the same Actor, by just making webfinger return an appropriate response. However, only one acct-URI can be associated with an Actor. This is done by:</p>
+<pre><code class="language-uri">acct:{preferredUsername}@{domain of actor id}
+</code></pre>
+<p>where <code>preferredUsername</code> is from the actor object.</p>
+<h2 id="applications-to-the-actor-object">Applications to the Actor Object</h2>
+<p>We now discuss applications of the approach of this FEP to the actor object.</p>
+<h3 id="preferred-account">Preferred Account</h3>
+<p>We will follow <a href="https://socialhub.activitypub.rocks/t/alsoknownas-and-acct/3132/20?u=helge">this suggestion</a> in [alsoKnownAs and acct:]. The main idea is to associate multiple accounts. For this, we will return to <code>alyssa@social.example</code>, whose Actor object would look like the following omitting irrelevant details</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://social.example/abc123&quot;,
+  &quot;preferredUsername&quot;: &quot;alyssa&quot;,
+  ...
+}
+</code></pre>
+<p>By the algorithm discussed in background, we can associate the URI <code>acct:alyssa@social.example</code> with this. Suppose now that Alyssa owns the domain <code>alyssa.cool</code>, and set up WebFinger to answer to</p>
+<pre><code class="language-http">GET https://alyssa.cool/.well-known/webfinger?resource=me@alyssa.cool
+</code></pre>
+<p>with a link to the above actor. Alyssa would then be disappointed because Fediverse software is not displaying her cooler username. To remedy this, we propose the addition to the actor object</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    {
+      &quot;xrd&quot;: &quot;http://docs.oasis-open.org/ns/xri/xrd-1.0#&quot;,
+      &quot;aliases&quot;: {
+        &quot;@id&quot;: &quot;xrd:Alias&quot;,
+        &quot;@type&quot;: &quot;@id&quot;,
+        &quot;@container&quot;: &quot;@list&quot;
+      },
+    }
+  ],
+  &quot;id&quot;: &quot;https://social.example/abc123&quot;,
+  &quot;preferredUsername&quot;: &quot;alyssa&quot;,
+  &quot;aliases&quot;: [&quot;acct:me@alyssa.cool&quot;, &quot;acct:alyssa@social.example&quot;],
+  ...
+}
+</code></pre>
+<p>a new generation of Fediverse software will then be able to display the account of Alyssa as <code>me@alyssa.cool</code>.</p>
+<h3 id="dns-names">DNS Names</h3>
+<p>Continuing with Alyssa from above, by relying on <a href="../fep-612d/">FEP-612d</a>, she may even associate <code>@alyssa.cool</code> with her account. Unfortunately, a proper URI format is still missing.</p>
+<h3 id="using-didkey">Using did:key</h3>
+<p>Let's return to Ben and him wanting to use a decentralized identifier, see <a href="https://www.w3.org/TR/did-core/">did-core</a> and <a href="https://w3c-ccg.github.io/did-method-key/">did-method-key</a></p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    {
+      &quot;xrd&quot;: &quot;http://docs.oasis-open.org/ns/xri/xrd-1.0#&quot;,
+      &quot;aliases&quot;: {
+        &quot;@id&quot;: &quot;xrd:Alias&quot;,
+        &quot;@type&quot;: &quot;@id&quot;,
+        &quot;@container&quot;: &quot;@list&quot;
+      },
+    }
+  ],
+  &quot;id&quot;: &quot;https://chatty.social/bnm789&quot;,
+  &quot;preferredUsername&quot;: &quot;ben&quot;,
+  &quot;aliases&quot;: [&quot;did:key:z6MkekwC6R9bj9ErToB7AiZJfyCSDhaZe1UxhDbCqJrhqpS5&quot;, &quot;acct:ben@chatty.social&quot;],
+  ...
+}
+</code></pre>
+<p>The problem here is that, we do not know if the the did-key belongs to BEN. To remedy this, we will use <a href="../fep-c390/">FEP-c390</a>. This means that we need to add</p>
+<pre><code class="language-json">    &quot;attachment&quot;: {
+        &quot;type&quot;: &quot;VerifiableIdentityStatement&quot;,
+        &quot;subject&quot;: &quot;did:key:z6MkekwC6R9bj9ErToB7AiZJfyCSDhaZe1UxhDbCqJrhqpS5&quot;,
+        &quot;alsoKnownAs&quot;: &quot;https://chatty.social/bnm789&quot;,
+        &quot;proof&quot;: { ... }
+    }
+</code></pre>
+<p>with an appropriate proof to Ben's actor object.</p>
+<h2 id="_2">参考文献</h2>
+<ul>
+<li>[acct URI Scheme] P. Saint-Andre <a href="https://www.rfc-editor.org/rfc/rfc7565.html">RFC 7565</a>, 2015</li>
+<li>[ActivityPub] Christine Lemmer Webber, Jessica Tallon, <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>, 2018</li>
+<li>[ActivityStreams] J. Snell, E. Prodromou, <a href="https://www.w3.org/TR/activitystreams-core/">ActivityStreams</a>, 2017</li>
+<li><a href="https://socialhub.activitypub.rocks/t/alsoknownas-and-acct/3132?u=helge">alsoKnownAs and acct:</a> on SocialHub</li>
+<li>[did-core] Manu Sporny, Dave Longley, Markus Sabadell, Drummond Reed, Orie Steele, Christopher Allen, <a href="https://www.w3.org/TR/did-core/">Decentralized Identifiers</a> (DIDs) v1.0, 2022</li>
+<li>[did-method-key], Dave Longley, Dmitri Zagidulin, Manu Sporny, <a href="https://w3c-ccg.github.io/did-method-key/">did-method-key</a> 20221</li>
+<li>[FEP-c390] silverpill, <a href="../fep-c390/">FEP-c390</a>, 2022</li>
+<li>[FEP-612d] Helge, <a href="../fep-612d/">FEP-612d</a> 2023</li>
+<li>[MastoGuide] jippi  <a href="https://guide.toot.as/guide/use-your-own-domain/">Use your own user @ domain for Mastodon discoverability</a></li>
+<li>[Webfinger] P. Jones, G. Salgueiro, M. Jones, J. Smarr, <a href="https://datatracker.ietf.org/doc/html/rfc7033">RFC 7033</a>,2013</li>
+</ul>
+<h2 id="_3">著作権</h2>
+<p>CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン</p>
+<p>法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-400e/" class="btn btn-neutral float-left" title="FEP-400e: Publicly-appendable ActivityPub collections"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-4ccd/" class="btn btn-neutral float-right" title="FEP-4ccd: Pending Followers Collection and Pending Following Collection">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-400e/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-4ccd/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

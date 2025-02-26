@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub";
+        var mkdocs_page_input_path = "fep/fep-ae0c.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#terminology">Terminology</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mastodon-relay-protocol">Mastodon Relay Protocol</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#relay-client-actor">Relay Client Actor</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#relay-subscription">Relay Subscription</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#relay-unsubscription">Relay Unsubscription</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#publishing-messages-to-a-relay">Publishing Messages to a Relay</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#receiving-messages-from-relays">Receiving Messages from Relays</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#relay-server-actor">Relay Server Actor</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#follow">Follow</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#undofollow">Undo/Follow</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#activity-relaying">Activity Relaying</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mastodon-ld-signatures">Mastodon LD Signatures</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#signing-a-json-ld-activity">Signing a JSON-LD Activity</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#verifying-a-json-ld-signature">Verifying a JSON-LD Signature</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#litepub-relay-protocol">LitePub Relay Protocol</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#relay-client">Relay Client</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#relay-subscription_1">Relay Subscription</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#relay-unsubscription_1">Relay Unsubscription</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#publishing-messages-to-a-relay_1">Publishing Messages to a Relay</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#receiving-messages-from-a-relay">Receiving Messages from a Relay</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#other-relay-server-considerations">Other Relay Server Considerations</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#webfinger">WebFinger</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#nodeinfo">NodeInfo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#optional-relay-server-behaviors">Optional Relay Server Behaviors</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">著作権</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-ae0c.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-ae0c-fediverse-relay-protocols-mastodon-and-litepub">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-ae0c.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p>Relays are important components within the decentralized Fediverse architecture. They act as intermediary servers that facilitate communication between different instances, enabling users on Fediverse platforms to share public content without requiring actor following relationships.</p>
+<p>These relays benefit small instances by enabling them to effectively participate in the federated social network, both as consumers and producers of Fediverse content. </p>
+<p>Several styles of relays existing in the Activity Fediverse. This FEP describe two popular styles of relays:</p>
+<ul>
+<li><a href="#mastodon-relay-protocol">Mastodon-style relays</a></li>
+<li><a href="#litepub-relay-protocol">LitePub-style relays</a></li>
+</ul>
+<p><em>NOTE: This is an informational FEP documenting the current status quo. It uses <a href="https://datatracker.ietf.org/doc/html/rfc2119">RFC-2119</a> requirements keywords only as a convenience. Also, these are not standardized protocols. They will generally not be conformant with the ActivityPub standard although they use some concepts from it.</em></p>
+<h2 id="terminology">Terminology</h2>
+<p>For the purposes of this document, the following terminology will be used:</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>relay client actor</strong></td>
+<td>An actor in a server that is a Relay Server subscriber. May also be referred to as a <em>client actor</em>.</td>
+</tr>
+<tr>
+<td><strong>relay client server</strong></td>
+<td>A server hosting one or more Relay Client Actors. May also be referred to as a <em>client server</em>.</td>
+</tr>
+<tr>
+<td><strong>relay subscription</strong></td>
+<td>A relationship established between a Relay Client Actor and a Relay Server using an <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a> <code>Follow</code> activity.</td>
+</tr>
+<tr>
+<td><strong>relay server actor</strong></td>
+<td>An actor in a server that provides relaying of messages between Relay Client Actors. May also be referred to as a <em>relay actor</em>.</td>
+</tr>
+<tr>
+<td><strong>relay server</strong></td>
+<td>A server hosting one or more Relay Server Actors. May also be referred to as a <em>relay server</em> or a <em>relay</em>.</td>
+</tr>
+<tr>
+<td><strong><a href="https://docs.joinmastodon.org/spec/security/#http">HTTP Signature</a></strong></td>
+<td>HTTP-based signature (Cavage) used to verify message sender and contents.</td>
+</tr>
+<tr>
+<td><strong><a href="https://docs.joinmastodon.org/spec/security/#ld">LD Signature</a></strong></td>
+<td>JSON-LD signature used to verify messages regardless of transport.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mastodon-relay-protocol">Mastodon Relay Protocol</h2>
+<p>The Mastodon relay protocol relies on LD Signatures to verify relayed messages. This allows Mastodon to verify the relayed message although it is being sent by a different actor (the relay server actor).</p>
+<h3 id="relay-client-actor">Relay Client Actor</h3>
+<p>A Relay Client Actor establishes following relationship with a relay server actor and then processes relayed messages sent to the actor's <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a> inbox. The relay client server will add the relay inboxes to the delivery target for content with public visibility.</p>
+<h4 id="relay-subscription">Relay Subscription</h4>
+<p>Mastodon will POST an ActivityPub <code>Follow</code> request to the relay ActivityPub <code>inbox</code> URI. The <code>object</code> of the <code>Follow</code> request MUST be the fully expanded URI of the Public pseudo-collection (<code>https://www.w3.org/ns/activitystreams#Public</code>). The relay then responds to the  <code>Follow</code> request with an <code>Accept</code> or <code>Reject</code> activity. The response time for the acknowledgement can be arbitrarily long since the subscription MAY require manual approval. </p>
+<p>The request MUST be signed using the same <a href="https://docs.joinmastodon.org/spec/security/#http">HTTP Signature</a> (Cavage) algorithms that Mastodon uses for ActivityPub federation. The relay will fetch the relay client actor document to obtain the actor's public key. For best interoperability, the actor ActivityPub document SHOULD be Mastodon-compatible. For example, <code>preferredUsername</code> SHOULD be provided in addition to all actor fields required by <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a> and the actor SHOULD provide a <code>sharedInbox</code> endpoint URL.</p>
+<p>The relay client actor type SHOULD accurately reflect the actor type. However, note that some relay server implementations constrain the ActivityPub type of a client actor. For example, the relay server implementation might require the client actor to be an <code>Application</code> type and reject other types.</p>
+<p><strong>Example Follow Request</strong></p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;id&quot;: &quot;https://client.example/6ae15297&quot;,
+    &quot;type&quot;: &quot;Follow&quot;,
+    &quot;actor&quot;: &quot;https://client.example/actor&quot;,
+    &quot;object&quot;: &quot;https://www.w3.org/ns/activitystreams#Public&quot;
+}
+</code></pre>
+<p><strong>Example Follow Accept Response</strong></p>
+<p>The <code>Accept</code> activity MAY respond with the accepted <code>Follow</code> activity URI as the <code>object</code> or it may embed a copy of the original <code>Follow</code> activity. A <code>Reject</code> activity will have a similar structure.</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;id&quot;: &quot;https://relay.example/15c0b99f-23d4-4488-ba9d-d0c7bc2876a5&quot;,
+    &quot;type&quot;: &quot;Accept&quot;,
+    &quot;actor&quot;: &quot;https://relay.example/actor&quot;,
+    &quot;object&quot;: {
+        &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+        &quot;id&quot;: &quot;https://client.example/6ae15297&quot;,
+        &quot;type&quot;: &quot;Follow&quot;,
+        &quot;actor&quot;: &quot;https://client.example/actor&quot;,
+        &quot;object&quot;: &quot;https://www.w3.org/ns/activitystreams#Public&quot;
+    }
+}
+</code></pre>
+<h4 id="relay-unsubscription">Relay Unsubscription</h4>
+<p>To unsubscribe from a relay send an <code>Undo</code> with the original <code>Follow</code> activity (embedded, or the URI) as the <code>object</code>. There is typically no response to the <code>Undo</code>.</p>
+<p><strong>Example Undo/Follow Request</strong></p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: &quot;https: //www.w3.org/ns/activitystreams&quot;,
+    &quot;id&quot;: &quot;https://client.example/3f5ebd6d&quot;,
+    &quot;type&quot;: &quot;Undo&quot;,
+    &quot;actor&quot;: &quot;https://client.example/actor&quot;,
+    &quot;published&quot;: &quot;2024-10-14T14:42:17.650139+00:00&quot;,
+    &quot;object&quot;: &quot;https://client.example/6ae15297&quot;
+}
+</code></pre>
+<h4 id="publishing-messages-to-a-relay">Publishing Messages to a Relay</h4>
+<p>To publish an activity to a Mastodon-style relay, the publisher MUST sign the message using the Mastodon-specific <a href="https://docs.joinmastodon.org/spec/security/#ld">LD Signature</a> algorithm. The benefit of using LD Signatures is that the receiving servers can verify the message content without refetching from the client server. This lowers the server load on the client server.</p>
+<p>The disadvantage is that the LD Signatures are not easy to implement and Mastodon uses an outdated nonstandard form of the algorithm. The Mastodon documentation recommends not supporting LD Signatures for these reasons.
+Furthermore, the Mastodon documentation does not accurately describe the LD Signature algorithm it implements. For more details, see the additional information about <a href="#mastodon-ld-signatures">Mastodon LD Signatures</a> in this document.</p>
+<p>The posted activity MUST be signed with a Mastodon-compatible <a href="https://docs.joinmastodon.org/spec/security/#http">HTTP Signature</a>.</p>
+<p>Mastodon will relay the following activity types: <code>Create</code>, <code>Update</code>, <code>Delete</code>, <code>Move</code>. A relay actor MAY only forward those types although Mastodon will <em>accept</em> other relayed activities, such as <code>Announce</code>, without an LD Signature. In the <code>Announce</code> case, it will fetch the announced <code>object</code>.</p>
+<h4 id="receiving-messages-from-relays">Receiving Messages from Relays</h4>
+<p>Relayed messages are posted to the relay client actor's <code>inbox</code>. Relayed messages MUST have an HTTP Signature signed by the Relay Actor.</p>
+<p>Messages received from Relay Server Actors MAY have an LD Signature. If the HTTP Signature and the LD Signature are both present, the activity <code>actor</code> becomes the effective sender after LD Signature verification.</p>
+<p>If no LD Signature is present and the received message is an <code>Announce</code> activity, then a relay client MUST ensure the content is legitimate (not spoofed). This may be done by fetching the announced activity from the originating server or using remote content from a local cache. However, if the announced activity is already locally cached, then there would typically be no processing to be done with it since it is already known to the client server.</p>
+<p>A client server receiving a relayed message MAY also deliver the messages to local recipients based on the ActivityPub audience targeting properties.</p>
+<h3 id="relay-server-actor">Relay Server Actor</h3>
+<p>The following behaviors describe the typical implementation of a Mastodon-style relay server actor.</p>
+<h4 id="follow">Follow</h4>
+<p>Ensure that <code>https://www.w3.org/ns/activitystreams#Public</code> is in the <code>object</code> property. Use the <code>actor</code> as the relay client actor URI and save the information about the subscriber. The relay server MAY decide to deny access based on factors like the signer's domain.</p>
+<h4 id="undofollow">Undo/Follow</h4>
+<p>Verify that the <code>actor</code> is a known relay client and, if so, remove the client actor from the set of relay actor followers.</p>
+<h4 id="activity-relaying">Activity Relaying</h4>
+<p>When a message is received from a client actor, the relay MUST verify the HTTP Signature of the activity and identify the originating actor. If the message is valid, it is then posted (with the relay actor's HTTP Signature) to the inboxes of the relay's followers. No delivery is performed based on the ActivityPub audience targeting properties. The relay MUST not send the relayed message to the originating relay client actor.</p>
+<p>Typically a message is forwarded unchanged. However, a relay MAY do other processing on the message, such as wrapping a message without an LD Signature using an ActivityPub <code>Announce</code> activity before forwarding it (See <a href="https://github.com/noellabo/pub-relay">pub-relay</a>). Extended behaviors like this are not described in this FEP.</p>
+<p>A relay actor SHOULD only relay messages from followers. A relay actor SHOULD only relay activities that it hasn't already relayed. Addressing properties, like <code>to</code>, MUST be in a list even for a single URI.</p>
+<h3 id="mastodon-ld-signatures">Mastodon LD Signatures</h3>
+<p><em>Note that the <a href="https://docs.joinmastodon.org/spec/security/#ld">Mastodon documentation</a> for their LD Signatures is incomplete and inaccurate. This section provides more details, but it may be necessary to review the Mastodon source code for additional clarification.</em></p>
+<p>An activity signed with a Mastodon LD Signature will have a signature document in the activity (using the <code>signature</code> property).</p>
+<p><strong>Example Signature Document</strong></p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https: //www.w3.org/ns/activitystreams&quot;,
+    &quot;https://w3id.org/security/v1&quot;
+  ],
+  &quot;id&quot;: &quot;https://client.example/3f5ebd6d&quot;,
+  # ...
+  &quot;signature&quot;: {
+      &quot;type&quot;: &quot;RsaSignature2017&quot;,
+      &quot;creator&quot;: &quot;https://client.example/actor#main-key&quot;,
+      &quot;created&quot;: &quot;2024-12-08T03:48:33.901Z&quot;,
+      &quot;signatureValue&quot;: &quot;s69F3mfddd99dGjmvjdjjs81e12jn121Gkm1&quot;
+  }
+}
+</code></pre>
+<p>The <code>https://w3id.org/security/v1</code> JSON-LD context defines the <code>signature</code> and related properties, but is not used by Mastodon for LD Signature processing.</p>
+<p>When performing signature operations the signature document and the activity (without the signature document) are initially processed (hashed) separately. The SHA256 hash digests are concatenated that string is then signed.</p>
+<h4 id="signing-a-json-ld-activity">Signing a JSON-LD Activity</h4>
+<ol>
+<li>Create a signature document with only the <code>creator</code> and <code>created</code> properties. Set the <code>@context</code> to <code>https://w3id.org/identity/v1</code>. (Note that this context doesn't appear to be accessible on the web any more. You may need a local copy with a custom JSON-LD context loader.) </li>
+<li>Create a canonical RDF representation of the signature document. This requires JSON-LD expansion using standard algorithms (<a href="https://www.w3.org/2018/jsonld-cg-reports/json-ld-api/">JSON-LD-ALGO</a>) and conversion to RDF using the <strong>Universal RDF Dataset Canonicalization Algorithm 2015</strong> (<a href="https://www.w3.org/community/reports/credentials/CG-FINAL-rdf-dataset-canonicalization-20221009/#canonicalization">RDF-CANON</a>). The serialized RDF is then hashed using <a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf">SHA256</a> and a hexdigest is created.</li>
+<li>Create a SHA256 hex digest for the activity document (without the signature document) using a similar procedure.</li>
+<li>Concatenate the SHA256 hex digests for the signature and activity documents and sign the result using SHA256 and the client actor's private key.</li>
+<li>Encode the signature using <a href="https://en.wikipedia.org/wiki/Base64">Base64</a> and set the <code>signatureValue</code> of the signature document to the result. </li>
+<li>Set the signature document <code>type</code> to "RsaSignature2017". </li>
+<li>Set the <code>signature</code> property of the activity to the signature document.</li>
+</ol>
+<h4 id="verifying-a-json-ld-signature">Verifying a JSON-LD Signature</h4>
+<ol>
+<li>The signature document is retrieved from the activity and the type is checked to be the nonstandard "RsaSignature2017". If not, verification fails.</li>
+<li>Save the <code>signatureValue</code> from the signature document.</li>
+<li>Remove the <code>type</code> and <code>id</code> and <code>signatureValue</code> properties from the signature document and generate a SHA256 hex digest for the modified signature document using the procedure described for signing documents.</li>
+<li>Remove the <code>signature</code> from the activity and generate a SHA256 hex digest for it.</li>
+<li>Concatenate the hex digests for the modified signature and activity documents.</li>
+<li>Use the client's public key to verify the signature using SHA256.</li>
+</ol>
+<h2 id="litepub-relay-protocol">LitePub Relay Protocol</h2>
+<p>The <a href="https://litepub.social/">LitePub</a> protocol is based on <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a> and is used in Pleroma-compatible servers. The reference implementation is the <a href="https://git.pleroma.social/pleroma/relay">Pleroma Relay</a>.</p>
+<h3 id="relay-client">Relay Client</h3>
+<p>A LitePub relay client actor must have a type of <code>Application</code> and an actor ID ending with <code>/relay</code>. For best interoperability, it should be compatible with Mastodon actor documents and have WebFinger support. Other implementations may use different actor ID structures (e.g., AodeRelay apparently uses <code>/actor</code> and works with Pleroma). General relay interoperability of these LitePub variants is not known.</p>
+<h4 id="relay-subscription_1">Relay Subscription</h4>
+<p>The client relay actor will send a <code>Follow</code> to the relay server. The <code>Follow</code> <code>object</code> is the relay server actor URI.</p>
+<p>The relay server MUST respond to the <code>Follow</code> request with an <code>Accept</code> or <code>Reject</code>. If accepted, the relay server sends a reciprocal <code>Follow</code> request for the LitePub client actor. The client server SHOULD respond with <code>Accept</code> or <code>Reject</code> activity. A relay server MAY decide to ignore the subscription if no acknowledgement is received within a reasonable time interval.</p>
+<p><strong>Example Relay Follow Request</strong></p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: [
+        &quot;https://www.w3.org/ns/activitystreams&quot;,
+        &quot;https://pleroma.example/schemas/litepub-0.1.jsonld&quot;,
+        {
+            &quot;@language&quot;: &quot;und&quot;
+        }
+    ],
+    &quot;actor&quot;: &quot;https://pleroma.example/relay&quot;,
+    &quot;bcc&quot;: [],
+    &quot;bto&quot;: [],
+    &quot;cc&quot;: [],
+    &quot;id&quot;: &quot;https://pleroma.example/activities/3fe13910-73f4-4cdc-9c84-ec7013a3e764&quot;,
+    &quot;object&quot;: &quot;https://relay.example/actor&quot;,
+    &quot;state&quot;: &quot;pending&quot;,
+    &quot;to&quot;: [
+        &quot;https://relay.example/actor&quot;
+    ],
+    &quot;type&quot;: &quot;Follow&quot;
+}
+</code></pre>
+<p>Notes:
+1. The JSON-LD context is not valid for JSON-LD processing. The litepub-0.1.jsonld document contains an invalid WebFinger-related context URL.
+2. The <code>state</code> property is not defined in the JSON-LD context.</p>
+<h4 id="relay-unsubscription_1">Relay Unsubscription</h4>
+<p>To unsubscribe from a relay send an <code>Undo</code> with the original <code>Follow</code> activity as the <code>object</code>. There is typically no response to the <code>Undo</code>.</p>
+<p><strong>Example Undo/Follow Request</strong></p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: [
+        &quot;https://www.w3.org/ns/activitystreams&quot;,
+        &quot;https://pleroma.example/schemas/litepub-0.1.jsonld&quot;,
+        {
+            &quot;@language&quot;: &quot;und&quot;
+        }
+    ],
+    &quot;id&quot;: &quot;https://pleroma.example/activities/cf9c85e9-f83f-4a02-b598-880f15423f68&quot;,
+    &quot;object&quot;: {
+        &quot;actor&quot;: &quot;https://pleroma.example/relay&quot;,
+        &quot;bcc&quot;: [],
+        &quot;bto&quot;: [],
+        &quot;cc&quot;: [],
+        &quot;context&quot;: &quot;https://pleroma.example/contexts/d493d02b-7cc9-49dc-995c-d949af0b5417&quot;,
+        &quot;id&quot;: &quot;https://pleroma.example/activities/3fe13910-73f4-4cdc-9c84-ec7013a3e764&quot;,
+        &quot;object&quot;: &quot;https://relay.example/actor&quot;,
+        &quot;published&quot;: &quot;2024-10-18T14:04:11.029802Z&quot;,
+        &quot;state&quot;: &quot;cancelled&quot;,
+        &quot;to&quot;: [
+            &quot;https://relay.example/actor&quot;
+        ],
+        &quot;type&quot;: &quot;Follow&quot;
+    },
+    &quot;published&quot;: &quot;2024-10-18T14:04:11.029791Z&quot;,
+    &quot;to&quot;: [ &quot;https://relay.example/actor&quot; ],
+    &quot;cc&quot;: [],
+    &quot;type&quot;: &quot;Undo&quot;,
+    &quot;actor&quot;: &quot;https://pleroma.example/relay&quot;,
+    &quot;context&quot;: &quot;https://pleroma.example/contexts/d493d02b-7cc9-49dc-995c-d949af0b5417&quot;
+}
+</code></pre>
+<h4 id="publishing-messages-to-a-relay_1">Publishing Messages to a Relay</h4>
+<p>A LitePub relay client actor will send an <code>Announce</code> for a relayed object (like a <code>Note</code>). For best interoperability <code>Announce</code> should refer to the announced object using an URI (instead of embedding the object).</p>
+<p>The <code>Announce</code> activity MUST be address to the relay server actor's followers collection. (TODO it's not known if the admin addressing is also required). The <code>published</code> property should be included since some relay server will reject activities without it.</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: [
+        &quot;https://www.w3.org/ns/activitystreams&quot;,
+        &quot;https://pleroma.example/schemas/litepub-0.1.jsonld&quot;,
+        {
+            &quot;@language&quot;: &quot;und&quot;
+        }
+    ],
+    &quot;actor&quot;: &quot;https://pleroma.example/relay&quot;,
+    &quot;to&quot;: [
+        &quot;https://pleroma.example/relay/followers&quot;,
+        &quot;https://pleroma.example/users/admin&quot;
+    ],
+    &quot;bto&quot;: [],
+    &quot;cc&quot;: [],
+    &quot;context&quot;: &quot;https://pleroma.example/contexts/a59117d9-7f7c-48ec-83b4-5e183e7179b5&quot;,
+    &quot;id&quot;: &quot;https://pleroma.example/activities/e24e46a2-8926-4a20-9f5f-638e06102159&quot;,
+    &quot;object&quot;: &quot;https://pleroma.example/objects/c13bba3c-e7c1-45ac-939f-aa292d23ee8c&quot;,
+    &quot;published&quot;: &quot;2024-10-18T14:06:37.736295Z&quot;,
+    &quot;type&quot;: &quot;Announce&quot;
+}
+</code></pre>
+<h4 id="receiving-messages-from-a-relay">Receiving Messages from a Relay</h4>
+<p>Messages received from a relay are typically wrapped in an <code>Announce</code> activity. AFter the <code>object</code> of the announce is fetched and validated, it is displayed on the federated timeline. It appears that <code>Pleroma</code> will accept a relayed <code>Create</code> activity (for Mastodon compatibility), but will refetch the <code>Create</code> <code>object</code> since the LD Signature isn't processed. (TODO verify this behavior.)</p>
+<h2 id="other-relay-server-considerations">Other Relay Server Considerations</h2>
+<p>The relay server hosting relay actors will have other functionality other than activity relaying.</p>
+<h3 id="webfinger">WebFinger</h3>
+<p>A relay server MUST implement <a href="https://www.rfc-editor.org/rfc/rfc7033">WebFinger</a> support for relay actors. This is necessary because of Mastodon's actor fetching implementation. It's possible that it's not required for LitePub-only relay servers.</p>
+<h3 id="nodeinfo">NodeInfo</h3>
+<p>A relay server MAY implement <a href="https://github.com/jhass/nodeinfo">NodeInfo</a> to advertise server activity and metadata.</p>
+<h3 id="optional-relay-server-behaviors">Optional Relay Server Behaviors</h3>
+<p>A relay server MAY support multiple relay protocols. However, there is no standard way to advertise those capabilities.</p>
+<p>A relay server often hosts a single actor, but any number of relay actors may be hosted. For example, a relay server may have a relay actor for specific topics, hashtags, or moderation categories. A relay client can subscribe to any number of relay actors in a given server.</p>
+<p>Some servers implement dynamic relay actor creation. A relay actor's <code>inbox</code> URI might be based on a hashtag or a topic name. When a client actor subscribes to this kind of inbox URI, the relay actor is created automatically. Obviously, there are risks to this approach when used by misbehaved clients.</p>
+<h2 id="_1">参考文献</h2>
+<ul>
+<li>Christine Lemmer Webber, Jessica Tallon, <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>, 2018</li>
+<li>James M Snell, Evan Prodromou, <a href="https://www.w3.org/TR/activitystreams-vocabulary">Activity Vocabulary</a>, 2017</li>
+<li>Mastodon Documentation, <a href="https://docs.joinmastodon.org/spec/security/#ld">LD Signatures</a>, <a href="https://docs.joinmastodon.org/spec/security/#http">HTTP Signatures</a></li>
+<li>S. Bradner, Key words for use in RFCs to Indicate Requirement Levels, <a href="https://datatracker.ietf.org/doc/html/rfc2119">RFC-2119</a>, 1997</li>
+<li>Matthew Sporny, Dave Longley, JSON-LD 1.1, <a href="https://www.w3.org/TR/json-ld11/">JSON-LD</a>, 2020</li>
+<li>Dave Longley, Gregg Kellogg, JSON-LD 1.1 Processing Algorithms and API, <a href="https://www.w3.org/2018/jsonld-cg-reports/json-ld-api/">JSON-LD-ALGO</a>, 2018</li>
+<li>Graham Klyne, Jeremy J. Carroll, RDF 1.1 Concepts and Abstract Syntax, <a href="https://www.w3.org/TR/rdf11-concepts/">RDF</a>, 2014</li>
+<li>Dave Longley, RDF Dataset Canonicalization, (URDNA2015) <a href="https://www.w3.org/community/reports/credentials/CG-FINAL-rdf-dataset-canonicalization-20221009/#canonicalization">RDF-CANON</a>, 2022</li>
+<li>NIST, Secure Hash Standard (SHS), <a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf">SHA256</a>, 2015</li>
+<li>Wikipedia, <a href="https://en.wikipedia.org/wiki/Base64">Base64</a></li>
+<li>P. Jones, WebFinger, RFC-7033 <a href="https://www.rfc-editor.org/rfc/rfc7033">WebFinger</a>, 2013 </li>
+<li>Jonne Haß, <a href="https://github.com/jhass/nodeinfo">NodeInfo</a>, GitHub</li>
+<li>Pleroma Relay, <a href="https://git.pleroma.social/pleroma/relay">pleroma-relay</a></li>
+<li>LitePub Protocol Suite, <a href="https://litepub.social/">litepub</a></li>
+<li>Takeshi Umeda, pub-relay <a href="https://github.com/noellabo/pub-relay">pub-relay</a></li>
+</ul>
+<h2 id="_2">著作権</h2>
+<p>CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン</p>
+<p>法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-a974/" class="btn btn-neutral float-left" title="FEP-a974: All Actor types should be followable"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-ae97/" class="btn btn-neutral float-right" title="FEP-ae97: Client-side activity signing">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-a974/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-ae97/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-0837: Federated Marketplace - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-0837: Federated Marketplace";
+        var mkdocs_page_input_path = "fep/fep-0837.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-0837: Federated Marketplace</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#history">History</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#proposals">Proposals</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#publishing-a-proposal">Publishing a proposal</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#responding-to-a-proposal">Responding to a proposal</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#agreements">Agreements</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#accepting-an-agreement">Accepting an agreement</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rejecting-an-agreement">Rejecting an agreement</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#confirmations">Confirmations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">著作権</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-0837: Federated Marketplace</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-0837.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-0837-federated-marketplace">FEP-0837: Federated Marketplace</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-0837.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p>This document describes a minimal implementation of a federated marketplace based on <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a> protocol and <a href="https://valueflo.ws/">Valueflows</a> vocabulary. In such marketplace actors can publish offers and requests, respond to offers and requests published by other actors, enter into agreements and exchange information necessary to complete these agreements.</p>
+<h2 id="history">History</h2>
+<p>Extension of ActivityPub protocol with Valueflows vocabulary was initially proposed by Lynn Foster in <a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/d767/fep-d767.md">FEP-d767</a>.</p>
+<h2 id="requirements">Requirements</h2>
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="https://tools.ietf.org/html/rfc2119.html">RFC-2119</a>.</p>
+<h2 id="overview">Overview</h2>
+<pre><code class="language-mermaid">sequenceDiagram
+  actor Alice
+  actor Bob
+  Note right of Alice: Alice publishes a Proposal
+  Bob -&gt;&gt; Alice: Bob sends Offer(Agreement) activity
+  Alice -&gt;&gt; Bob: Alice sends Accept(Agreement) activity
+  Note over Alice, Bob: Alice and Bob complete the transaction
+  Alice -&gt;&gt; Bob: Alice sends confirmation activity
+</code></pre>
+<h2 id="proposals">Proposals</h2>
+<p>Valueflows defines proposals as <strong>published requests or offers, sometimes with what is expected in return</strong>.</p>
+<p>The representation of a proposal is a JSON document with the following properties:</p>
+<ul>
+<li><code>id</code> (REQUIRED): the proposal's unique global identifier.</li>
+<li><code>type</code> (REQUIRED): the type of the object SHOULD be <code>Proposal</code>. If interoperability with other ActivityPub services is desirable, implementers MAY use object types from <a href="https://www.w3.org/TR/activitystreams-vocabulary/#object-types">Activity Vocabulary</a>, such as <code>Note</code>.</li>
+<li><code>purpose</code> (REQUIRED): the type of proposal. Possible values are <code>offer</code> and <code>request</code>.</li>
+<li><code>attributedTo</code> (REQUIRED): the actor who published the proposal.</li>
+<li><code>name</code> (RECOMMENDED): the title of the proposal.</li>
+<li><code>content</code> (OPTIONAL): the description of the proposal. The type of content SHOULD be <code>text/html</code>.</li>
+<li><code>published</code> (RECOMMENDED): the date and time at which the proposal was published.</li>
+<li><code>location</code> (OPTIONAL): indicates a physical location associated with the proposal. The representation of location MUST conform to the recommendations of <a href="https://www.w3.org/TR/activitystreams-vocabulary/#places">Activity Vocabulary</a> document, section <em>5.3 Representing Places</em>.</li>
+<li><code>publishes</code> (REQUIRED): the primary intent of this proposal (see below).</li>
+<li><code>reciprocal</code> (OPTIONAL): the reciprocal intent of this proposal (see below).</li>
+<li><code>unitBased</code> (OPTIONAL): indicates whether the quantities expressed in the proposal can be multiplied or not.</li>
+<li><code>to</code> (REQUIRED): the audience of the proposal.</li>
+</ul>
+<p><strong>Intents</strong> are proposed economic transactions. The <strong>primary intent</strong> describes what is being offered or requested, and <strong>reciprocal intent</strong> describes what is expected or offered in return. Some examples:</p>
+<ul>
+<li>A good is offered in exchange for money. Transfer of a good is a primary intent and a money transfer is a reciprocal intent.</li>
+<li>A good is offered as a gift. Transfer of a good is a primary intent and there's no reciprocal intent.</li>
+<li>Service is requested in exchange for money. Delivery of a service is a primary intent and money transfer is a reciprocal intent.</li>
+</ul>
+<p>The representation of an intent is a JSON document with the following properties:</p>
+<ul>
+<li><code>id</code> (REQUIRED): the unique global identifier of the intent. Implementations SHOULD use URL fragments to identify intents associated with a given proposal. The RECOMMENDED fragment identifiers for primary and reciprocal intents are <code>primary</code> and <code>reciprocal</code>.</li>
+<li><code>type</code> (REQUIRED): the type of the object MUST be <code>Intent</code>.</li>
+<li><code>action</code> (REQUIRED): the type of economic transaction. The value of this property SHOULD be either <code>deliverService</code> or <code>transfer</code>.</li>
+<li><code>resourceConformsTo</code> (RECOMMENDED): the type of an economic resource. Could be any URI.</li>
+<li><code>resourceQuantity</code> (REQUIRED): the amount and unit of the economic resource. This is an object with two properties:</li>
+<li><code>hasUnit</code> (REQUIRED): name of the unit, according to <a href="http://www.ontology-of-units-of-measure.org/">Ontology of units of Measure</a> classification. The RECOMMENDED unit for countable items is <code>one</code>.</li>
+<li><code>hasNumericalValue</code> (OPTIONAL): the amount of the resource. If not specified, arbitrary amounts can be used when responding to the proposal.</li>
+<li><code>availableQuantity</code> (OPTIONAL): the quantity of the offered resource currently available.</li>
+</ul>
+<p>Minimal example:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    {
+      &quot;om2&quot;: &quot;http://www.ontology-of-units-of-measure.org/resource/om-2/&quot;,
+      &quot;vf&quot;: &quot;https://w3id.org/valueflows/ont/vf#&quot;,
+      &quot;Proposal&quot;: &quot;vf:Proposal&quot;,
+      &quot;Intent&quot;: &quot;vf:Intent&quot;,
+      &quot;action&quot;: &quot;vf:action&quot;,
+      &quot;purpose&quot;: &quot;vf:purpose&quot;,
+      &quot;unitBased&quot;: &quot;vf:unitBased&quot;,
+      &quot;publishes&quot;: &quot;vf:publishes&quot;,
+      &quot;resourceQuantity&quot;: &quot;vf:resourceQuantity&quot;,
+      &quot;hasUnit&quot;: &quot;om2:hasUnit&quot;,
+      &quot;hasNumericalValue&quot;: &quot;om2:hasNumericalValue&quot;
+    }
+  ],
+  &quot;type&quot;: &quot;Proposal&quot;,
+  &quot;id&quot;: &quot;https://market.example/proposals/ddde9d6f-6f3b-4770-a966-3a18ef006930&quot;,
+  &quot;purpose&quot;: &quot;offer&quot;,
+  &quot;attributedTo&quot;: &quot;https://market.example/users/alice&quot;,
+  &quot;publishes&quot;: {
+    &quot;type&quot;: &quot;Intent&quot;,
+    &quot;id&quot;: &quot;https://market.example/proposals/ddde9d6f-6f3b-4770-a966-3a18ef006930#primary&quot;,
+    &quot;action&quot;: &quot;transfer&quot;,
+    &quot;resourceQuantity&quot;: {
+      &quot;hasUnit&quot;: &quot;one&quot;,
+      &quot;hasNumericalValue&quot;: &quot;1&quot;
+    }
+  },
+  &quot;unitBased&quot;: false,
+  &quot;to&quot;: &quot;https://www.w3.org/ns/activitystreams#Public&quot;
+}
+</code></pre>
+<p>Full example:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    {
+      &quot;om2&quot;: &quot;http://www.ontology-of-units-of-measure.org/resource/om-2/&quot;,
+      &quot;vf&quot;: &quot;https://w3id.org/valueflows/ont/vf#&quot;,
+      &quot;Proposal&quot;: &quot;vf:Proposal&quot;,
+      &quot;Intent&quot;: &quot;vf:Intent&quot;,
+      &quot;action&quot;: &quot;vf:action&quot;,
+      &quot;purpose&quot;: &quot;vf:purpose&quot;,
+      &quot;unitBased&quot;: &quot;vf:unitBased&quot;,
+      &quot;publishes&quot;: &quot;vf:publishes&quot;,
+      &quot;reciprocal&quot;: &quot;vf:reciprocal&quot;,
+      &quot;resourceConformsTo&quot;: &quot;vf:resourceConformsTo&quot;,
+      &quot;resourceQuantity&quot;: &quot;vf:resourceQuantity&quot;,
+      &quot;availableQuantity&quot;: &quot;vf:availableQuantity&quot;,
+      &quot;hasUnit&quot;: &quot;om2:hasUnit&quot;,
+      &quot;hasNumericalValue&quot;: &quot;om2:hasNumericalValue&quot;
+    }
+  ],
+  &quot;type&quot;: &quot;Proposal&quot;,
+  &quot;id&quot;: &quot;https://market.example/proposals/ddde9d6f-6f3b-4770-a966-3a18ef006930&quot;,
+  &quot;purpose&quot;: &quot;offer&quot;,
+  &quot;attributedTo&quot;: &quot;https://market.example/users/alice&quot;,
+  &quot;name&quot;: &quot;Offering used bike&quot;,
+  &quot;content&quot;: &quot;Blue one-speed bike, 15 years old, some rust&quot;,
+  &quot;published&quot;: &quot;2023-06-18T19:22:03.918737Z&quot;,
+  &quot;location&quot;: {
+    &quot;type&quot;: &quot;Place&quot;,
+    &quot;longitude&quot;: -71.0,
+    &quot;latitude&quot;: 25.0
+  },
+  &quot;publishes&quot;: {
+    &quot;type&quot;: &quot;Intent&quot;,
+    &quot;id&quot;: &quot;https://market.example/proposals/ddde9d6f-6f3b-4770-a966-3a18ef006930#primary&quot;,
+    &quot;action&quot;: &quot;transfer&quot;,
+    &quot;resourceConformsTo&quot;: &quot;https://www.wikidata.org/wiki/Q11442&quot;,
+    &quot;resourceQuantity&quot;: {
+      &quot;hasUnit&quot;: &quot;one&quot;,
+      &quot;hasNumericalValue&quot;: &quot;1&quot;
+    },
+    &quot;availableQuantity&quot;: {
+      &quot;hasUnit&quot;: &quot;one&quot;,
+      &quot;hasNumericalValue&quot;: &quot;1&quot;
+    }
+  },
+  &quot;reciprocal&quot;: {
+    &quot;type&quot;: &quot;Intent&quot;,
+    &quot;id&quot;: &quot;https://market.example/proposals/ddde9d6f-6f3b-4770-a966-3a18ef006930#reciprocal&quot;,
+    &quot;action&quot;: &quot;transfer&quot;,
+    &quot;resourceConformsTo&quot;: &quot;https://www.wikidata.org/wiki/Q4917&quot;,
+    &quot;resourceQuantity&quot;: {
+      &quot;hasUnit&quot;: &quot;one&quot;,
+      &quot;hasNumericalValue&quot;: &quot;30&quot;
+    }
+  },
+  &quot;unitBased&quot;: false,
+  &quot;to&quot;: &quot;https://www.w3.org/ns/activitystreams#Public&quot;
+}
+</code></pre>
+<h3 id="publishing-a-proposal">Publishing a proposal</h3>
+<p>Proposals can be linked to actors (if actor provides a service) or to other objects (if they represent economic resources) using <a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/0ea0/fep-0ea0.md">FEP-0ea0</a> payment links. Proposals can also be added to public collections, or be delivered to actor's followers using <code>Create</code> activity, or announced by group actors.</p>
+<p>If FEP-0ea0 payment link is used, its <code>href</code> attribute MUST contain the proposal ID and its <code>rel</code> array MUST contain the string <code>https://w3id.org/valueflows/ont/vf#Proposal</code>. The value of <code>mediaType</code> attribute SHOULD be <code>application/ld+json; profile="https://www.w3.org/ns/activitystreams"</code>.</p>
+<p>Example of a proposal attached to an actor via payment link:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;type&quot;: &quot;Person&quot;,
+  &quot;id&quot;: &quot;https://market.example/users/alice&quot;,
+  &quot;inbox&quot;: &quot;https://market.example/users/alice&quot;,
+  &quot;outbox&quot;: &quot;https://market.example/users/alice&quot;,
+  &quot;attachment&quot;: [
+    {
+      &quot;type&quot;: &quot;Link&quot;,
+      &quot;name&quot;: &quot;Buy a bike&quot;,
+      &quot;mediaType&quot;: &quot;application/ld+json; profile=\&quot;https://www.w3.org/ns/activitystreams\&quot;&quot;,
+      &quot;href&quot;: &quot;https://market.example/proposals/ddde9d6f-6f3b-4770-a966-3a18ef006930&quot;,
+      &quot;rel&quot;: [&quot;payment&quot;, &quot;https://w3id.org/valueflows/ont/vf#Proposal&quot;]
+    }
+  ]
+}
+</code></pre>
+<p>Consuming implementations which don't have marketplace features MAY display proposals similarly to <code>Note</code> objects.</p>
+<h2 id="responding-to-a-proposal">Responding to a proposal</h2>
+<h3 id="agreements">Agreements</h3>
+<p>An interested party responds to a proposal and then parties start negotiating to reach an <strong>agreement</strong>.</p>
+<p>To respond to a proposal, an interested party MUST send an <code>Agreement</code> object wrapped in <code>Offer</code> activity to the actor indicated by the <code>attributedTo</code> property of the proposal. The proposing party MUST either commit to the action described in the proposal or send a rejection.</p>
+<p>In the first case, the proposer finalizes the agreement and sends <code>Accept(Offer)</code> activity back to the interested party.</p>
+<p>In the second case, the proposer sends <code>Reject(Offer)</code> activity. The interested party MAY send <code>Offer(Agreement)</code> activities many times until agreement is reached.</p>
+<p>The representation of an agreement is a JSON document with the following properties:</p>
+<ul>
+<li><code>id</code> (OPTIONAL): the unique global identifier of the agreement. This property is REQUIRED for finalized agreements.</li>
+<li><code>type</code> (REQUIRED): the type of the object MUST be <code>Agreement</code>.</li>
+<li><code>stipulates</code> (REQUIRED): the primary commitment associated with the agreement.</li>
+<li><code>stipulatesReciprocal</code> (OPTIONAL): the reciprocal commitment associated with the agreement. It is REQUIRED if the corresponding proposal has a reciprocal intent.</li>
+</ul>
+<p><strong>Commitments</strong> are promised economic transactions. The representation of a commitment is a JSON document with the following properties:</p>
+<ul>
+<li><code>id</code> (OPTIONAL): the unique global identifier of the commitment. This property is REQUIRED for commitments in finalized agreements. Implementations SHOULD use URL fragments to identify commitments associated with a given agreement. The RECOMMENDED fragment identifiers for commitments satisfying primary and reciprocal intents of the proposal are <code>primary</code> and <code>reciprocal</code>.</li>
+<li><code>type</code> (REQUIRED): the type of the object MUST be <code>Commitment</code>.</li>
+<li><code>satisfies</code> (REQUIRED): the reference to an intent.</li>
+<li><code>resourceQuantity</code> (REQUIRED): the amount and unit of the economic resource.</li>
+</ul>
+<p>The first commitment MUST satisfy the primary intent of the proposal. The second commitment MUST satisfy the reciprocal intent of the proposal (if present).</p>
+<p>The units specified in the agreement MUST match the units specified in the proposal. If the value of <code>unitBased</code> property of the proposal is <code>false</code>, the amount of resources specified in commitments MUST be equal to amounts specified in the proposal. If the value is <code>true</code>, amounts MUST be multiples of amounts specified in the proposal. If <code>unitBased</code> property is not present on the proposal, arbitrary amounts can be used.</p>
+<p>Example of an <code>Offer(Agreement)</code> activity:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    {
+      &quot;om2&quot;: &quot;http://www.ontology-of-units-of-measure.org/resource/om-2/&quot;,
+      &quot;vf&quot;: &quot;https://w3id.org/valueflows/ont/vf#&quot;,
+      &quot;Agreement&quot;: &quot;vf:Agreement&quot;,
+      &quot;stipulates&quot;: &quot;vf:stipulates&quot;,
+      &quot;stipulatesReciprocal&quot;: &quot;vf:stipulatesReciprocal&quot;,
+      &quot;Commitment&quot;: &quot;vf:Commitment&quot;,
+      &quot;satisfies&quot;: &quot;vf:satisfies&quot;,
+      &quot;resourceQuantity&quot;: &quot;vf:resourceQuantity&quot;,
+      &quot;hasUnit&quot;: &quot;om2:hasUnit&quot;,
+      &quot;hasNumericalValue&quot;: &quot;om2:hasNumericalValue&quot;
+    }
+  ],
+  &quot;type&quot;: &quot;Offer&quot;,
+  &quot;id&quot;: &quot;https://social.example/objects/fc4af0d2-c3a1-409b-947c-3c5be29f49b0/offer&quot;,
+  &quot;actor&quot;: &quot;https://social.example/users/bob&quot;,
+  &quot;object&quot;: {
+    &quot;type&quot;: &quot;Agreement&quot;,
+    &quot;stipulates&quot;: {
+      &quot;type&quot;: &quot;Commitment&quot;,
+      &quot;satisfies&quot;: &quot;https://market.example/proposals/ddde9d6f-6f3b-4770-a966-3a18ef006930#primary&quot;,
+      &quot;resourceQuantity&quot;: {
+        &quot;hasUnit&quot;: &quot;one&quot;,
+        &quot;hasNumericalValue&quot;: &quot;1&quot;
+      }
+    },
+    &quot;stipulatesReciprocal&quot;: {
+      &quot;type&quot;: &quot;Commitment&quot;,
+      &quot;satisfies&quot;: &quot;https://market.example/proposals/ddde9d6f-6f3b-4770-a966-3a18ef006930#reciprocal&quot;,
+      &quot;resourceQuantity&quot;: {
+        &quot;hasUnit&quot;: &quot;one&quot;,
+        &quot;hasNumericalValue&quot;: &quot;30&quot;
+      }
+    }
+  },
+  &quot;to&quot;: &quot;https://market.example/users/alice&quot;
+}
+</code></pre>
+<h3 id="accepting-an-agreement">Accepting an agreement</h3>
+<p>The <code>object</code> of <code>Accept</code> activity MUST be the <code>id</code> of the <code>Offer</code> activity previously sent to the actor.</p>
+<p><code>Accept</code> activity MUST have the <code>result</code> property containing the <code>Agreement</code> object. The finalized agreement and corresponding commitments MUST have an <code>id</code> property. If a similar agreement between parties already exists, it MAY be updated and its <code>id</code> re-used. The quantities specified in the finalized agreement MUST match the quantities specified in <code>Agreement</code> object from the <code>Offer</code> activity.</p>
+<p>The finalized agreement MAY have <code>url</code> property containing one or more links to resources associated with the agreement. An example of such resource is a payment page (which can be represented as an <a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/0ea0/fep-0ea0.md">FEP-0ea0</a> link).</p>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    {
+      &quot;om2&quot;: &quot;http://www.ontology-of-units-of-measure.org/resource/om-2/&quot;,
+      &quot;vf&quot;: &quot;https://w3id.org/valueflows/ont/vf#&quot;,
+      &quot;Agreement&quot;: &quot;vf:Agreement&quot;,
+      &quot;stiplulates&quot;: &quot;vf:stiplulates&quot;,
+      &quot;stipulatesReciprocal&quot;: &quot;vf:stipulatesReciprocal&quot;,
+      &quot;Commitment&quot;: &quot;vf:Commitment&quot;,
+      &quot;satisfies&quot;: &quot;vf:satisfies&quot;,
+      &quot;resourceQuantity&quot;: &quot;vf:resourceQuantity&quot;,
+      &quot;hasUnit&quot;: &quot;om2:hasUnit&quot;,
+      &quot;hasNumericalValue&quot;: &quot;om2:hasNumericalValue&quot;
+    }
+  ],
+  &quot;type&quot;: &quot;Accept&quot;,
+  &quot;id&quot;: &quot;https://market.example/activities/059f08fa-31b1-4136-8d76-5987d705a0ab&quot;,
+  &quot;actor&quot;: &quot;https://market.example/users/alice&quot;,
+  &quot;object&quot;: &quot;https://social.example/objects/fc4af0d2-c3a1-409b-947c-3c5be29f49b0/offer&quot;,
+  &quot;result&quot;: {
+    &quot;type&quot;: &quot;Agreement&quot;,
+    &quot;id&quot;: &quot;https://market.example/agreements/edc374aa-e580-4a58-9404-f3e8bf8556b2&quot;,
+    &quot;stiplulates&quot;: {
+      &quot;id&quot;: &quot;https://market.example/agreements/edc374aa-e580-4a58-9404-f3e8bf8556b2#primary&quot;,
+      &quot;type&quot;: &quot;Commitment&quot;,
+      &quot;satisfies&quot;: &quot;https://market.example/proposals/ddde9d6f-6f3b-4770-a966-3a18ef006930#primary&quot;,
+      &quot;resourceQuantity&quot;: {
+        &quot;hasUnit&quot;: &quot;one&quot;,
+        &quot;hasNumericalValue&quot;: &quot;1&quot;
+      }
+    },
+    &quot;stipulatesReciprocal&quot;: {
+      &quot;id&quot;: &quot;https://market.example/agreements/edc374aa-e580-4a58-9404-f3e8bf8556b2#reciprocal&quot;,
+      &quot;type&quot;: &quot;Commitment&quot;,
+      &quot;satisfies&quot;: &quot;https://market.example/proposals/ddde9d6f-6f3b-4770-a966-3a18ef006930#reciprocal&quot;,
+      &quot;resourceQuantity&quot;: {
+        &quot;hasUnit&quot;: &quot;one&quot;,
+        &quot;hasNumericalValue&quot;: &quot;30&quot;
+      }
+    },
+    &quot;url&quot;: {
+      &quot;type&quot;: &quot;Link&quot;,
+      &quot;href&quot;: &quot;https://pay.example/invoices/7f1f0c81-0108-4c91-9cb1-d38ebccc3aa1&quot;,
+      &quot;rel&quot;: &quot;payment&quot;
+    }
+  },
+  &quot;to&quot;: &quot;https://social.example/users/bob&quot;
+}
+</code></pre>
+<h3 id="rejecting-an-agreement">Rejecting an agreement</h3>
+<p>The <code>object</code> of <code>Reject</code> activity MUST be the <code>id</code> of the <code>Offer</code> activity previously sent to the actor.</p>
+<p>Activity MAY contain <code>content</code> property indicating the reason for rejection.</p>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;type&quot;: &quot;Reject&quot;,
+  &quot;id&quot;: &quot;https://market.example/activities/8c05f97f-1531-4b70-9ca8-4ee4a09f36a4&quot;,
+  &quot;actor&quot;: &quot;https://market.example/users/alice&quot;,
+  &quot;object&quot;: &quot;https://social.example/objects/fc4af0d2-c3a1-409b-947c-3c5be29f49b0/offer&quot;,
+  &quot;content&quot;: &quot;Not available&quot;,
+  &quot;to&quot;: &quot;https://social.example/users/bob&quot;
+}
+</code></pre>
+<h2 id="confirmations">Confirmations</h2>
+<p>Economic transaction happens outside the protocol. When both parties complete their parts of the transaction, the proposing party MUST publish a confirmation.</p>
+<p>The type and structure of confirmation activity may vary between different marketplaces, but it MUST contain a reference to the <code>Agreement</code> object. The <code>context</code> property is RECOMMENDED for this purpose.</p>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;
+  ],
+  &quot;type&quot;: &quot;Create&quot;,
+  &quot;id&quot;: &quot;https://market.example/receipts/ad2f7ee1-6567-413e-a10b-72650cbdc743/create&quot;,
+  &quot;actor&quot;: &quot;https://market.example/users/alice&quot;,
+  &quot;object&quot;: {
+    &quot;type&quot;: &quot;Document&quot;,
+    &quot;id&quot;: &quot;https://market.example/receipts/ad2f7ee1-6567-413e-a10b-72650cbdc743&quot;,
+    &quot;name&quot;: &quot;Receipt&quot;,
+    &quot;context&quot;: &quot;https://market.example/agreements/edc374aa-e580-4a58-9404-f3e8bf8556b2&quot;,
+    &quot;published&quot;: &quot;2023-07-03T14:13:41.843794Z&quot;
+  },
+  &quot;to&quot;: &quot;https://social.example/users/bob&quot;
+}
+</code></pre>
+<h2 id="_1">参考文献</h2>
+<ul>
+<li>Christine Lemmer Webber, Jessica Tallon, <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>, 2018</li>
+<li>Lynn Foster, elf Pavlik, Bob Haugen, <a href="https://valueflo.ws/">Valueflows</a>, 2023</li>
+<li>Lynn Foster, <a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/d767/fep-d767.md">FEP-d767: Extend ActivityPub with Valueflows</a>, 2023</li>
+<li>S. Bradner, <a href="https://tools.ietf.org/html/rfc2119.html">Key words for use in RFCs to Indicate Requirement Levels</a>, 1997</li>
+<li>James M Snell, Evan Prodromou, <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Activity Vocabulary</a>, 2017</li>
+<li>Hajo Rijgersberg, Don Willems, Xin-Ying Ren, Mari Wigham, Jan Top, <a href="http://www.ontology-of-units-of-measure.org/">Ontology of units of Measure</a>, 2017</li>
+<li>silverpill, <a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/0ea0/fep-0ea0.md">FEP-0ea0: Payment Links</a>, 2023</li>
+</ul>
+<h2 id="_2">著作権</h2>
+<p>CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン</p>
+<p>法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-07d7/" class="btn btn-neutral float-left" title="FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-0ea0/" class="btn btn-neutral float-right" title="FEP-0ea0: Payment Links">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-07d7/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-0ea0/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

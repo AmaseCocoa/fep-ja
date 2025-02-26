@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API";
+        var mkdocs_page_input_path = "fep/fep-d8c2.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#specification">Specification</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#client-identifier">Client identifier</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#scopes">Scopes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#context-document">Context document</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">例</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#follower-recommender">Follower recommender</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mobile-checkin-app">Mobile checkin app</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#open-farm-game">Open Farm Game</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#security-considerations">Security considerations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">著作権</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-d8c2.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-d8c2-oauth-20-profile-for-the-activitypub-api">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-d8c2.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p>This FEP defines a profile of OAuth 2.0 for use with the ActivityPub API.</p>
+<h2 id="motivation">Motivation</h2>
+<p>[ActivityPub] defines the ActivityPub API, a RESTful HTTP API for stream-oriented social software. Also called "client to server" or "c2s", this API allows clients to create new <code>Activity</code> objects by posting to an actor's <code>outbox</code> collection.</p>
+<p>The ActivityPub specification does not define an authorization mechanism for the API, although the [ActivityPubAuth] recommendations include some suggestions. Although there are many ways to implement client authorization for an API, OAuth 2.0 is a popular and well-understood framework.</p>
+<p>OAuth 2.0 is very broad and encompasses a number of different techniques and use cases. [OAuth20Simplified] documents the most common profile of OAuth 2.0: authorization code flow and bearer tokens. Many OAuth 2.0 client libraries implement this profile.</p>
+<p>The most common case for OAuth 2.0 is an API supplied by a single provider.
+There are three main issues with using OAuth 2.0 for a standard API implemented by many providers.</p>
+<ol>
+<li><em>Client identifiers</em>. The OAuth 2.0 flow uses the client identifier to show important information about the client software to the user, and to avoid certain classes of spoofing attacks. With a single provider, the client developer can register a client ID out of band using the provider's developer Web site or other tools. Client developers cannot manually register client IDs with each provider of the ActivityPub API.</li>
+<li><em>Client metadata</em>. To make authorization decisions, the user needs to
+having information about the client software such as its name, description,
+icon, and publisher. With a single provider, the API service can require
+client metadata through its registration interface and store it in a database. A client developer cannot manually register client metadata with each provider of the ActivityPub API.</li>
+<li><em>Scopes</em>. The OAuth 2.0 flow uses scopes to indicate the permissions that the client is requesting. With a single provider, the provider can define and document a set of scopes that are appropriate for the API. It would be difficult for client developers had to use different scopes for each different ActivityPub API implementer.</li>
+</ol>
+<p>This profile addresses these issues by using the ActivityPub API itself to identify and describe the client software. It also provides a simple set of scopes appropriate for social software using ActivityPub.</p>
+<h2 id="specification">Specification</h2>
+<ul>
+<li>Servers MUST provide the <code>oauthAuthorizationEndpoint</code> and <code>oauthTokenEndpoint</code> properties in the actor's <code>endpoints</code> collection.</li>
+<li>Clients MUST use the <code>oauthAuthorizationEndpoint</code> and <code>oauthTokenEndpoint</code> properties of the actor's <code>endpoints</code> collection.</li>
+<li>Clients MUST use the Authorization Code flow.</li>
+<li>Clients MUST use [PKCE] with the <code>S256</code> method.</li>
+<li>Clients MUST provide a <code>client_id</code> as the ActivityPub ID of the <code>Application</code>, <code>Service</code>, or other ActivityPub object representing the client (see <a href="#client-identifier">Client identifier</a> below).</li>
+<li>The Activity Object resource at the <code>client_id</code> URI MUST have a <code>redirectURI</code> property with the redirect URI for the client (see <a href="#redirect-uri">Redirect URI</a> below).</li>
+<li>Clients SHOULD NOT provide a <code>client_secret</code>.</li>
+<li>Servers MUST ignore the <code>client_secret</code> parameter, if provided.</li>
+<li>The <code>scope</code> parameter SHOULD be a space-separated list of scope values (see <a href="#scopes">Scopes</a> below) as defined by this specification.</li>
+<li>The <code>scope</code> parameter MAY include extended scopes defined by the server or client.</li>
+<li>Servers MUST support <a href="https://tools.ietf.org/html/rfc6750">Bearer tokens</a>.</li>
+<li>Servers MAY add an <code>instrument</code> property for <code>Activity</code> objects created by the client, with the value of the <code>client_id</code> parameter.</li>
+</ul>
+<h2 id="client-identifier">Client identifier</h2>
+<p>ActivityPub provides a rich vocabulary for describing objects in the social space. Each object in the ActivityPub world has a unique https: URI, which must be dereferenceable to a JSON-LD document describing the object.</p>
+<p>This allows a distributed description of ActivityPub API clients that doesn't require out-of-band registration.</p>
+<p>Objects dereferenced at the SHOULD be of type <code>Application</code> or <code>Service</code>. They MUST have an <code>id</code> property with the same value as the <code>client_id</code> parameter. They MUST have a <code>redirectURI</code> property with the redirect URI for the client (see <a href="#context-document">Context document</a> below).</p>
+<p>Clients SHOULD provide metadata to help users make authorization decisions, including:</p>
+<ul>
+<li><code>nameMap</code> or <code>name</code>: The name of the client software.</li>
+<li><code>icon</code>: An <code>Image</code> object with the icon for the client software.</li>
+<li><code>summaryMap</code> or <code>summary</code>: A description of the application or service.</li>
+<li><code>attributedTo</code>: The <code>name</code>, <code>id</code>, <code>icon</code> and <code>summary</code> properties of
+  the actor responsible for the client software.</li>
+</ul>
+<h2 id="scopes">Scopes</h2>
+<p>The <code>scope</code> parameter is a space-separated list of scope values. The following scope values are defined:</p>
+<ul>
+<li><code>read</code>: The client is requesting permission to read the actor's ActivityPub data, including the <code>inbox</code>, <code>outbox</code>, <code>liked</code>, <code>followers</code>, and <code>following</code> collections, and any other ActivityPub resources on the server, with the actor's authorization. The client is also requesting to use the <code>proxyURL</code> property of the actor, if it exists, to request resources from other servers with the actor's authorization.</li>
+<li><code>write</code>: The client is requesting permission to create <code>Activity</code> objects by posting to the actor's <code>outbox</code> collection. This includes <code>Create</code>, <code>Update</code>, <code>Delete</code>, <code>Follow</code>, <code>Undo</code>, and other Activity types.</li>
+<li><code>write:sameorigin</code>: The client is requesting permission to create <code>Activity</code> objects by posting to the actor's <code>outbox</code> collection, but only if the <code>Activity</code>'s <code>object</code>, <code>target</code> and/or <code>origin</code> properties have IDs with the same origin as the client ID. This allows the user to grant a limited scope to an application or service to interact with other resources controlled by the client, but not to interact with resources from other sources. "Same origin" is defined as a URI with the same scheme, host, and port as the client ID.</li>
+</ul>
+<p>Extended scopes MAY be defined by the server or client. Servers SHOULD ignore scopes that they do not recognize. Extended scopes SHOULD use the "primary:restriction" pattern for naming the scope.</p>
+<h2 id="context-document">Context document</h2>
+<p>The context document for this specification is at <code>https://purl.archive.org/socialweb/oauth</code>. Its contents are as follows:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: {
+    &quot;oauth&quot;: &quot;https://purl.archive.org/socialweb/oauth#&quot;,
+    &quot;redirectURI&quot;: {
+      &quot;@id&quot;: &quot;oauth:redirectURI&quot;,
+      &quot;@type&quot;: &quot;@id&quot;
+    }
+  }
+}
+</code></pre>
+<h2 id="_1">例</h2>
+<h3 id="follower-recommender">Follower recommender</h3>
+<p>A Web service that wants to use the ActivityPub API would define an ActivityPub object at <code>https://followrec.example/client</code>. This object has a <code>redirectURI</code> property with the URI of the Web application's authorization endpoint.</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;https://purl.archive.org/socialweb/oauth&quot;
+  ],
+  &quot;id&quot;: &quot;https:/followrec.example/apps/myapp&quot;,
+  &quot;name&quot;: &quot;Follow Recommender&quot;,
+  &quot;type&quot;: &quot;Service&quot;,
+  &quot;icon&quot;: {
+    &quot;type&quot;: &quot;Image&quot;,
+    &quot;url&quot;: &quot;http://followrec.example/followrec.png&quot;,
+    &quot;width&quot;: 256,
+    &quot;height&quot;: 256
+  },
+  &quot;summaryMap&quot;: {
+    &quot;en&quot;: &quot;Follow Recommender is a service that recommends people to follow based on your existing community.&quot;
+  },
+  &quot;attributedTo&quot;: {
+    &quot;name&quot;: &quot;Alyssa P. Hacker&quot;,
+    &quot;id&quot;: &quot;https://hackers.example/alyssa&quot;,
+    &quot;type&quot;: &quot;Person&quot;,
+    &quot;icon&quot;: {
+      &quot;type&quot;: &quot;Image&quot;,
+      &quot;url&quot;: &quot;https://hackers.example/alyssa/icon.png&quot;,
+      &quot;width&quot;: 256,
+      &quot;height&quot;: 256
+    },
+    &quot;summaryMap&quot;: {
+      &quot;en&quot;: &quot;Alyssa P. Hacker builds cool stuff on the Internet.&quot;
+    }
+  },
+  &quot;redirectURI&quot;: &quot;https://followrec.example/oauth/callback&quot;
+}
+</code></pre>
+<p>A person who wants to use this application can provide their ActivityPub actor ID either directly (<code>https://home.example/evanp</code>) or via a Webfinger lookup (<code>evanp@home.example</code>).</p>
+<p>The Web application discovers the <code>oauthAuthorizationEndpoint</code> to be <code>https://home.example/oauth/authorize</code>, and uses it to construct an URI for the authorization request, including scopes and PKCE parameters.</p>
+<pre><code>https://home.example/oauth/authorize?response_type=code&amp;client_id=https%3A%2F%2Ffollowrec.example%2Fclient&amp;redirect_uri=https%3A%2F%2Ffollowrec.example%2Foauth%2Fcallback&amp;scope=read+write&amp;state=1234zyx&amp;code_challenge=1234&amp;code_challenge_method=S256
+</code></pre>
+<p>The user is redirected to the authorization endpoint, where they are prompted to authorize the application. The server at <code>home.example</code> retrieves the <code>Service</code> object at <code>https://followrec.example/client</code> and, at a minimum, verifies that the <code>redirectURI</code> property matches the <code>redirect_uri</code> parameter.</p>
+<p>The <code>home.example</code> server then prompts the user to authorize the application. If the user authorizes the application, the server redirects the user to the <code>redirect_uri</code> parameter with a <code>code</code> parameter.</p>
+<p>The Web application then uses the <code>oauthTokenEndpoint</code> to exchange the authorization code for an access token and optional refresh token.</p>
+<pre><code>POST /oauth/token HTTP/1.1
+Host: home.example
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code&amp;code=1234zyx&amp;client_id=https%3A%2F%2Ffollowrec.example%2Fclient&amp;redirect_uri=https%3A%2F%2Ffollowrec.example%2Foauth%2Fcallback&amp;code_verifier=1234
+</code></pre>
+<p>It can use these access tokens to read the user's <code>following</code> collections and use <a href="https://en.wikipedia.org/wiki/Triadic_closure">triadic closure</a> to recommend new people to follow. It can also use the access token to post <code>Follow</code> activities to the user's <code>outbox</code> collection.</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;type&quot;: &quot;Follow&quot;,
+    &quot;object&quot;: &quot;https://otherserver.example/otheruser&quot;
+}
+</code></pre>
+<p>The server at <code>home.example</code> may add the <code>instrument</code> property to the resulting <code>Activity</code> to identify the responsible service.</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;id&quot;: &quot;https://home.example/activities/1234&quot;,
+    &quot;actor&quot;: &quot;https://home.example/evanp&quot;,
+    &quot;type&quot;: &quot;Follow&quot;,
+    &quot;object&quot;: &quot;https://otherserver.example/otheruser&quot;,
+    &quot;instrument&quot;: &quot;https://followrec.example/client&quot;,
+    &quot;published&quot;: &quot;2021-09-01T12:34:56Z&quot;,
+    &quot;updated&quot;: &quot;2021-09-01T12:34:56Z&quot;
+}
+</code></pre>
+<h3 id="mobile-checkin-app">Mobile checkin app</h3>
+<p>An iOS app uses the ActivityPub API to post location updates for a user. Because the app is a native program, it uses a static site provided by its version control system to host the client object at <code>https://developer.git.example/kfc/client.json</code>.</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;https://purl.archive.org/socialweb/oauth&quot;
+  ],
+  &quot;id&quot;: &quot;https:/mobile.example/app&quot;,
+  &quot;name&quot;: &quot;Kentucky Fried Checkin&quot;,
+  &quot;type&quot;: &quot;Application&quot;,
+  &quot;icon&quot;: {
+    &quot;type&quot;: &quot;Image&quot;,
+    &quot;url&quot;: &quot;https://developer.git.example/kfc/icon.png&quot;,
+    &quot;width&quot;: 256,
+    &quot;height&quot;: 256
+  },
+  &quot;summaryMap&quot;: {
+    &quot;en&quot;: &quot;Kentucky Fried Checkin is a mobile app that allows you to post checkins to your ActivityPub timeline.&quot;
+  },
+  &quot;attributedTo&quot;: {
+    &quot;name&quot;: &quot;MobileCorp&quot;,
+    &quot;id&quot;: &quot;https://mobilecorp.example/organization&quot;,
+    &quot;type&quot;: &quot;Organization&quot;,
+    &quot;icon&quot;: {
+      &quot;type&quot;: &quot;Image&quot;,
+      &quot;url&quot;: &quot;https://mobilecorp.example/organization/logo.png&quot;,
+      &quot;width&quot;: 256,
+      &quot;height&quot;: 256
+    },
+    &quot;summaryMap&quot;: {
+      &quot;en&quot;: &quot;MobileCorp provides cool apps supporting the social web.&quot;
+    }
+  },
+  &quot;redirectURI&quot;: &quot;checkin:oauth/callback&quot;
+}
+</code></pre>
+<p>Note that the <code>redirectURI</code> property is a custom URI scheme for the mobile app.</p>
+<p>A person who wants to use this application can provide their ActivityPub actor ID either directly (<code>https://home.example/evanp</code>) or via a Webfinger lookup (<code>evanp@home.example</code>).</p>
+<p>The checkin discovers the <code>oauthAuthorizationEndpoint</code> to be <code>https://home.example/oauth/authorize</code>, and uses it to construct an URI for the authorization request, including scopes and PKCE parameters.</p>
+<pre><code>https://home.example/oauth/authorize?response_type=code&amp;client_id=https%3A%2F%2Ffollowrec.example%2Fclient&amp;redirect_uri=https%3A%2F%2Ffollowrec.example%2Foauth%2Fcallback&amp;scope=write&amp;state=1234zyx&amp;code_challenge=1234&amp;code_challenge_method=S256
+</code></pre>
+<p>Note that the <code>scope</code> parameter only includes the <code>write</code> scope, because the app only needs to post to the user's <code>outbox</code> collection.</p>
+<p>The authorization flow continues as with the <a href="#follower-recommender">Follower recommender</a> example, until the mobile app has a valid access token.</p>
+<p>The mobile app can then post <code>Arrive</code> activities to the user's <code>outbox</code> collection.</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;type&quot;: &quot;Arrive&quot;,
+    &quot;summaryMap&quot;: {
+      &quot;en&quot;: &quot;evanp arrived at the Empire State Building.&quot;
+    },
+    &quot;location&quot;: {
+      &quot;id&quot;: &quot;https://places.example/empire-state-building&quot;,
+      &quot;type&quot;: &quot;Place&quot;,
+      &quot;name&quot;: &quot;Empire State Building&quot;,
+      &quot;latitude&quot;: 40.7484,
+      &quot;longitude&quot;: -73.9857
+    }
+}
+</code></pre>
+<h3 id="open-farm-game">Open Farm Game</h3>
+<p>A Web game at <code>openfarmgame.example</code> lets its users construct imaginary farms with crops, livestock, and buildings. It uses the ActivityPub API to post game events to a user's <code>outbox</code> collection. It defines its client object at <code>https://openfarmgame.example/client</code>.</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;https://purl.archive.org/socialweb/oauth&quot;
+  ],
+  &quot;id&quot;: &quot;https://openfarmgame.example/client&quot;,
+  &quot;name&quot;: &quot;Open Farm Game&quot;,
+  &quot;type&quot;: &quot;Service&quot;,
+  &quot;icon&quot;: {
+    &quot;type&quot;: &quot;Image&quot;,
+    &quot;url&quot;: &quot;https://openfarmgame.example/client/icon.png&quot;,
+    &quot;width&quot;: 256,
+    &quot;height&quot;: 256
+  },
+  &quot;summaryMap&quot;: {
+    &quot;en&quot;: &quot;Raise crops, grow livestock, and build your farming empire! Open Farm Game is the social farming application you can play with friends and family.&quot;
+  },
+  &quot;attributedTo&quot;: {
+    &quot;name&quot;: &quot;FarmGamer Inc.&quot;,
+    &quot;id&quot;: &quot;https://openfarmgame.example/organization&quot;,
+    &quot;type&quot;: &quot;Organization&quot;,
+    &quot;icon&quot;: {
+      &quot;type&quot;: &quot;Image&quot;,
+      &quot;url&quot;: &quot;https://openfarmgame.example/organization/logo.png&quot;,
+      &quot;width&quot;: 256,
+      &quot;height&quot;: 256
+    },
+    &quot;summaryMap&quot;: {
+      &quot;en&quot;: &quot;We help players become farmers.&quot;
+    }
+  },
+  &quot;redirectURI&quot;: &quot;https://openfarmgame.example/oauth/callback&quot;
+}
+</code></pre>
+<p>The authorization flow works as with the <a href="#follower-recommender">follow recommender</a> above. Because the actor primarily interacts with objects on the game server, the game only needs to request <code>write:sameorigin</code> scope.</p>
+<p>When the user plants a new crop in their imaginary farm, the game posts a <code>Create</code> activity to the user's <code>outbox</code> collection.</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    {&quot;farm&quot;: &quot;https://openfarmgame.example/ns#&quot;}
+  ],
+  &quot;type&quot;: [&quot;farm:Plant&quot;, &quot;Create&quot;],
+  &quot;summaryMap&quot;: {
+    &quot;en&quot;: &quot;evanp planted corn.&quot;
+  },
+  &quot;object&quot;: {
+    &quot;id&quot;: &quot;https://openfarmgame.example/crops/1234&quot;,
+    &quot;type&quot;: [&quot;farm:Crop&quot;, &quot;Object&quot;],
+    &quot;nameMap&quot;: {
+      &quot;en&quot;: &quot;Corn&quot;
+    },
+    &quot;image&quot;: {
+      &quot;type&quot;: &quot;Image&quot;,
+      &quot;url&quot;: &quot;https://openfarmgame.example/crops/corn.png&quot;,
+      &quot;width&quot;: 256,
+      &quot;height&quot;: 256
+    }
+  }
+}
+</code></pre>
+<p>Note that the <code>object</code> property of the <code>Create</code> activity has an <code>id</code> property with the same origin as the client ID. This allows the actor's home server to verify that the client is only creating objects on the game server.</p>
+<h2 id="security-considerations">Security considerations</h2>
+<ul>
+<li><a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics">OAuth 2.0 Security Best Current Practice</a> provides a number of best practices for implementing OAuth 2.0.</li>
+<li>One risk of implementing OAuth 2.0 is that the user is redirected to the <code>redirect_uri</code> parameter after authorization is complete. This can be used as an attack to treat the authorization server as an open redirector. The API server should check that the <code>redirect_uri</code> parameter matches the <code>redirectURI</code> property of the client object.</li>
+<li>A valid <code>redirectURI</code> property should not change often.</li>
+<li>As with any protocol that requires fetching a client-provided URI, the server should take care in dereferencing the <code>client_id</code> parameter to avoid attacks such as very large responses, responses that take a long time to generate, or responses with poorly-formatted content.</li>
+<li>The ActivityPub object used to define the client includes metadata that can be spoofed, like the <code>name</code> or <code>icon</code>. An attacker could use the name, icon, or publisher of a popular application to trick users into authorizing the attacker's application. Tools such as shared blocklists, reputation systems, and user education can help mitigate this risk.</li>
+</ul>
+<h2 id="_2">参考文献</h2>
+<ul>
+<li>[OAuth2] Dick Hardt, <a href="https://www.ietf.org/rfc/rfc6749.txt">The OAuth 2.0 Authorization Framework</a>, 2012</li>
+<li>[OAuth20Simplified], Aaron Parecki, <a href="https://www.oauth.com/">OAuth 2.0 Simplified</a>, 2016</li>
+<li>[PKCE], N. Sakimura, J. Bradley, N. Agarwal, <a href="https://datatracker.ietf.org/doc/html/rfc7636">Proof Key for Code Exchange by OAuth Public Clients</a>, 2015.</li>
+<li>[ActivityPub] Christine Lemmer Webber, Jessica Tallon, <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>, 2018</li>
+<li>[ActivityPubAuth] Various authors. <a href="https://www.w3.org/wiki/SocialCG/ActivityPub/Authentication_Authorization">SocialCG/ActivityPub/Authentication Authorization</a>, 2017</li>
+</ul>
+<h2 id="_3">著作権</h2>
+<p>CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン</p>
+<p>法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-d767/" class="btn btn-neutral float-left" title="FEP-d767: Extend ActivityPub with Valueflows"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-d9ad/" class="btn btn-neutral float-right" title="FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-d767/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-d9ad/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources";
+        var mkdocs_page_input_path = "fep/fep-07d7.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#context">Context</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-definitions">1. Definitions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-uri-scheme">2. URI Scheme</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#21-intents">2.1 Intents</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#22-example-links-using-the-scheme">2.2 Example links using the scheme</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-protocol-handlers">3. Protocol Handlers</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#31-retrieving-hyperlinked-objects">3.1 Retrieving hyperlinked objects</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#32-displaying-hyperlinked-objects">3.2 Displaying hyperlinked objects</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#33-servers">3.3 Servers</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#34-clients">3.4 Clients</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-safety-and-security">4. Safety and Security</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">著作権</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-07d7.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-07d7-a-custom-url-scheme-and-web-based-protocol-handlers-for-linking-to-activitypub-resources">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-07d7.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<ul>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#context">Context</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#1-definitions">1. Definitions</a></li>
+<li><a href="#2-uri-scheme">2. URI Scheme</a><ul>
+<li><a href="#21-intents">2.1 Intents</a></li>
+<li><a href="#22-example-links-using-the-scheme">2.2 Example links using the scheme</a></li>
+</ul>
+</li>
+<li><a href="#3-protocol-handlers">3. Protocol Handlers</a><ul>
+<li><a href="#31-retrieving-hyperlinked-objects">3.1 Retrieving hyperlinked objects</a></li>
+<li><a href="#32-displaying-hyperlinked-objects">3.2 Displaying hyperlinked objects</a></li>
+<li><a href="#33-servers">3.3 Servers</a></li>
+<li><a href="#34-clients">3.4 Clients</a></li>
+</ul>
+</li>
+<li><a href="#4-safety-and-security">4. Safety and Security</a></li>
+<li><a href="#references">References</a></li>
+<li><a href="#copyright">Copyright</a></li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p>This specification addresses sometimes difficult interactions with ActivityPub resources hosted on remote servers. It defines a custom URL scheme which can be used by custom web-based protocol handlers to route hyperlinks to those resources to the user's preferred server. It additionally advises when ActivityPub servers can include these links in HTML views they generate, and how clients and servers can implement those web-based protocol handlers.</p>
+<h2 id="motivation">Motivation</h2>
+<p>When a person follows a link to some ActivityPub powered site, the browser will navigate to the resource on that site. This is often <em>not</em> what the person would have prefered when they have an account on a different ActivityPub aware site. In order to interact with the linked resource from their own account, the person must separately open their home server and search for the resource. This is an awkward and sometimes confusing process, especially for people who are not already familiar with the idosyncracies of navigating a federated social network.</p>
+<p>Web-based protocol handling is a feature of modern web browsers. This allows a site to register with the user's browser as a handler for custom URI schemes. The browser will send links using that scheme to the registerd handler. This way, it's possible to direct links to the user's preferred server or application. The handler can retrieve the resource and provide familiar and appropriate presentation. Native ActivityPub clients can also take advantage of these URIs to provide similar handling. </p>
+<h2 id="context">Context</h2>
+<p>Similar proposals such as <a href="https://fedilinks.org/spec/en/6-The-web-ap-URI">Fedilinks</a> and <a href="https://github.com/mastodon/mastodon/issues/19679">Mastodon Issue 19679</a> have been made, and were even <a href="https://github.com/mastodon/mastodon/pull/8127">briefly implemented in Mastodon</a>. There seems to be some concensus that custom protocol handlers have the technical capability to solve the problem of difficult interactions with cross-instance objects. There is also ample prior art for this approach. <code>mailto:</code> and <code>tel:</code> are common examples from web standards. Zoom uses a custom<code>zoommtg:</code> protocol to launch their desktop app, and Apple uses <code>itms:</code> to launch iTunes.</p>
+<p>It seems the main impediment to early attempts was a perception of poor UX and limited adoption. This seems to be mostly a chicken-and-egg problem. That will always be a problem, until it's not. In this case, it seems it would be helpful to let standards drive implementation, as the opposite hasn't ocurred. This proposal also recommends behavior that is compatible with gradual adoption.</p>
+<p>Some <a href="https://github.com/mastodon/mastodon/issues/14187">similar proposals</a> have also disussed <a href="https://codeberg.org/fediverse/fediverse-ideas/issues/1">emphasizing outcome</a>, rather than content. Encapsulating action is an understandable desire, and this proposal attempts to facilitate that. But the protocol aspect is firmly focussed on interaction with ActivityPub objects, without making any assumptions about the design or capabilities of current or future ActivityPub services. The hope is that this gives the resulting implementations better longevity. Documents can outlive software, and people should still be able to interact with them in useful ways. This also keeps the proposal scoped just to ActivityPub concerns, without imposing on other standards.</p>
+<h2 id="requirements">Requirements</h2>
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this specification are to be interpreted as described in <a href="https://www.rfc-editor.org/rfc/rfc2119">RFC-2119</a>.</p>
+<h3 id="1-definitions">1. Definitions</h3>
+<p>This proposal refers to ActivityPub objects as viewed and represented in multiple ways from multiple servers. For clarity, these are the terms that will be used to describe those scenarios.</p>
+<p>Origin server means the server that has authority for the ActivityPub object. This is the server that hosts and controls access to the object, and will recieve requests for the URI used as the object's ID.</p>
+<p>Handler is any software that handles the <code>web+activitypub:</code> scheme and protocol. Typically either an ActivityPub server where the person has an account, or a client application they have installed on their device.</p>
+<p>ActivityPub object means the JSON-LD document representing an ActivityPub Object, as described in the <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a> and <a href="https://www.w3.org/TR/activitystreams-core/">ActivityStreams</a>[ActivityStreamsRef] specifications.</p>
+<p>HTML representation means an HTML or other document rendered to display the ActivityPub object for human use.</p>
+<p>A client is any software that provides a human-friendly presentation of ActivityPub objects, or can interact with an ActivityPub server. For example, this could be a server's web UI or a native mobile app. This software does not necessarily utilize the C2S profile of the ActivityPub spec.</p>
+<h3 id="2-uri-scheme">2. URI Scheme</h3>
+<p>When creating hyperlinks to ActivityPub resources, individuals and applications SHOULD include a link using the custom <code>web+activitypub:</code> scheme. This scheme can be handled by web-based or native handlers registered with browsers by end-users. Because there's no guarantee that a given browser will have any registered handler for this scheme, these links SHOULD NOT be used in place of a link that refers to the resource by ID or an alternative HTML representation of it. Links using the <code>web+activitypub:</code> scheme SHOULD be used as an addition to those more canonical links.</p>
+<p>The address provided using the <code>web+activitypub:</code> scheme SHOULD be the same as the referenced ActivityPub object's ID. The address MAY instead be for an alternative human-readable address, or for an HTML representation of the object, as normal for the origin server. Applications using or generating these links should be aware that not all clients will be able to dereference those alternative or human readable addresses. The most interoperable choice is to use the object's canonical ActivityPub ID.</p>
+<p>The linked address MUST replace the scheme used with <code>web+activitypub:</code>. That means the link MUST NOT simply prepend <code>web+activitypub:</code> onto a preexisting <code>https:</code> or other scheme, as this would violate the generic URI syntax specified by <a href="https://www.rfc-editor.org/rfc/rfc3986">RFC-3986</a></p>
+<h4 id="21-intents">2.1 Intents</h4>
+<p>A <code>web+activitypub:</code> link MAY encapsulate an intent for an activity to be performed on or with the linked object. For example, a pre-assembled link could be used to directly Follow an actor or to Announce an object. An encapsulated intent MUST be represented by appending a query string to the target URI. It's possible that the target URI already includes a query string. In this case, to encapsulate an intent, the intent MUST append a new query parameter to the existing query string. A <code>web+activitypub:</code> link MUST NOT encapsulate more than one intent.</p>
+<p>Including an encapsulated intent is OPTIONAL. Responding to the intent is also OPTIONAL. The creator of the intent should keep in mind that the handler MAY support intents, but does not have to. Also keep in mind that the handler MUST provide a mechanism for the user to confirm or decline to perform the intended action. The use or purpose of the <code>web+activitypub:</code> link MUST NOT require that the intended activity is actually performed.</p>
+<p>The format of the query parameter to encapsulate an intent is <code>intent=&lt;activity&gt;</code> where <code>&lt;activity&gt;</code> is any of the following activities described by the <a href="https://www.w3.org/TR/activitystreams-vocabulary">Activity Streams vocabulary</a>. The activity string SHOULD be all lowercase. It's permissible to use any casing. But, there are many systems in the wild which might intercept or preprocess the URIs in a <code>web+activitypub:</code> link, and not all of those will respect the original casing.</p>
+<ul>
+<li>add</li>
+<li>announce</li>
+<li>arrive</li>
+<li>create</li>
+<li>follow</li>
+<li>invite</li>
+<li>like</li>
+</ul>
+<p>The <code>web+activitypub:</code> link SHOULD NOT encapsulate an intent for any activity not listed above. In addition, the link MUST NOT encapsulate an intent for any of the following activities. Implementers should exercise discretion regarding activities added as extensions to the ActivityPub specification. You should err on the side taking no action where there is doubt about the safety or security of doing so.</p>
+<ul>
+<li>block</li>
+<li>delete</li>
+<li>dislike</li>
+<li>flag</li>
+<li>ignore</li>
+<li>leave</li>
+<li>move</li>
+<li>offer</li>
+<li>remove</li>
+</ul>
+<p>For security and privacy, <code>web+activitypub:</code> links MUST NOT include a username or password component. They also SHOULD NOT be relative URIs.</p>
+<h4 id="22-example-links-using-the-scheme">2.2 Example links using the scheme</h4>
+<p>Below are some examples of <code>web+activitypub:</code> hyperlinks that reflect some expected uses.</p>
+<p><strong>One-click check in</strong></p>
+<p>A link to enable one-click check in to pick up a shopping order.</p>
+<p><code>&lt;a hfref="web+activitypub:shopping.example/pickup/12345?intent=arrive"&gt;Check in to pick up your order&lt;/a&gt;</code></p>
+<p><strong>One-click follow</strong></p>
+<p>A link to enable one-click following from another website. The handler must not perform the follow activity unless the user confirms it.</p>
+<p><code>&lt;a href="web+activitypub:uss-enterprise.example/user/picard?intent=follow&gt;Follow me on the fediverse&lt;/a&gt;</code></p>
+<p><strong>Link with no intent</strong></p>
+<p>A link to view a blog post published as an ActivityPub Article</p>
+<p><code>&lt;a href="web+activitypub:my-blog.example/article/write-your-first-fep&gt;Read the article on your home instance&lt;/a&gt;</code></p>
+<h3 id="3-protocol-handlers">3. Protocol Handlers</h3>
+<h4 id="31-retrieving-hyperlinked-objects">3.1 Retrieving hyperlinked objects</h4>
+<p>ActivityPub applications that can retrieve remote objects and generate an HTML display MAY also implement a web-based protocol handler for the <code>web+activitypub:</code> URI scheme. Applications MAY use other available registration mechanisms, such as Android inents. The handler MUST attempt to load the specified URI as an <code>application/ld+json</code> document. If the origin does not respond with an ActivityPub object, the handler SHOULD fallback to other methods it uses to locate ActivityPub objects, such as webfinger.</p>
+<p>When resolving the given URI, the handler MUST ignore any provided username or password component, and it MUST exclude those components from the requests it makes to retrieve the object. If the given URI includes a query string with an intent parameter, the handler MUST exclude the intent parameter from the requests made to retrieve the object.</p>
+<p>The handler MUST NOT attempt to retrieve objects from a relative URI. There's likely no good reason for a <code>web+activitypub:</code> link to target a relative URI, and there is some risk it could be used to facilitate scams or phishing attempts by making it appear some third party has access to data they shouldn't.</p>
+<p>The handler MUST perform the same sanitization or other safe handling of untrusted URIs as it normally would. For example, there's likely no good reason for a production system to try to load resources from localhost, or using an ip address, rather than a hostname. Doing so could also facilitate phishing or scams.</p>
+<p>When retreiving resources identified by a <code>web+activitypub:</code> scheme, the handler SHOULD assume the origin uses HTTPS. The handler MAY attempt to use other schemes, such as <code>did:</code>. The handler MAY make this determination using any heuristic or algorithm the developers choose.</p>
+<p>Other than the above considerations, the handler MUST attempt to resolve the URI exactly as given.</p>
+<h4 id="32-displaying-hyperlinked-objects">3.2 Displaying hyperlinked objects</h4>
+<p>After successfully retrieving the referenced object, the handler SHOULD produce an HTML representation of the object and present it for the user. The handler MUST escape and sanitize the content of the object before displaying it, to prevent cross-site scripting attacks.</p>
+<p>The handler SHOULD display the object in the normal way for the application, and in the normal context. For example, if the application normally displays replies alongside an object, it SHOULD do so in this case as well.</p>
+<p>The handler SHOULD enable the user to interact with the object normally, such as to generate Like or Announce activities referring to it.</p>
+<p>When the provided <code>web+activitypub:</code> URI includes an encapsulated intent, the handler MAY prompt the user to perform that intended activity. The handler MUST NOT perform that activity without explicit confirmation from the user. The handler MUST NOT perform or offer to perform the intended activity if it is one of the ones listed below. These activities present an elevated risk of disrupting the user's social connections or enlisting them in malicious activities. The handler MAY perform other activities, but SHOULD do so with care. <code>web+activitypub:</code> links are usually created by third parties. Be mindful that there is some risk of exposing sensitive information or facilitating harmful behavior when third parties are allowed to direct other people's actions.</p>
+<p>The handler MUST NOT perform any of these activities in response to an ecapsulated intent:</p>
+<ul>
+<li>block</li>
+<li>delete</li>
+<li>dislike</li>
+<li>flag</li>
+<li>ignore</li>
+<li>leave</li>
+<li>move</li>
+<li>offer</li>
+<li>remove</li>
+</ul>
+<h4 id="33-servers">3.3 Servers</h4>
+<p>ActivityPub servers MAY offer users an option to register with their browser as a <code>web+activitypub:</code> handler. Servers SHOULD NOT do this unless the user has authenticated with the server. The server SHOULD also offer a similar option to de-register as a handler. Servers SHOULD NOT attempt to register as a handler unless initiated by the user in some way. Servers MUST NOT attempt to automatically register as a handler again after a user has declined to allow it.</p>
+<h4 id="34-clients">3.4 Clients</h4>
+<p>Clients MAY offer users an option to register as handlers for <code>web+activitypub:</code> links. They SHOULD use whatever mechanism is appropriate to the client to do so. For instance, Android apps would likely use the intent system, and Windows apps could set the appropriate registry flags. Clients SHOULD provide a mechanism to de-register as a handler, where possible. Clients MAY defer this capability to the operating system as appropriate.</p>
+<p>If a client will retrieve the linked object itself, the client MUST adhere to the same specifications from section 3.1 and 3.2 as any other application would.</p>
+<h3 id="4-safety-and-security">4. Safety and Security</h3>
+<p>Because there is no way to know or control which application will ultimately handle any <code>web+activitypub:</code> link, creators SHOULD NOT include private or sensitive information in the link. Creators MUST NOT include any type of authenticating token or credential in the link. And handling applications themselves MUST apply all the normal and appropriate access controls when retrieving and displaying resources linked this way.</p>
+<h2 id="_1">参考文献</h2>
+<ul>
+<li>[ActivityPub] Christine Lemmer Webber, Jessica Tallon, <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>, 2018</li>
+<li>[Web-based Protocol Handlers] Mozilla Developer Network, <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/registerProtocolHandler/Web-based_protocol_handlers">Web-based Protocol Handlers</a></li>
+<li>[HTML Living Standard] WHATWG, <a href="https://html.spec.whatwg.org/multipage/system-state.html#custom-handlers">HTML</a>, 2023</li>
+<li>[Fedilinks] Fedilinks Authors, <a href="https://fedilinks.org/spec/en/6-The-web-ap-URI">Fedilinks</a></li>
+</ul>
+<h2 id="_2">著作権</h2>
+<p>CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン</p>
+<p>法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-0499/" class="btn btn-neutral float-left" title="FEP-0499: Delivering to multiple inboxes with a multibox endpoint"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-0837/" class="btn btn-neutral float-right" title="FEP-0837: Federated Marketplace">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-0499/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-0837/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

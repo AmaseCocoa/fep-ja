@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-268d: Search consent signals for objects - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-268d: Search consent signals for objects";
+        var mkdocs_page_input_path = "fep/fep-268d.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-268d: Search consent signals for objects</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#history">History</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#background">Background</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#terms-defined">Terms defined</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-268d: Search consent signals for objects</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-268d.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-268d-search-consent-signals-for-objects">FEP-268d: Search consent signals for objects</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-268d.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p>This FEP documents an extension property for [Activity Streams 2.0] to signal the consent for an object to be searched by a given actor.</p>
+<h2 id="history">History</h2>
+<p><em>This section is non-normative.</em></p>
+<p>Fedibird <a href="https://github.com/fedibird/mastodon/commit/91d6b018dfef47f19fcab13fb2d56f6e657f7db5">introduced the <code>searchableBy</code> property</a> in August 2022.</p>
+<p>kmyblue <a href="https://github.com/kmycode/mastodon/commit/af20b1d2aafe2e535611a2d3155306fcd1d8a89b">implemented the <code>searchableBy</code> property</a> in April 2023.</p>
+<p>Mastodon <a href="https://github.com/mastodon/mastodon/pull/23808">began implementing the <code>indexable</code> property</a> [FEP-5feb] in February 2023 and <a href="https://github.com/mastodon/mastodon/releases/tag/v4.2.0-rc1">released it</a> in September 2023.</p>
+<h2 id="background">Background</h2>
+<p><em>This section is non-normative.</em></p>
+<p>[FEP-5feb] introduced the <code>indexable</code> property, which allows an Activity Streams actor to signal their preference for whether objects attributed to them should be made publicly available for search.</p>
+<p>The <code>indexable</code> property is an actor-level property which takes a boolean value, allowing the actor to make all of their objects available for search by either anyone or no one at all. However, sometimes it is desirable to make a certain set of objects searchable/unsearchable or make an object searchable by a limited audience. The object-level <code>searchableBy</code> property documented in this FEP complements the <code>indexable</code> property with a more fine-grained audience targeting ability.</p>
+<h2 id="requirements">Requirements</h2>
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119].</p>
+<h2 id="terms-defined">Terms defined</h2>
+<div id="searchableBy" resource="http://fedibird.com/ns#searchableBy" typeof="rdf:Property">
+<h3>searchableBy</h3>
+<dl>
+<dt>URI</dt>
+<dd><code>http://fedibird.com/ns#searchableBy</code></dd>
+<dt>Label</dt>
+<dd property="rdfs:label" lang="en">searchable by</dd>
+<dt>Comment</dt>
+<dd property="rdfs:comment" lang="en">Identifies one or more entities that are allowed to search for the subject.</dd>
+<dt>Domain</dt>
+<dd><code property="rdfs:domain" resource="as:Object">Object</code></dd>
+<dt>Range</dt>
+<dd><code property="rdfs:range" resource="as:Object">Object</code> | <code property="rdfs:range" resource="as:Link">Link</code></dd>
+<dt>Required</dt>
+<dd property="owl:minCardinality" content="0" datatype="xsd:nonNegativeInteger">No</dd>
+<dt>Is defined by</dt>
+<dd><a property="rdfs:isDefinedBy" href="https://w3id.org/fep/268d" resource="https://w3id.org/fep/268d">FEP-268d</a></dd>
+</dl>
+
+A non-normative example of a publicly searchable post:
+
+
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://w3id.org/fep/268d&quot;,
+    &quot;https://www.w3.org/ns/activitystreams&quot;
+  ],
+  &quot;id&quot;: &quot;https://example.com/notes/1&quot;,
+  &quot;attributedTo&quot;: &quot;https://example.com/users/1&quot;,
+  &quot;to&quot;: &quot;https://www.w3.org/ns/activitystreams#Public&quot;,
+  &quot;cc&quot;: &quot;https://example.com/users/1/followers&quot;,
+  &quot;type&quot;: &quot;Note&quot;,
+  &quot;content&quot;: &quot;Hello, world!&quot;,
+  &quot;searchableBy&quot;: &quot;https://www.w3.org/ns/activitystreams#Public&quot;
+}
+</code></pre>
+
+
+A post only searchable by the mentioned users and the author's followers:
+
+
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://w3id.org/fep/268d&quot;,
+    &quot;https://www.w3.org/ns/activitystreams&quot;
+  ],
+  &quot;id&quot;: &quot;https://example.com/notes/42&quot;,
+  &quot;attributedTo&quot;: &quot;https://example.com/users/1&quot;,
+  &quot;to&quot;: &quot;https://alice.example/actor&quot;,
+  &quot;cc&quot;: [&quot;https://example.com/users/1/followers&quot;, &quot;https://www.w3.org/ns/activitystreams#Public&quot;],
+  &quot;type&quot;: &quot;Note&quot;,
+  &quot;content&quot;: &quot;@Alice Happy birthday!&quot;,
+  &quot;tag&quot;: {
+    &quot;type&quot;: &quot;Mention&quot;,
+    &quot;href&quot;: &quot;https://alice.example/actor&quot;,
+    &quot;name&quot;: &quot;@Alice&quot;
+  },
+  &quot;searchableBy&quot;: [&quot;https://alice.example/actor&quot;, &quot;https://example.com/users/1/followers&quot;]
+}
+</code></pre>
+
+
+(where `https://example.com/users/1/followers` is the `followers` collection of `https://example.com/users/1`.)
+
+A post only searchable by the author themselves:
+
+
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://w3id.org/fep/268d&quot;,
+    &quot;https://www.w3.org/ns/activitystreams&quot;
+  ],
+  &quot;id&quot;: &quot;https://example.com/notes/123&quot;,
+  &quot;attributedTo&quot;: &quot;https://example.com/users/1&quot;,
+  &quot;to&quot;: &quot;https://example.com/users/1/followers&quot;,
+  &quot;cc&quot;: &quot;https://www.w3.org/ns/activitystreams#Public&quot;,
+  &quot;type&quot;: &quot;Note&quot;,
+  &quot;summary&quot;: &quot;Note to self&quot;,
+  &quot;searchableBy&quot;: &quot;https://example.com/users/1&quot;
+}
+</code></pre>
+
+
+An actor with a default searchability of `as:Public`:
+
+
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://w3id.org/fep/268d&quot;,
+    &quot;https://www.w3.org/ns/activitystreams&quot;
+  ],
+  &quot;id&quot;: &quot;https://example.com/users/1&quot;,
+  &quot;type&quot;: &quot;Person&quot;,
+  &quot;searchableBy&quot;: &quot;https://www.w3.org/ns/activitystreams#Public&quot;
+}
+</code></pre>
+
+
+## Searchability of objects
+
+This section describes how the searchability of an object for a given actor should be determined.
+
+If the object has at least one `searchableBy` property value and the searching actor isn't included in the property values, the object MUST NOT be made available for search by that actor. Even in this case, the object SHOULD be made available for search if the object is attributed to the searching actor themselves, and MAY be made available for search if the searching actor has previously interacted with the object (e.g. by `Like`-ing the object).
+
+If the `searchableBy` property values of the object include the searching actor, the object SHOULD be made available for search by the actor, unless the searching actor is otherwise forbidden to see the object by access controls such as the Activity Streams audience targeting (`to`, `bto`, `cc`, `bcc` and `audience` properties) of the object and `Block`s by the object's attributed actors.
+
+Objects with a `searchableBy` value of `https://www.w3.org/ns/activitystreams#Public` SHOULD be made available for search by any users.
+
+If the object does not have any `searchableBy` values but is attributed to an actor with at least one `searchableBy` value, the object SHALL be treated as inheriting the `searchableBy` value of the attributed actor.
+
+Note that, in JSON-LD, an empty array value (`[]`) is semantically equivalent to `null` or "undefined". In consequence, if a publisher wishes to make an object searchable by no one (instead of falling back on the attributed actor's `searchableBy` value), a placeholder object needs to be used as the `searchableBy` value of that object. The RECOMMENDED placeholder in that case is the object's `attributedTo` value, if any.
+
+If the object does not fall under any of the conditions described in this section, the searchability of the object MAY be determined by an implementation-defined strategy.
+
+Note that the searchability signaled by the `searchableBy` property is only applicable to Activity Streams representation of objects. Searchability of non-Activity Streams representations (most notably, HTML) of objects with non-public `searchableBy` property value SHOULD be signaled by other means. Non-normative examples of such means include the Robots Exclusion Protocol [RFC-9309] [ROBOTSTXT], the `<meta name="robots">` HTML tag [ROBOTSTXT-META] and the `X-Robots-Tag` HTTP header [GOOGLE-ROBOTS].
+
+## Interaction with FEP-5feb (`toot:indexable`)
+
+*This section is only applicable to conformant [FEP-5feb] implementations.*
+
+If an object does not have any `searchableBy` values and is attributed to an actor with no `searchableBy` values but with an `http://joinmastodon.org/ns#indexable` value, the searchability of the object SHOULD be determined according to [FEP-5feb].
+
+If an object has at least one `searchableBy` value, the property SHALL take precedence over the `indexable` property. In particular, if an object is not searchable according to the `searchableBy` property, the object must not be made available for search, even if the object is targeted to the `as:Public` collection and the object is attributed to an actor with `"indexable": true`.
+
+## Security considerations
+
+*This section is non-normative.*
+
+As mentioned in the normative section, consuming implementations should take care to ignore JSON entries with an empty array value (`"searchableBy": []`). Failure to do so would have a security implication if the implementation is verifying RDF-based signatures of objects, because the empty array value does not affect the RDF dataset (and hence the resulting signature value), so that an attacker can remove/insert a `"searchableBy": []` entry from/to a signed object without making the signature verification fail, allowing them to tamper with the object's searchability if the empty array value were handled differently from "undefined".
+
+## 実装
+
+*This section is non-normative.*
+
+- [Fedibird](https://github.com/fedibird/mastodon/tree/fedibird)
+- [kmyblue](https://github.com/kmycode/mastodon)
+
+## 参考文献
+
+- [Activity Streams 2.0] James M Snell, Evan Prodromou, <cite>[Activity Streams 2.0](https://www.w3.org/TR/activitystreams-core/)</cite>, 2017
+- [FEP-5feb] Claire, <cite>[FEP-5feb: Search indexing consent for actors](https://w3id.org/fep/5feb)</cite>, 2023
+- [RFC-2119] S. Bradner, <cite>[Key words for use in RFCs to Indicate Requirement Levels](https://doi.org/10.17487/RFC2119)</cite>, 1997
+- [RFC-9309] M. Koster, <cite>[Robots Exclusion Protocol](https://doi.org/10.17487/RFC9309)</cite>, 2022
+- [ROBOTSTXT] Martijn Koster, <cite>[A Standard for Robot Exclusion](https://www.robotstxt.org/orig.html)</cite>, 1994
+- [ROBOTSTXT-META] Martijn Koster, <cite>[About the Robots \<META> tag](https://www.robotstxt.org/meta.html)</cite>, 2007
+- [GOOGLE-ROBOTS] Google, <cite>[Robots Meta Tags Specifications](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag#xrobotstag)</cite>
+
+## 著作権
+CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン
+
+法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-2677/" class="btn btn-neutral float-left" title="FEP-2677: Identifying the Application Actor"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-2c59/" class="btn btn-neutral float-right" title="FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-2677/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-2c59/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

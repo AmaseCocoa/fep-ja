@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces";
+        var mkdocs_page_input_path = "fep/fep-888d.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#acknowledgements">Acknowledgements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#prior-art">Prior art</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#specification">Specification</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#design-goals">Design goals</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mapping-w3idorgfep-to-fediversefep-on-codeberg">Mapping w3id.org/fep to fediverse/fep on Codeberg</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#example">Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#defining-terms-associated-with-an-fep">Defining terms associated with an FEP</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#example-using-paths">Example using paths</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example-using-fragment-identifiers">Example using fragment identifiers</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#defining-terms-in-a-machine-readable-way">Defining terms in a machine-readable way</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#using-the-python-script">Using the python script</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#options-available">Options available</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#algorithm">Algorithm</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#usage">Usage</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example-terms-defined-by-this-fep">Example terms defined by this FEP</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">著作権</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-888d.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-888d-using-httpsw3idorgfep-as-a-base-for-fep-specific-namespaces">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-888d.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p>It is considered best practice in the linked-data ecosystem to have IRIs be HTTPS URIs that resolve to a definition of the term being used, and it is desirable to define such terms in a JSON-LD context file that is referenced by its IRI rather than having the full <code>@context</code> object embedded in every single document. ActivityStreams 2.0 and ActivityPub do this with the normative context and namespace provided at <code>https://www.w3.org/ns/activitystreams</code>, but this namespace is not generally open to extensions or to experimental terms. This FEP therefore proposes using <code>https://w3id.org/fep</code> as a base IRI for the FEP process, allowing sub-namespaces for each FEP.</p>
+<h2 id="acknowledgements">Acknowledgements</h2>
+<p>(このセクションは非規範的です。)</p>
+<p>The core idea behind this FEP is attributed to helge on SocialHub <a href="https://socialhub.activitypub.rocks/t/fep-2e40-the-fep-vocabulary-extension-process/2972">1</a>. Specifically, the proposal to register <code>fep</code> at the W3ID service is adopted wholesale, with alterations made to the specifics of implementing the redirect mappings using .htaccess rules. These alterations are intended to allow easier sub-namespace allocation for each FEP.</p>
+<h2 id="requirements">Requirements</h2>
+<p>The key words "MUST", "SHOULD", "MAY" are to be interpreted as described in <a href="https://tools.ietf.org/html/rfc2119.html">RFC-2119</a>.</p>
+<h2 id="introduction">Introduction</h2>
+<p>(このセクションは非規範的です。)</p>
+<p>The Resource Description Framework (RDF), of which JSON-LD is a serialization, uses URIs to identify nodes on a graph, define properties of those nodes, and create relationships between those nodes. Each statement in RDF represents a fact that is constructed by linking a subject to an object with a predicate; for example, in the statement "Alice knows Bob", the subject <code>Alice</code> is related to the object <code>Bob</code> by the predicate <code>knows</code>. To avoid ambiguity, we can specify a URI for what it means to "know" someone. Such a URI represents a named property or named predicate, and it exists within a namespace, often associated with some ontology or vocabulary. <a href="https://www.w3.org/TR/activitystreams-core">ActivityStreams 2.0</a> provides and defines the <a href="https://www.w3.org/TR/activitystreams-vocabulary">Activity Vocabulary</a> at <code>https://www.w3.org/ns/activitystreams</code>, and terms defined within may use either the base IRI <code>https://www.w3.org/ns/activitystreams#</code> or the compact IRI <code>as:</code>.</p>
+<p>For example, we can consider the definition of "Public" addressing within <a href="https://www.w3.org/TR/activitypub">ActivityPub</a>, represented by the <code>Public</code> magic collection. When the normative ActivityStreams 2.0 context is applied, the IRI for this collection may be equivalently expressed as <code>Public</code>, <code>as:Public</code>, or <code>https://www.w3.org/ns/activitystreams#Public</code>.</p>
+<p>Historically, extension terms within early <a href="https://www.w3.org/TR/activitypub">ActivityPub</a> implementations assumed that those extension terms would be readily adopted within the ActivityStreams namespace, but this did not happen. Currently, terms such as <code>Hashtag</code>, <code>manuallyApprovesFollowers</code>, <code>movedTo</code>, and <code>sensitive</code> are manually defined with compact IRIs using the <code>as:</code> prefix, in effect making it so that any implementation that wishes to understand these properties and types must manually define those terms as well, in the exact same way.</p>
+<p>Later extension terms were defined within vendor-specific namespaces such as <code>http://joinmastodon.org/ns</code> or <code>https://joinpeertube.org/ns</code>. With the increased adoption of ActivityPub by software projects and the diverse needs of such projects, each project will often define its own vendor-specific namespace to contain its own terms. This has led to a multitude of namespaces and extension terms, which must be cherry-picked as needed by JSON-LD consumers wishing to maintain compatibility. Additionally, some of these terms are defined incorrectly within <code>@context</code>, leading to the necessity of compatibility hacks on a per-project basis. Even terms defined correctly may overlap with other terms, and proposed new terms must be parented within a vendor namespace, creating the potential for conflict on which vendor should adopt which term.</p>
+<p>The aim of this FEP is to provide a vendor-independent namespace under which extension terms can be defined pursuant to the FEP process and the above problems can be reduced.</p>
+<h2 id="prior-art">Prior art</h2>
+<p>(このセクションは非規範的です。)</p>
+<p>Within the XMPP ecosystem, the core XMPP specification is defined within an RFC, and further functionality is afforded by the "eXtensible" nature of XMPP. The XMPP Standards Foundation (XSF) maintains the process for stewarding new extensions via XMPP Extension Protocols (XEPs). XML namespacing for such extensions is provided by <code>urn:xmpp:</code>, as the XML ecosystem generally prefers using URNs rather than using HTTPS URIs. Such URNs are fully location-independent and not vulnerable to DNS expiry, lapsing, or insolvency. Instead, they are assigned within the authority of the XSF. The XSF maintains an XMPP Registrar and allows XEPs to request and define sub-namespaces beneath <code>urn:xmpp:</code>. In exchange, these URNs are not generally dereferencable without a resolver that looks up the URN within the XEP database.</p>
+<p>Within the RDF and linked-data ecosystems, there is a strong preference for HTTP or HTTPS URIs, as these can usually be dereferenced via the HTTP protocol for additional information about the subject of the URI. In cases where the URI does not resolve, the URI serves as an identifier not much different than a URN, but with its authority derived from DNS domain rather than from some organizational authority. The reliance on DNS domain creates an issue where the primary domain associated with a group or organization might change. If a previously-used domain is reassigned to a different party, then the new party can mint URIs that accidentally or intentionally conflict with previously-assigned URIs.</p>
+<p>To mitigate the DNS authority reassignment issue, trusted intermediary services can maintain a "persistent URL" (PURL) service, which allows assigning identifiers on the intermediary domain that will redirect to some other URI. This layer of indirection allows changing the location of the resource by simply changing the redirect's target. W3ID is one such service, operated by the W3C Permanent Identifier Community Group and available at <a href="https://w3id.org">https://w3id.org</a>. At the time of writing this FEP, top-level directory names can be claimed by individuals who submit pull requests to the w3id.org repository on GitHub, and .htaccess files allow redirection based on rewrite rules that transform incoming requests to some other target.</p>
+<h2 id="specification">Specification</h2>
+<h3 id="design-goals">Design goals</h3>
+<p>Broad design goals for the redirect mapping include:</p>
+<ul>
+<li>Content negotiation for JSON-LD consumers. IRIs SHOULD return machine-friendly context documents or term definitions when requested via the <code>Accept: application/ld+json</code> HTTP header, and SHOULD otherwise return human-friendly proposal documents or term definitions by default.</li>
+<li>Sub-namespaces for each FEP. Identifiers for each term SHOULD be allocated within the namespace of the FEP that defines them.</li>
+</ul>
+<p>At minimum, the following redirects SHOULD resolve as follows:</p>
+<ul>
+<li><code>https://w3id.org/fep</code></li>
+<li><code>Accept: *</code> =&gt; the FEP repository or current home page</li>
+<li><code>https://w3id.org/fep/(:id)</code></li>
+<li><code>Accept: application/ld+json</code> =&gt; a specific FEP's context document</li>
+<li><code>Accept: *</code> =&gt; a specific FEP's proposal document</li>
+</ul>
+<p>Additionally, the following MAY resolve:</p>
+<ul>
+<li><code>https://w3id.org/fep/(:id)/(:term)</code></li>
+<li><code>Accept: application/ld+json</code> =&gt; a specific FEP's specific term definition in JSON-LD ontology/schema</li>
+<li><code>Accept: application/rdf+xml</code> =&gt; a specific FEP's specific term definition in RDF/XML ontology/schema</li>
+<li><code>Accept: text/turtle</code> =&gt; a specific FEP's specific term definition in Turtle ontology/schema</li>
+<li><code>Accept: *</code> =&gt; a specific FEP's specific term's folder</li>
+</ul>
+<h3 id="mapping-w3idorgfep-to-fediversefep-on-codeberg">Mapping w3id.org/fep to fediverse/fep on Codeberg</h3>
+<p>At the time of writing this FEP, the Codeberg repository at <code>https://codeberg.org/fediverse/fep</code> is used to host FEP-related files, and can similarly be used to host context documents.</p>
+<h4 id="example">Example</h4>
+<p>(このセクションは非規範的です。)</p>
+<p>An example .htaccess file is co-located with this FEP, and reproduced below for convenience:</p>
+<pre><code class="language-perl">RewriteEngine on
+
+
+# catch root request
+RewriteRule ^\/?$ https://codeberg.org/fediverse/fep [R=302,L]
+
+
+
+# Catch FEP documents
+
+## By content negotiation
+
+### JSON-LD
+RewriteCond %{HTTP_ACCEPT} application/ld\+json
+RewriteRule ^([A-Za-z0-9]+)\/?$ https://raw.codeberg.page/fediverse/fep/fep/$1/fep-$1.jsonld [R=302,L]
+
+### RDF+XML
+RewriteCond %{HTTP_ACCEPT} application/rdf\+xml
+RewriteRule ^([A-Za-z0-9]+)\/?$ https://fediverse.codeberg.page/fep/fep/$1/fep-$1.rdf [R=302,L]
+
+### Turtle
+RewriteCond %{HTTP_ACCEPT} text/turtle
+RewriteRule ^([A-Za-z0-9]+)\/?$ https://fediverse.codeberg.page/fep/fep/$1/fep-$1.ttl [R=302,L]
+
+## By URL hacking
+RewriteRule ^([A-Za-z0-9]+).jsonld$ https://raw.codeberg.page/fediverse/fep/fep/$1/fep-$1.jsonld [R=302,L]
+RewriteRule ^([A-Za-z0-9]+).rdf$ https://raw.codeberg.page/fediverse/fep/fep/$1/fep-$1.rdf [R=302,L]
+RewriteRule ^([A-Za-z0-9]+).ttl$ https://raw.codeberg.page/fediverse/fep/fep/$1/fep-$1.ttl [R=302,L]
+
+## By default, take you to the FEP document
+RewriteRule ^([A-Za-z0-9]+)\/?$ https://codeberg.org/fediverse/fep/src/branch/main/fep/$1/fep-$1.md [R=302,L]
+
+
+
+# Catch term definitions/schemas/ontologies
+
+## By content negotiation
+
+### JSON-LD
+RewriteCond %{HTTP_ACCEPT} application/ld\+json
+RewriteRule ^([A-Za-z0-9]+)\/(.*?)\/?$ https://raw.codeberg.page/fediverse/fep/fep/$1/$2/$2.jsonld [R=302,L]
+
+### RDF+XML
+RewriteCond %{HTTP_ACCEPT} application/rdf\+xml
+RewriteRule ^([A-Za-z0-9]+)\/(.*?)\/?$ https://fediverse.codeberg.page/fep/fep/$1/$2/$2.rdf [R=302,L]
+
+### Turtle
+RewriteCond %{HTTP_ACCEPT} text/turtle
+RewriteRule ^([A-Za-z0-9]+)\/(.*?)\/?$ https://fediverse.codeberg.page/fep/fep/$1/$2/$2.ttl [R=302,L]
+
+### test html
+RewriteCond %{HTTP_ACCEPT} ^text/html$
+RewriteRule ^([A-Za-z0-9]+)\/(.*?)\/?$ https://fediverse.codeberg.page/fep/fep/$1/$2/$2.html [R=302,L]
+
+## By URL hacking
+RewriteRule ^([A-Za-z0-9]+)\/(.*?).jsonld$ https://raw.codeberg.page/fediverse/fep/fep/$1/$2/$2.jsonld [R=302,L]
+RewriteRule ^([A-Za-z0-9]+)\/(.*?).rdf$ https://fediverse.codeberg.page/fep/fep/$1/$2/$2.rdf [R=302,L]
+RewriteRule ^([A-Za-z0-9]+)\/(.*?).ttl$ https://fediverse.codeberg.page/fep/fep/$1/$2/$2.ttl [R=302,L]
+RewriteRule ^([A-Za-z0-9]+)\/(.*?).html$ https://fediverse.codeberg.page/fep/fep/$1/$2/$2.html [R=302,L]
+RewriteRule ^([A-Za-z0-9]+)\/(.*?).md$ https://fediverse.codeberg.page/fep/fep/$1/$2/README.md [R=302,L]
+
+## By default, just take you to the term's folder
+RewriteRule ^([A-Za-z0-9]+)\/(.*?)\/?$ https://codeberg.org/fediverse/fep/src/branch/main/fep/$1/$2 [R=302,L]
+
+
+
+# a generic catch-all rule
+RewriteRule ^(.*)\/?$  https://codeberg.org/fediverse/fep/raw/branch/main/fep/$1 [R=302,L]
+</code></pre>
+<h3 id="defining-terms-associated-with-an-fep">Defining terms associated with an FEP</h3>
+<p>FEPs that wish to define extension terms within the w3id.org/fep namespace MUST provide a JSON-LD document co-located within their FEP folder with a filename of the form <code>fep-xxxx.jsonld</code>, where <code>xxxx</code> is the FEP's slug. This document MUST include at least a <code>@context</code> key, whose value is a JSON object containing term definitions. Simple term definitions map a <code>term</code> key to an IRI value. Expanded term definitions contain <code>@id</code> for each term, with <code>@type</code> of <code>@id</code> if the term links to another node on the graph. Refer to <a href="https://www.w3.org/TR/json-ld/#expanded-term-definition">LD-TERM-DFN</a> for additional guidance on defining terms within JSON-LD.</p>
+<p>The document MAY include additional metadata outside of the <code>@context</code>, such as schema or ontology definitions. If this is done, then you SHOULD NOT include any prefixes in your <code>@context</code> that are only used within the graph, as these can pollute the usage as a context document.</p>
+<p>Once the FEP is marked <code>FINAL</code>, the context document MAY be cached forever if referenced. FEPs that define extension terms MAY instead define extension terms within a vendor-specific namespace, but generally this SHOULD NOT be done.</p>
+<h4 id="example-using-paths">Example using paths</h4>
+<p>(このセクションは非規範的です。)</p>
+<p>For example, say we wanted to define the following terms within the current FEP-888d:</p>
+<ul>
+<li><code>SomeType</code> is a term for some type</li>
+<li><code>exampleA</code> is a term for a property with some literal value (string, boolean, number)</li>
+<li><code>exampleB</code> is a term for a property that links to another node on the graph (for example, another object)</li>
+<li><code>exampleC</code> is a term for a property that is an ordered list of literal values that are specifically non-negative integers</li>
+</ul>
+<p>The context document might look like this, at minimum:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: {
+        &quot;SomeType&quot;: &quot;https://w3id.org/fep/888d/SomeType&quot;,
+        &quot;exampleA&quot;: &quot;https://w3id.org/fep/888d/exampleA&quot;,
+        &quot;exampleB&quot;: {
+            &quot;@id&quot;: &quot;https://w3id.org/fep/888d/exampleB&quot;,
+            &quot;@type&quot;: &quot;@id&quot;
+        },
+        &quot;exampleC&quot;: {
+            &quot;@id&quot;: &quot;https://w3id.org/fep/888d/exampleC&quot;,
+            &quot;@type&quot;: &quot;http://www.w3.org/2001/XMLSchema#nonNegativeInteger&quot;,
+            &quot;@container&quot;: &quot;@list&quot;
+        }
+    }
+}
+</code></pre>
+<p>Refer to <a href="https://www.w3.org/TR/json-ld/#expanded-term-definition">LD-TERM-DFN</a> for additional guidance on defining terms within JSON-LD.</p>
+<p>A folder within the FEP's directory should be used to provide additional documentation for the term, such as ontology or schema definitions via JSON-LD, RDF/XML, and/or Turtle.</p>
+<h4 id="example-using-fragment-identifiers">Example using fragment identifiers</h4>
+<p>(このセクションは非規範的です。)</p>
+<p>Depending on convenience or preference, the context document might instead look like this:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: {
+        &quot;SomeType&quot;: &quot;https://w3id.org/fep/888d#SomeType&quot;,
+        &quot;exampleA&quot;: &quot;https://w3id.org/fep/888d#exampleA&quot;,
+        &quot;exampleB&quot;: {
+            &quot;@id&quot;: &quot;https://w3id.org/fep/888d#exampleB&quot;,
+            &quot;@type&quot;: &quot;@id&quot;
+        },
+        &quot;exampleC&quot;: {
+            &quot;@id&quot;: &quot;https://w3id.org/fep/888d#exampleC&quot;,
+            &quot;@type&quot;: &quot;http://www.w3.org/2001/XMLSchema#nonNegativeInteger&quot;,
+            &quot;@container&quot;: &quot;@list&quot;
+        }
+    }
+}
+</code></pre>
+<p>Refer to <a href="https://www.w3.org/TR/json-ld/#expanded-term-definition">LD-TERM-DFN</a> for additional guidance on defining terms within JSON-LD.</p>
+<p>In such a case, the FEP document should include an element with an HTML identifier that exactly matches the term name, so that the IRI fragment resolves properly. In practice, this means one of the following:</p>
+<ul>
+<li>Using a heading with a name that exactly matches the term name. This should be autolinked correctly by most Markdown processors. Be warned that this may cause problems for FEPs that define terms conflicting with common header names, such as <code>summary</code>, <code>acknowledgements</code>, <code>requirements</code>, <code>references</code>, <code>copyright</code>, and so on, including any headers that the FEP author includes for purposes other than explicitly defining the term.</li>
+<li>Using a heading with a custom attribute containing an ID. Some Markdown processors such as Goldmark will handle cases such as <code>### h3 {#custom-identifier}</code> and render <code>&lt;h3 id="custom-identifier"&gt;h3&lt;/h3&gt;</code>. Markdown specifications such as CommonMark currently do not support custom attributes, but some Markdown processors such as Goldmark support custom attributes on headers (but not on arbitrary elements). See <a href="https://talk.commonmark.org/t/consistent-attribute-syntax/272/">CM-ATTRS</a> for more discussion of this feature.</li>
+<li>Using an HTML definition list, with <code>id</code> attributes exactly matching the term name. HTML within Markdown files is generally rendered as-is, although it may be sanitized, stripped, or disallowed for security purposes. In cases where it is allowed, however, it can be an effective way to express term definitions within an FEP document.</li>
+</ul>
+<h2 id="defining-terms-in-a-machine-readable-way">Defining terms in a machine-readable way</h2>
+<p>(このセクションは非規範的です。)</p>
+<p>If terms are defined within HTML using RDFa, and this HTML is embedded in the Markdown contents of the FEP document, then these term definitions can be used to programmatically generate machine-readable term definitions, schemas, and ontologies in multiple formats. A Python script is provided within the FEP repository at <code>scripts/make_definitions.py</code> for convenience.</p>
+<p>To make use of the script, it is necessary to structure term definitions in a specific way. We define a "term definition" to be any HTML element that adheres to the following requirements:</p>
+<ul>
+<li>The HTML element has an HTML <code>id</code> attribute equal to the shorthand term name.</li>
+<li>The HTML element has an RDFa <code>resource</code> attribute equal to the term's full IRI.</li>
+</ul>
+<p>Generally, this HTML element should be a <code>&lt;section&gt;</code> tag, and it should contain a definition list (<code>&lt;dl&gt;&lt;/dl&gt;</code>) where each term (<code>&lt;dt&gt;&lt;/dt&gt;</code>) and definition (<code>&lt;dd&gt;&lt;/dd&gt;</code>) provide a key-value pair representing a property of that term definition. Examples may be provided within a preformatted code block (<code>&lt;pre&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;</code>), and multiple examples may be provided. Example code blocks can have a <code>title</code> attribute on the <code>&lt;pre&gt;</code> tag. It is generally recommended to put any term definitions below a heading called something like "Terms defined".</p>
+<p>For all term definitions regardless of type, it is recommended to include the following properties in your definition list:</p>
+<ul>
+<li><code>rdfs:label</code> is a natural language label that can replace the shorthand term. For example, a term that is normally expressed with the shorthand <code>hasValue</code> might be labelled <code>has value</code> in plain English.</li>
+<li><code>rdfs:comment</code> is a natural language description that gives more detail about what the term means.</li>
+<li><code>rdfs:isDefinedBy</code> is a reference pointing to where the term is defined. Usually this is the current FEP, but meta-FEPs that bundle other FEPs may use this property to refer to the original FEP that defined a term.</li>
+</ul>
+<p>For term definitions that define a class (such as <code>rdfs:Class</code> or <code>owl:Class</code>), it is recommended to include the following properties in your definition list if appropriate:</p>
+<ul>
+<li><code>rdfs:seeAlso</code> is a reference to some other resource that provides more information about the current term. Usually this can be used to link a class to the properties that instances of that class may have.</li>
+<li><code>rdfs:subClassOf</code> is a property that declares the current class to inherit from the object. Logically, if something is an instance of the current class, it is also an instance of the superclass. For example, in <a href="https://www.w3.org/TR/activitystreams-vocabulary">AS2-Vocab</a>, <code>OrderedCollection</code> is a subclass of <code>Collection</code>, so all <code>OrderedCollection</code> objects are also implied to have a type of <code>Collection</code> as well, even if not explicitly declared to be one.</li>
+</ul>
+<p>For term definitions that define a property (such as <code>rdf:Property</code>, <code>owl:DatatypeProperty</code>, or <code>owl:ObjectProperty</code>), it is recommended to include the following properties in your definition list if appropriate:</p>
+<ul>
+<li><code>rdfs:domain</code> is the Domain of the property. Logically, this implies that if a property <code>p</code> has a domain <code>D</code>, and a given resource has the property <code>p</code>, then that resource has a type of <code>D</code>. For example, in <a href="https://www.w3.org/TR/activitystreams-vocabulary">AS2-Vocab</a> the domain of <code>actor</code> is <code>Activity</code>, so anything that has an <code>actor</code> is implied to be an <code>Activity</code> even if not explicitly declared to be one.</li>
+<li><code>rdfs:range</code> is the Range of the property. Logically, this implies that if a property <code>p</code> has a range <code>R</code>, and a given resource is the value of <code>p</code>, then that resource has a type of <code>R</code>. For example, in <a href="https://www.w3.org/TR/activitystreams-vocabulary">AS2-Vocab</a> the range of <code>replies</code> is <code>Collection</code>, so anything that is the value of <code>replies</code> is implied to be a <code>Collection</code> even if not explicitly declared to be one.</li>
+<li>In cases where a property is Required, this can be stated by declaring that the <code>property</code> of <code>owl:minCardinality</code> has a <code>content</code> of <code>1</code> (with a <code>datatype</code> of <code>xsd:nonNegativeInteger</code>). In other words, a property with a minimum cardinality of 1 must have at least one value. If the property is not Required, then this statement can be amended to have a <code>content</code> of <code>0</code>, or in other words, you are stating that this property must have at least 0 values (which allows having no values).</li>
+<li>In cases where a property is Functional, this can be stated by declaring that the <code>property</code> of <code>owl:maxCardinality</code> has a <code>content</code> of <code>1</code> (with a <code>datatype</code> of <code>xsd:nonNegativeInteger</code>). In other words, a property with a maximum cardinality of 1 can have at most one value. If the property is not Functional, then this statement can be omitted.</li>
+<li><code>rdfs:seeAlso</code> is a reference to some other resource that provides more information about the current term. Usually this can be used to link a property to other related terms, such as term definitions that can be used as the value of this property.</li>
+</ul>
+<p>If the term definition contains JSON-LD keywords like <code>@id</code>, <code>@vocab</code>, <code>@set</code>, or <code>@list</code> within a <code>&lt;dd&gt;</code> element whose corresponding <code>&lt;dt&gt;</code> element's inner text exactly matches <code>Range</code>, then these keywords can be used to automatically generate a context document. Set the attribute <code>excluded</code> on the term definition to a non-empty value to exclude it from auto-generated context term definitions.</p>
+<h3 id="using-the-python-script">Using the python script</h3>
+<p>Source code for the script is available in <code>make_definition.py</code>, currently co-located in the FEP-888d folder.</p>
+<p>The script will operate according to the following logic:</p>
+<h4 id="options-available">Options available</h4>
+<ul>
+<li>GENERATE_CONTEXT_FROM_TERMDEFS: if true, will automatically generate a context. The generated context can be manipulated by the presence of JSON-LD keywords like <code>@id</code>, <code>@vocab</code>, <code>@set</code>, and <code>@list</code>.</li>
+<li>OUTPUT_FORMATS: a list of formats to be used when generating outputs for both singular term definitions as well as FEP-wide schema or ontology files.</li>
+<li>PATH_TO_CONTEXT: a pre-written context document whose context mapping will be injected into the JSON-LD output of the FEP. Defaults to the JSON-LD alternate format of the FEP (<code>fep-$SLUG.jsonld</code> co-located within the FEP folder). Failure to read this path as valid JSON will lead to an empty context mapping.</li>
+</ul>
+<h4 id="algorithm">Algorithm</h4>
+<p>1) Render markdown as HTML.
+2) Find all HTML elements that have <code>id</code> and <code>resource</code>. These are considered "term definitions".
+3) Initialize an empty graph for the entire FEP.
+4) Initialize an empty context mapping for the entire FEP.
+4.1) If GENERATE_CONTEXT_FROM_TERMDEFS is set to false, then try to load an existing context mapping from PATH_TO_CONTEXT.
+5) Loop over all elements identified as "term definitions".
+5.1) Initialize an empty graph for the current term.
+5.2) Set the subject <code>s</code> equal to the <code>resource</code> attribute of the element.
+5.3) Set <code>term_type</code> equal to the <code>typeof</code> attribute of the element.
+5.4) Add a statement to the current term graph, of the form <code>s rdf:type term_type</code>.
+5.5) Loop over all child elements with a <code>property</code> attribute. These are considered "property definitions".
+5.5.1) Set the predicate <code>p</code> equal to the <code>property</code> attribute.
+5.5.2) Set the object <code>o</code> equal to the <code>resource</code> attribute. If not present, then set the object <code>o</code> equal to the <code>href</code> attribute. If not present, then set the object <code>o</code> equal to the <code>content</code> attribute. If not present, then set the object <code>o</code> equal to the inner text of the current element.
+5.5.3) Set the language <code>lang</code> equal to the <code>lang</code> attribute.
+5.5.4) Set the datatype <code>datatype</code> equal to the <code>datatype</code> attribute.
+5.5.5) Add a statement to the current term's graph using <code>s</code>, <code>p</code>, <code>o</code>, <code>lang</code>, and <code>datatype</code>, making sure to expand any CURIEs according to the RDFa initial context.
+5.5.5.1) If there is a <code>datatype</code> or <code>lang</code>, then the object <code>o</code> is a Literal.
+5.5.5.2) Otherwise, the object <code>o</code> is an IRI reference.
+5.6) If GENERATE_CONTEXT_FROM_TERMDEFS is set to true and the current element does not have an <code>excluded</code> attribute, then extract JSON-LD keywords and automatically generate a context term definition.
+5.6.1) Set the shorthand <code>term_name</code> equal to the <code>id</code> attribute of the element.
+5.6.2) Initialize an <code>options</code> mapping to keep track of extended term definitions.
+5.6.3) Pairwise combine each child <code>&lt;dt&gt;</code> element with its corresponding child <code>&lt;dd&gt;</code> element.
+5.6.4) Find a <code>&lt;dt&gt;</code> element whose inner text is exactly "Range". [TODO: something less fragile?]
+5.6.5) Check the corresponding <code>&lt;dd&gt;</code> element for a <code>resource</code> attribute. If there is one, extract this IRI as <code>type_iri</code>.
+5.6.5.1) If this <code>type_iri</code> starts with <code>xsd</code>, then insert <code>@type: type_iri</code> into the <code>options</code> mapping.
+5.6.6) Check the text content of the <code>&lt;dd&gt;</code> element for a substring <code>@id</code>. If found, then insert <code>@type: @id</code> into the <code>options</code> mapping.
+5.6.7) Check the text content of the <code>&lt;dd&gt;</code> element for a substring <code>@vocab</code>. If found, then insert <code>@type: @vocab</code> into the <code>options</code> mapping.
+5.6.8) Check the text content of the <code>&lt;dd&gt;</code> element for a substring <code>@set</code>. If found, then insert <code>@container: @set</code> into the <code>options</code> mapping.
+5.6.9) Check the text content of the <code>&lt;dd&gt;</code> element for a substring <code>@list</code>. If found, then insert <code>@container: @list</code> into the <code>options</code> mapping.
+5.6.10) If the <code>options</code> mapping is not empty, then insert <code>@id: s</code> into the <code>options</code> mapping.
+5.6.11) If the <code>options</code> mapping is not empty, then map <code>term_name</code> to the <code>options</code> mapping. Otherwise, map <code>term_name</code> to the string <code>s</code>. This is considered a "context term definition".
+5.6.12) Insert the context term definition into the context mapping.
+5.7) Merge the current term graph into the FEP-wide graph.
+5.8) If the subject <code>s</code> is not a fragment identifier, then for each alternate output format in OUTPUT_FORMATS, serialize the current term graph to that format and write it to a file within a co-located subfolder with the name <code>term_name</code>.
+5.8.1) If HTML+RDFa is one of the OUTPUT_FORMATS, then the term definition element can be copied as-is.
+5.8.2) If Markdown is one of the OUTPUT_FORMATS:
+5.8.2.1) Write a first-level heading with the shorthand <code>term_name</code> set equal to the <code>id</code> attribute of the term definition.
+5.8.2.2) Pairwise combine each child <code>&lt;dt&gt;</code> element with its corresponding child <code>&lt;dd&gt;</code> element.
+5.8.2.3) For each pair of <code>&lt;dt&gt;</code> and <code>&lt;dd&gt;</code> element, write a definition list term and definition list definition.
+5.8.2.4) Extract examples by finding all HTML elements that are <code>&lt;pre&gt;</code>.
+5.8.2.5) If any examples were found, write a second-level heading with the text set to <code>Examples</code>.
+5.8.2.5) For each example block found:
+5.8.2.5.1) If a <code>title</code> attribute is present, then write a paragraph with the text set to the value of <code>title</code>.
+5.8.2.5.2) Write the start of the code block with backticks. If a <code>lang</code> attribute is present, then append its value immediately afterward.
+5.8.2.5.3) Write the inner text of the example.
+5.8.2.5.4) Write the closing backticks for closing the code block.
+6) For each alternate output format in OUTPUT_FORMATS, serialize the FEP-wide graph to that format and write it to a file co-located with the name <code>fep-$SLUG.$FORMAT</code>. For example, if Turtle output is enabled, then <code>fep-xxxx.ttl</code> will be written. For JSON-LD output, use the current context mapping when serializing the FEP-wide graph. For HTML+RDFa or Markdown output, ignore these formats. (Outputting HTML can be done as part of a separate process of rendering the Markdown with a static site generator. Outputting the Markdown makes no sense since it is the source material and should not be overwritten.)
+6.3) If GENERATE_CONTEXT_FROM_TERMDEFS is set to true but JSON-LD is not one of the output formats, then initialize and serialize an empty graph, using the generated context term definition.
+6.1.1) Remove the graph from the context document.
+6.1.2) Save the generated context document as <code>fep-xxxx.jsonld</code>.</p>
+<h4 id="usage">Usage</h4>
+<ul>
+<li>Install required python dependencies, for example in a virtual environment:</li>
+<li>python-markdown</li>
+<li>beautifulsoup4</li>
+<li>rdflib</li>
+<li>markdownify</li>
+<li>python-frontmatter</li>
+<li>The script should be run in the base directory of the fediverse/fep repo.</li>
+<li><code>python make_definitions.py $SLUG</code> will read term definitions from the contents of <code>fep/$SLUG/fep-$SLUG.md</code>, then generate alternate formats for the FEP. If your terms are defined with fragment identifiers (of the form <code>https://w3id.org/fep/xxxx#term</code>), then only the FEP itself will be generated in alternate formats. If your terms are defined with absolute identifiers (of the form <code>https://w3id.org/fep/xxxx/term</code>), then co-located subdirectories will be created as well, and singular term definitions will be generated in chosen output formats. If a <code>context.jsonld</code> document is present in the FEP folder, then it will be copied into the JSON-LD alternate format output. The current default output formats are:</li>
+<li>.ttl (Turtle)</li>
+<li>.rdf (RDF/XML)</li>
+<li>.jsonld (JSON-LD)</li>
+<li>.html (HTML+RDFa) (singular term definitions only)</li>
+<li>.md (README.md for the Codeberg repo viewer) (singular term definitions only)</li>
+<li><code>python make_definitions.py $SLUG -c</code> will do everything in the above bullet point, except for copying <code>context.jsonld</code>. Instead, it will check for JSON-LD keywords and attempt to auto-generate a context document based on those keywords. If JSON-LD output is disabled, the script will generate only a context document instead of a combined context document and schema or ontology.</li>
+</ul>
+<h2 id="example-terms-defined-by-this-fep">Example terms defined by this FEP</h2>
+<p>(このセクションは非規範的です。)</p>
+<p>Using the same fictitious terms from the above examples:</p>
+<ul>
+<li><code>SomeType</code> is a term for some type</li>
+<li><code>exampleA</code> is a term for a property with some literal value (string, boolean, number)</li>
+<li><code>exampleB</code> is a term for a property that links to another node on the graph (for example, another object)</li>
+<li><code>exampleC</code> is a term for a property that is an ordered list of literal values that are specifically non-negative integers</li>
+<li><code>ExcludedExample</code> is a term for some class that is useful for ontology but not intended to be used for the context mapping</li>
+</ul>
+<p>We can formulate the following machine-readable term definition blocks, which are intended to provide a range of examples of various RDFa syntactical constructs for demonstration purposes. Specifically, the following mechanisms are demonstrated:</p>
+<ul>
+<li>Declaring a <code>resource</code> with a <code>typeof</code> some class</li>
+<li>Declaring a natural language <code>property</code> with a specified <code>lang</code></li>
+<li>Specifically, the rdfs:label and rdfs:comment properties provide natural language representations and descriptions of the defined term</li>
+<li>Declaring that a <code>property</code> has a value that is a <code>resource</code></li>
+<li>Declaring a <code>property</code> where the object value is referred to by <code>href</code> instead of <code>resource</code> (for example, in an anchor link)</li>
+<li>Declaring multiple values for a given <code>property</code> by including multiple tags</li>
+<li>Providing additional schema metadata that wasn't provided in the <code>@context</code>, such as signaling that a property is required or functional</li>
+<li>Declaring that a <code>property</code> has literal <code>content</code> instead of referring to a resource, and that this content can have its own <code>datatype</code> to which it can be coerced</li>
+<li>Excluding a term definition from the automatically generated context document, using the <code>excluded</code> attribute</li>
+</ul>
+<section id="SomeType" resource="https://w3id.org/fep/888d/SomeType" typeof="rdfs:Class">
+<h3>SomeType</h3>
+<dl>
+<dt>URI</dt>
+<dd><code>https://w3id.org/fep/888d/SomeType</code></dd>
+<dt>Label</dt>
+<dd property="rdfs:label" lang="en">Some Type</dd>
+<dt>Comment</dt>
+<dd property="rdfs:comment" lang="en">Some type.</dd>
+<dt>Subclass of</dt>
+<dd><a property="rdfs:subClassOf" href="https://www.w3.org/ns/activitystreams#Object">Object</dd>
+<dt>See also</dt>
+<dd><a property="rdfs:seeAlso" href="https://w3id.org/fep/888d/exampleA">exampleA</a> | <a property="rdfs:seeAlso" href="https://w3id.org/fep/888d/exampleB">exampleB</a> | <a property="rdfs:seeAlso" href="https://w3id.org/fep/888d/exampleC">exampleC</a></dd>
+<dt>Is defined by</dt>
+<dd><a property="rdfs:isDefinedBy" href="https://w3id.org/fep/888d">FEP-888d</a></dd>
+</dl>
+<pre title="Example of a SomeType with properties exampleA, exampleB, exampleC" lang="json">
+<code>
+{
+  "@context": "https://w3id.org/fep/888d",
+  "@type": "SomeType",
+  "exampleA": true,
+  "exampleB": "https://example.com/some-object",
+  "exampleC": [1, 1]
+}
+</code>
+</pre>
+</section>
+
+<section id="exampleA" resource="https://w3id.org/fep/888d/exampleA" typeof="owl:DatatypeProperty">
+<h3>exampleA</h3>
+<dl>
+<dt>URI</dt>
+<dd><code>https://w3id.org/fep/888d/exampleA</code></dd>
+<dt>Label</dt>
+<dd property="rdfs:label" lang="en">has example relation A with the literal value</dd>
+<dt>Comment</dt>
+<dd property="rdfs:comment" lang="en">A property with some literal value (string, boolean, number)</dd>
+<dt>Domain</dt>
+<dd><a property="rdfs:domain" href="https://w3id.org/fep/888d/SomeType">SomeType</a></dd>
+<dt>Range</dt>
+<dd property="rdfs:range" resource="rdfs:Literal">A literal value</a></dd>
+<dt>Required</dt>
+<dd property="owl:minCardinality" content="1" datatype="xsd:nonNegativeInteger">Yes</dd>
+<dt>Functional</dt>
+<dd property="owl:maxCardinality" content="1" datatype="xsd:nonNegativeInteger">Yes</dd>
+<dt>Is defined by</dt>
+<dd><a property="rdfs:isDefinedBy" href="https://w3id.org/fep/888d">FEP-888d</a></dd>
+</dl>
+<pre title="Example of a SomeType with properties exampleA, exampleB, exampleC" lang="json">
+<code>
+{
+  "@context": "https://w3id.org/fep/888d",
+  "@type": "SomeType",
+  "exampleA": true,
+  "exampleB": "https://example.com/some-object",
+  "exampleC": [1, 1]
+}
+</code>
+</pre>
+</section>
+
+<section id="exampleB" resource="https://w3id.org/fep/888d/exampleB" typeof="owl:ObjectProperty">
+<h3>exampleB</h3>
+<dl>
+<dt>URI</dt>
+<dd><code>https://w3id.org/fep/888d/exampleB</code></dd>
+<dt>Label</dt>
+<dd property="rdfs:label" lang="en">has example relation B with</dd>
+<dt>Comment</dt>
+<dd property="rdfs:comment" lang="en">A property that links to another node on the graph (for example, another object)</dd>
+<dt>Domain</dt>
+<dd><a property="rdfs:domain" href="https://w3id.org/fep/888d/SomeType">SomeType</a></dd>
+<dt>Range</dt>
+<dd property="rdfs:range" resource="rdfs:Resource">An object (@id)</dd>
+<dt>Required</dt>
+<dd property="owl:minCardinality" content="0" datatype="xsd:nonNegativeInteger">No</dd>
+<dt>Functional</dt>
+<dd>No</dd>
+<dt>Is defined by</dt>
+<dd><a property="rdfs:isDefinedBy" href="https://w3id.org/fep/888d">FEP-888d</a></dd>
+</dl>
+<pre title="Example of a SomeType with properties exampleA, exampleB, exampleC" lang="json">
+<code>
+{
+  "@context": "https://w3id.org/fep/888d",
+  "@type": "SomeType",
+  "exampleA": true,
+  "exampleB": "https://example.com/some-object",
+  "exampleC": [1, 1]
+}
+</code>
+</pre>
+</section>
+
+<section id="exampleC" resource="https://w3id.org/fep/888d/exampleC" typeof="owl:DatatypeProperty">
+<h3>exampleC</h3>
+<dl>
+<dt>URI</dt>
+<dd><code>https://w3id.org/fep/888d/exampleC</code></dd>
+<dt>Label</dt>
+<dd property="rdfs:label" lang="en">has an exampleC value of</dd>
+<dt>Comment</dt>
+<dd property="rdfs:comment" lang="en">A property that is an ordered list of literal values that are specifically non-negative integers</dd>
+<dt>Domain</dt>
+<dd><a property="rdfs:domain" href="https://w3id.org/fep/888d/SomeType">SomeType</a></dd>
+<dt>Range</dt>
+<dd property="rdfs:range" resource="xsd:nonNegativeInteger"> A list of non-negative integers (@list)</dd>
+<dt>Required</dt>
+<dd property="owl:minCardinality" content="0" datatype="xsd:nonNegativeInteger">No</dd>
+<dt>Functional</dt>
+<dd property="owl:maxCardinality" content="1" datatype="xsd:nonNegativeInteger">Yes</dd>
+<dt>Is defined by</dt>
+<dd><a property="rdfs:isDefinedBy" href="https://w3id.org/fep/888d">FEP-888d</a></dd>
+</dl>
+<pre title="Example of a SomeType with properties exampleA, exampleB, exampleC" lang="json">
+<code>
+{
+  "@context": "https://w3id.org/fep/888d",
+  "@type": "SomeType",
+  "exampleA": true,
+  "exampleB": "https://example.com/some-object",
+  "exampleC": [1, 1]
+}
+</code>
+</pre>
+</section>
+
+<section id="ExcludedExample" resource="https://w3id.org/fep/888d#ExcludedExample" typeof="rdfs:Class" excluded="1">
+<h3>ExcludedExample</h3>
+<dl>
+<dt>URI</dt>
+<dd><code>https://w3id.org/fep/888d#ExcludedExample</code></dd>
+<dt>Label</dt>
+<dd property="rdfs:label" lang="en">Excluded Example</dd>
+<dt>Comment</dt>
+<dd property="rdfs:comment" lang="en">A class that is useful for ontology but not intended to be used for the context mapping</dd>
+<dt>Subclass of</dt>
+<dd><a property="rdfs:subClassOf" href="https://www.w3.org/ns/activitystreams#Object">Object</dd>
+<dt>Is defined by</dt>
+<dd><a property="rdfs:isDefinedBy" href="https://w3id.org/fep/888d">FEP-888d</a></dd>
+</dl>
+</section>
+
+<h2 id="_1">参考文献</h2>
+<ul>
+<li><a href="https://www.w3.org/TR/activitypub">ActivityPub</a> Christine Lemmer Webber, Jessica Tallon, <a href="https://www.w3.org/TR/activitypub">ActivityPub</a>, 2018</li>
+<li><a href="https://www.w3.org/TR/activitystreams-core">AS2-Core</a> James M Snell, Evan Prodromou, <a href="https://www.w3.org/TR/activitystreams-core">Activity Streams 2.0</a>, 2017</li>
+<li><a href="https://www.w3.org/TR/activitystreams-vocabulary">AS2-Vocab</a> James M Snell, Evan Prodromou, <a href="https://www.w3.org/TR/activitystreams-vocabulary">Activity Vocabulary</a>, 2017</li>
+<li><a href="https://talk.commonmark.org/t/consistent-attribute-syntax/272/">CM-ATTRS</a> mb21, <a href="https://talk.commonmark.org/t/consistent-attribute-syntax/272/">Consistent attribute syntax</a>, 2014</li>
+<li><a href="https://www.w3.org/TR/json-ld/#expanded-term-definition">LD-TERM-DFN</a> Gregg Kellogg, Pierre-Antoine Champin, Dave Longley, <a href="https://www.w3.org/TR/json-ld/#expanded-term-definition">JSON-LD 1.1 - Section 9.15.1 "Expanded term definition"</a>, 2020</li>
+<li><a href="https://tools.ietf.org/html/rfc2119.html">RFC-2119</a> S. Bradner, <a href="https://tools.ietf.org/html/rfc2119.html">Key words for use in RFCs to Indicate Requirement Levels</a></li>
+<li><a href="https://socialhub.activitypub.rocks/t/fep-2e40-the-fep-vocabulary-extension-process/2972">1</a> helge, <a href="https://socialhub.activitypub.rocks/t/fep-2e40-the-fep-vocabulary-extension-process/2972">FEP-2e40: The FEP Vocabulary Extension Process</a>, 2023</li>
+</ul>
+<h2 id="_2">著作権</h2>
+<p>CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン</p>
+<p>法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-7d8c/" class="btn btn-neutral float-left" title="FEP-7d8c: Documentation: Automation of FEP"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-8b32/" class="btn btn-neutral float-right" title="FEP-8b32: オブジェクト整合性証明">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-7d8c/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-8b32/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

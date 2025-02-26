@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-e3e9: Actor-Relative URLs - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-e3e9: Actor-Relative URLs";
+        var mkdocs_page_input_path = "fep/fep-e3e9.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-e3e9: Actor-Relative URLs</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#actor-relative-urls-for-objects-and-collections">Actor-Relative URLs for Objects and Collections</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#validating-an-objects-authorcontroller">Validating an Object's Author/Controller</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#client-side-implementation">Client-Side Implementation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#server-side-implementation">Server-Side Implementation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-server-side-request-and-response">Example Server-Side Request and Response</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#object-storage-migration-using-actor-relative-urls">Object Storage Migration Using Actor-Relative URLs</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#example-storage-provider-migration">Example Storage Provider Migration</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#copyright">Copyright</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-e3e9: Actor-Relative URLs</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-e3e9.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-e3e9-actor-relative-urls">FEP-e3e9: Actor-Relative URLs</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-e3e9.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="summary">Summary</h2>
+<blockquote>
+<p>"All problems in computer science can be solved by another level of indirection" (the "fundamental theorem of software engineering")</p>
+</blockquote>
+<p>-- Attributed to: Butler Lampson (<a href="https://en.wikipedia.org/wiki/Indirection">src</a>)</p>
+<p>This FEP introduces an ID scheme for ActivityPub objects and collections that
+has the following properties:</p>
+<ul>
+<li>IDs remains stable across domain migrations. That is, allows the controller of
+  the objects to change object hosting providers without changing the object IDs.</li>
+<li>IDs are regular HTTP(S) URLs that are resolvable via an HTTP <code>GET</code> request
+  (provided the client allows following <code>302</code> redirects).</li>
+</ul>
+<p>The proposed mechanism identifies objects by adding query parameters to existing
+Actor profile URLs. ActivityPub clients wishing to fetch the objects make an
+HTTP <code>GET</code> request to this URL, as usual, carrying whatever authentication
+mechanism is required currently, and then follow the HTTP <code>302</code> status code
+redirect in the response to the current storage location of the object.</p>
+<p>Example Actor-Relative URL:</p>
+<p><code>https://alice-personal-site.example/actor?service=storage&amp;relativeRef=/AP/objects/567</code></p>
+<p>An AP client, encountering an Object ID with this URL makes an HTTP <code>GET</code> request
+just as it would with any other Object ID:</p>
+<pre><code class="language-http">GET /actor?service=storage&amp;relativeRef=/AP/objects/567 HTTP/1.1
+Host: alice-personal-site.example
+</code></pre>
+<p>The server responds with a <code>302</code> redirect (which all HTTP clients are able
+to automatically follow) pointing to the current storage location of the object.
+For example:</p>
+<pre><code class="language-http">HTTP/1.1 302 Found
+Location: https://storage-provider.example/users/1234/AP/objects/567
+</code></pre>
+<p>This redirection mechanism is enabled in all existing HTTP clients by
+default (see https://developer.mozilla.org/en-US/docs/Web/API/Request/redirect),
+and requires no additional re-tooling of ActivityPub client code.</p>
+<h2 id="actor-relative-urls-for-objects-and-collections">Actor-Relative URLs for Objects and Collections</h2>
+<p>On the Client side, the main change required is in the author/controller validation
+procedure (since retrieving the objects at Actor-Relative URLs requires no
+additional change beyond ensuring that following HTTP redirects is not disabled).</p>
+<p>On the Server side (specifically, the server hosting the Actor profile), two
+changes are required:</p>
+<ul>
+<li>(Data Model change) Adding a <code>service</code> section to the Actor profile, which
+  is required for author/controller validation.</li>
+<li>(Protocol change) Enabling http <code>302</code> redirect responses when an Actor profile
+  request is made that has the required query parameters (<code>service</code> and
+  <code>relativeRef</code> params).</li>
+</ul>
+<p>In addition:</p>
+<ul>
+<li>(Not required but recommended) Implementing <a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/8b32/fep-8b32.md">FEP-8b32: Object Integrity
+  Proofs</a> is recommended, since it helps with author/controller
+  validation even in the case that the Actor profile host is down or otherwise
+  unavailable.</li>
+</ul>
+<h3 id="validating-an-objects-authorcontroller">Validating an Object's Author/Controller</h3>
+<p>Given the following example Actor profile:</p>
+<pre><code class="language-js">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;https://www.w3.org/ns/did/v1&quot;
+  ],
+  &quot;service&quot;: [{
+     &quot;id&quot;: &quot;https://alice-personal-site.example/actor#storage&quot;,
+     &quot;serviceEndpoint&quot;: &quot;https://storage-provider.example&quot;
+  }],
+  // Rest of the Actor profile goes here
+}
+</code></pre>
+<p>When fetching an ActivityPub Object or Collection identified by an Actor-Relative
+URL (that is, when the Object or Collection ID contains the URL query parameters
+<code>service</code> and <code>relativeRef</code>), a client MUST validate that the server hosting
+the Object is authorized by the Actor profile:</p>
+<ol>
+<li>The Client performs an HTTP <code>GET</code> request on the Object or Collection, as
+   usual, including any currently required authorization headers.</li>
+<li>The client performing the <code>GET</code> request MUST be able to support HTTP
+   redirection. For example, if using the WHATWG <code>fetch</code> API, the request's
+   <code>redirect</code> property cannot be set to <code>error</code>.</li>
+<li>The Client follows the redirect and automatically fetches the object specified
+   in the <code>Location</code> header of the <code>302</code> response (this behavior is the default
+   in most HTTP clients).</li>
+<li>The Client extracts the <em>current URL</em> of the Object. This is the URL specified
+   in the <code>Location</code> header of the redirect response; for example, if using
+   the WHATWG <code>fetch</code> API, this is the last URL in the response's URL list,
+   retrievable by accessing <code>response.url</code>.</li>
+<li>The Client retrieves the Actor profile corresponding to this Object's author/
+   controller (the <code>actor</code> or <code>attributedTo</code> property).</li>
+<li>
+<p>The Client extracts the value of the <em>authorized storage endpoint</em> from the
+   profile:</p>
+<p>a. The Client checks to see if the Actor profile contains the <code>service</code>
+   property.
+b. If the <code>service</code> property is found, the Client searches through the
+   array of service endpoints until it finds a service endpoint with the
+   relative id ending in <code>#storage</code> (note: this is what the <code>service=storage</code>
+   query parameter refers to, in the Actor-Relative URL). The Client extracts
+   the <code>serviceEndpoint</code> property of this service description object.
+   This is the <em>authorized storage endpoint</em>.
+c. If no <em>authorized storage endpoint</em> is specified in the Actor profile
+   (that is, if the Actor profile does not contain the <code>service</code> property,
+   or if the <code>service</code> property is <code>null</code> or an empty array, or if the
+   <code>service</code> array does not contain a service endpoint object with a relative
+   <code>id</code> that ends in <code>#storage</code>, or if that service endpoint does not contain
+   a <code>serviceEndpoint</code> property containing a URL), the Client SHOULD
+   indicate to the user that the provenance of this Object cannot be determined,
+   or that the storage location of the Object has not been authorized by
+   the profile of the claimed author/controller.</p>
+</li>
+<li>
+<p>The Client MUST validate that the <em>current URL</em> of the object is authorized
+   by the Actor's profile by checking that:</p>
+<p>a. The Object's <em>currentURL</em> starts with the value of the <em>authorized storage
+   endpoint</em>.
+b. The Object's <em>currentURL</em> ends with the value of the <code>relativeRef</code> query
+   parameter.
+c. For example, in JS pseudocode, using string concatenation:
+   <code>response.url === (authorizedStorageEndpoint + query.relativeRef)</code>
+d. If these checks fail (if the <em>current URL</em> of the object is not equal to
+   the string concatenation of the <em>authorized storage endpoint</em> and the
+   <code>relativeRef</code> query parameter), the Client SHOULD
+   indicate to the user that the provenance of this Object cannot be determined,
+   or that the storage location of the Object has not been authorized by
+   the profile of the claimed author/controller.</p>
+</li>
+</ol>
+<p>This validation procedure establishes a two-way link: from the Object to its
+author/controller Actor profile (via the Object's <code>actor</code> or <code>attributedTo</code>
+property), and from the Actor profile to the authorized storage service provider,
+at whose domain the Object is currently stored.</p>
+<h3 id="client-side-implementation">Client-Side Implementation</h3>
+<p>An ActivityPub client conforming to this FEP:</p>
+<ol>
+<li>When encountering an Actor-Relative URL as an ID of an object, fetch it using the same
+   HTTP <code>GET</code> mechanism that it currently does.</li>
+<li>Note: An Actor-Relative URL is defined as a URL containing the <code>service</code> and
+     <code>relativeRef</code> query parameters.</li>
+<li>The client MUST follow the <code>302</code> redirect in the response.</li>
+<li>The client MUST perform the validation steps outlined in the <a href="">Validating an Object's
+   Author/Controller</a> section above.</li>
+</ol>
+<h3 id="server-side-implementation">Server-Side Implementation</h3>
+<p>On the server side (specifically, the server hosting the Actor profile), an ActivityPub
+server conforming to this FEP:</p>
+<ol>
+<li>For every request to the Actor profile object (for example, to 
+  <code>https://alice-personal-site.example/actor</code>), examine the HTTP QUERY parameters.
+  If the <code>service</code> and <code>relativeRef</code> query parameters are present in the request,
+  treat this as an <em>Actor-Relative URL Request</em> (by following the steps below).</li>
+<li>
+<p>Examine the Actor profile object for this request. If the profile does not contain
+   a valid <code>serviceEndpoint</code> that corresponds to the <code>service</code> query parameter,
+   the server MUST return a <code>422 Unprocessable Entity</code> HTTP status code error.
+   To determine whether the profile contains a valid service endpoint:</p>
+</li>
+<li>
+<p>If the Actor profile does not contain a top level <code>service</code> property: INVALID</p>
+</li>
+<li>If the Actor has a <code>service</code> property, but its value is <code>null</code> or <code>[]</code>: INVALID</li>
+<li>
+<p>Search through the array of service endpoints (the value of the <code>service</code>) property,
+     until you find a service object with the id that ends in
+     <code>&lt;actor profile url&gt;#&lt;contents of the 'service' query param&gt;</code>. See sample Actor
+     profile and request below. If no valid service endpoint is found: INVALID</p>
+</li>
+<li>
+<p>Assuming that a matching service endpoint is found, compose a <em>current location URL</em>
+   from the <code>serviceEndpoint</code> contained in the profile concatenated with the contents
+   of the <code>relativeRef</code> query parameter (see below for example).</p>
+</li>
+<li>
+<p>Return a <code>302 Found</code> HTTP status code response, and set the <code>Location</code> response header
+   to the value of the <em>current location URL</em> composed in the previous step.
+   Note: Servers SHOULD NOT return a <code>301</code> status response (a 301 response implies a
+   <em>permanent</em> relocation, and the whole point of this FEP is that Actor-Relative URLs are
+   changeable at any point). Similarly, servers SHOULD not return a <code>303 See Other</code> status
+   response.</p>
+</li>
+</ol>
+<h3 id="example-server-side-request-and-response">Example Server-Side Request and Response</h3>
+<p>Example request URL:</p>
+<pre><code>GET https://alice-personal-site.example/actor?service=storage&amp;relativeRef=/AP/objects/567
+</code></pre>
+<p>The query parameters would be parsed on the server side as something similar to:</p>
+<pre><code class="language-json">{ &quot;service&quot;: &quot;storage&quot;, &quot;relativeRef&quot;: &quot;/AP/objects/567&quot; }
+</code></pre>
+<p>Example Actor profile at that URL:</p>
+<pre><code class="language-js">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;https://www.w3.org/ns/did/v1&quot;
+  ],
+  &quot;service&quot;: [{
+     &quot;id&quot;: &quot;https://alice-personal-site.example/actor#storage&quot;,
+     &quot;serviceEndpoint&quot;: &quot;https://storage-provider.example&quot;
+  }],
+  // Rest of the Actor profile goes here
+}
+</code></pre>
+<p>Example <em>current location URL</em> (from concatenating the <code>serviceEndpoint</code> value with the
+<code>relativeRef</code> query parameter): <code>https://storage-provider.example/AP/objects/567</code></p>
+<p>Example response from the server:</p>
+<pre><code class="language-http">HTTP/1.1 302 Found
+Location: https://storage-provider.example/AP/objects/567
+</code></pre>
+<h2 id="object-storage-migration-using-actor-relative-urls">Object Storage Migration Using Actor-Relative URLs</h2>
+<p>Actor-Relative URLs can be used as an option for portable Object and Collection IDs that
+remain unchanged even through migrating to a different object hosting provider (as long
+as the Actor ID remains constant).</p>
+<h3 id="example-storage-provider-migration">Example Storage Provider Migration</h3>
+<p>Before migration, Alice uses the <code>https://old-storage-provider.example</code> as a
+storage provider for her AP objects. She makes sure <code>https://old-storage-provider.example</code>
+is specified as a service endpoint in her Actor profile.</p>
+<p><code>GET https://alice-personal-site.example/actor</code></p>
+<p>returns</p>
+<pre><code class="language-js">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;https://www.w3.org/ns/did/v1&quot;
+  ],
+  &quot;id&quot;: &quot;https://alice-personal-site.example/actor&quot;,
+  &quot;type&quot;: &quot;Person&quot;,
+  &quot;service&quot;: [{
+     &quot;id&quot;: &quot;https://alice-personal-site.example/actor#storage&quot;,
+     &quot;serviceEndpoint&quot;: &quot;https://old-storage-provider.example&quot;
+  }],
+  &quot;assertionMethod&quot;: { /* … */ },
+  // All the other profile properties …
+}
+</code></pre>
+<p>Alice then creates a Note and stores it with the storage provider (making sure to
+add an Object Identity Proof). Example request:</p>
+<pre><code class="language-HTTP">POST /AP/objects/
+Host: old-storage-provider.example
+
+{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;type&quot;: &quot;Note&quot;,
+  &quot;content&quot;: &quot;This is a note&quot;,
+  &quot;attributedTo&quot;: &quot;https://alice-personal-site.example/actor&quot;,
+  &quot;id&quot;: &quot;https://alice-personal-site.example/actor?service=storage&amp;relativeRef=/AP/objects/567&quot;
+}
+</code></pre>
+<p>returns</p>
+<pre><code class="language-HTTP">HTTP 201 Created
+Location: https://old-storage-provider.example/AP/objects/567
+</code></pre>
+<p>Note that this created Object can now be fetched at TWO different URLs:</p>
+<ol>
+<li>The direct URL (also called <em>current location URL</em>), 
+   <code>https://old-storage-provider.example/AP/objects/567</code></li>
+<li>The indirect Actor-Relative URL
+   <code>https://alice-personal-site.example/actor?service=storage&amp;relativeRef=/AP/objects/567</code></li>
+</ol>
+<p>When it comes time to migrate to a different service provider, the new one being
+located at <code>https://brand-new-storage.example</code>, Alice performs the following steps.</p>
+<p>She updates her Actor profile service endpoint, to point to the new provider,
+so that it looks like this:</p>
+<pre><code class="language-js">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;https://www.w3.org/ns/did/v1&quot;
+  ],
+  &quot;id&quot;: &quot;https://alice-personal-site.example/actor&quot;,
+  &quot;type&quot;: &quot;Person&quot;,
+  &quot;service&quot;: [{
+     &quot;id&quot;: &quot;https://alice-personal-site.example/actor#storage&quot;,
+     &quot;serviceEndpoint&quot;: &quot;https://brand-new-storage.example&quot;
+  }],
+  &quot;assertionMethod&quot;: { /* … */ },
+  // All the other profile properties …
+}
+</code></pre>
+<p>Note that the <code>serviceEndpoint</code> is the only property in the Actor profile that
+has to change during migration.</p>
+<p>Alice then transfers her Object to the new provider (for this example, she'll be
+transferring the object individually, though in future FEPs, we expect
+specification of APIs to transfer <em>all</em> of the objects in one's storage):</p>
+<pre><code class="language-HTTP">POST /AP/objects/
+Host: brand-new-storage.example
+
+{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;type&quot;: &quot;Note&quot;,
+  &quot;content&quot;: &quot;This is a note&quot;,
+  &quot;attributedTo&quot;: &quot;https://alice-personal-site.example/actor&quot;,
+  &quot;id&quot;: &quot;https://alice-personal-site.example/actor?service=storage&amp;relativeRef=/AP/objects/567&quot;
+}
+</code></pre>
+<p>returns:</p>
+<pre><code class="language-HTTP">HTTP 201 Created
+Location: https://brand-new-storage.example/AP/objects/567
+</code></pre>
+<p>Notice that the object being stored at the new provider is byte-for-byte
+identical to the object hosted at the old provider; its <em>indirect</em> <code>id</code> and
+contents do not change.</p>
+<p>Throughout this service provider migration, the external indirect <code>id</code> of the
+object <em>does not change</em>, for the purposes of all other AP mechanisms such as
+Inbox delivery, Likes and Reposts, and so on.</p>
+<h2 id="_1">参考文献</h2>
+<ul>
+<li>
+<p><a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/8b32/fep-8b32.md">FEP-8b32: Object Integrity Proofs</a></p>
+</li>
+<li>
+<p>Christine Lemmer Webber, Jessica Tallon, [ActivityPub][AP], 2018</p>
+</li>
+<li>S. Bradner, Key words for use in RFCs to Indicate Requirement Levels, 1997</li>
+</ul>
+<h2 id="copyright">Copyright</h2>
+<p>CC0 1.0 Universal (CC0 1.0) Public Domain Dedication</p>
+<p>To the extent possible under law, the authors of this Fediverse Enhancement
+Proposal have waived all copyright and related or neighboring rights to this work.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-e232/" class="btn btn-neutral float-left" title="FEP-e232: オブジェクトリンク"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-e965-test-case/" class="btn btn-neutral float-right" title="Actor Object Migration and Deactivation Syntax">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-e232/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-e965-test-case/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

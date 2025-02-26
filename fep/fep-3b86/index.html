@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-3b86: Activity Intents - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-3b86: Activity Intents";
+        var mkdocs_page_input_path = "fep/fep-3b86.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-3b86: Activity Intents</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-requirements">1. Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-history">2. History</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-activity-intents">3. Activity Intents</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#31-example">3.1. Example</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#32-required-link-properties">3.2. Required Link Properties</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#33-template-parameters">3.3 Template Parameters</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#34-workflow-actions">3.4 Workflow Actions</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#action-close">Action: (close)</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#action-redirecting-to-a-url">Action: Redirecting to a URL</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#35-endpoint-expectations">3.5 Endpoint Expectations</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-intent-definitions">4. Intent Definitions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#41-accept-intent">4.1. Accept Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#411-parameters">4.1.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#412-example">4.1.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#42-add-intent">4.2. Add Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#421-parameters">4.2.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#422-example">4.2.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#43-announce-intent">4.3. Announce Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#431-parameters">4.3.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#432-example">4.3.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#44-arrive-intent">4.4. Arrive Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#441-parameters">4.4.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#442-example">4.4.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#45-block-intent">4.5. Block Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#451-parameters">4.5.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#452-example">4.5.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#46-create-intent">4.6. Create Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#461-parameters">4.6.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#462-example">4.6.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#47-delete-intent">4.7. Delete Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#471-parameters">4.7.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#472-example">4.7.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#48-dislike-intent">4.8. Dislike Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#481-parameters">4.8.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#482-example">4.8.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#49-flag-intent">4.9. Flag Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#491-parameters">4.9.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#492-example">4.9.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#410-follow-intent">4.10. Follow Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#4101-parameters">4.10.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4102-example">4.10.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#411-ignore-intent">4.11. Ignore Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#4111-parameters">4.11.1 Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4112-example">4.11.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#412-invite-intent">4.12. Invite Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#4121-parameters">4.12.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4122-example">4.12.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#413-join-intent">4.13. Join Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#4131-parameters">4.13.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4132-example">4.13.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#414-leave-intent">4.14. Leave Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#4141-parameters">4.14.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4142-example">4.14.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#415-like-intent">4.15. Like Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#4151-parameters">4.15.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4152-example">4.15.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#416-listen-intent">4.16. Listen Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#4161-parameters">4.16.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4162-example">4.16.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#417-move-intent">4.17. Move Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#4171-parameters">4.17.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4172-example">4.17.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#418-offer-intent">4.18. Offer Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#4181-parameters">4.18.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4182-example">4.18.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#419-question-intent">4.19. Question Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#4191-parameters">4.19.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4192-example">4.19.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#420-read-intent">4.20. Read Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#4201-parameters">4.20.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4202-example">4.20.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#421-reject-intent">4.21. Reject Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#4211-parameters">4.21.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4212-example">4.21.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#422-remove-intent">4.22. Remove Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#4221-parameters">4.22.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4222-example">4.22.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#423-tentativeaccept-intent">4.23. TentativeAccept Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#4231-parameters">4.23.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4232-example">4.23.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#424-tentativereject-intent">4.24. TentativeReject Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#4241-parameters">4.24.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4242-example">4.24.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#425-travel-intent">4.25. Travel Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#4251-parameters">4.25.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4252-example">4.25.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#426-undo-intent">4.26. Undo Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#4261-parameters">4.26.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4262-example">4.26.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#427-update-intent">4.27. Update Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#4271-parameters">4.27.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4272-example">4.27.2. Example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#428-view-intent">4.28. View Intent</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#4281-parameters">4.28.1. Parameters</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#4282-example">4.28.2. Example</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#50-security-considerations">5.0. Security Considerations</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#51-csrf-issues">5.1 CSRF issues</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#52-openunvalidated-redirects">5.2 Open/Unvalidated Redirects</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#60-remote-servers-the-rest-of-the-equation">6.0. Remote Servers: The Rest of the Equation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#61-remote-server-example">6.1. Remote Server Example</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#62-fallbacks-for-unpublished-links">6.2. Fallbacks for Unpublished Links</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#70-implementations">7.0. Implementations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#copyright">Copyright</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-3b86: Activity Intents</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-3b86.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-3b86-activity-intents">FEP-3b86: Activity Intents</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-3b86.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p>"Activity Intents" extend the capabilities of an ActivityPub server beyond a user's outbox, and enable direct interactions with content on the wider social web. They do this by publishing a machine-readable list of public URLs where users can perform key activities (such as <code>Follow</code>, <code>Like</code>, or <code>Announce</code>)  allowing other websites to initiate remote social interactions without cumbersome copying/pasting of URL strings.</p>
+<h2 id="1-requirements">1. Requirements</h2>
+<p>The key words "MUST", "SHOULD", and "MAY" are to be interpreted as described in <a href="https://tools.ietf.org/html/rfc2119.html">RFC2119</a>.</p>
+<p>For the purposes of this document, a "Home Server" is the location where a user is logged in, and that publishes the Actor's Activity Intents via WebFinger.  A "Remote Server" is another location on the Internet that the user wants to interact with, and that will request/receive those intents via WebFinger.</p>
+<h2 id="2-history">2. History</h2>
+<p>Most centralized social media services have widgets that allow users on the wider Internet to interact with their social services.  These include "like" and "share" buttons that third-party websites embed into their content, and link users back to their corresponding social media account.</p>
+<p>This is difficult to achieve in a federated environment.</p>
+<p>There have been other attempts to make a "Share on Mastodon" button that performs a similar action on the Fediverse.  But these tasks are implemented differently by different Fediverse servers.  For example, Mastodon uses <code>/share</code>, while Hubzilla uses <code>/rpost</code>.  Parameters to each application are often different, using variations of <code>text</code>, <code>title</code>, <code>url</code>, and other values.</p>
+<p>The lack of a unified standard has led developers to hard-code endpoints for each distinct application.  This is brittle and vulnerable to changes by server authors.  It also pins those URL endpoints, making them difficult for servers to change in the future without breaking an unknown number of "share" buttons out in the wild.</p>
+<p>What is needed is a systematic way for each server to announce the endpoint URLs that they support.</p>
+<h2 id="3-activity-intents">3. Activity Intents</h2>
+<p>In the most basic terms, Activity Intents expand on the common Fediverse use of <a href="https://webfinger.net">WebFinger</a> in <a href="https://w3id.org/fep/4adb">FEP-4adb</a> to include mappings between any <a href="https://www.w3.org/TR/activitystreams-vocabulary/#activity-types">Activity Type</a> and the URL endpoint where that user can perform it. This expands and standardizes the "remote follow" workflow that was used by oStatus protocol, but has not been fully implemented by newer Fediverse applications and no longer has a public specification document.</p>
+<p>When generating a WebFinger result for a user account, servers supporting Activity Intents SHOULD respond with one or more intent links in the <a href="https://datatracker.ietf.org/doc/html/rfc7033#section-4.4.4">"links" property</a>. Activity Intent links MUST have <code>rel</code> and <code>href</code> properties.  All others properties are ignored.</p>
+<h3 id="31-example">3.1. Example</h3>
+<p>Here is an example response from a WebFinger server which includes three Activity Intents appended to the end of its <code>links</code> property.</p>
+<pre><code class="language-json">{
+  &quot;subject&quot;: &quot;acct:benpate@mastodon.social&quot;,
+  &quot;aliases&quot;: [
+    &quot;https://mastodon.social/@benpate&quot;,
+    &quot;https://mastodon.social/users/benpate&quot;
+  ],
+  &quot;links&quot;: [
+    {
+      &quot;rel&quot;: &quot;http://webfinger.net/rel/profile-page&quot;,
+      &quot;type&quot;: &quot;text/html&quot;,
+      &quot;href&quot;: &quot;https://mastodon.social/@benpate&quot;
+    },
+    {
+      &quot;rel&quot;: &quot;self&quot;,
+      &quot;type&quot;: &quot;application/activity+json&quot;,
+      &quot;href&quot;: &quot;https://mastodon.social/users/benpate&quot;
+    },
+    {
+      &quot;rel&quot;: &quot;http://ostatus.org/schema/1.0/subscribe&quot;,
+      &quot;template&quot;: &quot;https://mastodon.social/authorize_interaction?uri={uri}&quot;
+    },
+    {
+      &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Follow&quot;,
+      &quot;href&quot;: &quot;https://mastodon.social/authorize_interaction?uri={object}&quot;
+    },
+    {
+      &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Create&quot;,
+      &quot;href&quot;: &quot;https://mastodon.social/share?uri={object}&quot;
+    },
+    {
+      &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Like&quot;,
+      &quot;template&quot;: &quot;https://mastodon.social/intents/like?id={object}&quot;
+    }
+  ]
+}
+</code></pre>
+<h3 id="32-required-link-properties">3.2. Required Link Properties</h3>
+<p><strong>rel</strong>: Activity Intents use the <code>https://w3id.org/fep/3b86/*</code> (as described in <a href="https://w3id.org/fep/8886">FEP-888d</a>) to designate the kind of activity intent, where <code>*</code> represents the particular Activity the user intends to perform.  These relations -- such as <code>https://w3id.org/fep/3b86/Follow</code>, and <code>https://w3id.org/fep/3b86/Create</code> -- are listed in detail below.</p>
+<p><strong>href</strong>: Links also use the standard WebFinger <code>href</code> property,  but also include wrapped replace values (as in <code>{uri}</code> or <code>{name}</code>) to designate parameters to be injected by the caller.  (note: this is in contrast to the non-standard <code>template</code> property that was used by oStatus)</p>
+<p>Parameter names are chosen to correspond with <a href="https://www.w3.org/TR/activitystreams-vocabulary/#properties">Activity Vocabulary properties</a> and may differ from parameters used by pre-existing implementations.</p>
+<p>To prevent unrecognized properties from corrupting a workflow:
+* Remote servers MUST be able to replace all recognized values with the appropriate string.
+* Remote servers MUST replace unrecognized values with an empty string.</p>
+<h3 id="33-template-parameters">3.3 Template Parameters</h3>
+<p>In all cases, Activity Intents intentionally use the property names defined in the W3C standard <a href="https://www.w3.org/TR/activitystreams-vocabulary">Activity Vocabulary</a>. However, intents must fit into a URL, and must use commonly understood fields.  So, Intent parameters can only use IDs -- URL references to JSON-LD resources available elsewhere on the Internet.</p>
+<p>In addition, remote servers MUST <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-2.1">Percent Encode</a> all values replaced in the href template.</p>
+<h3 id="34-workflow-actions">3.4 Workflow Actions</h3>
+<p>Activity Intents MAY include additional query parameters <code>on-success</code> and <code>on-cancel</code> that allow home servers to return users to their original workflow on the remote server:</p>
+<p><strong>on-success</strong> - If present in the link template, this value identifies the action that the home server SHOULD take once the Activity Intent workflow is complete.  If this parameter is missing, then the resulting page is left up to the home server to choose.</p>
+<p><strong>on-cancel</strong> - If present in the link template, this value identifies the action that the home server SHOULD take if they abort the Activity Intent workflow.  If this parameter is missing, then the resulting page is left up to the home server to choose.</p>
+<h4 id="action-close">Action: (close)</h4>
+<p>If the value of either <code>on-success</code> or <code>on-cancel</code> parameter is the string <code>(close)</code> then the home server can assume that it is running in a pop-up window, and SHOULD close the current window.</p>
+<h4 id="action-redirecting-to-a-url">Action: Redirecting to a URL</h4>
+<p>If the value of either <code>on-success</code> or <code>on-cancel</code> query parameter is a valid URL, then the home server SHOULD redirect clients to the provided URL.  When redirecting to a new URL, the home server MUST use an interstitial page that notified the user that they are being redirected, and displays the URL of the new page to them.</p>
+<p>IMPORTANT! <a href="https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html">Unvalidated Redirects</a> are a documented vulnerability that opens the home server up to phishing attacks. </p>
+<p>To avoid a potential security vulnerability when handling <code>on-success</code> and <code>on-cancel</code> workflows, it is important that the home server: "Force all redirects to first go through a page notifying users that they are going off of your site, with the destination clearly displayed, and have them click a link to confirm." (<a href="https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html#preventing-unvalidated-redirects-and-forwards">owasp.org</a>)</p>
+<h3 id="35-endpoint-expectations">3.5 Endpoint Expectations</h3>
+<p>The user's home server is a trusted environment that manages the user's sign-in status along with the rest of their social inbox and outbox.  When the remote server links to an Activity Intent provided by the home server, the layout, fields, and UI are all determined by the home server</p>
+<p>Remote servers MAY open Activity Intent links in many different environments, such as:
+1. a full browser window
+2. a small pop-up window
+3. a mobile app HTML view
+4. or other constrained environments.</p>
+<p>Home servers SHOULD build their UI with minimal assumptions so that the endpoint will fit well into as many environments as possible.  Home servers may not be aware f the remote server opens the Activity Intent link in a separate popup window, so remote servers SHOULD include <code>on-success</code> and <code>on-cancel</code> parameters that redirect back to its own pages so that it can close the pop-up itself.</p>
+<h2 id="4-intent-definitions">4. Intent Definitions</h2>
+<h3 id="41-accept-intent">4.1. Accept Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-accept">Accept activity</a> and is defined using the link relation <code>https://w3id.org/fep/3b86/Accept</code>.</p>
+<p>The Accept intent publishes the API endpoint where the current user can "accept" the designated object.</p>
+<h4 id="411-parameters">4.1.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the object that the user will accept when they use this workflow.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="412-example">4.1.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Accept&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/accept?objectId={object}&quot;
+}
+</code></pre>
+<h3 id="42-add-intent">4.2. Add Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-add">Add activity</a> and is defined using the link relation <code>https://w3id.org/fep/3b86/Add</code> .</p>
+<p>The Add intent publishes the API endpoint where the current user can add an object to the designated collection..</p>
+<h4 id="421-parameters">4.2.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> ID of the object that the user will add when they use this workflow.</li>
+<li><code>{target}</code> ID of the collection being added to.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="422-example">4.2.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Add&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/add?objectId={object}&amp;targetId={target}&quot;
+}
+</code></pre>
+<h3 id="43-announce-intent">4.3. Announce Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-announce">Announce activity</a> and is defined using the link relation <code>https://w3id.org/fep/3b86/Announce</code>.</p>
+<p>The Announce intent publishes the API endpoint where the current user can announce, or "boost" the provided document in their home server.</p>
+<h4 id="431-parameters">4.3.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the document that the user will boost when they use this workflow.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="432-example">4.3.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Announce&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/announce?objectId={object}&quot;
+}
+</code></pre>
+<h3 id="44-arrive-intent">4.4. Arrive Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-arrive">Arrive activity</a> and is defined using the link relation <code>https://w3id.org/fep/3b86/Arrive</code>.</p>
+<p>The Arrive intent publishes the API endpoint where the current user can indicate that they have arrived at a particular location from their home server.</p>
+<h4 id="441-parameters">4.4.1. Parameters</h4>
+<ul>
+<li><code>{location}</code> - ID of the location object where the user will mark as "arrived" when they use this workflow.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="442-example">4.4.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Arrive&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/arrive?hotelId={location}&quot;
+}
+</code></pre>
+<h3 id="45-block-intent">4.5. Block Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-block">Block activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/Block</code>.</p>
+<p>The Block intent publishes the API endpoint where the current user can block the provided object from their home server.</p>
+<h4 id="451-parameters">4.5.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the object (document, user, etc) that the user will block when they use this workflow.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="452-example">4.5.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Block&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/block?userId={object}&quot;
+}
+</code></pre>
+<h3 id="46-create-intent">4.6. Create Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-create">Create activity</a> and is defined using the link relation <code>https://w3id.org/fep/3b86/Create</code>.</p>
+<p>The Create intent publishes the API endpoint where the current user can create a new post in their own outbox.</p>
+<p>This is similar to the existing "share" endpoints supported by several Fediverse apps, where the user can create a new post in their inbox starting with some pre-populated content.</p>
+<p>This Intent differs slightly from others in that it does not take IDs/URLs of other objects, but parameters to pre-populate into a new object to be created by the user.  </p>
+<h4 id="461-parameters">4.6.1. Parameters</h4>
+<ul>
+<li><code>{content}</code> - Text content to pre-populate into the created object.</li>
+<li><code>{type}</code> - (optional) Type of object to create (Note, Article, etc). Home servers can determine whether to use or ignore this value.</li>
+<li><code>{name}</code> - (optional) Name to pre-populate into the created object.</li>
+<li><code>{summary}</code> - (optional) Summary to pre-populate into the created object.</li>
+<li><code>{inReplyTo}</code> - (optional)The ID of the ActivityStreams Document that the user is replying to.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="462-example">4.6.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Create&quot;,
+    &quot;href&quot;: &quot;https://mastodon.social/share?text={content}&quot;
+}
+</code></pre>
+<h3 id="47-delete-intent">4.7. Delete Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-delete">Delete activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/Delete</code>.</p>
+<p>The Delete intent publishes the API endpoint where the current user can initiate a "delete" request.</p>
+<h4 id="471-parameters">4.7.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the object that the user will delete when they use this workflow.</li>
+<li><code>{origin}</code>- (optional) ID of the collection or context that the object will be deleted from.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="472-example">4.7.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Delete&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/Delete?objectId={object}&quot;
+}
+</code></pre>
+<h3 id="48-dislike-intent">4.8. Dislike Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-dislike">Dislike activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/Dislike</code>.</p>
+<p>The Dislike intent publishes the API endpoint where the current user can initiate a "dislike" request.</p>
+<h4 id="481-parameters">4.8.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the document that the user will dislike when they use this workflow.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="482-example">4.8.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Dislike&quot;,
+    &quot;href&quot;: &quot;https://server.org/intent/dislike?objectId={object}&quot;
+}
+</code></pre>
+<h3 id="49-flag-intent">4.9. Flag Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-flag">Flag activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/Flag</code>.</p>
+<p>The Flag intent publishes the API endpoint where the current user can initiate a "flag" request, which is used to report inappropriate content.</p>
+<h4 id="491-parameters">4.9.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the object (document, user, etc) that the user will flag when they use this workflow.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="492-example">4.9.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Flag&quot;,
+    &quot;href&quot;: &quot;https://server.org/intent/flag?objectId={object}&quot;
+}
+</code></pre>
+<h3 id="410-follow-intent">4.10. Follow Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-follow">Follow activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/Follow</code>.</p>
+<p>The Follow intent publishes the API endpoint where the current user can initiate a "follow" request.  This is similar to the <a href="https://www.hughrundle.net/how-to-implement-remote-following-for-your-activitypub-project/">remote follow</a> workflow defined by oStatus that is still supported at various levels by several Fediverse apps, but is no longer formally documented.</p>
+<h4 id="4101-parameters">4.10.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the actor that the user will follow when they use this workflow.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="4102-example">4.10.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Follow&quot;,
+    &quot;href&quot;: &quot;https://mastodon.social/authorize_interaction?uri={object}&quot;
+}
+</code></pre>
+<h3 id="411-ignore-intent">4.11. Ignore Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-ignore">Ignore activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/Ignore</code>.</p>
+<p>The Ignore intent publishes the API endpoint where the current user can initiate an "ignore" request, which is similar to a Block, and is used to ignore or mute various actors and objects online</p>
+<h4 id="4111-parameters">4.11.1 Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the object that the user will mark "ignored" when they use this workflow.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="4112-example">4.11.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Ignore&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/ignore?objectId={object}&quot;
+}
+</code></pre>
+<h3 id="412-invite-intent">4.12. Invite Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-invite">Invite activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/Invite</code>.</p>
+<p>The Invite intent publishes the API endpoint where the current user can initiate an "invite" request, which is similar to an Offer, and is used to extend an invitation for the object to the target</p>
+<h4 id="4121-parameters">4.12.1. Parameters</h4>
+<ul>
+<li><code>{target}</code> - ID of the actor who will receive the invitation.</li>
+<li><code>{object}</code> - ID of the object (event, group, etc) that the actor will be invited to.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="4122-example">4.12.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Invite&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/invite?actorId={object}&amp;eventId={target}&quot;
+}
+</code></pre>
+<h3 id="413-join-intent">4.13. Join Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-join">Join activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/Join</code>.</p>
+<p>The Join intent publishes the API endpoint where the current user can initiate a "join" request.</p>
+<h4 id="4131-parameters">4.13.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the object that the user will join when they use this workflow.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="4132-example">4.13.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Join&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/join?objectId={object}&quot;
+}
+</code></pre>
+<h3 id="414-leave-intent">4.14. Leave Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-leave">Leave activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/Leave</code>.</p>
+<p>The Leave intent publishes the API endpoint where the current user can initiate a "leave" request.</p>
+<h4 id="4141-parameters">4.14.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the object that the user will leave when they use this workflow.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="4142-example">4.14.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Leave&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/leave?objectId={object}&quot;
+}
+</code></pre>
+<h3 id="415-like-intent">4.15. Like Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-like">Like activity</a> and is defined using the link relation <code>https://w3id.org/fep/3b86/Like</code>.</p>
+<p>The Like intent publishes the API endpoint where the current user can like the current document.</p>
+<h4 id="4151-parameters">4.15.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the object that the user will mark as "liked" when they use this workflow.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="4152-example">4.15.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Like&quot;,
+    &quot;href&quot;: &quot;https://server.com/intents/like?objectId={object}&quot;
+}
+</code></pre>
+<h3 id="416-listen-intent">4.16. Listen Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-listen">Listen activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/Listen</code>.</p>
+<p>The Listen intent publishes the API endpoint where the current user can initiate a "listen" request.</p>
+<h4 id="4161-parameters">4.16.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the object that the user will mark as "listened" to when they use this workflow.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="4162-example">4.16.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Listen&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/listen?objectId={object}&quot;
+}
+</code></pre>
+<h3 id="417-move-intent">4.17. Move Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-move">Move activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/Move</code>.</p>
+<p>The Move intent publishes the API endpoint where the current user can initiate a "move" request.</p>
+<h4 id="4171-parameters">4.17.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the object that the user will move when they use this workflow.</li>
+<li><code>{target}</code> - ID of the collection that the object will be moved to.</li>
+<li><code>{origin}</code> - (optional) ID of the collection that the object will be moved from.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="4172-example">4.17.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Move&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/move?objectId={object}&amp;destId={target}&quot;
+}
+</code></pre>
+<h3 id="418-offer-intent">4.18. Offer Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-offer">Offer activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/Offer</code>.</p>
+<p>The Offer intent publishes the API endpoint where the current user can initiate an "offer" request.</p>
+<h4 id="4181-parameters">4.18.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the object that the user will offer when they use this workflow.</li>
+<li><code>{target}</code> - ID of the actor that will receive the offer.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="4182-example">4.18.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Offer&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/offer?objectId={object}&amp;to={target}&quot;
+}
+</code></pre>
+<h3 id="419-question-intent">4.19. Question Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-question">Question activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/Question</code>.</p>
+<p>The Question intent publishes the API endpoint where the current user can initiate an "question" workflow.</p>
+<h4 id="4191-parameters">4.19.1. Parameters</h4>
+<ul>
+<li><code>{name}</code> - The "name" property to pre-populate into the question the user will ask when they use this workflow.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="4192-example">4.19.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Question&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/question?name={name}&quot;
+}
+</code></pre>
+<h3 id="420-read-intent">4.20. Read Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-read">Read activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/Read</code>.</p>
+<p>The Read intent publishes the API endpoint where the current user can initiate an "read" request.</p>
+<h4 id="4201-parameters">4.20.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the object that the user will mark as "read" when they use this workflow.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="4202-example">4.20.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Read&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/object?objectId={object}&quot;
+}
+</code></pre>
+<h3 id="421-reject-intent">4.21. Reject Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-reject">Reject activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/Reject</code>.</p>
+<p>The Reject intent publishes the API endpoint where the current user can initiate an "reject" request.</p>
+<h4 id="4211-parameters">4.21.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the object that the user will reject when they use this workflow.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="4212-example">4.21.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Reject&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/reject?offerId={object}&quot;
+}
+</code></pre>
+<h3 id="422-remove-intent">4.22. Remove Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-remove">Remove activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/Remove</code>.</p>
+<p>The Remove intent publishes the API endpoint where the current user can initiate a "remove" request.</p>
+<h4 id="4221-parameters">4.22.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the object that the user will remove when they use this workflow.</li>
+<li><code>{target}</code> - (optional) The ID of the collection that the object will be removed from.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="4222-example">4.22.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Reject&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/reject?objectId={object}&quot;
+}
+</code></pre>
+<h3 id="423-tentativeaccept-intent">4.23. TentativeAccept Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-tentativeaccept">TentativeAccept activity</a>, which itself is a specialization of the <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-tentativeaccept">Accept activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/TentativeAccept</code>.</p>
+<p>The TentativeAccept intent publishes the API endpoint where the current user can initiate an "tentative accept" request, indicating that acceptance of the original offer is tentative.</p>
+<h4 id="4231-parameters">4.23.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the object that the user will tentatively accept when they use this workflow.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="4232-example">4.23.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/TentativeAccept&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/tentativeAccept?objectId={object}&quot;
+}
+</code></pre>
+<h3 id="424-tentativereject-intent">4.24. TentativeReject Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-tentativereject">TentativeReject activity</a>, which itself is a specialization of the <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-tentativereject">Reject activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/TentativeReject</code>.</p>
+<p>The TentativeReject intent publishes the API endpoint where the current user can initiate an "tentative reject" request, indicating that rejection of the original offer is tentative.</p>
+<h4 id="4241-parameters">4.24.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the object that the user will tentatively reject when they use this workflow.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="4242-example">4.24.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/TentativeReject&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/tentativeReject?objectId={object}&quot;
+}
+</code></pre>
+<h3 id="425-travel-intent">4.25. Travel Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-travel">Travel activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/Travel</code>.</p>
+<p>The Travel intent publishes the API endpoint where the user can initiate a "travel" request.</p>
+<h4 id="4251-parameters">4.25.1. Parameters</h4>
+<ul>
+<li><code>{target}</code> - (optional) The ID of the location that the actor will travel to.</li>
+<li><code>{origin}</code> - (optional) The ID of the location that the actor will travel from.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="4252-example">4.25.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Travel&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/travel?from={origin}&amp;to={target}&quot;
+}
+</code></pre>
+<h3 id="426-undo-intent">4.26. Undo Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-undo">Undo activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/Undo</code>.</p>
+<p>The Undo intent publishes the API endpoint where the current user can initiate a "travel" request.</p>
+<h4 id="4261-parameters">4.26.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the activity that the actor will undo.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect users if they abort the workflow.</li>
+</ul>
+<h4 id="4262-example">4.26.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Undo&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/undo?activityId={object}&quot;
+}
+</code></pre>
+<h3 id="427-update-intent">4.27. Update Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-update">Update activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/Update</code>.</p>
+<p>The Update intent publishes the API endpoint where the user can initiate an "update" request.</p>
+<h4 id="4271-parameters">4.27.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the object that the actor will update when they use this workflow.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="4272-example">4.27.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/Update&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/update?objectId={object}&quot;
+}
+</code></pre>
+<h3 id="428-view-intent">4.28. View Intent</h3>
+<p>This intent corresponds to the ActivityStreams <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-view">View activity</a> and is defined using the link relation  <code>https://w3id.org/fep/3b86/Update</code>.</p>
+<p>The View intent publishes the API endpoint where the current user can initiate an "update" request.</p>
+<h4 id="4281-parameters">4.28.1. Parameters</h4>
+<ul>
+<li><code>{object}</code> - ID of the object that the actor will mark as "viewed" when they use this workflow.</li>
+<li><code>{on-success}</code> - (optional) URL to redirect the user to after the workflow completes.</li>
+<li><code>{on-cancel}</code> - (optional) URL to redirect the user to if they abort the workflow.</li>
+</ul>
+<h4 id="4282-example">4.28.2. Example</h4>
+<pre><code class="language-json">{
+    &quot;rel&quot;: &quot;https://w3id.org/fep/3b86/View&quot;,
+    &quot;href&quot;: &quot;https://server.org/intents/view?objectId={object}&quot;
+}
+</code></pre>
+<h2 id="50-security-considerations">5.0. Security Considerations</h2>
+<h3 id="51-csrf-issues">5.1 CSRF issues</h3>
+<p>It is important to reiterate some key security practices to prevent <a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">Cross Site Request Forgery</a> vulnerabilities.</p>
+<ul>
+<li>Remote Servers MUST only send <code>GET</code> requests to Home Servers.</li>
+<li>Home Servers MUST NOT change data based on GET requests.</li>
+<li>Home Servers SHOULD protect these published endpoints by generating CSRF tokens and including them with every POST request.  This validates that the request originated on the user's home server, and was initiated by the user. See <a href="https://owasp.org/www-community/attacks/csrf#related-controls">OWASP Related Controls</a> for in-depth discussion.</li>
+</ul>
+<h3 id="52-openunvalidated-redirects">5.2 Open/Unvalidated Redirects</h3>
+<p>Activity Intents includes the ability for home servers to redirect browsers to new URLs based on the <code>on-success</code> and <code>on-cancel</code> query parameters.  If improperly implemented, this has the potential to expose an <a href="https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html">Unvalidated Redirect</a> vulnerability, which can open the home server up to phishing attack. </p>
+<p>To avoid a potential security vulnerability when handling <code>on-success</code> and <code>on-cancel</code> workflows, it is important that the home server: "Force all redirects to first go through a page notifying users that they are going off of your site, with the destination clearly displayed, and have them click a link to confirm." (<a href="https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html#preventing-unvalidated-redirects-and-forwards">owasp.org</a>)</p>
+<p>There is another good description of this issue <a href="https://www.ietf.org/archive/id/draft-ietf-oauth-security-topics-27.html#name-open-redirection">OAuth 2.0 Security Best Current Practice § 4.11. Open Redirection</a></p>
+<h2 id="60-remote-servers-the-rest-of-the-equation">6.0. Remote Servers: The Rest of the Equation</h2>
+<p>This FEP provides the prerequisite information required for a "Home Server" publish Activity Intents for its Actors.  It does not specify how "Remote Servers" will use this information - i.e., how they implement "share" and "like" buttons in their content.</p>
+<h3 id="61-remote-server-example">6.1. Remote Server Example</h3>
+<p>Here is a brief example of the workflow as implemented by a remote server:</p>
+<ol>
+<li>A user visits a remote server (i.e., any address on the Internet where they do not have an ActivityPub account)</li>
+<li>The remote server displays buttons such as "like" or "share" for a particular document or object.</li>
+<li>When the user clicks on one of these links, the remote server checks to see if the user is already recognized.  This does not necessarily mean logged in, or authenticated, just whether or not the user has entered their home server credentials before.  True authentication on the remote server is not necessary for Activity Intents to work.<ol>
+<li>If the user is not recognized, then they are prompted to enter their Fediverse ID (such as @benpate@mastodon.social).  The remote server can save this information for use in the future (preferably in a private data store, such as <code>localStorage</code>)</li>
+<li>If the user is recognized, this means they have already completed step 3.1, and can continue to step 4.</li>
+</ol>
+</li>
+<li>The remote server uses a standard WebFinger query to look up the user's Fediverse ID and searches for Activity Intents supported by the user's home server.<ol>
+<li>If none are found, the remote server MAY try to substitute fallback values for known server types.</li>
+<li>If none are found (and no fallbacks substituted) the remote server SHOULD inform the user that their account is incompatible with the selected feature and halt the workflow.</li>
+</ol>
+</li>
+<li>The remote server replaces values into the designated href template and forwards the user to the assigned page on their home server.  This initiates the Activity Intent workflow on their home server.</li>
+<li>When the user completes the workflow, the home server SHOULD use URL in the <code>on-success</code> parameter to redirect the user back to the correct page on the remote server.<ol>
+<li>Similarly, if the user cancels the workflow, the home server SHOULD use the URL in the <code>on-cancel</code> parameter to redirect the user back to the correct page on the remote server.</li>
+</ol>
+</li>
+</ol>
+<h3 id="62-fallbacks-for-unpublished-links">6.2. Fallbacks for Unpublished Links</h3>
+<p>Remote servers MAY also account for applications that do not publish Activity Intents, but whose endpoints are still well known.  In this case, remote servers SHOULD use Activity Intents links if they are present, then fall back to older links (such as the oStatus <code>/authorize_interaction</code> endpoint) if they are present, then fall back to hard-coded values (such as the Mastodon <code>/share</code> endpoint) if no other values exist.</p>
+<h2 id="70-implementations">7.0. Implementations</h2>
+<ul>
+<li><a href="https://emissary.dev">Emissary</a> will support this FEP once its syntax is finalized.</li>
+<li>Add your name to this list and win a cookie 🍪</li>
+</ul>
+<h2 id="_1">参考文献</h2>
+<ul>
+<li><a href="https://www.w3.org/TR/activitystreams-vocabulary/#activity-types">Activity Vocabulary</a></li>
+<li><a href="https://developer.twitter.com/en/docs/twitter-for-websites/web-intents/overview">Twitter: Web Intents</a></li>
+<li><a href="https://developers.facebook.com/docs/plugins/share-button/">Facebook: Share Button</a></li>
+<li><a href="https://www.hughrundle.net/how-to-implement-remote-following-for-your-activitypub-project/">Remote Follows</a> - Tutorial on the original oStatus protocol</li>
+<li><a href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">Cross Site Request Forgery</a> - Wikipedia</li>
+<li><a href="https://owasp.org/www-community/attacks/csrf">Cross Site Request Forgery</a> - OWASP</li>
+<li><a href="https://w3id.org/fep/8886">FEP-888d</a> - FEP-specific namespaces</li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc7033">IETF RFC 7033</a> - WebFinger</li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc3986#section-2.1">IETF RFC 3896</a> - Uniform Resource Identifier Generic Syntax</li>
+<li><a href="https://tools.ietf.org/html/rfc2119.html">IEFT RFC 2119</a> - Key words for use in RFCs to Indicate Requirement Levels</li>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html#preventing-unvalidated-redirects-and-forwards">Unvalidated Redirects and Forwards Cheat Sheet - owasp.org</a>)</li>
+<li><a href="https://www.ietf.org/archive/id/draft-ietf-oauth-security-topics-27.html">OAuth 2.0 Security Best Current Practice</a></li>
+</ul>
+<h2 id="copyright">Copyright</h2>
+<p>CC0 1.0 Universal (CC0 1.0) Public Domain Dedication</p>
+<p>To the extent possible under law, the authors of this Fediverse Enhancement Proposal have waived all copyright and related or neighboring rights to this work.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-37f2/" class="btn btn-neutral float-left" title="FEP-37f2: a policy for calls for consensus on SWICG group decisions"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-400e/" class="btn btn-neutral float-right" title="FEP-400e: Publicly-appendable ActivityPub collections">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-37f2/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-400e/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

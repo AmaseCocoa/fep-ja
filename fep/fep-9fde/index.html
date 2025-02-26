@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-9fde: Mechanism for servers to expose supported operations - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-9fde: Mechanism for servers to expose supported operations";
+        var mkdocs_page_input_path = "fep/fep-9fde.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-9fde: Mechanism for servers to expose supported operations</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#synopsis">Synopsis</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#problems">Problems</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#the-supported-api-is-not-easily-discoverable">The supported API is not easily discoverable</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#no-standard-way-for-mastodon-servers-to-advertise-that-some-functionality-is-disabled-or-unavailable">No standard way for Mastodon servers to advertise that some functionality is disabled or unavailable</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#no-standard-way-for-mastodon-like-servers-to-advertise-their-additional-functionality-to-clients">No standard way for Mastodon-like servers to advertise their additional functionality to clients</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#server-developers-have-too-much-to-do">Server developers have too much to do</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#proposed-solution">Proposed solution</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#a-unique-identifier-for-each-operation">A unique identifier for each operation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#each-operation-has-one-or-more-versions">Each operation has one or more versions</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#example-bookmarks">Example: Bookmarks</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#client-discovery-of-supported-operations-and-endpoints">Client discovery of supported operations and endpoints</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#activitypub-extension-support">ActivityPub extension support</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#to-deploy-this">To deploy this...</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#server-developers">Server developers</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#client-developers">Client developers</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#is-there-a-proof-of-concept">Is there a proof of concept?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#this-solves">This solves...</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#not-in-scope">Not in scope</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#alternatives-considered">Alternatives considered</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#reporting-capabilities-alongside-operations">Reporting capabilities alongside operations</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#reporting-capabilities-in-api-responses">Reporting capabilities in API responses</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#clients-keep-a-hardcoded-server-version-capabilities-map">Clients keep a hardcoded server version : capabilities map</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#return-an-openapi-definition-for-the-supported-api">Return an OpenAPI definition for the supported API</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#use-the-api-path-as-the-key">Use the API path as the key</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#open-questions">Open questions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#can-servers-set-an-api-prefix">Can servers set an API prefix?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#what-happens-if-an-operations-owner-rebrands-or-disappears">What happens if an operations "owner" rebrands or disappears?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#is-the-reverse-fqdn-with-suffix-approach-the-best-format-for-operations-keys">Is the reverse-FQDN-with-suffix approach the best format for operations keys?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#is-there-a-11-mapping-between-operations-and-api-calls">Is there a 1:1 mapping between operations and API calls?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#should-clients-indicate-the-operation-identifier-when-making-a-request">Should clients indicate the operation identifier when making a request?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#does-this-need-to-be-a-new-top-level-key-in-the-nodeinfo">Does this need to be a new top-level key in the nodeinfo?</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#related-links-prior-art">Related links / prior art</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">著作権</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-9fde: Mechanism for servers to expose supported operations</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-9fde.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-9fde-mechanism-for-servers-to-expose-supported-operations">FEP-9fde: Mechanism for servers to expose supported operations</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-9fde.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Changes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3.1</td>
+<td>2024-03-13</td>
+<td>- Convert to FEP format<br>- Incorporate feedback from Johannes Ernst and Steve Bates<br>- Renamed <code>clientApis</code> to <code>operations</code> so this is usable for server-server operations too<br>- Added "Open questions" section</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>2024-01-22</td>
+<td>Re-write; include the operation information in the nodeinfo</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>2023-09-25</td>
+<td>Re-write; replace the original suggestion to use the OpenAPI definition with a simpler specification</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>2023-08-14</td>
+<td>Initial draft</td>
+</tr>
+</tbody>
+</table>
+<h2 id="summary">Summary</h2>
+<p>This document proposes an extension to the <a href="http://nodeinfo.diaspora.software/">NodeInfo schema</a> (<a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/f1d5/fep-f1d5.md">FEP-f1d5</a>) that would allow developers of Mastodon and Mastodon-like servers to unambigiously communicate the operations their servers support, and allow developers of software that interoperates with those servers to detect those features, promoting interoperability and easier adoption of new features.</p>
+<h2 id="synopsis">Synopsis</h2>
+<p>This document is written for:</p>
+<ul>
+<li>The maintainers of the NodeInfo specification</li>
+<li>Developers of Mastodon and Mastodon-like servers</li>
+<li>Developers of clients for those servers</li>
+</ul>
+<p>After reading this document you should:</p>
+<ul>
+<li>Understand the general problem this is intended to solve</li>
+<li>Understand the proposed solution</li>
+<li>Understand alternatives to the solution, and why they are not appropriate</li>
+<li>Understand the open questions for this proposal</li>
+<li>Be able to provide feedback on the proposal</li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this specification are to be interpreted as described in <a href="https://datatracker.ietf.org/doc/html/rfc2119.html">RFC-2119</a>.</p>
+<h2 id="overview">Overview</h2>
+<blockquote>
+<p>[!IMPORTANT] Other servers are also clients</p>
+<p>The primary perspective of this document's author is as an end-user client developer dealing with the Mastodon client API, and the examples are written from that perspective. However, this proposal can also be used to describe operations between different servers in the Fediverse using other protocols (e.g., ActivityPub). For any given interaction between a pair of servers one of them is going to be acting as the client in the interaction, and will need to know the operations the server supports.</p>
+</blockquote>
+<p>For the purposes of this document a "Mastodon or Mastodon-like" server is a server that presents the <a href="https://docs.joinmastodon.org/api/">Mastodon client API</a>, optionally with extensions to that API that provide additional functionality. These servers include, but are not limited to:</p>
+<ul>
+<li>Mastodon</li>
+<li>Glitch</li>
+<li>Hometown</li>
+<li>Pleroma</li>
+<li>Akkoma</li>
+<li>Firefish</li>
+<li>Iceshrimp</li>
+<li>Sharkey</li>
+<li>Friendica</li>
+<li>GoToSocial</li>
+</ul>
+<p>Clients of these servers have an API discovery problem. Since different servers support different (but similar) APIs the client has to determine what API operations the server supports.</p>
+<p>Given the wide variety of servers that are available, and their many forks, it's not feasible for clients to maintain an accurate list of all the possible server software names while mapping the names to API features.</p>
+<p>Instead the server should have a mechanism for advertising the operations it supports.</p>
+<p>The client would use this when determining what features to show the user, without needing to employ complex, error-prone heuristics.</p>
+<p>This would also provide a clear mechanism for Mastodon and Mastodon-like servers to incrementally deploy new features and deprecate old ones without inconveniencing clients.</p>
+<p>It also provides a clear mechanism to advertise server functionality without continually bolting it on to the "instance info" mechanism in the inconsistent fashion that has been done so far.</p>
+<p>The rest of this document sets out the specific problems I'm interested in solving, with motivating examples, and then describes how the new approach would solve these problems.</p>
+<h2 id="problems">Problems</h2>
+<h3 id="the-supported-api-is-not-easily-discoverable">The supported API is not easily discoverable</h3>
+<p>Changes are made to the Mastodon API in a manner that is not easily discoverable by clients.</p>
+<p>For example, <a href="https://github.com/mastodon/mastodon/pull/25509">Add POST /api/v1/conversations/:id/unread by ClearlyClaire · Pull Request #25509 · mastodon/mastodon · GitHub</a> adds a new API endpoint (<code>api/v1/conversations/:id/unread</code>).</p>
+<p>The only way a client can discover that this API exists is to maintain, per-client, a mapping between Mastodon server version and the API supported at each version.</p>
+<p>This is:</p>
+<ol>
+<li>A lot of work for each client</li>
+<li>Something that every client needs to do</li>
+<li>Easy to get wrong</li>
+<li>Doesn't scale across multitudes of different servers</li>
+</ol>
+<h3 id="no-standard-way-for-mastodon-servers-to-advertise-that-some-functionality-is-disabled-or-unavailable">No standard way for Mastodon servers to advertise that some functionality is disabled or unavailable</h3>
+<p>The <a href="https://docs.joinmastodon.org/entities/Instance/">Instance</a> information contains a <code>configuration</code> block that has some, but not all the information necessary to determine the features a server supports.</p>
+<p>Other servers have extended this information in incompatible ways (e.g., the <code>pleroma</code> block).</p>
+<p>Other servers may not implement the functionality at all. For example, GoToSocial did not implement support for the Mastodon client-side filter API until version 0.15.0.</p>
+<h3 id="no-standard-way-for-mastodon-like-servers-to-advertise-their-additional-functionality-to-clients">No standard way for Mastodon-like servers to advertise their additional functionality to clients</h3>
+<p>Mastodon-like servers implement some or all of the Mastodon API.</p>
+<p>In many cases they also extend the API, providing additional functionality (local-only posting, quoting, markdown formatting, bookmarks, etc.)</p>
+<p>In some cases that functionality has already been incorporated in Mastodon (e.g., bookmarks), in other cases there are plans to include that functionality in Mastodon (e.g., quoting, markdown formatting).</p>
+<p>This leads to three problems.</p>
+<ol>
+<li>There is no simple way for clients to know which parts of the Mastodon API the server supports</li>
+<li>There is no simple way for clients to know if the server supports additional operations</li>
+<li>If Mastodon decides to implement an API that was first introduced in a Mastodon-like server there is no way for clients to detect this, without recompiling the client with new information about what features a given Mastodon server version implements</li>
+</ol>
+<h3 id="server-developers-have-too-much-to-do">Server developers have too much to do</h3>
+<p>Server developers already have a lot of work to do. Any proposal should therefore be straightforward to implement. Additional complexity, such as changing the contents of existing API responses, or requiring developers of different servers to tightly coordinate when new functionality is introduced is going to make it less likely that groups adopt any proposed solutions.</p>
+<h2 id="proposed-solution">Proposed solution</h2>
+<p>A given Mastodon or Mastodon-like server supports a set of <strong>operations</strong>.</p>
+<p>To expose those to the user a Mastodon client needs to know:</p>
+<ul>
+<li>Which operations does the server support?</li>
+<li>What's the overlap between the operations the server supports and the operations the client supports?</li>
+</ul>
+<p>Therefore we need:</p>
+<ol>
+<li>A unique identifer for each operation that a set of servers supports identically</li>
+<li>A mechanism for a server to report the operations it supports</li>
+</ol>
+<h3 id="a-unique-identifier-for-each-operation">A unique identifier for each operation</h3>
+<p>Operations are identified by the reverse FQDN of the server software that first implemented that operation, then an arbitrary number of additional dot-separated labels determined by the server authors.</p>
+<p>This ensures that operation IDs are unique without needing tight coordination between different server developer groups.</p>
+<p>For example:</p>
+<ul>
+<li><code>org.joinmastodon.api.statuses.post</code></li>
+<li><code>org.joinmastodon.api.statuses.translate</code></li>
+<li><code>io.github.glitch-soc.api.statuses.bookmark</code></li>
+<li><code>dev.iceshrimp.api.notes.reactions.create</code></li>
+</ul>
+<blockquote>
+<p>[!NOTE] Precise reverse FQDN to use for each server is to be decided</p>
+<p>This example use the reverse FQDNs for the server's primary websites or documentation sites, but each server group would determine and document the reverse FQDN for their server's operations.</p>
+<p>[!NOTE] Dot-separated labels SHOULD map 1:1 to API endpoint components</p>
+<p>In these examples the dotted components after the <code>api</code> correspond to the path components of the API endpoint. While there is no requirement that they do so server implementors are RECOMMENDED to do so, as it makes it easier for developers to mentally map between the operation identifier and the API path when they are working with the code.</p>
+</blockquote>
+<p>Each label within the operation identifier is represented in lower-case US-ASCII (a character set containing 128
+characters associated with code points in the range 0..7F) . If a server team wishes to define an operation that uses a non-US-ASCII label they MUST encode the operation label to US-ASCII using the <code>ToASCII</code> transformation described in <a href="https://datatracker.ietf.org/doc/rfc3490/">RFC 3490 - Internationalizing Domain Names in Applications (IDNA)</a>.</p>
+<h3 id="each-operation-has-one-or-more-versions">Each operation has one or more versions</h3>
+<p>Each operation exists at one or more <a href="https://semver.org/">semver-compatible</a> (v2.0.0) versions. Semver is used because it is a widely deployed standard, easily understandable, and client libraries that can parse this format are available across many different programming languages.</p>
+<p>For example, in the Mastodon API documentation "<a href="https://docs.joinmastodon.org/methods/statuses/#create">Post a new status</a>" describes the API for posting a new status. That API has changed three times in the Mastodon server implementation.</p>
+<ol>
+<li>Initial implementation</li>
+<li>Support for <code>scheduled_at</code></li>
+<li>Support for <code>poll</code></li>
+</ol>
+<p>There are no backwards-incompatible breaking changes across those versions so this is the same operation at three different versions; per Semver the major version stays the same and the minor version is incremented.</p>
+<ul>
+<li><code>1.0.0</code> - initial implementation</li>
+<li><code>1.1.0</code> - support for <code>scheduled_at</code></li>
+<li><code>1.2.0</code> - support for <code>polls</code></li>
+</ul>
+<blockquote>
+<p>[!IMPORTANT] These version numbers are unrelated to the version number of the software that introduced the operation</p>
+</blockquote>
+<h4 id="example-bookmarks">Example: Bookmarks</h4>
+<p>Bookmarking statuses originated in the glitch-soc fork and was incorporated in to Mastodon.</p>
+<p>Therefore, the ID for the bookmark operations -- if they are compatible with the glitch-soc implementation -- use the <code>io.github.glitch-soc.api</code> prefix.</p>
+<ul>
+<li><code>io.github.glitch-soc.api.statuses.bookmark</code> @ <code>1.0.0</code> - bookmark a status</li>
+<li><code>io.github.glitch-soc.api.statuses.unbookmark</code> @ <code>1.0.0</code> - remove a status from bookmarks</li>
+<li><code>io.github.glitch-soc.api.timeline.bookmarks</code> @ <code>1.0.0</code> - fetch a timeline of the user's bookmarks</li>
+<li><code>io.github.glitch-soc.api.timeline.bookmarks</code> @ <code>1.1.0</code> - fetch a timeline of the user's bookmarks, supporting <code>min_id</code> and <code>max_id</code> simultaneously</li>
+</ul>
+<h3 id="client-discovery-of-supported-operations-and-endpoints">Client discovery of supported operations and endpoints</h3>
+<p>Clients must be able to discover which operations the server supports and the endpoints to use for those operations.</p>
+<p>To do this the nodeinfo (determined via <code>/.well-known/nodeinfo</code>) schema should be extended to support a new <code>operations</code> property.</p>
+<p>The property's value is a map from a string key -- the operation ID -- to a set of one or more Semver versions of the operation that the server supports.</p>
+<p>For example:</p>
+<pre><code>&quot;operations&quot;: {
+    ...
+    &quot;org.joinmastodon.api.some.operation&quot;: [&quot;1.0.0&quot;, &quot;1.1.0&quot;, &quot;1.2.0&quot;, &quot;2.0.0&quot;]
+    ...
+}
+</code></pre>
+<blockquote>
+<p>[!NOTE] Unordered versions</p>
+<p>The supported version operations is not ordered; client code MUST treat this as a set, not a list.</p>
+<p>[!NOTE] Not limited to Mastodon / Mastodon-like servers</p>
+<p>This <code>operations</code> map is not limited to operations supported by Mastodon/Mastodon-like servers. This is a general mechanism that can be used by servers to expose information about their supported operations and could be used by other Fediverse software like Lemmy, KBin, etc.</p>
+</blockquote>
+<p>Because of the Semver rules for breaking changes servers MAY omit earlier versions from the list if they are included in a later version. In the previous example the <code>1.0.0</code> and <code>1.1.0</code> versions can be omitted as a server supporting <code>v1.2.0</code> of an operation implicitly supports all preceding versions with the same major number.</p>
+<pre><code>&quot;operations&quot;: {
+    ...
+    &quot;org.joinmastodon.api.some.operation&quot;: [&quot;1.2.0&quot;, &quot;2.0.0&quot;]
+    ...
+}
+</code></pre>
+<blockquote>
+<p>[!NOTE] There is no need to specify the operation semantics</p>
+<p>The semantics of each {operation, version} pair are already known by the client (for each operation it supports). Semantics like whether these endpoints are <code>GET</code>, <code>POST</code>, <code>DELETE</code>, or <code>PATCH</code>, the exact names of the URL query parameters, the API endpoint, etc.</p>
+<p>In other words, servers MUST NOT advertise support for an existing operation ID and change anything about how that operation works. The server developers should either define and document a new operation ID, or implement the operation as a new version (bumping the major version if it is a breaking change).</p>
+</blockquote>
+<h2 id="activitypub-extension-support">ActivityPub extension support</h2>
+<p>Most of this document has presented examples using the Mastodon client API (and related APIs) but, as noted, this proposal also provides a clean mechanism to allow servers to report other extensions they support.</p>
+<p>Here is an example from <a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/6481/fep-6481.md">FEP 6481 - # Specifying ActivityPub extension support with NodeInfo</a> which is presented as:</p>
+<blockquote>
+<p><a href="https://manyfold.app/technology/activitypub.html">Manyfold</a> intends to define a new Activity Vocabulary Object type for its own rich content, <code>3dModel</code>. The specification will define an extension IRI, for instance <code>https://w3id.org/manyfold/3dModel#v1</code>.</p>
+<p>Applications that wish to receive Activities with this type can state their support for the extension in their NodeInfo file as follows; Manyfold instances will then know that they can send that object type and it will be understood.</p>
+</blockquote>
+<pre><code class="language-json">{
+  ...,
+  &quot;metadata&quot;: {
+    &quot;activitypub&quot;: {
+      &quot;extensions&quot;: [
+        &quot;https://w3id.org/manyfold/3dModel#v1&quot;
+      ]
+    }
+  }
+}
+</code></pre>
+<p>In this proposal that could represented like this:</p>
+<pre><code class="language-json">&quot;operations&quot;: {
+  &quot;app.manyfold.activitypub.accept.3dmodel&quot;: [&quot;1.0.0&quot;],
+  ...
+}
+</code></pre>
+<p>(the precise name of the operation would need to be determined)</p>
+<p>Any other server that can accept a <code>3dModel</code> would expose the same operation.</p>
+<h2 id="to-deploy-this">To deploy this...</h2>
+<h3 id="server-developers">Server developers</h3>
+<p>Servers where the set of supported operations is <strong>not</strong> user configurable would need to maintain a static map of operations to versions, and return that map as part of the nodeinfo response.</p>
+<p>If the set of operations is user configurable (e.g., perhaps the server software supports a translation API but the server operator has not enabled translation support) the nodeinfo response would need to be dynamically generated from the current software configuration.</p>
+<p>In both cases developing a new operation or changing an existing operation would require the developers to:</p>
+<ol>
+<li>Determine the operation's version number, following semver backwards-compatible rules</li>
+<li>Document the behaviour of the new operation / version</li>
+<li>Include the new operation / version in the server's response</li>
+</ol>
+<h3 id="client-developers">Client developers</h3>
+<p>To provide the best user experience client developers SHOULD fetch the operations map when the user logs in.</p>
+<p>If the client supports a particular operation at a particular version the client can query the map and determine whether the concrete version they need is in the map, or met by a higher version. Semver client libraries are available for Kotlin and Java (Android) and Swift (iOS), as well as many other languages.</p>
+<p>If the server does not support the operation the client MAY fall back to a different operation, or disable the particular operation in the UI.</p>
+<p>To use the example from earlier, <a href="https://github.com/mastodon/mastodon/pull/25509">Add POST /api/v1/conversations/:id/unread by ClearlyClaire · Pull Request #25509 · mastodon/mastodon · GitHub</a> which adds a new API endpoint (<code>api/v1/conversations/:id/unread</code>).</p>
+<p>The server would report this as:</p>
+<pre><code>&quot;operations&quot;: {
+    ...
+    &quot;org.joinmastodon.api.conversations.id.unread&quot;: [&quot;1.0.0&quot;]
+    ...
+}
+</code></pre>
+<p>and a client that wanted to conditionally support this would query the operations map for <code>org.joinmastodon.api.conversations.id.unread</code> with any version entry with a major version of <code>1</code>, and if the operation/version pair is not found then disable the "Mark a conversation unread" UI affordances where they occur.</p>
+<h2 id="is-there-a-proof-of-concept">Is there a proof of concept?</h2>
+<p>Yes.</p>
+<p>I have started implementing the client side of this in <a href="https://pachli.app">Pachli</a>. At the moment this uses server version parsing heuristics to maintain a Pachli-specific map of operations and supported versions (<a href="https://github.com/pachli/pachli-android/blob/main/core/network/src/main/kotlin/app/pachli/core/network/Server.kt">Server.kt</a> ) and then query the server's reported capabilities and adjust the UI accordingly.</p>
+<p>For example, <a href="https://github.com/pachli/pachli-android/blob/74ca75632392728df0bc4eb41680e7146193ec09/app/src/main/java/app/pachli/components/preference/AccountPreferencesFragment.kt#L183-L199">this snippet</a> conditionally enables the "edit filters" UI only if the user's server supports filtering.</p>
+<p>Maintaining the server-specific operations map in Pachli is error prone, slow to update, and does not benefit the wider ecosystem of Mastodon clients and servers, hence this proposal.</p>
+<h2 id="this-solves">This solves...</h2>
+<p>This solves the problems described earlier:</p>
+<ul>
+<li>"[[#The supported API is not easily discoverable]]"<ul>
+<li>The client can easily discover the specific operations the server supports, and adjust UX accordingly</li>
+</ul>
+</li>
+<li>"[[#No standard way for Mastodon servers to advertise that some functionality is disabled]]"<ul>
+<li>The <code>operations</code> property must reflect the active configuration of the server.</li>
+</ul>
+</li>
+<li>"[[#No standard way for Mastodon-like servers to advertise their functionality to clients]]<ul>
+<li>If a Mastodon-like server implements a Mastodon-compatible API endpoint it lists that endpoint using the relevant <code>org.mastodon...</code> operation identifier.</li>
+</ul>
+</li>
+<li>[[#Server developers have too much to do]]<ul>
+<li>This proposal doesn't modify any existing API responses</li>
+<li>For a given server the list of supported operations can be statically configured, and does not change after the server has launched</li>
+<li>The work of developing a dictionary of supported operations can be sharded amongst different groups<ul>
+<li>Server developers have a vested interest in contributing details of operations specific to their server, so more third party clients support them</li>
+<li>Client developers have a vested interest in reviewing and contributing details of operations specific to servers their users use, to make their clients more attractive to potential users</li>
+<li>No coordination is required between different groups of server developers to develop operation IDs</li>
+</ul>
+</li>
+<li>Developers are incentivised to re-use existing operations instead of inventing new ones<ul>
+<li>Implementing an existing operation in a compatible manner with another server increases the speed with which your users will be able to use the feature in their preferred clients.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="not-in-scope">Not in scope</h2>
+<p>This proposal doesn't address how clients can discover any limits associated with the operations. For example, how many characters are allowed per post, or the number of options that can be included in a poll.</p>
+<p>That information is already included in the server's <code>/api/v2/instance</code> call (in the language of this proposal, the <code>org.mastodon.api.instance</code> operation).</p>
+<p>I did consider extending the <code>operations</code> definition so that each operation mapped to an object that contained multiple keys, like this:</p>
+<pre><code class="language-json">&quot;operations&quot;: {
+    &quot;org.joinmastodon.api.statuses.post&quot;: {
+        &quot;1.0.0&quot;: {
+            &quot;endpoint&quot;: &quot;/api/v1/statuses&quot;,
+            &quot;limits&quot;: {
+                &quot;max_characters&quot;: 500,
+                // ...
+            },
+            &quot;mimeTypes&quot;: [&quot;text/plain&quot;],
+            // ...
+        },
+        &quot;1.1.0&quot;: { /* ... */ }
+    }
+}
+</code></pre>
+<p>That would significantly complicate this proposal, increasing the risk that it's not adopted. There's also no clear value in doing this.</p>
+<h2 id="alternatives-considered">Alternatives considered</h2>
+<h3 id="reporting-capabilities-alongside-operations">Reporting capabilities alongside operations</h3>
+<p>It's tempting to think that operations could be broken down in to smaller parts.</p>
+<p>For example, instead of different versions for the "post a status" operation you could include more specific capabilities in the operation description:</p>
+<pre><code class="language-json">&quot;operations&quot;: {
+    ...
+    &quot;org.joinmastodon.api.statuses.post&quot;: {
+        &quot;contentWarning&quot;: true,
+        &quot;polls&quot;: true,
+        &quot;media&quot;: true,
+        ...
+    }
+    ...
+}
+</code></pre>
+<p>This indicates this server supports the "post a new status" operation with statuses that include content warnings, polls, and media.</p>
+<p>You don't do that because it results in a combinatorial explosion of the different sub-types of operations that clients need to support, without any significant benefit.</p>
+<p>Even the example above is incomplete; for example, some servers support including images in content warnings, so a simple boolean for the <code>contentWarning</code> property is insufficient.</p>
+<p>So treating the thing-that-has-to-be-versioned as the operation (post a status, translate, reblog, etc) seems to be the better level of granularity.</p>
+<h3 id="reporting-capabilities-in-api-responses">Reporting capabilities in API responses</h3>
+<p>A server could include metadata in each response that contains an object that describes the operations that can be performed on that object. For example, the <a href="https://docs.joinmastodon.org/entities/Status/">Status</a> object could be modified to include an <code>operations</code> property that looks like this:</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: &quot;103270115826048975&quot;,
+  &quot;created_at&quot;: &quot;2019-12-08T03:48:33.901Z&quot;,
+  ...
+  &quot;operations&quot;: {
+      &quot;org.joinmastodon.api.statuses.reply&quot;: [&quot;POST&quot;, &quot;https://example.com/api/v1/statuses&quot;],
+      &quot;org.joinmastodon.api.statuses.view&quot;: [&quot;GET&quot;, &quot;https://example.com/api/v1/statuses/103270115826048975&quot;],
+      &quot;org.joinmastodon.api.statuses.favourite&quot;: [&quot;POST&quot;, &quot;http/api/v1/statuses/103270115826048975/favourite&quot;],
+      ... etc
+   }
+  }
+}
+</code></pre>
+<p>This is the <a href="https://en.wikipedia.org/wiki/HATEOAS">Hypermedia as the engine of application state (HATEOAS)</a> model.</p>
+<p>It's an interesting approach, and a possible future direction. But it would require significant work on the part of server developers to implement as it would affect every response returned by the server.</p>
+<p>On the other hand the approach in this proposal is static content in the nodeinfo response. It's significantly easier to implement and iterate on.</p>
+<h3 id="clients-keep-a-hardcoded-server-version-capabilities-map">Clients keep a hardcoded server version : capabilities map</h3>
+<p>This could go the other way, and instead require servers to have a consistent name and parseable version number, and expect clients to keep a map of "server A at version V can perform operations X, Y, and Z".</p>
+<p>I think this is the wrong approach for two reasons:</p>
+<p><strong>First</strong>:</p>
+<ol>
+<li>It requires every client development team to independently maintain a mapping between server versions and capabilities</li>
+<li>It requires client updates whenever a server is released that supports a capability the client already supports on another server</li>
+</ol>
+<p>Re that last point a worked example might make it clearer.</p>
+<p>Suppose there are two server types, A and B. A supports operations X and Y, B supports X, Y, and Z.</p>
+<p>A client is released which supports operations X, Y, and Z, and is hardcoded with knowledge about which server type supports a given operation.</p>
+<p>A new version of server type A is released which now supports operation Z as well. But users of the client who connect to server type A cannot benefit from this until a new version of the client is released with updated information about the capabilities of server type A.</p>
+<p>With the proposal in this document this problem does not occur; if a client supports operation Z (at a given version) and a server advertises that it supports that operation then the client can choose to use it without needing a new release.</p>
+<p>This is better for our users.</p>
+<p><strong>Second</strong>:</p>
+<p>Server developers do not seem to be interested in reporting useful versions for their software, for example:</p>
+<ul>
+<li>Sharkey: <a href="https://activitypub.software/TransFem-org/Sharkey/-/issues/371#issuecomment-1543">feat: report server version following semver.org requirements (#371) · Issues · TransFem.org / Sharkey · GitLab</a></li>
+<li>Iceshrimp: <a href="https://iceshrimp.dev/iceshrimp/iceshrimp/issues/502#issuecomment-3519">#502 - Please use semver compatible versions - iceshrimp/iceshrimp - Iceshrimp development</a></li>
+<li>Firefish: <a href="https://firefish.dev/firefish/firefish/-/issues/10844">Enforce semver for reported Firefish versions (#10844) · Issues · firefish / firefish · GitLab</a></li>
+<li>Mastodon: <a href="https://github.com/mastodon/mastodon/issues/28843">Server should refuse to start if configured version is not semver.org compatible · Issue #28843 · mastodon/mastodon · GitHub</a></li>
+</ul>
+<h3 id="return-an-openapi-definition-for-the-supported-api">Return an OpenAPI definition for the supported API</h3>
+<p><a href="https://swagger.io/specification/">OpenAPI</a> is a popular schema for defining an API. The server could just return the OpenAPI schema for the API that it supports.</p>
+<p>I did consider this (an earlier version of this proposal was built around it). But it complicates the data the client needs to process, and includes data that the client will ignore.</p>
+<p>Consider the <code>/api/v1/timelines/home</code> endpoint, which would have an operation ID something like <code>org.joinmastodon.api.timelines.home</code> under this proposal.</p>
+<p>This is the OpenAPI definition for that endpoint, copied from the GoToSocial project's OpenAPI definition (<a href="https://github.com/superseriousbusiness/gotosocial/blob/main/docs/api/swagger.yaml">swagger.yaml</a>, the descriptions have been deleted to keep this a reasonable length):</p>
+<pre><code class="language-yaml">    /api/v1/timelines/home:
+        get:
+            description: |-
+                The statuses [... deleted ...]
+        operationId: homeTimeline
+            parameters:
+                - description: [deleted]
+                  in: query
+                  name: max_id
+                  type: string
+                - description: [deleted]
+                  in: query
+                  name: since_id
+                  type: string
+                - description: [deleted]
+                  in: query
+                  name: min_id
+                  type: string
+                - default: 20
+                  description: [deleted]
+                  in: query
+                  name: limit
+                  type: integer
+            produces:
+                - application/json
+            responses:
+                &quot;200&quot;:
+                    description: Array of statuses.
+                    headers:
+                        Link:
+                            description: [deleted]
+                            type: string
+                    schema:
+                        items:
+                            $ref: '#/definitions/status'
+                        type: array
+                &quot;400&quot;:
+                    description: bad request
+                &quot;401&quot;:
+                    description: unauthorized
+            security:
+                - OAuth2 Bearer:
+                    - read:statuses
+            summary: See statuses/posts by accounts you follow.
+            tags:
+                - timelines
+</code></pre>
+<p>Most of the information in that definition is redundant <em>for the client</em>.</p>
+<p>It's absolutely essential information to have for the server developer, and for producing documentation.</p>
+<p>But the client should already have this compiled in. The contract between the client and the server is that <em>if the server reports that it supports the <code>org.joinmastodon.api.timelines.home</code> operation at v1.0.0</em>:</p>
+<ul>
+<li>the endpoint is <code>/api/v1/timelines/home</code></li>
+<li>the valid parameters are <code>max_id</code>, <code>since_id</code>, <code>min_id</code>, and <code>limit</code>.</li>
+<li>the response is JSON, encoding an array of <code>Status</code></li>
+<li>there will be pagination details in the <code>Link</code> header</li>
+<li>authorization is required</li>
+</ul>
+<p>So returning an OpenAPI definition to the client significantly complicates things for no benefit.</p>
+<p>OpenAPI is also endpoint-oriented; by which I mean that the definition leads with the endpoint (<code>/api/v1/statuses</code>) and then describes the single operation that is present at that endpoint.</p>
+<p>This is backwards to what we need, where the operation comes first, and multiple operations might be supported at the same endpoint.</p>
+<h3 id="use-the-api-path-as-the-key">Use the API path as the key</h3>
+<p>Instead of the proposed format, use the API path as the map key, like this:</p>
+<pre><code class="language-json">&quot;operations&quot;: {
+  &quot;/api/some/path&quot;: [&quot;org.joinmastodon.x.y.z:1.0.0&quot;, &quot;org.joinmastodon.x.y.z:1.1.0&quot;, ...]
+}
+</code></pre>
+<p>I reject this for two reasons:</p>
+<ol>
+<li>It suggests that servers might decide to implement the same operation under different URL paths. That is unnecessary extra complexity, and per the previous section, the contract between the client and the server is if the server advertises support for operation X the definition of that operation includes that URL path it is served under.</li>
+<li>It's unfriendly to client developers; a client using this information is trying to answer the question "Does the server support operation X?", not "Does API endpoint /a/b/c exist?". So the operation identifier should be the lookup key for the map, not the endpoint.</li>
+</ol>
+<h2 id="open-questions">Open questions</h2>
+<p>These are questions this proposal does not explicitly answer. I have suggestions, but feedback is appreciated.</p>
+<h3 id="can-servers-set-an-api-prefix">Can servers set an API prefix?</h3>
+<p>While I do not believe servers should be able to arbitrarily change all aspects of the path an operation is served under it may be useful for servers to be able to specify a path prefix for some or all operations.</p>
+<p>E.g., a server that supports Mastodon and Friendica APIs might want to offer them at paths that starts <code>mastodon</code> and <code>friendica</code> respectively.</p>
+<p>To do this the map value would be a second object with <code>prefix</code> and <code>versions</code> keys.</p>
+<pre><code class="language-json">&quot;operations&quot;: {
+    &quot;org.joinmastodon.api.conversations.id.unread&quot;: {
+        &quot;prefix&quot;: &quot;/mastodon&quot;,
+        &quot;versions&quot;: [&quot;1.0.0&quot;]
+    },
+    &quot;ca.friendi.api.conversations.id.unread&quot;: {
+        &quot;prefix&quot;: &quot;/friendica&quot;,
+        &quot;versions&quot;: [&quot;1.0.0&quot;]
+    }
+}
+</code></pre>
+<p>If the <code>prefix</code> was omitted the default would be <code>/</code>.</p>
+<p>Adopting this format, even if the only key is <code>versions</code> is probably a good idea initially to support future changes in a backwards-compatible manner.</p>
+<h3 id="what-happens-if-an-operations-owner-rebrands-or-disappears">What happens if an operations "owner" rebrands or disappears?</h3>
+<p>If a FQDN owner entity rebrands or disappears (e.g., Calckey renamed to Firefish) what happens to the operation identifiers they have defined?</p>
+<p>I don't think a rebrand should necessitate a wholesale renaming of the operation identifiers, that's unnecessary churn. They may decide to define future operations using the new name.</p>
+<p>Since the operation identifies are not actual domains / URLs there is no requirement for them to actually resolve to anything, so I don't foresee a technical problem with this approach if a project that defined some operation identifiers shuts down. As long as there is still documentation that defines the API for those operations nothing is lost.</p>
+<h3 id="is-the-reverse-fqdn-with-suffix-approach-the-best-format-for-operations-keys">Is the reverse-FQDN-with-suffix approach the best format for operations keys?</h3>
+<p>I think so.</p>
+<p>I did consider using <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Name">Uniform Resource Name (URN)</a> or <a href="https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier">Internationalised Resource Identifiers (IRI)</a> . There are advantages; for example, the operation identifier could be a URN or IRI that resolves to a document (perhaps the OpenAPI definition) for the API for that operation.</p>
+<p>However, that introduces the difficult topic of case-sensitivity when clients are comparing the list of operations the server returns with the list of operations they support.</p>
+<p>If the operation key was a URN or IRI it is, by definition, case-sensitive in parts. This provides an opportunity for server developers to incorrectly report an identifier with the wrong case, and for client developers to look for operations with the wrong case, impeding interoperability.</p>
+<p>Suggesting "Clients should case-fold operation identifiers to lower case before comparing them" does not solve the problem, as rules for correctly lower-casing text are not well specified, and may differ from implementation to implementation, again impeding interoperability.</p>
+<p>The approach of using a reverse FQDN with additional labels, and ensuring it is encoded with IDN sidesteps those problems.</p>
+<h3 id="is-there-a-11-mapping-between-operations-and-api-calls">Is there a 1:1 mapping between operations and API calls?</h3>
+<p>Should every supported API call have an associated operation, or is it OK to consider multiple API calls as a single operation the server supports?</p>
+<p>I think a 1:1 mapping makes most sense, as it allows server developers to incrementally deploy new features.</p>
+<p>For example, at the time of writing Friendica only partially supports voting; posts with votes can be displayed and will be returned by the API, but the operations to create a post with a poll, or to vote on a poll are not implemented.</p>
+<p>With a 1:1 mapping beween API and operations a Friendica server can advertise "I can return posts that can contain polls; I do not support API calls that post polls or vote on them".</p>
+<p>If "voting" was treated as a single operation then Friendica would be forced to advertise "I do not support polls", and a client might unnecessarily not show polls attached to Friendica posts.</p>
+<p>Anything other than a 1:1 mapping could also lead to different server developer teams "bundling" API calls into single operations in different ways, making things more complex for client developers, not less.</p>
+<h3 id="should-clients-indicate-the-operation-identifier-when-making-a-request">Should clients indicate the operation identifier when making a request?</h3>
+<p>When a server supports multiple versions of an API at a single endpoint it can be challenging to reliably determine the version of the API the client is calling. Server software often has to resort to "sniffing" the request and deducing the client's intentions by the presence or absence of specific properties in the request.</p>
+<p>This makes it more difficult to write the code to process the request and to determine what error details should be returned to the client.</p>
+<p>I think trying to solve this problem is outside the scope of this proposal. However, if this proposal is adopted I recommend server developers include the operation ID as a mandatory specific property in all future changes to their API, so this problem is gradually solved.</p>
+<h3 id="does-this-need-to-be-a-new-top-level-key-in-the-nodeinfo">Does this need to be a new top-level key in the nodeinfo?</h3>
+<p>No. This could also be in the metadata, exposed as:</p>
+<pre><code class="language-json">{
+  &quot;version&quot;: &quot;2.2&quot;,
+  ...
+  &quot;metadata&quot;: {
+    &quot;operations&quot;: {
+      // operation data here
+    }
+  }
+}
+</code></pre>
+<h2 id="related-links-prior-art">Related links / prior art</h2>
+<p>Not an exhaustive list:</p>
+<ul>
+<li>Mastodon Issues<ul>
+<li><a href="https://github.com/mastodon/mastodon/issues/1404">API Documentation via Swagger / RAML / Others · Issue #1404 · mastodon/mastodon · GitHub</a></li>
+<li><a href="https://github.com/mastodon/mastodon/issues/16328">How to get OpenAPI spec (JSON or YAML) · Issue #16328 · mastodon/mastodon · GitHub</a></li>
+<li><a href="https://github.com/mastodon/mastodon/issues/20572">OpenAPI documentation generation with rswag specs · Issue #20572 · mastodon/mastodon · GitHub</a></li>
+</ul>
+</li>
+<li>Mastodon PRs (these all attempted to add OpenAPI definitions)<ul>
+<li><a href="https://github.com/mastodon/mastodon/pull/20000">docs(open-api): Add OpenAPI Specification by oneslash · Pull Request #20000 · mastodon/mastodon · GitHub</a></li>
+<li><a href="https://github.com/mastodon/mastodon/pull/20607">Feat/add rswag in order to generate verified openapi docs by casaper · Pull Request #20607 · mastodon/mastodon · GitHub</a></li>
+<li><a href="https://github.com/mastodon/mastodon/pull/25043">[proposal] Machine readable API specification via OpenAPI by takayamaki · Pull Request #25043 · mastodon/mastodon · GitHub</a></li>
+</ul>
+</li>
+<li>Blog posts<ul>
+<li><a href="https://dev.to/appmap/automatically-generating-openapi-docs-for-mastodon-42ig">Automatically Generating OpenAPI Docs for Mastodon - DEV Community</a></li>
+</ul>
+</li>
+<li>Mastodon-like servers<ul>
+<li><a href="https://github.com/superseriousbusiness/gotosocial/blob/main/docs/api/swagger.yaml">GotoSocial OpenAPI definition of the Mastodon API</a></li>
+<li><a href="https://github.com/superseriousbusiness/gotosocial/issues/1985">[feature] Mastodon-compatible API extensions discovery mechanism · Issue #1985 · superseriousbusiness/gotosocial · GitHub</a></li>
+</ul>
+</li>
+<li>FEPs<ul>
+<li><a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/6481/fep-6481.md">FEP 6481 - # Specifying ActivityPub extension support with NodeInfo</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="_1">参考文献</h2>
+<ul>
+<li><a href="http://nodeinfo.diaspora.software/">NodeInfo</a></li>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc2119.html">RFC-2119 - Key words for use in RFCs to Indicate Requirement Levels</a></li>
+<li><a href="https://datatracker.ietf.org/doc/rfc3490/">RFC 3490 - Internationalizing Domain Names in Applications (IDNA)</a></li>
+<li><a href="https://semver.org/">Semantic Versioning</a></li>
+<li><a href="https://swagger.io/specification/">OpenAPI Specification</a></li>
+</ul>
+<h2 id="_2">著作権</h2>
+<p>CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン</p>
+<p>法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-9967/" class="btn btn-neutral float-left" title="FEP-9967: Polls"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-a070/" class="btn btn-neutral float-right" title="FEP-a070: Ordered properties for plain JSON consumers">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-9967/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-a070/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

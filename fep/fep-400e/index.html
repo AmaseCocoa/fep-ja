@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-400e: Publicly-appendable ActivityPub collections - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-400e: Publicly-appendable ActivityPub collections";
+        var mkdocs_page_input_path = "fep/fep-400e.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-400e: Publicly-appendable ActivityPub collections</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#publicly-appendable-collections">Publicly-appendable collections</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#specifying-collections-in-actors">Specifying collections in actors</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#using-target-in-objects">Using target in objects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#discussion">Discussion</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#adding-an-object-to-a-collection">Adding an object to a collection</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#receiving-an-add-activity">Receiving an Add activity</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-of-an-add-activity">Example of an Add activity</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deleting-an-object-from-a-collection">Deleting an object from a collection</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#moving-an-object-between-collections">Moving an object between collections</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#security-considerations">Security considerations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">実装</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">著作権</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-400e: Publicly-appendable ActivityPub collections</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-400e.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-400e-publicly-appendable-activitypub-collections">FEP-400e: Publicly-appendable ActivityPub collections</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-400e.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p>In social media, it's a frequent pattern when there's a collection owned by someone that other people can contribute to. Examples include:</p>
+<ul>
+<li>Walls where others can post</li>
+<li>Forums as well as topics within</li>
+<li>Photo albums in groups where group members can add photos</li>
+</ul>
+<p>Currently, there is no generic way to signify that an object was created as part of a collection and should only be considered in its context.</p>
+<p>This proposal describes how ActivityPub servers and clients could specify collections to which objects created by their actors belong.</p>
+<h2 id="requirements">Requirements</h2>
+<p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this specification are to be interpreted as described in [RFC-2119].</p>
+<h2 id="publicly-appendable-collections">Publicly-appendable collections</h2>
+<p>A publicly-appendable collection is any collection where it is expected that someone other than its owner could add items but over which its owner retains complete authority. For example, a wall is a collection to which other people could add posts (<code>Note</code>s), but from which its owner could delete any posts as well as restrict who can add them.</p>
+<p>A publicly-appendable collection SHOULD have a valid and globally-unique <code>id</code> that SHOULD point to either a <code>Collection</code> or an <code>OrderedCollection</code> object that contains the links to all its objects.</p>
+<h2 id="specifying-collections-in-actors">Specifying collections in actors</h2>
+<p>If an actor has publicly-appendable collections, its server MAY include them as additional fields in its ActivityPub representation. For example, user actors may specify the link to their walls, or groups may specify the link to the collection of their photo albums.</p>
+<p>Implementations MAY use the presence or absence of specific collection to determine whether the actor's server supports features that depend on that collection and alter their UIs accordingly.</p>
+<h2 id="using-target-in-objects">Using <code>target</code> in objects</h2>
+<p>If an ActivityPub object is being created as part of a collection, the object SHOULD include the <code>target</code> field that contains an abbreviated collection object, which SHOULD contain at least the following fields:</p>
+<ul>
+<li><code>type</code> — either <code>Collection</code> or <code>OrderedCollection</code>.</li>
+<li><code>id</code> — the <code>id</code> of the collection.</li>
+<li><code>attributedTo</code> — the <code>id</code> of the owner of the collection. This is necessary to simplify the database design on the receiving side.</li>
+</ul>
+<h3 id="discussion">Discussion</h3>
+<p>While [Activity Vocabulary] specifies <code>target</code> as a field with similar semantics in activities, it's important to include it in objects themselves so any software that only sees the object without its enclosing <code>Create</code> activity, e.g. when following a link form another object or retrieving the object from a user-provided URI, unambiguously knows that it should only be considered in the context of its collection.</p>
+<h2 id="adding-an-object-to-a-collection">Adding an object to a collection</h2>
+<p>When an ActivityPub server receives in its inbox a correctly signed <code>Create</code> activity with an object that has the <code>target</code> field, it does the following:</p>
+<ul>
+<li>Retrieve the collection owner using either <code>attributedTo</code> or <code>id</code> fields of the abbreviated collection object.</li>
+<li>If the collection owner does not exist, or if <code>attributedTo</code> doesn't match the actual owner of the collection specified by <code>id</code>, or if the collection owner is not a local actor, the server SHOULD abort processing and MAY return <code>400 Bad Request</code>.</li>
+<li>If the object could not be added to the collection, for example due to the privacy settings configured by its owner, the server SHOULD either respond with <code>403 Unauthorized</code> or respond with <code>200 OK</code> and later send a <code>Reject{Create}</code> activity to the originating server.</li>
+<li>Store either the entire object or its <code>id</code> in its local storage as belonging to the specified collection.</li>
+<li>Send an <code>Add</code> activity to any parties that might be concerned with it. The <code>target</code> field in the activity SHOULD only be the collection <code>id</code>, and the <code>object</code> field SHOULD be the <code>id</code> of the object being added. It is RECOMMENDED that this activity is sent to all the collection owner's followers for the sake of data consistency, and it SHOULD be sent to the actor that created the object being added.</li>
+<li>Perform any implementation-specific processing, like sending notifications.</li>
+</ul>
+<h3 id="receiving-an-add-activity">Receiving an <code>Add</code> activity</h3>
+<p>When an ActivityPub server receives in its inbox a correctly signed <code>Add</code> activity, it SHOULD do the following:</p>
+<ul>
+<li>Retrieve the <code>actor</code> either from local storage or from the network.</li>
+<li>Retrieve the <code>object</code>.</li>
+<li>Check that <code>target</code> is the ID of a collection owned by <code>actor</code>. If it is not, abort processing and return <code>400 Bad Request</code>.</li>
+<li>Check that <code>target</code> in the activity matches <code>target.id</code> in the object and that <code>target.attributedTo</code> in the object matches the actor ID. If it does not, abort processing and return <code>400 Bad Request</code>.</li>
+<li>Store either the entire object or its <code>id</code> in its local storage as belonging to the specified collection.</li>
+<li>Perform any implementation-specific processing, like sending notifications.</li>
+</ul>
+<h3 id="example-of-an-add-activity">Example of an <code>Add</code> activity</h3>
+<pre><code class="language-json">{
+  &quot;@context&quot;:&quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;actor&quot;:&quot;https://example.com/users/1&quot;,
+  &quot;id&quot;:&quot;https://example.com/posts/41864/activityAdd&quot;,
+  &quot;to&quot;:[
+    &quot;https://www.w3.org/ns/activitystreams#Public&quot;,
+    &quot;https://example.com/users/1/followers&quot;,
+    &quot;https://example.com/users/6946&quot;
+  ],
+  &quot;type&quot;:&quot;Add&quot;,
+  &quot;object&quot;:&quot;https://example.com/posts/41864&quot;,
+  &quot;target&quot;:&quot;https://example.com/users/1/wall&quot;
+}
+</code></pre>
+<h2 id="deleting-an-object-from-a-collection">Deleting an object from a collection</h2>
+<p>Since the collection owner has complete authority over the contents of the collection, they can delete any objects from it. When an object is deleted from a collection by its owner, their server SHOULD send a <code>Delete</code> activity to at least the server of the actor that created the object; it's also RECOMMENDED that this activity is sent to all the servers that <code>Add</code> was sent to. Those servers then SHOULD delete the object as if the deletion was initiated by its creator.</p>
+<h2 id="moving-an-object-between-collections">Moving an object between collections</h2>
+<p>In some use cases, it might make sense to allow objects to be moved between collections, for example, a group moderator might want to move a photo between photo albums in a group, or a forum moderator might want to split some messages into a separate thread. It's only possible to move objects between collections that are owned by the same actor.</p>
+<p>When moving an object between collections, the collection owner SHOULD send a <code>Move</code> activity to at least the server of the object creator, specifying the target collection and the <code>id</code> of the object; it's also RECOMMENDED that this activity is sent to all the servers that <code>Add</code> was sent to. Those servers then SHOULD update the <code>target</code> field in their stored copies of the object.</p>
+<h2 id="security-considerations">Security considerations</h2>
+<p>The requirement of an <code>Add</code> activity sent by a collection owner largely prevents a bad actor from effectively adding something to a collection against the collection owner's will while also helping data consistency across servers. However, there's still one case when this is possible. When a server fetches an object that has a <code>target</code> field directly, for example when a user has entered its URL into a search box or when it is referenced by a field such as <code>inReplyTo</code>, there's presently no reliable way to verify whether the object actually belongs to the collection.</p>
+<h2 id="_1">実装</h2>
+<p>This proposal is implemented in Smithereen for both user and group walls since the following commit: https://github.com/grishka/Smithereen/commit/de013593dde06a3091ecfbd32960a694d79c146e</p>
+<h2 id="_2">参考文献</h2>
+<ul>
+<li>[RFC-2119] S. Bradner, <a href="https://tools.ietf.org/html/rfc2119.html">Key words for use in RFCs to Indicate Requirement Levels</a></li>
+<li>[Activity Vocabulary], James M Snell, Evan Prodromou, <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Activity Vocabulary</a></li>
+</ul>
+<h2 id="_3">著作権</h2>
+<p>CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン</p>
+<p>法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-3b86/" class="btn btn-neutral float-left" title="FEP-3b86: Activity Intents"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-4adb/" class="btn btn-neutral float-right" title="FEP-4adb: Dereferencing identifiers with webfinger">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-3b86/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-4adb/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

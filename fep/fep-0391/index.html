@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-0391: Special collection proofs - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-0391: Special collection proofs";
+        var mkdocs_page_input_path = "fep/fep-0391.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-0391: Special collection proofs</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mapping-claims-and-inverse-claims">Mapping claims and inverse claims</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#verifying-presence-in-outbox-outbox-claim">Verifying presence in outbox {#outbox-claim}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#verifying-presence-in-inbox-inbox-claim">Verifying presence in inbox {#inbox-claim}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#verifying-presence-in-followers-followers-claim">Verifying presence in followers {#followers-claim}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#verifying-presence-in-following-following-claim">Verifying presence in following {#following-claim}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#verifying-presence-in-liked-liked-claim">Verifying presence in liked {#liked-claim}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#verifying-presence-in-likes-likes-claim">Verifying presence in likes {#likes-claim}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#verifying-presence-in-shares-shares-claim">Verifying presence in shares {#shares-claim}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#verifying-presence-in-replies-replies-claim">Verifying presence in replies {#replies-claim}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#verifying-presence-in-context-context-claim">Verifying presence in context {#context-claim}</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#types-of-proofs">Types of proofs</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#showing-inclusion-in-replies-collections-via-a-reply-stamp-replies-stamp">Showing inclusion in replies collections via a reply stamp {#replies-stamp}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#showing-inclusion-in-context-collections-via-a-context-stamp-context-stamp">Showing inclusion in context collections via a context stamp {#context-stamp}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#showing-inclusion-in-likes-collections-via-a-like-stamp-likes-stamp">Showing inclusion in likes collections via a like stamp {#likes-stamp}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#showing-inclusion-in-shares-collections-via-a-share-stamp-shares-stamp">Showing inclusion in shares collections via a share stamp {#shares-stamp}</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#relationship-proofs">Relationship proofs</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#existing-mechanisms-of-trust-root-trust">Existing mechanisms of trust {#root-trust}</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#obtaining-and-revoking-stamps-flow">Obtaining and revoking stamps {#flow}</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#a-simpler-example-flow-for-issuing-and-revoking-a-like-stamp">A simpler example flow for issuing and revoking a like stamp</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#a-more-complex-flow-for-stamps-involving-embedded-objects">A more complex flow for stamps involving embedded objects</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">著作権</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-0391: Special collection proofs</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-0391.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-0391-special-collection-proofs">FEP-0391: Special collection proofs</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-0391.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p>Some properties represent special collections, such as:</p>
+<ul>
+<li><code>outbox</code> (<a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>)</li>
+<li><code>inbox</code> (<a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>)</li>
+<li><code>followers</code> (<a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>)</li>
+<li><code>following</code> (<a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>)</li>
+<li><code>liked</code> (<a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>)</li>
+<li><code>likes</code> (<a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>)</li>
+<li><code>shares</code> (<a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>)</li>
+<li><code>replies</code> (FEP-7458)</li>
+<li><code>context</code> (FEP-7888)</li>
+</ul>
+<p>Verifying that any given object is part of a special collection is usually only possible by resolving that collection and checking its items one-by-one until the current object is found. This can be inefficient to verify. It would be easier if there was an inverse claim for each claim made about an object being part of a special collection. This FEP aims to define some properties that can be used to make those inverse claims.</p>
+<h2 id="mapping-claims-and-inverse-claims">Mapping claims and inverse claims</h2>
+<p>Given the special collections above, we can map the following claims and inverse claims. The last two inverse claims are particularly salient, since inclusion in <code>replies</code> and/or <code>context</code> carries additional semantic meaning and is a socially loaded relation used to establish conversational constructs.</p>
+<h3 id="verifying-presence-in-outbox-outbox-claim">Verifying presence in <code>outbox</code> {#outbox-claim}</h3>
+<p>Claim
+: Activity <code>&lt;A&gt;</code>'s actor (<code>&lt;A&gt;.actor</code>) is actor <code>&lt;B&gt;</code>
+Inverse claim
+: Actor <code>&lt;B&gt;</code>'s outbox collection (<code>&lt;B&gt;.outbox</code>) contains activity <code>&lt;A&gt;</code></p>
+<p>This is not particularly useful to prove.</p>
+<h3 id="verifying-presence-in-inbox-inbox-claim">Verifying presence in <code>inbox</code> {#inbox-claim}</h3>
+<p>Claim
+: Activity <code>&lt;A&gt;</code> has <code>to</code>/<code>cc</code>/<code>audience</code> including actor <code>&lt;B&gt;</code>
+Inverse claim
+: Actor <code>&lt;B&gt;</code>'s inbox collection (<code>&lt;B&gt;.inbox</code>) contains activity <code>&lt;A&gt;</code></p>
+<p>This is not particularly useful to prove, and at best can only be implied if <code>&lt;B&gt;</code> is addressed directly and not through some collection that triggers inbox forwarding.</p>
+<h3 id="verifying-presence-in-followers-followers-claim">Verifying presence in <code>followers</code> {#followers-claim}</h3>
+<p>Claim
+: Actor <code>&lt;B&gt;</code>'s following collection (<code>&lt;B&gt;.following</code>) contains actor <code>&lt;A&gt;</code></p>
+<p>Equivalent claim
+: Actor <code>&lt;B&gt;</code> claims that <code>&lt;B&gt;</code> is following <code>&lt;A&gt;</code></p>
+<p>Another equivalent claim
+: Actor <code>&lt;B&gt;</code> claims that <code>&lt;A&gt;</code> is followed by <code>&lt;B&gt;</code></p>
+<p>Inverse claim
+: Actor <code>&lt;A&gt;</code>'s followers collection (<code>&lt;A&gt;.followers</code>) contains actor <code>&lt;B&gt;</code></p>
+<p>Equivalent inverse claim
+: Actor <code>&lt;A&gt;</code> claims that <code>&lt;A&gt;</code> is followed by <code>&lt;B&gt;</code></p>
+<p>Another equivalent inverse claim
+: Actor <code>&lt;A&gt;</code> claims that <code>&lt;B&gt;</code> is following <code>&lt;A&gt;</code></p>
+<p>This can be verified by showing one of the following:</p>
+<ul>
+<li><code>&lt;A&gt;.followers</code> includes <code>&lt;B&gt;</code> as well</li>
+<li>A Relationship exists where:<ul>
+<li><code>attributedTo</code> is <code>&lt;A&gt;</code></li>
+<li><code>subject</code> is <code>&lt;B&gt;</code></li>
+<li><code>relationship</code> is <code>IsFollowing</code></li>
+<li><code>object</code> is <code>&lt;A&gt;</code></li>
+</ul>
+</li>
+<li>A Relationship exists where:<ul>
+<li><code>attributedTo</code> is <code>&lt;A&gt;</code></li>
+<li><code>subject</code> is <code>&lt;A&gt;</code></li>
+<li><code>relationship</code> is <code>IsFollowedBy</code></li>
+<li><code>object</code> is <code>&lt;B&gt;</code></li>
+</ul>
+</li>
+<li>A trusted activity exists where:<ul>
+<li><code>actor</code> is <code>&lt;A&gt;</code></li>
+<li><code>type</code> is <code>Accept</code></li>
+<li><code>object.actor</code> is <code>&lt;B&gt;</code></li>
+<li><code>object.type</code> is <code>Follow</code></li>
+<li><code>object.object</code> is <code>&lt;A&gt;</code></li>
+</ul>
+</li>
+<li>A trusted activity exists where:<ul>
+<li><code>actor</code> is <code>&lt;A&gt;</code></li>
+<li><code>type</code> is <code>Add</code></li>
+<li><code>object</code> is <code>&lt;B&gt;</code></li>
+<li><code>target</code> is <code>&lt;A&gt;.followers</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="verifying-presence-in-following-following-claim">Verifying presence in <code>following</code> {#following-claim}</h3>
+<p>Claim
+: Actor <code>&lt;B&gt;</code>'s followers collection (<code>&lt;B&gt;.followers</code>) contains actor <code>&lt;A&gt;</code></p>
+<p>Equivalent claim
+: Actor <code>&lt;B&gt;</code> claims that <code>&lt;B&gt;</code> is followed by <code>&lt;A&gt;</code></p>
+<p>Another equivalent claim
+: Actor <code>&lt;B&gt;</code> claims that <code>&lt;A&gt;</code> is following <code>&lt;B&gt;</code></p>
+<p>Inverse claim
+: Actor <code>&lt;A&gt;</code>'s following collection (<code>&lt;A&gt;.following</code>) contains actor <code>&lt;B&gt;</code></p>
+<p>Equivalent inverse claim
+: Actor <code>&lt;A&gt;</code> claims that <code>&lt;A&gt;</code> is following <code>&lt;B&gt;</code></p>
+<p>Another equivalent inverse claim
+: Actor <code>&lt;A&gt;</code> claims that <code>&lt;B&gt;</code> is followed by <code>&lt;A&gt;</code></p>
+<p>This can be verified by showing one of the following:</p>
+<ul>
+<li><code>&lt;A&gt;.following</code> includes <code>&lt;B&gt;</code> as well</li>
+<li>A Relationship exists where:<ul>
+<li><code>attributedTo</code> is <code>&lt;A&gt;</code></li>
+<li><code>subject</code> is <code>&lt;A&gt;</code></li>
+<li><code>relationship</code> is <code>IsFollowing</code></li>
+<li><code>object</code> is <code>&lt;B&gt;</code></li>
+</ul>
+</li>
+<li>A Relationship exists where:<ul>
+<li><code>attributedTo</code> is <code>&lt;A&gt;</code></li>
+<li><code>subject</code> is <code>&lt;B&gt;</code></li>
+<li><code>relationship</code> is <code>IsFollowedBy</code></li>
+<li><code>object</code> is <code>&lt;A&gt;</code></li>
+</ul>
+</li>
+<li>A trusted activity exists where:<ul>
+<li><code>actor</code> is <code>&lt;B&gt;</code></li>
+<li><code>type</code> is <code>Accept</code></li>
+<li><code>object.actor</code> is <code>&lt;A&gt;</code></li>
+<li><code>object.type</code> is <code>Follow</code></li>
+<li><code>object.object</code> is <code>&lt;B&gt;</code></li>
+<li><code>object</code> is a trusted activity</li>
+</ul>
+</li>
+<li>A trusted activity exists where:<ul>
+<li><code>actor</code> is <code>&lt;A&gt;</code></li>
+<li><code>type</code> is <code>Add</code></li>
+<li><code>object</code> is <code>&lt;B&gt;</code></li>
+<li><code>target</code> is <code>&lt;A&gt;.following</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="verifying-presence-in-liked-liked-claim">Verifying presence in <code>liked</code> {#liked-claim}</h3>
+<p>Claim
+: Actor <code>&lt;A&gt;</code>'s liked collection (<code>&lt;A&gt;.liked</code>) contains object <code>&lt;O&gt;</code></p>
+<p>This can be verified by showing a trusted activity exists in <code>&lt;O&gt;.likes</code> where:
+- <code>actor</code> is <code>&lt;A&gt;</code>
+- <code>type</code> is <code>Like</code>
+- <code>object</code> is <code>&lt;O&gt;</code></p>
+<p>Note that there is an issue that may occur if <code>&lt;A&gt;</code> issues multiple <code>Like</code> activities for the same object <code>&lt;O&gt;</code>, and then issues any <code>Undo Like</code> activities at a later point in time. The most recent activity will have its side-effects carried out. It is possible for some of these functionally duplicate <code>Like</code> activites to remain in <code>&lt;O&gt;.likes</code> even though the object <code>&lt;O&gt;</code> is no longer in <code>&lt;A&gt;.liked</code>. See https://github.com/w3c/activitypub/issues/381 for more information.</p>
+<h3 id="verifying-presence-in-likes-likes-claim">Verifying presence in <code>likes</code> {#likes-claim}</h3>
+<p>Claim
+: Object <code>&lt;O&gt;</code>'s likes collection (<code>&lt;O&gt;.likes</code>) contains a Like activity <code>&lt;L&gt;</code> from actor <code>&lt;A&gt;</code></p>
+<p>If <code>&lt;L&gt;</code> is not already trusted via some other mechanism, this can be verified by showing that <code>&lt;A&gt;.liked</code> includes <code>&lt;O&gt;</code>. Note the duplication issue from the previous section.</p>
+<p>The Like activity <code>&lt;L&gt;</code> MAY <code>result</code> in an <code>Add</code> activity <code>&lt;R&gt;</code> targeting <code>&lt;O&gt;.likes</code>. This <code>result</code> can be used by <code>&lt;A&gt;</code> as proof of the claim, if it can be shown to be a trusted activity.</p>
+<h3 id="verifying-presence-in-shares-shares-claim">Verifying presence in <code>shares</code> {#shares-claim}</h3>
+<p>Claim
+: Object <code>&lt;O&gt;</code>'s shares collection (<code>&lt;O&gt;.shares</code>) contains an Announce activity <code>&lt;S&gt;</code> from actor <code>&lt;A&gt;</code></p>
+<p>The Announce activity <code>&lt;S&gt;</code> MAY <code>result</code> in an <code>Add</code> activity <code>&lt;R&gt;</code> targeting <code>&lt;O&gt;.shares</code>. This <code>result</code> can be used by <code>&lt;A&gt;</code> as proof of the claim, if it can be shown to be a trusted activity.</p>
+<h3 id="verifying-presence-in-replies-replies-claim">Verifying presence in <code>replies</code> {#replies-claim}</h3>
+<p>Claim
+: Object <code>&lt;R&gt;</code> is <code>inReplyTo</code> object <code>&lt;O&gt;</code></p>
+<p>Inverse claim
+: Object <code>&lt;O&gt;</code>'s replies collection (<code>&lt;O&gt;.replies</code>) contains object <code>&lt;R&gt;</code> attributed to actor <code>&lt;A&gt;</code></p>
+<p>The inverse claim can be verified by showing that an activity exists where:
+- <code>actor</code> is <code>&lt;O&gt;.attributedTo</code>
+- <code>type</code> set includes <code>Add</code>
+- <code>object</code> is <code>&lt;R&gt;</code>
+- <code>target</code> is <code>&lt;O&gt;.replies</code></p>
+<h3 id="verifying-presence-in-context-context-claim">Verifying presence in <code>context</code> {#context-claim}</h3>
+<p>Claim
+: Object <code>&lt;O&gt;</code> has a <code>context</code> pointing to context collection <code>&lt;C&gt;</code></p>
+<p>Inverse claim
+: Context collection <code>&lt;C&gt;</code> contains object <code>&lt;O&gt;</code></p>
+<p>The inverse claim can be verified by showing that an activity exists where:
+- <code>actor</code> is <code>&lt;O&gt;.context.attributedTo</code>
+- <code>type</code> set includes <code>Add</code>
+- <code>object</code> is <code>&lt;R&gt;</code>
+- <code>target</code> is <code>&lt;O&gt;.context</code></p>
+<h2 id="types-of-proofs">Types of proofs</h2>
+<p>We can map proofs onto the <code>result</code> property provided that its subject is an activity and its referent is a trusted activity. We may also define some extension properties for non-activity objects.</p>
+<h3 id="showing-inclusion-in-replies-collections-via-a-reply-stamp-replies-stamp">Showing inclusion in <code>replies</code> collections via a reply stamp {#replies-stamp}</h3>
+<p>Provides proof that some object was added to some <code>replies</code> collection.</p>
+<p>On an activity where <code>inReplyTo</code> has been set, the proof can be verified if all of the following are satisfied:</p>
+<ul>
+<li><code>result.actor</code> MUST be included in either <code>inReplyTo.actor</code> or <code>inReplyTo.attributedTo</code></li>
+<li><code>result.type</code> MUST include <code>Add</code></li>
+<li><code>result.object</code> MUST be equivalent to the current activity</li>
+<li><code>result.target</code> MUST be equivalent to <code>inReplyTo.replies</code></li>
+</ul>
+<p>On a <code>Create</code> activity where the <code>object</code> has <code>inReplyTo</code> set, the proof can be verified if all of the following are satisfied:</p>
+<ul>
+<li><code>result.actor</code> MUST be included in either <code>object.inReplyTo.attributedTo</code> or <code>object.inReplyTo.actor</code></li>
+<li><code>result.type</code> MUST include <code>Add</code></li>
+<li><code>result.object</code> MUST be equivalent to <code>object</code></li>
+<li><code>result.target</code> MUST be equivalent to <code>object.inReplyTo.replies</code></li>
+</ul>
+<p>On a non-activity Object where <code>inReplyTo</code> has been set, we define the extension property <code>inReplyToProof</code> since the use of <code>result</code> is invalid on non-Activity types. The proof is valid if all of the following are satisfied:</p>
+<ul>
+<li><code>inReplyToProof.actor</code> MUST be included in either <code>inReplyTo.attributedTo</code> or <code>inReplyTo.actor</code></li>
+<li><code>inReplyToProof.type</code> MUST include <code>Add</code></li>
+<li><code>inReplyToProof.object</code> MUST be equivalent to the current object</li>
+<li><code>inReplyToProof.target</code> MUST be equivalent to <code>inReplyTo.replies</code></li>
+</ul>
+<p>Example of an activity with <code>inReplyTo</code> set to some activity with a <code>replies</code> collection:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;id&quot;: &quot;https://example.com/some-activity&quot;,
+    &quot;actor&quot;: &quot;https://example.com/actors/2&quot;,
+    &quot;type&quot;: &quot;Activity&quot;,
+    &quot;object&quot;: &quot;https://example.com/some-object&quot;,
+    &quot;inReplyTo&quot;: {
+        &quot;id&quot;: &quot;https://example.com/some-other-create&quot;,
+        &quot;actor&quot;: &quot;https://example.com/actors/1&quot;,
+        &quot;type&quot;: &quot;Create&quot;,
+        &quot;object&quot;: &quot;https://example.com/some-other-object&quot;,
+        &quot;content&quot;: &quot;I am accepting replies to this activity.&quot;,
+        &quot;replies&quot;: &quot;https://example.com/some-other-create/replies&quot;
+    },
+    &quot;result&quot;: {
+        &quot;id&quot;: &quot;https://example.com/some-proof&quot;,
+        &quot;actor&quot;: &quot;https://example.com/actors/1&quot;,
+        &quot;type&quot;: &quot;Add&quot;,
+        &quot;object&quot;: &quot;https://example.com/some-activity&quot;,
+        &quot;target&quot;: &quot;https://example.com/some-other-create/replies&quot;,
+        &quot;attributedTo&quot;: &quot;https://example.com/some-activity&quot;
+    }
+}
+</code></pre>
+<p>Example of a <code>Create</code> activity with <code>object.inReplyTo</code> set to some non-activity object with a <code>replies</code> collection:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: [&quot;https://www.w3.org/ns/activitystreams&quot;, &quot;https://w3id.org/fep/0391&quot;],
+    &quot;id&quot;: &quot;https://example.com/create-some-reply&quot;,
+    &quot;actor&quot;: &quot;https://example.com/actors/2&quot;,
+    &quot;type&quot;: &quot;Create&quot;,
+    &quot;object&quot;: {
+        &quot;id&quot;: &quot;https://example.com/some-reply&quot;,
+        &quot;type&quot;: &quot;Note&quot;,
+        &quot;attributedTo&quot;: &quot;https://example.com/actors/2&quot;,
+        &quot;content&quot;: &quot;This is a reply, and I can prove it was added to the replies collection.&quot;,
+        &quot;inReplyTo&quot;: {
+            &quot;id&quot;: &quot;https://example.com/some-object&quot;,
+            &quot;type&quot;: &quot;Note&quot;,
+            &quot;attributedTo&quot;: &quot;https://example.com/actors/1&quot;,
+            &quot;content&quot;: &quot;I am accepting replies to this object.&quot;,
+            &quot;replies&quot;: &quot;https://example.com/some-object/replies&quot;
+        },
+        &quot;inReplyToProof&quot;: &quot;https://example.com/some-proof&quot;
+    },
+    &quot;result&quot;: {
+        &quot;id&quot;: &quot;https://example.com/some-proof&quot;,
+        &quot;actor&quot;: &quot;https://example.com/actors/1&quot;,
+        &quot;type&quot;: &quot;Add&quot;,
+        &quot;object&quot;: &quot;https://example.com/some-reply&quot;,
+        &quot;target&quot;: &quot;https://example.com/some-object/replies&quot;,
+        &quot;attributedTo&quot;: &quot;https://example.com/create-some-reply&quot;
+    }
+}
+</code></pre>
+<h3 id="showing-inclusion-in-context-collections-via-a-context-stamp-context-stamp">Showing inclusion in <code>context</code> collections via a context stamp {#context-stamp}</h3>
+<p>Provides proof that some object was added to some <code>context</code> collection.</p>
+<p>On an activity where the <code>context</code> has been set to a collection, the proof can be verified if all of the following are satisfied:</p>
+<ul>
+<li><code>result.actor</code> MUST be included in <code>context.attributedTo</code></li>
+<li><code>result.type</code> MUST include <code>Add</code></li>
+<li><code>result.object</code> MUST be equivalent to the current activity</li>
+<li><code>result.target</code> MUST be equivalent to <code>context</code></li>
+</ul>
+<p>On a <code>Create</code> activity where the <code>object</code> has <code>context</code> set, the proof can be verified if all of the following are satisfied:</p>
+<ul>
+<li><code>result.actor</code> MUST be included in <code>object.context.attributedTo</code></li>
+<li><code>result.type</code> MUST include <code>Add</code></li>
+<li><code>result.object</code> MUST be equivalent to <code>object</code></li>
+<li><code>result.target</code> MUST be equivalent to <code>object.context</code></li>
+</ul>
+<p>On a non-activity Object where <code>context</code> has been set, we define the extension property <code>contextProof</code> since the use of <code>result</code> is invalid on non-Activity types. The proof is valid if all of the following are satisfied:</p>
+<ul>
+<li><code>contextProof.actor</code> MUST be included in <code>context.attributedTo</code></li>
+<li><code>contextProof.type</code> MUST include <code>Add</code></li>
+<li><code>contextProof.object</code> MUST be equivalent to the current object</li>
+<li><code>contextProof.target</code> MUST be equivalent to <code>context</code></li>
+</ul>
+<p>Example of an activity with <code>context</code> set to some owned collection:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;id&quot;: &quot;https://example.com/some-activity&quot;,
+    &quot;actor&quot;: &quot;https://example.com/some-actor&quot;,
+    &quot;type&quot;: &quot;Activity&quot;,
+    &quot;object&quot;: &quot;https://example.com/some-object&quot;,
+    &quot;context&quot;: {
+        &quot;id&quot;: &quot;https://example.com/some-context&quot;,
+        &quot;type&quot;: &quot;Collection&quot;,
+        &quot;attributedTo&quot;: &quot;https://example.com/some-context-moderator&quot;
+    },
+    &quot;result&quot;: {
+        &quot;id&quot;: &quot;https://example.com/some-proof&quot;,
+        &quot;actor&quot;: &quot;https://example.com/some-context-moderator&quot;,
+        &quot;type&quot;: &quot;Add&quot;,
+        &quot;object&quot;: &quot;https://example.com/some-activity&quot;,
+        &quot;target&quot;: &quot;https://example.com/some-context&quot;,
+        &quot;attributedTo&quot;: &quot;https://example.com/some-activity&quot;
+    }
+}
+</code></pre>
+<p>Example of a <code>Create</code> activity with <code>object.context</code> set to some owned collection:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: [&quot;https://www.w3.org/ns/activitystreams&quot;, &quot;https://w3id.org/fep/0391&quot;],
+    &quot;id&quot;: &quot;https://example.com/create-some-object&quot;,
+    &quot;actor&quot;: &quot;https://example.com/some-actor&quot;,
+    &quot;type&quot;: &quot;Create&quot;,
+    &quot;object&quot;: {
+        &quot;id&quot;: &quot;https://example.com/some-object&quot;,
+        &quot;type&quot;: &quot;Note&quot;,
+        &quot;attributedTo&quot;: &quot;https://example.com/some-actor&quot;,
+        &quot;content&quot;: &quot;This object is part of some context, and I can prove it was added to the context collection.&quot;,
+        &quot;context&quot;: {
+            &quot;id&quot;: &quot;https://example.com/some-context&quot;,
+            &quot;type&quot;: &quot;Collection&quot;,
+            &quot;attributedTo&quot;: &quot;https://example.com/some-context-moderator&quot;
+        },
+        &quot;contextProof&quot;: &quot;https://example.com/some-proof&quot;
+    },
+    &quot;result&quot;: {
+        &quot;id&quot;: &quot;https://example.com/some-proof&quot;,
+        &quot;actor&quot;: &quot;https://example.com/some-context-moderator&quot;,
+        &quot;type&quot;: &quot;Add&quot;,
+        &quot;object&quot;: &quot;https://example.com/some-object&quot;,
+        &quot;target&quot;: &quot;https://example.com/some-context&quot;,
+        &quot;attributedTo&quot;: &quot;https://example.com/create-some-object&quot;
+    }
+}
+</code></pre>
+<h3 id="showing-inclusion-in-likes-collections-via-a-like-stamp-likes-stamp">Showing inclusion in <code>likes</code> collections via a like stamp {#likes-stamp}</h3>
+<p>Provides proof that the current activity was added to the <code>object.likes</code> collection.</p>
+<p>On a <code>Like</code> activity where the <code>object</code> has a <code>likes</code> collection, the proof can be verified if all of the following are satisfied:</p>
+<ul>
+<li><code>result.actor</code> MUST be included in <code>object.attributedTo</code></li>
+<li><code>result.type</code> MUST include <code>Add</code></li>
+<li><code>result.object</code> MUST be equivalent to the current activity</li>
+<li><code>result.target</code> MUST be equivalent to <code>object.likes</code></li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;id&quot;: &quot;https://example.com/some-like&quot;,
+    &quot;summary&quot;: &quot;A Like activity, with proof that it was added to the likes collection.&quot;,
+    &quot;actor&quot;: &quot;https://example.com/actors/2&quot;,
+    &quot;type&quot;: &quot;Like&quot;,
+    &quot;object&quot;: {
+        &quot;id&quot;: &quot;https://example.com/some-object&quot;,
+        &quot;type&quot;: &quot;Note&quot;,
+        &quot;content&quot;: &quot;I am accepting likes of this object.&quot;,
+        &quot;likes&quot;: &quot;https://example.com/some-object/likes&quot;,
+        &quot;attributedTo&quot;: &quot;https://example.com/actors/1&quot;
+    },
+    &quot;result&quot;: {
+        &quot;id&quot;: &quot;https://example.com/some-proof&quot;,
+        &quot;actor&quot;: &quot;https://example.com/actors/1&quot;,
+        &quot;type&quot;: &quot;Add&quot;,
+        &quot;object&quot;: &quot;https://example.com/some-like&quot;,
+        &quot;target&quot;: &quot;https://example.com/some-object/likes&quot;,
+        &quot;attributedTo&quot;: &quot;https://example.com/some-like&quot;
+    }
+}
+</code></pre>
+<h3 id="showing-inclusion-in-shares-collections-via-a-share-stamp-shares-stamp">Showing inclusion in <code>shares</code> collections via a share stamp {#shares-stamp}</h3>
+<p>Provides proof that the current activity was added to the <code>object.shares</code> collection.</p>
+<p>On an <code>Announce</code> activity where the <code>object</code> has a <code>shares</code> collection, the proof can be verified if all of the following are satisfied:</p>
+<ul>
+<li><code>result.actor</code> MUST be included in <code>object.attributedTo</code></li>
+<li><code>result.type</code> MUST include <code>Add</code></li>
+<li><code>result.object</code> MUST be equivalent to the current activity</li>
+<li><code>result.target</code> MUST be equivalent to <code>object.shares</code></li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;id&quot;: &quot;https://example.com/some-announce&quot;,
+    &quot;summary&quot;: &quot;An Announce activity, with proof that it was added to the shares collection.&quot;,
+    &quot;actor&quot;: &quot;https://example.com/actors/2&quot;,
+    &quot;type&quot;: &quot;Announce&quot;,
+    &quot;object&quot;: {
+        &quot;id&quot;: &quot;https://example.com/some-object&quot;,
+        &quot;type&quot;: &quot;Note&quot;,
+        &quot;content&quot;: &quot;I am accepting shares of this object.&quot;,
+        &quot;shares&quot;: &quot;https://example.com/some-object/shares&quot;,
+        &quot;attributedTo&quot;: &quot;https://example.com/actors/1&quot;
+    },
+    &quot;result&quot;: {
+        &quot;id&quot;: &quot;https://example.com/some-proof&quot;,
+        &quot;actor&quot;: &quot;https://example.com/actors/1&quot;,
+        &quot;type&quot;: &quot;Add&quot;,
+        &quot;object&quot;: &quot;https://example.com/some-announce&quot;,
+        &quot;target&quot;: &quot;https://example.com/some-object/shares&quot;,
+        &quot;attributedTo&quot;: &quot;https://example.com/some-announce&quot;
+    }
+}
+</code></pre>
+<h3 id="relationship-proofs">Relationship proofs</h3>
+<blockquote>
+<p>[!WARNING]
+Experimental, requires further thought.</p>
+<p>[!WARNING]
+Currently bugged. See https://github.com/w3c/activitystreams/issues/593 for more details.</p>
+</blockquote>
+<p>Provides proof that the current relationship is reciprocally claimed.</p>
+<p>Relationships other than following or being a follower may be proved using this property, but the requirements for such a proof are out of scope of this FEP.</p>
+<p>We define the extension property <code>relationshipProof</code> since the use of <code>result</code> is invalid on non-Activity types. The proof is valid if all of the following are satisfied:</p>
+<p>Example that proves a user is following another user:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: [&quot;https://www.w3.org/ns/activitystreams&quot;, &quot;https://w3id.org/fep/0391&quot;],
+    &quot;id&quot;: &quot;https://example.com/some-relationship&quot;,
+    &quot;type&quot;: &quot;Relationship&quot;,
+    &quot;attributedTo&quot;: &quot;https://example.com/actors/1&quot;,
+    &quot;subject&quot;: {
+        &quot;id&quot;: &quot;https://example.com/actors/1&quot;,
+        &quot;following&quot;: &quot;https://example.com/actors/1/following&quot;
+    },
+    &quot;relationship&quot;: &quot;IsFollowing&quot;,
+    &quot;object&quot;: {
+        &quot;id&quot;: &quot;https://example.com/actors/2&quot;,
+        &quot;followers&quot;: &quot;https://example.com/actors/2/followers&quot;
+    },
+    &quot;relationshipProof&quot;: [
+        {
+            &quot;id&quot;: &quot;https://example.com/not-enough-proof&quot;,
+            &quot;actor&quot;: &quot;https://example.com/actors/1&quot;,
+            &quot;type&quot;: &quot;Add&quot;,
+            &quot;object&quot;: &quot;https://example.com/actors/2&quot;,
+            &quot;target&quot;: &quot;https://example.com/actors/1/following&quot;
+        },
+        {
+            &quot;id&quot;: &quot;https://example.com/proof-by-inverse-relationship&quot;,
+            &quot;type&quot;: &quot;Relationship&quot;,
+            &quot;attributedTo&quot;: &quot;https://example.com/actors/2&quot;,
+            &quot;subject&quot;: &quot;https://example.com/actors/2&quot;,
+            &quot;relationship&quot;: &quot;IsFollowedBy&quot;,
+            &quot;object&quot;: &quot;https://example.com/actors/1&quot;
+        },
+        {
+            &quot;id&quot;: &quot;https://example.com/proof-by-being-added-to-followers&quot;,
+            &quot;actor&quot;: &quot;https://example.com/actors/2&quot;,
+            &quot;type&quot;: &quot;Add&quot;,
+            &quot;object&quot;: &quot;https://example.com/actors/1&quot;,
+            &quot;target&quot;: &quot;https://example.com/actors/2/followers&quot;
+        },
+        {
+            &quot;id&quot;: &quot;https://example.com/proof-by-having-follow-accepted&quot;,
+            &quot;actor&quot;: &quot;https://example.com/actors/2&quot;,
+            &quot;type&quot;: &quot;Accept&quot;,
+            &quot;object&quot;: {
+                &quot;actor&quot;: &quot;https://example.com/actors/1&quot;,
+                &quot;type&quot;: &quot;Follow&quot;,
+                &quot;object&quot;: &quot;https://example.com/actors/2&quot;
+            }
+        }
+    ]
+}
+</code></pre>
+<p>Example that proves a user is followed by another user:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: [&quot;https://www.w3.org/ns/activitystreams&quot;, &quot;https://w3id.org/fep/0391&quot;],
+    &quot;id&quot;: &quot;https://example.com/some-relationship&quot;,
+    &quot;type&quot;: &quot;Relationship&quot;,
+    &quot;attributedTo&quot;: &quot;https://example.com/actors/1&quot;,
+    &quot;subject&quot;: {
+        &quot;id&quot;: &quot;https://example.com/actors/1&quot;,
+        &quot;followers&quot;: &quot;https://example.com/actors/1/following&quot;
+    },
+    &quot;relationship&quot;: &quot;IsFollowedBy&quot;,
+    &quot;object&quot;: {
+        &quot;id&quot;: &quot;https://example.com/actors/2&quot;,
+        &quot;following&quot;: &quot;https://example.com/actors/2/followers&quot;
+    },
+    &quot;relationshipProof&quot;: [
+        {
+            &quot;id&quot;: &quot;https://example.com/not-enough-proof&quot;,
+            &quot;actor&quot;: &quot;https://example.com/actors/1&quot;,
+            &quot;type&quot;: &quot;Add&quot;,
+            &quot;object&quot;: &quot;https://example.com/actors/2&quot;,
+            &quot;target&quot;: &quot;https://example.com/actors/1/followers&quot;
+        },
+        {
+            &quot;id&quot;: &quot;https://example.com/proof-by-inverse-relationship&quot;,
+            &quot;type&quot;: &quot;Relationship&quot;,
+            &quot;attributedTo&quot;: &quot;https://example.com/actors/2&quot;,
+            &quot;subject&quot;: &quot;https://example.com/actors/2&quot;,
+            &quot;relationship&quot;: &quot;IsFollowing&quot;,
+            &quot;object&quot;: &quot;https://example.com/actors/1&quot;
+        },
+        {
+            &quot;id&quot;: &quot;https://example.com/proof-by-being-added-to-following&quot;,
+            &quot;actor&quot;: &quot;https://example.com/actors/2&quot;,
+            &quot;type&quot;: &quot;Add&quot;,
+            &quot;object&quot;: &quot;https://example.com/actors/1&quot;,
+            &quot;target&quot;: &quot;https://example.com/actors/2/following&quot;
+        },
+        {
+            &quot;id&quot;: &quot;https://example.com/proof-by-having-follow&quot;,
+            &quot;actor&quot;: &quot;https://example.com/actors/2&quot;,
+            &quot;type&quot;: &quot;Follow&quot;,
+            &quot;object&quot;: &quot;https://example.com/actors/1&quot;
+        }
+    ]
+}
+</code></pre>
+<p>Miscellaneous examples:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;id&quot;: &quot;https://example.com/some-follow&quot;,
+    &quot;actor&quot;: {
+        &quot;id&quot;: &quot;https://example.com/actors/2&quot;,
+        &quot;following&quot;: &quot;https://example.com/actors/2/following&quot;
+    },
+    &quot;type&quot;: &quot;Follow&quot;,
+    &quot;object&quot;: {
+        &quot;id&quot;: &quot;https://example.com/actors/1&quot;,
+        &quot;followers&quot;: &quot;https://example.com/actors/1/followers&quot;
+    },
+    &quot;result&quot;: {
+        &quot;id&quot;: &quot;https://example.com/accept-follow&quot;,
+        &quot;actor&quot;: &quot;https://example.com/actor/1&quot;,
+        &quot;type&quot;: &quot;Accept&quot;,
+        &quot;object&quot;: &quot;https://example.com/some-follow&quot;,
+        &quot;result&quot;: [
+            {
+                &quot;id&quot;: &quot;https://example.com/resulting-add-to-followers&quot;,
+                &quot;actor&quot;: &quot;https://example.com/actors/1&quot;,
+                &quot;type&quot;: &quot;Add&quot;,
+                &quot;object&quot;: &quot;https://example.com/actors/2&quot;,
+                &quot;target&quot;: &quot;https://example.com/actors/1/followers&quot;,
+                &quot;attributedTo&quot;: &quot;https://example.com/accept-follow&quot;
+            },
+            {
+                &quot;id&quot;: &quot;https://example.com/resulting-add-to-following&quot;,
+                &quot;actor&quot;: &quot;https://example.com/actors/2&quot;,
+                &quot;type&quot;: &quot;Add&quot;,
+                &quot;object&quot;: &quot;https://example.com/actors/1&quot;,
+                &quot;target&quot;: &quot;https://example.com/actors/2/following&quot;,
+                &quot;attributedTo&quot;: &quot;https://example.com/accept-follow&quot;
+            }
+        ]
+    }
+}
+</code></pre>
+<h2 id="existing-mechanisms-of-trust-root-trust">Existing mechanisms of trust {#root-trust}</h2>
+<p>Verifying stamps has an issue with bootstrapping trust. In addition to verifying stamps via logical inference, ActivityPub clients SHOULD also consider the following:</p>
+<ul>
+<li>Same-origin policy, if the root of trust is the DNS name.</li>
+<li>Cryptographic signatures, if the root of trust is some cryptographic key associated with the actor. See HTTP Signatures, Linked Data Signatures, <a href="https://w3id.org/fep/8b32">FEP-8b32: Object Integrity Proofs</a>, or similar.</li>
+</ul>
+<h2 id="obtaining-and-revoking-stamps-flow">Obtaining and revoking stamps {#flow}</h2>
+<p>Upon receiving an activity with a side effect of adding something to a special collection, ActivityPub servers SHOULD generate and deliver an <code>Add</code> activity representing this side-effect. The ActivityPub server MAY require manual action by a user. The resulting stamp activity SHOULD be <code>attributedTo</code> the activity that caused the side-effect, delivered to its <code>actor</code>, and additionally SHOULD either be resolvable (to allow direct same-origin checking) or otherwise include a cryptographic proof. If a cryptographic proof is included, the proof SHOULD expire after some reasonable window, beyond which point a new proof should be issued. If the resulting stamp activity is resolvable, it MAY become unresolvable after some time; HTTP caching SHOULD be used to indicate a time-to-live for ActivityPub clients to re-check cached stamps. The time-to-live MAY be used as the duration of the cryptographic proof, if one exists.</p>
+<p>The recipient of a stamp SHOULD <code>Update</code> their object to include the appropriate property for the stamp -- <code>result</code> if it is an activity, <code>inReplyToProof</code> if it is a non-activity object that declares <code>inReplyTo</code>, <code>contextProof</code> if it is a non-activity object that declares <code>context</code>. [TODO: how to handle relationship proofs?]</p>
+<p>Revoking a stamp can be done by:
+- If it is resolvable, making it no longer resolve
+- If it is signed, then waiting for the signature to expire
+- <code>Update</code> the stamp with some property to signal that the <code>Add</code> activity has been undone. [TODO: flesh this out more -- how does this work exactly? should it use Remove? Tombstone? Undo? how does this interact with <code>outbox</code> and the activity history? i'm thinking Update -&gt; Tombstone, or extension like "undoneBy"]</p>
+<h3 id="a-simpler-example-flow-for-issuing-and-revoking-a-like-stamp">A simpler example flow for issuing and revoking a like stamp</h3>
+<p>This flow is similar for any stamp that uses <code>result</code> on an activity -- <code>Like</code>, <code>Announce</code>, Activity with <code>inReplyTo</code>, Activity with <code>context</code>.</p>
+<p>Actor 2 likes a post by actor 1:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;id&quot;: &quot;https://example.com/some-like&quot;,
+    &quot;summary&quot;: &quot;Actor 2 liked a Note by actor 1&quot;,
+    &quot;actor&quot;: {
+        &quot;id&quot;: &quot;https://example.com/actors/2&quot;,
+        &quot;followers&quot;: &quot;https://example.com/actors/2/followers&quot;
+    },
+    &quot;type&quot;: &quot;Like&quot;,
+    &quot;object&quot;: {
+        &quot;id&quot;: &quot;https://example.com/some-object&quot;,
+        &quot;type&quot;: &quot;Note&quot;,
+        &quot;content&quot;: &quot;I am accepting likes of this object.&quot;,
+        &quot;likes&quot;: &quot;https://example.com/some-object/likes&quot;,
+        &quot;attributedTo&quot;: {
+            &quot;id&quot;: &quot;https://example.com/actors/1&quot;,
+            &quot;followers&quot;: &quot;https://example.com/actors/1/followers&quot;
+        },
+        &quot;cc&quot;: [
+            &quot;https://example.com/actors/1/followers&quot;,
+            &quot;as:Public&quot;
+        ],
+        &quot;audience&quot;: &quot;https://example.com/some-object/audience&quot;
+    },
+    &quot;to&quot;: &quot;https://example.com/actors/1&quot;,
+    &quot;cc&quot;: [
+        &quot;https://example.com/actors/2/followers&quot;,
+        &quot;https://example.com/some-object/audience&quot;,
+        &quot;as:Public&quot;
+    ],
+    &quot;audience&quot;: &quot;https://example.com/some-like/audience&quot;
+}
+</code></pre>
+<p>Actor 1 sends a like stamp:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;id&quot;: &quot;https://example.com/some-proof&quot;,
+    &quot;summary&quot;: &quot;Actor 1 approved a like&quot;,
+    &quot;actor&quot;: &quot;https://example.com/actors/1&quot;,
+    &quot;type&quot;: &quot;Add&quot;,
+    &quot;object&quot;: &quot;https://example.com/some-like&quot;,
+    &quot;target&quot;: &quot;https://example.com/some-object/likes&quot;,
+    &quot;attributedTo&quot;: &quot;https://example.com/some-like&quot;,
+    &quot;to&quot;: &quot;https://example.com/actors/2&quot;,
+    &quot;cc&quot;: [
+        &quot;https://example.com/actors/2/followers&quot;,
+        &quot;https://example.com/some-like/audience&quot;,
+        &quot;as:Public&quot;
+    ]
+}
+</code></pre>
+<p>Actor 2 updates their Like activity with proof:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;id&quot;: &quot;https://example.com/some-update&quot;,
+    &quot;summary&quot;: &quot;Actor 2 updated their Like with proof&quot;,
+    &quot;actor&quot;: {
+        &quot;id&quot;: &quot;https://example.com/actors/2&quot;,
+        &quot;followers&quot;: &quot;https://example.com/actors/2/followers&quot;
+    },
+    &quot;type&quot;: &quot;Update&quot;,
+    &quot;object&quot;: {
+        &quot;id&quot;: &quot;https://example.com/some-like&quot;,
+        &quot;summary&quot;: &quot;Actor 2 liked a Note by actor 1, with proof&quot;,
+        &quot;actor&quot;: &quot;https://example.com/actors/2&quot;,
+        &quot;type&quot;: &quot;Like&quot;,
+        &quot;object&quot;: &quot;https://example.com/some-object&quot;,
+        &quot;to&quot;: &quot;https://example.com/actors/1&quot;,
+        &quot;cc&quot;: [
+            &quot;https://example.com/actors/2/followers&quot;,
+            &quot;https://example.com/some-object/audience&quot;,
+            &quot;as:Public&quot;
+        ],
+        &quot;audience&quot;: &quot;https://example.com/some-like/audience&quot;,
+        &quot;result&quot;: &quot;https://example.com/some-proof&quot;
+    },
+    &quot;cc&quot;: [
+        &quot;https://example.com/actors/2/followers&quot;,
+        &quot;https://example.com/some-like/audience&quot;,
+        &quot;as:Public&quot;
+    ]
+}
+</code></pre>
+<p>If actor 1 had provided cryptographic proof, actor 2 would be able to authoritatively serve the stamp until the proof expired. Actor 1 can silently revoke the stamp by making it no longer resolve, or actively revoke the stamp by issuing a revocation activity [TODO: Update with "undoneBy" pointing to a Remove?]</p>
+<h3 id="a-more-complex-flow-for-stamps-involving-embedded-objects">A more complex flow for stamps involving embedded objects</h3>
+<p>This flow uses <code>inReplyToProof</code> or <code>contextProof</code> on the <code>object</code> of a <code>Create</code> instead of using only <code>result</code> on the activity itself.</p>
+<p>Some actor creates some object that is part of some context, owned by some context moderator:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;id&quot;: &quot;https://example.com/create-some-object&quot;,
+    &quot;actor&quot;: &quot;https://example.com/some-actor&quot;,
+    &quot;type&quot;: &quot;Create&quot;,
+    &quot;object&quot;: {
+        &quot;id&quot;: &quot;https://example.com/some-object&quot;,
+        &quot;type&quot;: &quot;Note&quot;,
+        &quot;attributedTo&quot;: {
+            &quot;id&quot;: &quot;https://example.com/some-actor&quot;,
+            &quot;followers&quot;: &quot;https://example.com/some-actor/followers&quot;
+        },
+        &quot;content&quot;: &quot;This object is part of some context, and I can prove it was added to the context collection.&quot;,
+        &quot;context&quot;: {
+            &quot;id&quot;: &quot;https://example.com/some-context&quot;,
+            &quot;type&quot;: &quot;Collection&quot;,
+            &quot;attributedTo&quot;: &quot;https://example.com/some-context-moderator&quot;,
+            &quot;audience&quot;: &quot;https://example.com/some-context/audience&quot;
+        },
+        &quot;to&quot;: &quot;https://example.com/some-context-moderator&quot;,
+        &quot;cc&quot;: &quot;as:Public&quot;
+    },
+    &quot;to&quot;: [
+        &quot;https://example.com/some-context-moderator&quot;,
+        &quot;https://example.com/some-context/audience&quot;
+    ],
+    &quot;cc&quot;: &quot;as:Public&quot;,
+    &quot;audience&quot;: &quot;https://example.com/create-some-object/audience&quot;
+}
+</code></pre>
+<p>The context moderator adds the object to the context:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;id&quot;: &quot;https://example.com/some-proof&quot;,
+    &quot;summary&quot;: &quot;A new post was added to the context&quot;,
+    &quot;actor&quot;: &quot;https://example.com/some-context-moderator&quot;,
+    &quot;type&quot;: &quot;Add&quot;,
+    &quot;object&quot;: &quot;https://example.com/some-object&quot;,
+    &quot;target&quot;: &quot;https://example.com/some-context&quot;,
+    &quot;attributedTo&quot;: &quot;https://example.com/create-some-object&quot;,
+    &quot;cc&quot;: [
+        &quot;https://example.com/some-context/audience&quot;,
+        &quot;https://example.com/some-actor&quot;,
+        &quot;https://example.com/create-some-object/audience&quot;,
+        &quot;as:Public&quot;
+    ]
+}
+</code></pre>
+<p>The actor who created the object now can issue two updates: one for the Create activity to add a <code>result</code>, and one for the <code>object</code> of that activity to add <code>object.contextProof</code>:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: [&quot;https://www.w3.org/ns/activitystreams&quot;, &quot;https://w3id.org/fep/0391&quot;],
+    &quot;id&quot;: &quot;https://example.com/update-some-object&quot;,
+    &quot;actor&quot;: {
+        &quot;id&quot;: &quot;https://example.com/some-actor&quot;,
+        &quot;followers&quot;: &quot;https://example.com/some-actor/followers&quot;
+    },
+    &quot;type&quot;: &quot;Update&quot;,
+    &quot;object&quot;: {
+        &quot;id&quot;: &quot;https://example.com/some-object&quot;,
+        &quot;type&quot;: &quot;Note&quot;,
+        &quot;attributedTo&quot;: &quot;https://example.com/some-actor&quot;,
+        &quot;content&quot;: &quot;This object is part of some context, and I can prove it was added to the context collection.&quot;,
+        &quot;context&quot;: &quot;https://example.com/some-context&quot;,
+        &quot;contextProof&quot;: &quot;https://example.com/some-proof&quot;,
+        &quot;to&quot;: &quot;https://example.com/some-context-moderator&quot;,
+        &quot;cc&quot;: &quot;as:Public&quot;
+    },
+    &quot;to&quot;: [
+        &quot;https://example.com/some-actor/followers&quot;,
+        &quot;as:Public&quot;
+    ]
+}
+</code></pre>
+<pre><code class="language-json">{
+    &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;id&quot;: &quot;https://example.com/update-create&quot;,
+    &quot;actor&quot;: &quot;https://example.com/some-actor&quot;,
+    &quot;type&quot;: &quot;Update&quot;,
+    &quot;object&quot;: {
+        &quot;id&quot;: &quot;https://example.com/create-some-object&quot;,
+        &quot;actor&quot;: &quot;https://example.com/some-actor&quot;,
+        &quot;type&quot;: &quot;Create&quot;,
+        &quot;object&quot;: &quot;https://example.com/some-object&quot;,
+        &quot;to&quot;: &quot;https://example.com/some-context-moderator&quot;,
+        &quot;cc&quot;: &quot;as:Public&quot;,
+        &quot;result&quot;: &quot;https://example.com/some-proof&quot;
+    }
+}
+</code></pre>
+<h2 id="_1">参考文献</h2>
+<ul>
+<li>Christine Lemmer Webber, Jessica Tallon, <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>, 2018</li>
+<li>a, <a href="https://w3id.org/fep/7458">FEP-7458: Using the replies collection</a>, 2024</li>
+<li>a, <a href="https://w3id.org/fep/7888">FEP-7888: Demystifying the context property</a>, 2023</li>
+<li>silverpill, <a href="https://w3id.org/fep/8b32">FEP-8b32: Object Integrity Proofs</a>, 2022</li>
+</ul>
+<h2 id="_2">著作権</h2>
+<p>CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン</p>
+<p>法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../CONTRIBUTING/" class="btn btn-neutral float-left" title="CONTRIBUTING"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-03c1/" class="btn btn-neutral float-right" title="FEP-03c1: Actors without acct-URI">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../CONTRIBUTING/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-03c1/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

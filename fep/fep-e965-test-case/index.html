@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Actor Object Migration and Deactivation Syntax - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Actor Object Migration and Deactivation Syntax";
+        var mkdocs_page_input_path = "fep/fep-e965-test-case.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Actor Object Migration and Deactivation Syntax</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#background">Background</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#about-this-test">About this Test</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#test-subject">Test Subject</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#inputs">Inputs</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#applicability">Applicability</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#test-targets">Test Targets</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#expectations">Expectations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#assumptions">Assumptions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-how-to-determine-whether-an-actor-object-supports-fep-7628-semantics">1. How to Determine Whether an Actor object supports FEP-7628 Semantics</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-property-value-expectations">2. Property value expectations</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#property-value-evaluation-logic-pseudocode">Property Value evaluation logic (Pseudocode)</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#test-cases">Test Cases</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#missing-context-values">Missing @context values</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#both-movedto-and-copiedto-present">both movedTo and copiedTo present</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#movedto-set-to-array">movedTo set to array</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#copiedto-contains-invalid-uri">copiedTo contains invalid URI</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#movedto-set-to-invalid-uri-1">movedTo set to invalid URI #1</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#movedto-set-to-invalid-uri-2">movedTo set to invalid URI #2</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#valid-deactivated-actor">Valid Deactivated Actor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#valid-migrated-actor">Valid Migrated Actor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#valid-migrated-actor-missing-tombstone">Valid Migrated Actor (Missing Tombstone)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#valid-multi-homed-actor">Valid Multi-homed Actor</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#valid-multi-homed-actor-copiedto-set-to-array">Valid Multi-homed Actor (copiedTo set to array)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#glossary">Glossary</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#outcome">outcome</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements-mapping">Requirements Mapping</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#change-log">Change Log</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#issues-list">Issues List</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">Actor Object Migration and Deactivation Syntax</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-e965-test-case.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="actor-object-migration-and-deactivation-syntax">Actor Object Migration and Deactivation Syntax</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-e965-test-case.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="background">Background</h2>
+<p>This proposal extends and combines prior FEPs to define syntax and parsing rules for Actor objects which unambiguously express exactly one of the three following states:</p>
+<ol>
+<li>deactivation, OR</li>
+<li>migration to another URI, OR</li>
+<li>duplication at another URI.</li>
+</ol>
+<h2 id="about-this-test">About this Test</h2>
+<p>This is a Test Case testing conformance with the two properties of an Actor object specified in FEP-e965.</p>
+<h2 id="test-subject">Test Subject</h2>
+<p>The subject of this test is any data claiming to conform to the specification of an ActivityPub Actor Object and to the FEP-e965 extension thereof.</p>
+<p>This test is <em>not</em> directly applicable to an ActivityPub Server.
+An ActivityPub Server serves 0 or more Actor Objects.
+An ActivityPub Server for a big community might serve hundreds of ActivityPub Actor Objects.
+An ActivityPub Server for a single human may serve only that person's ActivityPub Actor Object.</p>
+<p>This test applies to Actor <em>Objects</em>, but <em>not</em> all Actor Objects are addressable by an HTTPS URL.
+The URI that addresses an Actor Object is not the same as the Actor Object.
+A given URL may resolve to different Actor Objects in different contexts, and a given Actor Object may not be universally addressable across context by any one URL.</p>
+<h2 id="inputs">Inputs</h2>
+<p>This test requires the following <a href="https://www.w3.org/TR/act-rules-format/#input">inputs</a>:</p>
+<ul>
+<li><code>actor</code> - the actor object under tested</li>
+<li>type: binary data</li>
+<li>constraints<ul>
+<li>will be interpreted as JSON.</li>
+<li>If not parseable as JSON, the test result MUST be <code>inapplicable</code>.</li>
+<li>dereferenced <code>@context</code> array should include <a href="../7628/context.jsonld">both terms defined by FEP-7628</a> to signal support for this FEP</li>
+<li>if does not, the test result outcome MUST be <code>inapplicable</code>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="applicability">Applicability</h2>
+<p>This test applies directly to the <code>actor</code> input.</p>
+<ul>
+<li>If <code>actor</code> is not a JSON object, the outcome MUST be <code>inapplicable</code>.</li>
+<li>input <code>actor</code> MUST have a <code>@context</code> property whose value is an Array containing the string <code>https://w3id.org/fep/7628</code>. If it does not, the outcome MUST be <code>inapplicable</code>.</li>
+</ul>
+<h3 id="test-targets">Test Targets</h3>
+<ul>
+<li>input <code>actor</code> is the only test target</li>
+</ul>
+<h2 id="expectations">Expectations</h2>
+<ol>
+<li><code>movedTo</code> - MUST be a URI OR an empty string, if present</li>
+<li><code>copiedTo</code> - MUST be a URI, if present</li>
+<li><code>movedTo</code> and <code>copiedTo</code> MUST NOT both be present</li>
+<li><code>actor</code> JSON's <code>@context</code> array SHOULD include <code>"https://w3id.org/fep/7628"</code> to signal conformance</li>
+</ol>
+<h2 id="assumptions">Assumptions</h2>
+<h3 id="1-how-to-determine-whether-an-actor-object-supports-fep-7628-semantics">1. How to Determine Whether an Actor object supports FEP-7628 Semantics</h3>
+<p>For the purposes of determining whether the active status and migration history of a given Actor can be tested by this test case:</p>
+<ul>
+<li>the input is valid JSON</li>
+<li>the input, once parsed as JSON</li>
+<li>has an <code>@context</code> property</li>
+<li><code>@context</code> array includes the URL <code>"https://w3id.org/fep/7628"</code></li>
+</ul>
+<p>A warning should be returned if this value is not present.</p>
+<h3 id="2-property-value-expectations">2. Property value expectations</h3>
+<p>For the purposes of determining the in/active status and migration history of a the target Actor:</p>
+<ul>
+<li>the input is valid JSON</li>
+<li><code>movedTo</code> and <code>copiedTo</code> MUST NOT both be present</li>
+<li><code>movedTo</code> can be a valid URI OR not present</li>
+<li><code>copiedTo</code> can be a valid URI or an array containing one or more valid URIs OR not present</li>
+</ul>
+<h4 id="property-value-evaluation-logic-pseudocode">Property Value evaluation logic (Pseudocode)</h4>
+<ul>
+<li>the input is valid JSON</li>
+<li><code>movedTo</code> and <code>copiedTo</code> MUST NOT both be present</li>
+<li>//log (malformed actor - both movedTo and copiedTo present)</li>
+<li>outcome is <code>FAILED</code></li>
+<li>else if <code>movedTo</code> is present,</li>
+<li>value MUST be a valid URI<ul>
+<li>//log (actor has migrated to $movedTo)</li>
+<li>if URI is 404 //OPTIONAL CHECK</li>
+<li>log ($movedTo is not resolvable)</li>
+<li>outcome is <code>PASSED</code></li>
+</ul>
+</li>
+<li>else<ul>
+<li>outcome is <code>FAILED</code></li>
+</ul>
+</li>
+<li>else if <code>copiedTo</code> is present,</li>
+<li><code>type</code> MUST not include <code>"Tombstone"</code><ul>
+<li>outcome is <code>FAILED</code>; log ("Cannot be tombstoned if copiedTo is set")</li>
+</ul>
+</li>
+<li>each value MUST be a valid URI<ul>
+<li>if URI is 404 //OPTIONAL CHECK</li>
+<li>log ($copiedTo is not resolvable)</li>
+<li>outcome is <code>PASSED</code></li>
+</ul>
+</li>
+<li>else<ul>
+<li>outcome is <code>FAILED</code>; log ("invalid values in <code>copiedTo</code>")</li>
+</ul>
+</li>
+<li>else</li>
+<li>//log (actor is currently active and unlinked)</li>
+<li>outcome is <code>PASSED</code></li>
+</ul>
+<h2 id="test-cases">Test Cases</h2>
+<p>These are test cases for this test case, and can be used to verify that an implementation of this test case specification will be <a href="https://www.w3.org/WAI/standards-guidelines/act/implementations/#understanding-act-consistency">consistent</a> with other implementations.</p>
+<h3 id="missing-context-values">Missing <code>@context values</code></h3>
+<p>input</p>
+<p>actor:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;type&quot;: &quot;Person&quot;,
+  &quot;inbox&quot;: &quot;https://example.com/inbox&quot;,
+  &quot;outbox&quot;: &quot;https://example.com/outbox&quot;
+}
+</code></pre>
+<p>test result</p>
+<ul>
+<li>outcome: <code>inapplicable</code></li>
+<li>optional: warning ("value https://w3id.org/fep/7628 not present in "@context" to signal conformance")</li>
+</ul>
+<h3 id="both-movedto-and-copiedto-present">both <code>movedTo</code> and <code>copiedTo</code> present</h3>
+<p>input</p>
+<p>actor:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: [
+        &quot;https://www.w3.org/ns/activitystreams&quot;,
+        &quot;https://w3id.org/fep/7628&quot;
+    ],
+    &quot;type&quot;: &quot;Person&quot;,
+    &quot;inbox&quot;: &quot;https://example.com/inbox&quot;,
+    &quot;outbox&quot;: &quot;https://example.com/outbox&quot;,
+    &quot;movedTo&quot;: &quot;https://otherexample.com/newname&quot;,
+    &quot;copiedTo&quot;: &quot;https://otherexample.com/thirdname&quot;
+}
+</code></pre>
+<p>test return</p>
+<ul>
+<li>outcome: <code>FAILED</code>, log (<code>movedTo</code> and <code>copiedTo</code> MUST NOT both be present)</li>
+</ul>
+<h3 id="movedto-set-to-array"><code>movedTo</code> set to array</h3>
+<p>input</p>
+<p>actor:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: [
+        &quot;https://www.w3.org/ns/activitystreams&quot;,
+        &quot;https://w3id.org/fep/7628&quot;
+    ],
+    &quot;type&quot;: &quot;Person&quot;,
+    &quot;inbox&quot;: &quot;https://example.com/inbox&quot;,
+    &quot;outbox&quot;: &quot;https://example.com/outbox&quot;,
+    &quot;movedTo&quot;: [
+      &quot;https://example2.com/id&quot;,
+      &quot;https://example3.com/id&quot;
+    ],
+}
+</code></pre>
+<p>test return</p>
+<ul>
+<li>outcome: <code>FAILED</code>, log (<code>movedTo</code> MUST be a functional property)</li>
+</ul>
+<h3 id="copiedto-contains-invalid-uri"><code>copiedTo</code> contains invalid URI</h3>
+<p>input</p>
+<p>actor:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: [
+        &quot;https://www.w3.org/ns/activitystreams&quot;,
+        &quot;https://w3id.org/fep/7628&quot;
+    ],
+    &quot;type&quot;: &quot;Person&quot;,
+    &quot;inbox&quot;: &quot;https://example.com/inbox&quot;,
+    &quot;outbox&quot;: &quot;https://example.com/outbox&quot;,
+    &quot;copiedTo&quot;: [
+      &quot;https://example2.com/id&quot;,
+      &quot;Tombstone&quot;
+    ],
+}
+</code></pre>
+<p>test return</p>
+<ul>
+<li>outcome: <code>FAILED</code>, log (<code>movedTo</code> MUST be a functional property)</li>
+</ul>
+<h3 id="movedto-set-to-invalid-uri-1"><code>movedTo</code> set to invalid URI #1</h3>
+<p>input</p>
+<p>actor:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: [
+        &quot;https://www.w3.org/ns/activitystreams&quot;,
+        &quot;https://w3id.org/fep/7628&quot;
+    ],
+    &quot;type&quot;: &quot;Person&quot;,
+    &quot;inbox&quot;: &quot;https://example.com/inbox&quot;,
+    &quot;outbox&quot;: &quot;https://example.com/outbox&quot;,
+    &quot;movedTo&quot;: &quot;Tombstone&quot;
+}
+</code></pre>
+<p>test return</p>
+<ul>
+<li>outcome: <code>FAILED</code>, log (<code>movedTo</code> MUST be a URI)</li>
+</ul>
+<h3 id="movedto-set-to-invalid-uri-2"><code>movedTo</code> set to invalid URI #2</h3>
+<p>input</p>
+<p>actor:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: [
+        &quot;https://www.w3.org/ns/activitystreams&quot;,
+        &quot;https://w3id.org/fep/7628&quot;
+    ],
+    &quot;type&quot;: &quot;Person&quot;,
+    &quot;inbox&quot;: &quot;https://example.com/inbox&quot;,
+    &quot;outbox&quot;: &quot;https://example.com/outbox&quot;,
+    &quot;movedTo&quot;: &quot;&quot;
+}
+</code></pre>
+<p>test return</p>
+<ul>
+<li>outcome: <code>FAILED</code>, log (<code>movedTo</code> MUST be a URI)</li>
+</ul>
+<h3 id="valid-deactivated-actor">Valid Deactivated Actor</h3>
+<p>input</p>
+<ul>
+<li><code>actor</code>:</li>
+</ul>
+<pre><code class="language-json">{
+    &quot;@context&quot;: [
+        &quot;https://www.w3.org/ns/activitystreams&quot;,
+        &quot;https://w3id.org/fep/7628&quot;
+    ],
+    &quot;type&quot;: [&quot;Person&quot;,&quot;Tombstone&quot;],
+    &quot;inbox&quot;: &quot;https://example.com/inbox&quot;,
+    &quot;outbox&quot;: &quot;https://example.com/outbox&quot;
+}
+</code></pre>
+<p>test return</p>
+<ul>
+<li>outcome: <code>PASSED</code></li>
+</ul>
+<h3 id="valid-migrated-actor">Valid Migrated Actor</h3>
+<p>input</p>
+<ul>
+<li><code>actor</code>:</li>
+</ul>
+<pre><code class="language-json">{
+    &quot;@context&quot;: [
+        &quot;https://www.w3.org/ns/activitystreams&quot;,
+        &quot;https://w3id.org/fep/7628&quot;
+    ],
+    &quot;type&quot;: [&quot;Person&quot;,&quot;Tombstone&quot;],
+    &quot;inbox&quot;: &quot;https://example.com/inbox&quot;,
+    &quot;outbox&quot;: &quot;https://example.com/outbox&quot;,
+    &quot;movedTo&quot;: &quot;https://actorname.otherexample.com&quot;
+}
+</code></pre>
+<p>test return</p>
+<ul>
+<li>outcome: <code>PASSED</code></li>
+<li>optional: check and log validity of actor referenced by that URI</li>
+</ul>
+<h3 id="valid-migrated-actor-missing-tombstone">Valid Migrated Actor (Missing Tombstone)</h3>
+<p>This test vector does NOT conform to [FEP0-f2a] but DOES conform to the older <a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/7628/fep-7628.md">FEP-7628</a>.
+It is included to assist in testing the consumption of legacy migrated actors.</p>
+<p>input</p>
+<ul>
+<li><code>actor</code>:</li>
+</ul>
+<pre><code class="language-json">{
+    &quot;@context&quot;: [
+        &quot;https://www.w3.org/ns/activitystreams&quot;,
+        &quot;https://w3id.org/fep/7628&quot;
+    ],
+    &quot;type&quot;: [&quot;Person&quot;],
+    &quot;inbox&quot;: &quot;https://example.com/inbox&quot;,
+    &quot;outbox&quot;: &quot;https://example.com/outbox&quot;,
+    &quot;movedTo&quot;: &quot;https://actorname.otherexample.com&quot;
+}
+</code></pre>
+<p>test return</p>
+<ul>
+<li>outcome: <code>FAILED</code></li>
+<li>log ("Missing Tombstone but backwards-compatible")</li>
+<li>optional: check and log validity of actor referenced by that URI</li>
+</ul>
+<h3 id="valid-multi-homed-actor">Valid Multi-homed Actor</h3>
+<p>input</p>
+<ul>
+<li><code>actor</code>:</li>
+</ul>
+<pre><code class="language-json">{
+    &quot;@context&quot;: [
+        &quot;https://www.w3.org/ns/activitystreams&quot;,
+        &quot;https://w3id.org/fep/7628&quot;
+    ],
+    &quot;type&quot;: &quot;Person&quot;,
+    &quot;inbox&quot;: &quot;https://example.com/inbox&quot;,
+    &quot;outbox&quot;: &quot;https://example.com/outbox&quot;,
+    &quot;copiedTo&quot;: &quot;https://personalarchive.otherexample.com&quot;
+}
+</code></pre>
+<p>test return</p>
+<ul>
+<li>outcome: <code>PASSED</code></li>
+<li>optional: check and log validity of actor referenced by that URI</li>
+</ul>
+<h3 id="valid-multi-homed-actor-copiedto-set-to-array">Valid Multi-homed Actor (<code>copiedTo</code> set to array)</h3>
+<p>input</p>
+<p>actor:</p>
+<pre><code class="language-json">{
+    &quot;@context&quot;: [
+        &quot;https://www.w3.org/ns/activitystreams&quot;,
+        &quot;https://w3id.org/fep/7628&quot;
+    ],
+    &quot;type&quot;: &quot;Person&quot;,
+    &quot;inbox&quot;: &quot;https://example.com/inbox&quot;,
+    &quot;outbox&quot;: &quot;https://example.com/outbox&quot;,
+    &quot;copiedTo&quot;: [
+      &quot;https://example2.com/id&quot;,
+      &quot;https://example3.com/id&quot;
+    ],
+}
+</code></pre>
+<p>test return</p>
+<ul>
+<li>outcome: <code>PASSED</code>, log (<code>copiedTo</code> contains multiple valid URIs)</li>
+</ul>
+<h2 id="glossary">Glossary</h2>
+<h3 id="outcome"><code>outcome</code></h3>
+<p>An outcome is a conclusion that comes from evaluating a test on a test subject.
+An outcome can be one of the three following types:</p>
+<ul>
+<li><code>inapplicable</code>: No part of the test subject matches the applicability</li>
+<li><code>passed</code>: A test target meets all expectations</li>
+<li><code>failed</code>: A test target does not meet all expectations</li>
+</ul>
+<h2 id="requirements-mapping">Requirements Mapping</h2>
+<ul>
+<li>FEP requirement: - Actor Objects must express signing key as assertionMethod Multikey</li>
+<li>Required for Conformance to <a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/521a/fep-e965.md">FEP-e965</a></li>
+<li>Outcome Mapping<ul>
+<li>when test target <code>assertionMethod</code> has outcome <code>passed</code>, requirement is satisfied</li>
+<li>when test target <code>assertionMethod</code> has outcome <code>failed</code>, requirement is not satisfied</li>
+<li>when test target <code>assertionMethod</code> has outcome <code>inapplicable</code>, further testing is needed to determine whether this requirement is satisfied</li>
+</ul>
+</li>
+</ul>
+<h2 id="_1">参考文献</h2>
+<h2 id="change-log">Change Log</h2>
+<ul>
+<li>2024-08-28T15:20:36Z - tweak links because FEP slug changed</li>
+<li>2024-06-28T15:20:36Z - first draft by bumblefudge</li>
+</ul>
+<h2 id="issues-list">Issues List</h2>
+<ul>
+<li>Add a test vector with signed IdentityProof that verifies using current DI spec and dummy private key</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-e3e9/" class="btn btn-neutral float-left" title="FEP-e3e9: Actor-Relative URLs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-e965/" class="btn btn-neutral float-right" title="FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-e3e9/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-e965/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

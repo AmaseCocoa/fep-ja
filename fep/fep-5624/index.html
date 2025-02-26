@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-5624: Per-object reply control policies - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-5624: Per-object reply control policies";
+        var mkdocs_page_input_path = "fep/fep-5624.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-5624: Per-object reply control policies</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#declaring-a-reply-policy">Declaring a reply policy</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#example-object">Example object</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#checking-whether-the-user-can-reply-and-submitting-the-reply-to-the-authority">Checking whether the user can reply and submitting the reply to the authority</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#receiving-and-accepting-a-reply">Receiving and accepting a reply</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#example-approvereply-activity">Example ApproveReply activity</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-rejectreply-activity">Example RejectReply activity</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#receiving-approval-and-distributing-the-reply">Receiving approval and distributing the reply</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#example-reply-object-with-replyapproval">Example reply object with replyApproval</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#verifying-third-party-replies">Verifying third-party replies</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#revoking-a-previously-accepted-reply">Revoking a previously-accepted reply</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#handling-a-revocation">Handling a revocation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deployment-considerations">Deployment considerations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#security-considerations">Security considerations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">実装</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">著作権</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-5624: Per-object reply control policies</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-5624.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-5624-per-object-reply-control-policies">FEP-5624: Per-object reply control policies</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-5624.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p>Sometimes, users may want to share an information or a story without inviting replies from outside their circles or from anyone at all. In particular, individuals may want to restrict who can reply to them in order to avoid “reply guys” or limit outright harassment, while instutions may want to disable replies on their posts to provide information without having to deal with a moderation burden.</p>
+<p>This can be broken into an advisory part advertising what sets of actors are expected to be able to reply, and a collaborative verification process where third-parties check with the actor being replied to that the reply is indeed allowed.</p>
+<h2 id="requirements">Requirements</h2>
+<p>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this specification are to be interpreted as described in [RFC-2119].</p>
+<p>In the remaining of this FEP, “distribution authority” (or “authority” for short) refers to an actor that controls the distribution and audience of replies. The purpose of this wording is to make this FEP applicable both for models where replies are first-class posts, and for “post and comments” models where comments only exist in the context of a post and the post author decides who gets to see the comments. In the absence of extensions, the “authority” is the author of the post being replied to.</p>
+<h2 id="declaring-a-reply-policy">Declaring a reply policy</h2>
+<p>In order to advertise who is allowed to reply to an object, an author MAY set the <code>canReply</code> (<code>http://joinmastodon.org/ns#canReply</code>) property on their objects. If set, this property MUST be an empty array or one or more actors or collections.</p>
+<p>To ease implementation, collections SHOULD be restricted to one of the following:
+- <code>as:Public</code>, to indicate that anyone can reply
+- the authority's followers collection (if defined)
+- the authority's followed collection (if defined)</p>
+<p>In addition, <code>canReply</code> SHOULD contain every actor mentioned in the original object.</p>
+<p>Whenever one of these collections is used, the receiving end can easily know whether they are expected to be able to reply.</p>
+<h3 id="example-object">Example object</h3>
+<pre><code>{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    {
+      &quot;toot&quot;: &quot;http://joinmastodon.org/ns#&quot;,
+      &quot;canReply&quot;: &quot;toot:canReply&quot;
+    }
+  ],
+  &quot;attributedTo&quot;: &quot;https://example.com/users/1&quot;,
+  &quot;id&quot;: &quot;https://example.com/users/1/statuses/1&quot;,
+  &quot;type&quot;: &quot;Note&quot;,
+  &quot;content&quot;: &quot;Hello world&quot;,
+  &quot;canReply&quot;: &quot;https://www.w3.org/ns/activitystreams#Public&quot;
+}
+</code></pre>
+<h2 id="checking-whether-the-user-can-reply-and-submitting-the-reply-to-the-authority">Checking whether the user can reply and submitting the reply to the authority</h2>
+<p>When an object with <code>canReply</code> is set, it SHOULD be conveyed in human-readable form to the user if possible, for instance with something like “Only mentioned users can reply” or “Only people Authority follows and mentioned users can reply”.</p>
+<p>The software SHOULD NOT offer the user to reply unless it is directly mentioned in the object's <code>tag</code> attribute or listed in <code>canReply</code> (either directly or through a collection), or <code>canReply</code> contains a collection for which the recipient cannot efficiently check the membership of the would-be replier.</p>
+<p>After locally verifying that the replier should be allowed to reply, the replier's end SHOULD <code>POST</code> the <code>Create</code> activity for the reply to the authority's inbox <em>only</em>, and consider the reply to be pending approval.</p>
+<h2 id="receiving-and-accepting-a-reply">Receiving and accepting a reply</h2>
+<p>When receiving a reply to an object with a <code>canReply</code> property, the authority decides whether the reply is acceptable.</p>
+<p>If the reply is considered acceptable, the authority MUST reply with an <code>ApproveReply</code> (<code>http://joinmastodon.org/ns#ApproveReply</code>) activity with the <code>object</code> property set to the <code>id</code> of the reply object, and its <code>inReplyTo</code> property set to the object it is in reply to.</p>
+<p>That <code>ApproveReply</code> activity SHOULD be publicly dereferenceable and MUST be dereferenceable by all parties allowed to see the original post. It MUST NOT embed its <code>object</code> nor its <code>inReplyTo</code> as to avoid possible information leaks.</p>
+<p>Additionally, the authority MAY forward an accepted reply according to its own rules.</p>
+<p>If the reply is considered unacceptable, the authority SHOULD reply with a <code>RejectReply</code> (<code>http://joinmastodon.org/ns#RejectReply</code>) activity. This activity MAY be publicly accessible, but this is not a requirement.</p>
+<p>The reason for using the new activity types <code>ApproveReply</code> and <code>RejectReply</code> is to be explicit about the purpose of the approval, as one could imagine other kinds of approvals, and remaining implicit may cause ambiguities with other potential extensions.</p>
+<h3 id="example-approvereply-activity">Example <code>ApproveReply</code> activity</h3>
+<pre><code>{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    {
+      &quot;toot&quot;: &quot;http://joinmastodon.org/ns#&quot;,
+      &quot;ApproveReply&quot;: &quot;toot:ApproveReply&quot;
+    }
+  ],
+  &quot;actor&quot;: &quot;https://example.com/users/1&quot;,
+  &quot;id&quot;: &quot;https://example.com/reply_approvals/1&quot;,
+  &quot;type&quot;: &quot;ApproveReply&quot;,
+  &quot;object&quot;: &quot;https://example.org/users/bob/statuses/3&quot;,
+  &quot;inReplyTo&quot;: &quot;https://example.com/users/1/statuses/1&quot;
+}
+</code></pre>
+<h3 id="example-rejectreply-activity">Example <code>RejectReply</code> activity</h3>
+<pre><code>{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    {
+      &quot;toot&quot;: &quot;http://joinmastodon.org/ns#&quot;,
+      &quot;RejectReply&quot;: &quot;toot:RejectReply&quot;
+    }
+  ],
+  &quot;actor&quot;: &quot;https://example.com/users/1&quot;,
+  &quot;id&quot;: &quot;https://example.com/reply_approvals/1&quot;,
+  &quot;type&quot;: &quot;RejectReply&quot;,
+  &quot;object&quot;: &quot;https://example.org/users/bob/statuses/3&quot;
+}
+</code></pre>
+<h2 id="receiving-approval-and-distributing-the-reply">Receiving approval and distributing the reply</h2>
+<p>After sending the initial <code>Create</code>, the replier SHOULD wait for an <code>ApproveReply</code> activity such as described above.</p>
+<p>Once the <code>ApproveReply</code> has been received, the replier SHOULD add a <code>replyApproval</code> (<code>http://joinmastodon.org/ns#replyApproval</code>) property to their reply object pointing to the <code>ApproveReply</code> activity they received, and then MAY send a <code>Create</code> activity with the modified object to its intended audience.</p>
+<p>If it instead receives a <code>RejectReply</code>, the reply SHOULD be immediately deleted and the replier MAY be notified.</p>
+<h3 id="example-reply-object-with-replyapproval">Example reply object with <code>replyApproval</code></h3>
+<pre><code>{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    {
+      &quot;toot&quot;: &quot;http://joinmastodon.org/ns#&quot;,
+      &quot;canReply&quot;: &quot;toot:canReply&quot;,
+      &quot;replyApproval&quot;: &quot;toot:replyApproval&quot;
+    }
+  ],
+  &quot;attributedTo&quot;: &quot;https://example.com/users/1&quot;,
+  &quot;id&quot;: &quot;https://example.org/users/bob/statuses/3&quot;,
+  &quot;type&quot;: &quot;Note&quot;,
+  &quot;content&quot;: &quot;@alice hello!&quot;,
+  &quot;inReplyTo&quot;: &quot;https://example.com/users/1/statuses/1&quot;,
+  &quot;canReply&quot;: &quot;https://www.w3.org/ns/activitystreams#Public&quot;,
+  &quot;replyApproval&quot;: &quot;https://example.com/reply_approvals/1&quot;,
+  &quot;tag&quot;: {
+    &quot;type&quot;: &quot;Mention&quot;,
+    &quot;href&quot;: &quot;https://example.com/users/1&quot;
+  }
+}
+</code></pre>
+<h2 id="verifying-third-party-replies">Verifying third-party replies</h2>
+<p>When processing a reply from a remote actor to a remote authority, a recipient SHOULD discard any reply that does not match any of the following conditions:
+- the object it is in reply to does not set a <code>canReply</code> property
+- the object has been received through the remote authority
+- the object it is in reply to has a <code>canReply</code> containing the <code>as:Public</code> collection
+- the author of the reply appears in a <code>Mention</code> object in the <code>tag</code> property of the object it is in reply to
+- the object it is in reply to sets a non-empty <code>canReply</code>, and <code>replyApproval</code> can be dereferenced and is a valid <code>ApproveReply</code> activity</p>
+<p>To be considered valid, the <code>ApproveReply</code> activity referenced in <code>replyApproval</code> MUST satisfy the following properties:
+- its <code>actor</code> property is the authority
+- its authenticity can be asserted
+- its <code>object</code> property is the reply under consideration
+- its <code>inReplyTo</code> property matches that of the reply under consideration</p>
+<p>In addition, if the reply is considered valid, but has no valid <code>replyApproval</code> despite the object it is in reply to having a <code>canReply</code> property, the recipient MAY hide the reply from certain views.</p>
+<h2 id="revoking-a-previously-accepted-reply">Revoking a previously-accepted reply</h2>
+<p>The authority may want to perform /a posteriori/ moderation of their replies.</p>
+<p>To do this, the authority SHOULD send a <code>RejectReply</code> activity to the sender and the reply's audience, with the reply URI as the <code>object</code> property. The <code>object</code> property MUST NOT be embedded, as to avoid possible information leaks.</p>
+<p>The URI at which the previously-offered <code>ApproveReply</code> was available should return HTTP 404 or redirect to the newly-issued <code>RejectReply</code> activity.</p>
+<h2 id="handling-a-revocation">Handling a revocation</h2>
+<p>Upon receiving a <code>RejectReply</code> activity for a previously-accepted reply, third-parties SHOULD check that the <code>RejectReply</code> is valid and SHOULD delete or hide the revoked reply if it is.</p>
+<p>To be considered valid, the <code>RejectReply</code> activity MUST satisfy the following properties:
+- its <code>actor</code> property is the authority
+- its authenticity can be asserted
+- its <code>object</code> property is the reply under consideration</p>
+<h2 id="deployment-considerations">Deployment considerations</h2>
+<p>Because it is unrealistic to expect all implementations and deployments to implement this proposal at the same time, deployment SHOULD be gradual, with verification of third-party replies only performed once the other steps are widely implemented. To encourage adoption without breaking compatibility altogether, implementations MAY want to hide non-validated replies from certain views (e.g. requiring a click to see “hidden replies”, or not showing the reply to non-followers).</p>
+<h2 id="security-considerations">Security considerations</h2>
+<p>By not adding a hash or copy of the reply in the <code>ApproveReply</code> activity, malicious actors could exploit this in a split horizon setting, sending different versions of the same activity to different actors. This is, however, already a concern in pretty much all contexts in ActivityPub, and enshrining that information in the <code>ApproveReply</code> activity would have many drawbacks:</p>
+<ul>
+<li>significantly more complex implementation</li>
+<li>inability to change the JSON-LD representation after the fact</li>
+<li>possibly leaking private information if the <code>ApproveReply</code> activity is publicly dereferenceable</li>
+</ul>
+<h2 id="_1">実装</h2>
+<p>None so far.</p>
+<h2 id="_2">参考文献</h2>
+<ul>
+<li>[RFC-2119] S. Bradner, <a href="https://tools.ietf.org/html/rfc2119.html">Key words for use in RFCs to Indicate Requirement Levels</a></li>
+</ul>
+<h2 id="_3">著作権</h2>
+<p>CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン</p>
+<p>法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-521a/" class="btn btn-neutral float-left" title="FEP-521a: Actorの公開鍵の表現"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-5bf0/" class="btn btn-neutral float-right" title="FEP-5bf0: Collection sorting and filtering">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-521a/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-5bf0/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

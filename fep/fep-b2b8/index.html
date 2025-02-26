@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-b2b8: Long-form Text - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-b2b8: Long-form Text";
+        var mkdocs_page_input_path = "fep/fep-b2b8.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-b2b8: Long-form Text</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#motivation">Motivation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#type">Type</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#id">id</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#name">name</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#url">url</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#summary_1">summary</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#attributedto">attributedTo</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#published">published</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#updated">updated</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#image">image</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#content">content</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#source">source</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#replies">replies</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#attachment">attachment</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#tag">tag</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#context">context</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#generator">generator</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#preview">preview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#to-cc-bcc-bto-audience">to, cc, bcc, bto, audience</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">例</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#long-form-text-with-included-content">Long-form text with included content</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#long-form-text-with-external-content">Long-form text with external content</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#long-form-text-with-full-author-information">Long-form text with full author information</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#long-form-text-with-embedded-images">Long-form text with embedded images</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#long-form-text-with-tags">Long-form text with tags</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#long-form-text-with-context">Long-form text with context</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#long-form-text-with-preview">Long-form text with preview</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#user-interface-guidance">User interface guidance</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#in-stream-with-image">In stream, with image</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#in-stream-without-image">In stream, without image</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#in-stream-no-title">In stream, no title</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">著作権</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-b2b8: Long-form Text</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-b2b8.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-b2b8-long-form-text">FEP-b2b8: Long-form Text</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-b2b8.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p>Multi-paragraph text is an important content type on the Social Web. This FEP defines best practices for representing and using properties of a long-form text object in <a href="https://www.w3.org/TR/activitystreams-core/">Activity Streams 2.0</a>.</p>
+<h2 id="motivation">Motivation</h2>
+<p>Blog posts, magazine articles, and forum posts are often made up of multiple paragraphs of text, sometimes with embedded images, video, audio or other media. This important content type is documented in the <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Activity Vocabulary</a>, but this FEP provides additional guidance for publishers and consumers and collects the relevant properties in one place.</p>
+<p>Well-defined behaviour for supporting long-form text provides multiple benefits. Not only does it allow publishers to integrate content in a dependable way across different platforms, but it also gives users of Activity Streams 2.0 consumer applications more control over their reading experience -- including filtering or sorting long-form text objects in their stream.</p>
+<p>This FEP does not provide guidance for book-length or longer text.</p>
+<p>This document provides information for multiple protocols that use Activity Streams 2.0 as a representation format. Where <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a> use is different than AS2, it is noted.</p>
+<p>Because long-form text is often syndicated using <a href="https://cyber.harvard.edu/rss/rss.html">RSS 2.0</a>, the properties in this FEP are compared to the properties in that format where appropriate.</p>
+<h2 id="type">Type</h2>
+<p>The <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-article">Article</a> type is used to represent multi-paragraph text. The Activity Streams 2.0 primer provides <a href="https://w3.org/wiki/Activity_Streams/Primer/Article_and_Note">guidance</a> on when to use the <code>Article</code> type and when to use the <code>Note</code> type.</p>
+<p>Some consumers do not display <code>Article</code> objects with their full content. Some publishers work around this by using a <code>Note</code>-type object with much more content than expected for a note.</p>
+<p>Publishers should avoid this workaround, and instead give consumers the full information they need to display the content correctly in their own interfaces. The <a href="#preview">preview</a> property can be used to provide a simpler version of the content for consumers that don't support <code>Article</code> directly.</p>
+<p>Forcing long-form text into a <code>Note</code> object can cause problems for consumers that expect <code>Note</code> objects to be short and well-formatted for stream display. Maintaining a clear distinction between <code>Note</code> and <code>Article</code> objects is important for interoperability.</p>
+<p>Consumers that only display short text should show the <code>name</code>, <code>summary</code> and a link to the <code>url</code> property so that users can view the full content in a web browser. As a fallback, they can use the <code>preview</code> property if it is present.</p>
+<h2 id="properties">Properties</h2>
+<h3 id="id"><code>id</code></h3>
+<p>A unique identifier for the text. For ActivityPub, this should be an HTTPS URL that resolves to the object. It should be a single string, unique for all objects.</p>
+<p>This property provides the same functionality as the <code>guid</code> property in RSS 2.0.</p>
+<h3 id="name"><code>name</code></h3>
+<p>The title of the text should be in the <code>name</code> property. The property should be short enough to be displayed in a line or two on a browser interface; 75-150 characters is a good rule of thumb. Longer descriptions should be in the <code>summary</code> property.</p>
+<p>The <code>name</code> property should be plain text, not HTML or other markup. In particular, no HTML entities like <code>&amp;amp;</code> or <code>&amp;lt;</code> should be used.</p>
+<p>This property provides the same functionality as the <code>title</code> property in RSS 2.0.</p>
+<h3 id="url"><code>url</code></h3>
+<p>The location of the full text should be in the <code>url</code> property. This can be a single string, in which case it is the URL of the HTML representation of the text. It can also be a <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-link">Link</a> object, which can include additional metadata about the link. If it is a <code>Link</code> object, the <code>mediaType</code> should be 'text/html' and <code>href</code> property should be the URL of the HTML representation of the text.</p>
+<p>The <code>url</code> property can also be an array of strings or <code>Link</code> objects or both. Multiple <code>Link</code> objects can be used to represent different media types or provide different URL protocols. At least one of the <code>Link</code> objects should have a <code>mediaType</code> of 'text/html' and a <code>href</code> property with the protocol 'https'.</p>
+<p>This property provides the same functionality as the <code>link</code> property in RSS 2.0.</p>
+<h3 id="summary_1"><code>summary</code></h3>
+<p>This property provides a brief description, teaser, abstract or "lede" for the text. It should be a maximum of about 500 characters; a few sentences; or a short paragraph.</p>
+<p>This property can include HTML markup. It should not include embedded media like images, video or audio.</p>
+<p>This property provides the same functionality as the <code>description</code> property in RSS 2.0.</p>
+<h3 id="attributedto"><code>attributedTo</code></h3>
+<p>This property provides the authors of the text, either as a string, an object, or an array.</p>
+<p>As a string, it is a single <code>id</code> for the author. For ActivityPub, the <code>id</code> should be a URL that resolves to an ActivityPub <a href="https://www.w3.org/TR/activitypub/#actor-objects">actor</a>.</p>
+<p>As an object, it can be an AS2 object with a type like <code>Person</code>, <code>Application</code> or <code>Organization</code>. It should have an <code>id</code> and a <code>name</code> property and can also include an <code>icon</code> property for the author's avatar. A <code>summary</code> property can be used to provide a brief description of the author, including HTML. An <code>url</code> property can be used to provide a link to the author's profile page.</p>
+<p>If the author does not have an AS2 representation, the <code>attributedTo</code> property can be an object with a <code>type</code> of <code>Link</code> and an <code>href</code> property with the URL of the author's profile page. The <code>name</code> property can be used to provide the author's name.</p>
+<p>As an array, the <code>attributedTo</code> property can include multiple authors, either as strings or objects.</p>
+<p>The <code>attributedTo</code> property provides the same functionality as the <code>author</code> property of an item in RSS 2.0, with additional features.</p>
+<h3 id="published"><code>published</code></h3>
+<p>The publication date of the text should be in the <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-published">published</a> property. This should be a <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-datetime">dateTime</a> string in the format <code>YYYY-MM-DDTHH:MM:SSZ</code>.</p>
+<p>This property provides the same functionality as the <code>pubDate</code> property in RSS 2.0.</p>
+<h3 id="updated"><code>updated</code></h3>
+<p>If the object has been updated, the date of the last update should be in the <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-updated">updated</a> property. This should be a <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-datetime">dateTime</a> string in the format <code>YYYY-MM-DDTHH:MM:SSZ</code>. If the property is not present, consumers can assume that the object has not been modified since the <code>published</code> date.</p>
+<h3 id="image"><code>image</code></h3>
+<p>The <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-image">image</a> property provides a notable or representative image for the text. It can be included by reference as an <code>id</code> or with an <code>Image</code> type object.</p>
+<p>There can be multiple values for the <code>image</code> property, either as an array of <code>id</code> strings or <code>Image</code> objects. Publishers should provide these in order of importance, with the most important image first. Consumers can use as many or as few as needed.</p>
+<h3 id="content"><code>content</code></h3>
+<p>The full text of the article or blog post should be in the <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-content">content</a> property. This should be HTML. Using <code>mediaType</code> to set a different media type presumes that consumers will be able to display that type.</p>
+<p>The HTML elements in the <code>content</code> property should include a sanitized subset of
+the full HTML element set. It should not include any CSS or JavaScript. This subset should include:</p>
+<ul>
+<li><code>&lt;p&gt;</code></li>
+<li><code>&lt;span&gt;</code> (class)</li>
+<li><code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, <code>&lt;h4&gt;</code>, <code>&lt;h5&gt;</code>, <code>&lt;h6&gt;</code></li>
+<li><code>&lt;br&gt;</code></li>
+<li><code>&lt;a&gt;</code> (href, rel, class)</li>
+<li><code>&lt;del&gt;</code></li>
+<li><code>&lt;pre&gt;</code></li>
+<li><code>&lt;code&gt;</code></li>
+<li><code>&lt;em&gt;</code></li>
+<li><code>&lt;strong&gt;</code></li>
+<li><code>&lt;b&gt;</code></li>
+<li><code>&lt;i&gt;</code></li>
+<li><code>&lt;u&gt;</code></li>
+<li><code>&lt;ul&gt;</code></li>
+<li><code>&lt;ol&gt;</code> (start, reversed)</li>
+<li><code>&lt;li&gt;</code> (value)</li>
+<li><code>&lt;blockquote&gt;</code></li>
+<li><code>&lt;img&gt;</code> (src, alt, title, width, height, class)</li>
+<li><code>&lt;video&gt;</code> (src, controls, loop, poster, width, height, class)</li>
+<li><code>&lt;audio&gt;</code> (src, controls, loop, class)</li>
+<li><code>&lt;source&gt;</code> (src, type)</li>
+<li><code>&lt;ruby&gt;</code></li>
+<li><code>&lt;rt&gt;</code></li>
+<li><code>&lt;rp&gt;</code></li>
+</ul>
+<p>The HTML should only include the content of the text. Additional navigation to other pages on the originating site, like category links or home page links, should not be included. Other affordances like "favourite", "like", "bookmark" or other buttons should not be included.</p>
+<p>Any embedded media like images, video or audio in the <code>content</code> property should also be listed in the <code>attachment</code> property so that consumers can pre-fetch the media.</p>
+<h3 id="source"><code>source</code></h3>
+<p>If the text was originally created in a different format, the original source should be in the <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-source">source</a> property to allow editing the content. It should include the <code>mediaType</code> of the source format and the <code>content</code> property with the original content.</p>
+<h3 id="replies"><code>replies</code></h3>
+<p>Comments on the text should be linked in the <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-replies">replies</a> property. This should be a URL that resolves to a collection of objects for the replies.</p>
+<p>Comments are usually <code>Note</code> objects, but can be other types of objects like <code>Article</code> or <code>Question</code>.</p>
+<p>This property provides the same functionality as the <code>comments</code> property in RSS 2.0.</p>
+<h3 id="attachment"><code>attachment</code></h3>
+<p>The <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-attachment">attachment</a> property provides additional media that is part of the text. This can include images, video, audio, or other media. Consumers can use this property to pre-fetch media for display without needing to load and parse the full <code>content</code> property.</p>
+<p>If the text is a commentary on or review of a particular link on the Web, the <code>attachment</code> property can include a <code>Link</code> object with a <code>href</code> property that is the URL of the linked resource.</p>
+<h3 id="tag"><code>tag</code></h3>
+<p>The <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-tag">tag</a> property provides additional metadata about the text. There are two important types of tags:</p>
+<ul>
+<li><a href="https://swicg.github.io/miscellany/#Hashtag">Hashtag</a> objects, which represent a topic or category that the text is about. These should have a <code>name</code> property with the tag text.</li>
+<li><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-mention">Mention</a> objects, which represent a mention of an actor, such as an ActivityPub actor. These should have an <code>href</code> property with the URL of the actor's profile page.</li>
+</ul>
+<h3 id="context"><code>context</code></h3>
+<p>If the text is part of a larger collection, the <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-context">context</a> property can provide a link to the collection. An example might be an article in a series, a newspaper column, a blog category (although <code>tag</code> may be better here) or a section of a magazine.</p>
+<p>There can be multiple <code>context</code> properties, either as an array of strings or objects or both.</p>
+<h3 id="generator"><code>generator</code></h3>
+<p>The <a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-generator">generator</a> property provides information about the software that generated the text. This is usually an <code>Application</code> or <code>Service</code> object with an <code>id</code> and a <code>name</code> property.</p>
+<h3 id="preview"><code>preview</code></h3>
+<p>In AS2, the <code>preview</code> property provides an abbreviated version of the content of the object. Especially for microblogging applications, the <code>preview</code> property is a useful fallback for supporting unrecognized object types like <code>Article</code>.</p>
+<p>For an article, the <code>preview</code> can be a <code>Note</code> that gives a well-formatted preview of the article content in its <code>content</code> property. For example, the <code>name</code>, <code>summary</code>, and a link to the <code>url</code> would be an appropriate representation.</p>
+<p>The <code>content</code> property of the <code>preview</code> should include a minimal set of HTML elements, as described in <a href="https://www.w3.org/wiki/ActivityPub/Primer/HTML">ActivityPub Primer HTML</a>.</p>
+<p>Metadata on the <code>Article</code> that applies equally to the preview, such as <code>attributedTo</code>, <code>published</code>, <code>updated</code>, and <code>tag</code> should be repeated in the <code>preview</code> property.</p>
+<p>The <code>image</code> property of the <code>Article</code> may be included in the <code>preview</code> property as <code>attachment</code> items.</p>
+<p>The <code>preview</code> property may have an <code>id</code> property.</p>
+<h3 id="to-cc-bcc-bto-audience"><code>to</code>, <code>cc</code>, <code>bcc</code>, <code>bto</code>, <code>audience</code></h3>
+<p>As with other AS2 object types, the <code>to</code>, <code>cc</code>, <code>bcc</code>, <code>bto</code>, and <code>audience</code> properties identify the addressees of the text. For ActivityPub, they also determine the delivery targets of the text.</p>
+<p>The addressing properties provide an access control mechanism for AS2. Publishers and consumers should not disclose the properties of any AS2 object type, including the <code>Article</code> type, with anyone except the addressees, listed in these addressing properties, or the creator(s), listed in the <code>attributedTo</code> property.</p>
+<h2 id="_1">例</h2>
+<p>This section includes examples of long-form text objects. Note that for brevity, the content is not actually multi-paragraph text.</p>
+<h3 id="long-form-text-with-included-content">Long-form text with included content</h3>
+<pre><code>{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;type&quot;: &quot;Article&quot;,
+  &quot;id&quot;: &quot;https://example.com/2024/11/07/long-form-text.jsonld&quot;,
+  &quot;name&quot;: &quot;Long-form text with included content&quot;,
+  &quot;url&quot;: &quot;https://example.com/2024/11/07/long-form-text.html&quot;,
+  &quot;attributedTo&quot;: &quot;https://example.com/evan&quot;,
+  &quot;summary&quot;: &quot;&lt;p&gt;This is a long-form text object with included content. It has a title, a summary, and a full text.&lt;/p&gt;&quot;,
+  &quot;content&quot;: &quot;&lt;p&gt;This is a long-form text object with included content. It has a title, a summary, and a full text.&lt;/p&gt;&quot;,
+  &quot;published&quot;: &quot;2024-11-07T12:00:00Z&quot;
+}
+</code></pre>
+<h3 id="long-form-text-with-external-content">Long-form text with external content</h3>
+<pre><code>{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;type&quot;: &quot;Article&quot;,
+  &quot;id&quot;: &quot;https://example.com/2024/11/07/long-form-text-no-content.jsonld&quot;,
+  &quot;name&quot;: &quot;Long-form text with included content&quot;,
+  &quot;url&quot;: &quot;https://example.com/2024/11/07/long-form-text-no-content.html&quot;,
+  &quot;attributedTo&quot;: &quot;https://example.com/evan&quot;,
+  &quot;summary&quot;: &quot;&lt;p&gt;This is a long-form text object with external content. It has a title, a summary, and a link to the full text.&lt;/p&gt;&quot;
+  &quot;published&quot;: &quot;2024-11-07T12:00:00Z&quot;
+}
+</code></pre>
+<h3 id="long-form-text-with-full-author-information">Long-form text with full author information</h3>
+<pre><code>{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;type&quot;: &quot;Article&quot;,
+  &quot;id&quot;: &quot;https://example.com/2024/11/07/long-form-text-author.jsonld&quot;,
+  &quot;name&quot;: &quot;Long-form text with full author information&quot;,
+  &quot;url&quot;: &quot;https://example.com/2024/11/07/long-form-text-author.html&quot;,
+  &quot;attributedTo&quot;: {
+    &quot;type&quot;: &quot;Person&quot;,
+    &quot;id&quot;: &quot;https://example.com/evan&quot;,
+    &quot;name&quot;: &quot;Evan Prodromou&quot;,
+    &quot;summary&quot;: &quot;&lt;p&gt;Founder of Social Web Foundation&lt;/p&gt;&quot;,
+    &quot;url&quot;: &quot;https://example.com/evan&quot;,
+    &quot;icon&quot;: {
+      &quot;type&quot;: &quot;Image&quot;,
+      &quot;mediaType&quot;: &quot;image/png&quot;,
+      &quot;url&quot;: &quot;https://example.com/evan.png&quot;
+    }
+  },
+  &quot;summary&quot;: &quot;&lt;p&gt;This is a long-form text object with full author information. It has a title, a summary, and an URL to the full text.&lt;/p&gt;&quot;
+  &quot;published&quot;: &quot;2024-11-07T12:00:00Z&quot;
+}
+</code></pre>
+<h3 id="long-form-text-with-embedded-images">Long-form text with embedded images</h3>
+<pre><code>{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;type&quot;: &quot;Article&quot;,
+  &quot;id&quot;: &quot;https://example.com/2024/11/07/long-form-text-images.jsonld&quot;,
+  &quot;name&quot;: &quot;Long-form text with embedded images&quot;,
+  &quot;url&quot;: &quot;https://example.com/2024/11/07/long-form-text-images.html&quot;,
+  &quot;attributedTo&quot;: &quot;https://example.com/evan&quot;,
+  &quot;summary&quot;: &quot;&lt;p&gt;This is a long-form text object with embedded images.&lt;/p&gt;&quot;,
+  &quot;content&quot;: &quot;&lt;p&gt;This is a long-form text object with embedded images.&lt;/p&gt;&lt;img src=\&quot;https://example.com/image1.jpg\&quot; alt=\&quot;Image 1\&quot;&gt;&lt;img src=\&quot;https://example.com/image2.jpg\&quot; alt=\&quot;Image 2\&quot;&gt;&quot;,
+  &quot;attachment&quot;: [
+    {
+      &quot;type&quot;: &quot;Image&quot;,
+      &quot;id&quot;: &quot;https://example.com/image1.jpg&quot;,
+      &quot;mediaType&quot;: &quot;image/jpeg&quot;
+    },
+    {
+      &quot;type&quot;: &quot;Image&quot;,
+      &quot;id&quot;: &quot;https://example.com/image2.jpg&quot;,
+      &quot;mediaType&quot;: &quot;image/jpeg&quot;
+    }
+  ],
+  &quot;published&quot;: &quot;2024-11-07T12:00:00Z&quot;
+}
+</code></pre>
+<h3 id="long-form-text-with-tags">Long-form text with tags</h3>
+<pre><code>{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;type&quot;: &quot;Article&quot;,
+  &quot;id&quot;: &quot;https://example.com/2024/11/07/long-form-text-tags.jsonld&quot;,
+  &quot;name&quot;: &quot;Long-form text with tags&quot;,
+  &quot;url&quot;: &quot;https://example.com/2024/11/07/long-form-text-tags.html&quot;,
+  &quot;attributedTo&quot;: &quot;https://example.com/evan&quot;,
+  &quot;summary&quot;: &quot;&lt;p&gt;This is a long-form text object with tags.&lt;/p&gt;&quot;,
+  &quot;content&quot;: &quot;&lt;p&gt;@&lt;a href='https://example.com/evan'&gt;evan&lt;/a&gt; made this #&lt;a href='https://example.com/tag/example'&gt;example&lt;/a&gt;.&lt;/p&gt;&quot;,
+  &quot;tag&quot;: [
+    {
+      &quot;type&quot;: &quot;Hashtag&quot;,
+      &quot;name&quot;: &quot;example&quot;,
+      &quot;href&quot;: &quot;https://example.com/tag/example&quot;
+    },
+    {
+      &quot;type&quot;: &quot;Mention&quot;,
+      &quot;href&quot;: &quot;https://example.com/evan&quot;
+    }
+  ],
+  &quot;published&quot;: &quot;2024-11-07T12:00:00Z&quot;
+}
+</code></pre>
+<h3 id="long-form-text-with-context">Long-form text with context</h3>
+<pre><code>{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;type&quot;: &quot;Article&quot;,
+  &quot;id&quot;: &quot;https://example.com/2024/11/07/long-form-text-context.jsonld&quot;,
+  &quot;name&quot;: &quot;Long-form text with context&quot;,
+  &quot;url&quot;: &quot;https://example.com/2024/11/07/long-form-text-context.html&quot;,
+  &quot;attributedTo&quot;: &quot;https://example.com/evan&quot;,
+  &quot;summary&quot;: &quot;&lt;p&gt;This is a long-form text object with context.&lt;/p&gt;&quot;,
+  &quot;content&quot;: &quot;&lt;p&gt;This is a long-form text object with context.&lt;/p&gt;&quot;,
+  &quot;context&quot;: [
+    &quot;https://example.com/2024/11/07/series&quot;,
+    &quot;https://example.com/2024/11/07/category&quot;
+  ],
+  &quot;published&quot;: &quot;2024-11-07T12:00:00Z&quot;
+}
+</code></pre>
+<h3 id="long-form-text-with-preview">Long-form text with preview</h3>
+<pre><code>{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;type&quot;: &quot;Article&quot;,
+  &quot;id&quot;: &quot;https://example.com/2025/02/17/long-form-text-preview.jsonld&quot;,
+  &quot;name&quot;: &quot;Long-form text with preview&quot;,
+  &quot;url&quot;: &quot;https://example.com/2025/02/17/long-form-text-preview.html&quot;,
+  &quot;attributedTo&quot;: &quot;https://example.com/evan&quot;,
+  &quot;summary&quot;: &quot;&lt;p&gt;This is the summary for a long-form text with a preview.&lt;/p&gt;&quot;,
+  &quot;content&quot;: &quot;&lt;p&gt;This is the content for a long-form text with a preview.&lt;/p&gt;&quot;,
+  &quot;published&quot;: &quot;2024-11-07T12:00:00Z&quot;,
+  &quot;image&quot;: {
+    &quot;type&quot;: &quot;Link&quot;,
+    &quot;href&quot;: &quot;https://example.com/image.jpg&quot;,
+    &quot;mediaType&quot;: &quot;image/jpeg&quot;
+  },
+  &quot;preview&quot;: {
+    &quot;type&quot;: &quot;Note&quot;,
+    &quot;attributedTo&quot;: &quot;https://example.com/evan&quot;,
+    &quot;content&quot;: &quot;&lt;p&gt;&lt;strong&gt;Long-form text with preview&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;This is the summary for a long-form text with a preview.&lt;/p&gt;&lt;p&gt;&lt;a href='https://example.com/2025/02/17/long-form-text-preview.html'&gt;Read more&lt;/a&gt;&lt;/p&gt;&quot;,
+    &quot;published&quot;: &quot;2024-11-07T12:00:00Z&quot;,
+    &quot;attachment&quot;: {
+      &quot;type&quot;: &quot;Link&quot;,
+      &quot;href&quot;: &quot;https://example.com/image.jpg&quot;,
+      &quot;mediaType&quot;: &quot;image/jpeg&quot;
+    }
+  }
+}
+</code></pre>
+<h2 id="user-interface-guidance">User interface guidance</h2>
+<p>Consumers should use their native interfaces to handle <code>Article</code> objects in an intuitive way that integrates well with other object types. The following illustrations provide examples of how <code>Article</code> objects might be displayed in a stream-oriented social web interface, such as a microblogging application. The UI elements are labelled with the properties of the <code>Article</code> object that most likely correspond to them.</p>
+<h3 id="in-stream-with-image">In stream, with image</h3>
+<p>An example of a long-form text object with an <code>image</code> property displayed in a social stream.</p>
+<p><img alt="Article in stream, with image" src="in-stream-with-image.drawio.svg" /></p>
+<h3 id="in-stream-without-image">In stream, without image</h3>
+<p>An example of a long-form text object without an <code>image</code> property displayed in a social stream.</p>
+<p><img alt="Article in stream, without image" src="in-stream-no-image.drawio.svg" /></p>
+<h3 id="in-stream-no-title">In stream, no title</h3>
+<p>An example of a long-form text object without a <code>name</code> property displayed in a social stream.</p>
+<p><img alt="Article in stream, no title" src="in-stream-no-title.drawio.svg" /></p>
+<h2 id="_2">参考文献</h2>
+<ul>
+<li>James Snell, Evan Prodromou, <a href="https://www.w3.org/TR/activitystreams-core/">Activity Streams 2.0</a>, 2017</li>
+<li>James Snell, Evan Prodromou, <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Activity Vocabulary</a>, 2017</li>
+<li>Christine Lemmer Webber, Jessica Tallon, <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>, 2018</li>
+<li>Dave Winer, <a href="https://cyber.harvard.edu/rss/rss.html">RSS 2.0 Specification</a>, 2003</li>
+</ul>
+<h2 id="_3">著作権</h2>
+<p>CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン</p>
+<p>法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-ae97/" class="btn btn-neutral float-left" title="FEP-ae97: Client-side activity signing"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-bad1/" class="btn btn-neutral float-right" title="FEP-bad1: Object history collection">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-ae97/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-bad1/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

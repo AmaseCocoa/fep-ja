@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-7888: Demystifying the context property - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-7888: Demystifying the context property";
+        var mkdocs_page_input_path = "fep/fep-7888.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-7888: Demystifying the context property</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#publishing-context">Publishing context</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#purpose">Purpose</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dereferencing-and-resolving">Dereferencing and resolving</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#consuming-context">Consuming context</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#group-objects-by-context">Group objects by context</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#canonical-collections-of-objects-within-an-authoritative-context">Canonical collections of objects within an authoritative context</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#interacting-with-context">Interacting with context</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#choosing-whether-to-participate-in-the-same-context">Choosing whether to participate in the same context</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#keeping-relevant-entities-in-the-loop">Keeping relevant entities in the loop</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#appendix-a-rationale">Appendix A: Rationale</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#the-existing-definition">The existing definition</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#purpose-and-intent-or-why-not-use-a-tag">Purpose and intent; or, why not use a tag?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#the-different-types-of-context-and-how-they-are-actually-the-same">The different types of context, and how they are actually the same</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sample-workflows-and-use-cases-involving-context">Sample workflows and use-cases involving context</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#appendix-b-examples">Appendix B: Examples</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#example-1-a-minimal-example-for-participating-in-a-context">Example 1: A minimal example for participating in a context</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-2-choosing-not-to-participate-in-the-same-context">Example 2: Choosing not to participate in the same context</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-3-encountering-multiple-contexts">Example 3: Encountering multiple contexts</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#appendix-c-creating-and-maintaining-contexts-and-their-associated-collections-using-activitypub-c2s">Appendix C: Creating and maintaining contexts and their associated collections using ActivityPub C2S</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">著作権</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-7888: Demystifying the context property</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-7888.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-7888-demystifying-the-context-property">FEP-7888: Demystifying the context property</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-7888.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p>ActivityStreams Vocabulary defines the <code>context</code> property, but it is "intentionally vague". Unfortunately, this makes the definition so vague as to be practically useless. This FEP aims to provide more guidance on possible uses of the <code>context</code> property, as well as formalizing some best practices.</p>
+<h2 id="overview">Overview</h2>
+<p>(このセクションは非規範的です。)</p>
+<p>See "Appendix A: Rationale" for fuller analysis of the definition, as well as use cases that can be mapped onto <code>context</code>.</p>
+<p>In short:</p>
+<ul>
+<li>It is possible for objects to exist within implicit contexts. For example, you might group all objects sharing a certain <code>tag</code>, or all objects having a common <code>audience</code>. </li>
+<li>An explicit <code>context</code> embodies <em>purpose</em>. Things grouped by the same <code>context</code> "belong together" in a way that can't be said about things grouped by the same <code>tag</code>.</li>
+<li>Objects with a <code>context</code> exist <em>within</em> that context, and are meant to be seen and interpreted <em>in context of</em> something else. In most cases, you do not want to view the object on its own; it should be viewed together with other objects, contextually.</li>
+<li>You might use <code>context</code> to represent a "thread", "topic", "conversation", "room", "channel", "forum", "wall", "guild", "space", "project", or so on.</li>
+</ul>
+<p>The requirements below can be summarized like so:</p>
+<ul>
+<li>Publishers can use <code>context</code> for signaling which objects belong together purposefully, i.e. objects that are meant to be viewed or processed together. Ideally, make the <code>context</code> resolve to something useful. Depending on which properties the resolved context has, various use cases can make use of those properties.</li>
+<li>For example, if the context is <code>attributedTo</code> some owner, others can keep that owner in the loop when interacting with their context. Similar considerations apply to <code>followers</code> and <code>audience</code>.</li>
+<li>If the context has some canonical collection associated with it that represents the contents of that context, then that collection can be used for backfill, authorization, moderation, synchronization, and so on.</li>
+<li>Consumers can use <code>context</code> to group related objects by the context's <code>id</code>. The graph source for those objects is up to you, but in the case where your source is an SQL database, it probably makes sense to have the <code>context.id</code> be the value of a column which is indexed so you can efficiently use a WHERE clause in your query.</li>
+<li>Declaring a context does not imply that the context owner acknowledges that object. A canonical collection can help with verifying this for the purpose of authorization or moderation.</li>
+<li>Interactions with an object that has a <code>context</code> might exist within that same context, or they might declare their own context, or they might not declare a context. If you're declaring someone else's context, then you might want to keep them in the loop, in the same way that you'd keep someone in the loop if you replied to their object or tagged their object. This would be signaled via <code>context.attributedTo</code> similarly to <code>inReplyTo.attributedTo</code> or <code>tag[*].attributedTo</code>.</li>
+</ul>
+<h2 id="publishing-context">Publishing <code>context</code></h2>
+<p>When generating an object with a <code>context</code> as a publisher:</p>
+<h3 id="purpose">Purpose</h3>
+<p>A <code>context</code> SHOULD have a purpose; consider <code>tag</code> for looser references. Objects sharing a certain <code>context</code> SHOULD be strongly related and intended to be viewed in the same grouping.</p>
+<h3 id="dereferencing-and-resolving">Dereferencing and resolving</h3>
+<p>A <code>context</code> SHOULD be resolvable. The resolved object or link can describe the context with at least the additional information needed to fully process the activity or object. Examples of generally useful properties include but are not limited to:</p>
+<ul>
+<li><code>attributedTo</code> denotes the authority for that context. (This authority might be a good target for addressing and delivery of related activities.)</li>
+<li><code>audience</code> indicates intent for or potential interest by some entities. (These entities might be a good target for addressing and delivery of related activities.)</li>
+<li><code>followers</code> signals that the context might be a followable object. (This followers collection might be a good target for addressing and delivery of related activities.)</li>
+<li><code>outbox</code> might contain relevant Activities performed by the context, if it is an actor.</li>
+</ul>
+<p>Ideally, the resolved <code>context</code> SHOULD in some way have an associated Collection which can contain the related items. (The exact semantics of discovering this Collection are out of scope of this FEP.)</p>
+<h2 id="consuming-context">Consuming <code>context</code></h2>
+<p>When encountering an object with a <code>context</code> as a consumer or browser:</p>
+<h3 id="group-objects-by-context">Group objects by <code>context</code></h3>
+<p>At minimum, you SHOULD consider the current object alongside other objects referencing the same <code>context</code> (by <code>id</code>) instead of considering the current object independently. By default, the graph source for objects that are being considered for inclusion is arbitrary. This can be some dataset, or it can be some relevant collection's items. For example, you might conssider the outbox and/or inbox of one or more actors, or you might consider a specific property path on the <code>context</code> (if resolvable).</p>
+<h3 id="canonical-collections-of-objects-within-an-authoritative-context">Canonical collections of objects within an authoritative context</h3>
+<p>If the <code>context</code> resolves to an object of a certain type, then that type MAY indicate that a certain relation represents a canonical Collection of all objects that the authority considers to be included. (The definition of such types and relations is out of scope of this FEP.)</p>
+<p>For authoritative contexts that include such a canonical Collection, you SHOULD NOT assume that an object has been accepted into that collection simply because it declares <code>context</code>. Consumers SHOULD make efforts to verify reverse claims of inclusion. If a client or user-agent is unable to verify this claim, then the client or user-agent SHOULD indicate to users that the object's claim of being included in the authoritative context is unverified. Criteria for establishing proof of inclusion in a collection is out of scope for this FEP, but might include:</p>
+<ul>
+<li>Viewing the collection directly and encountering the object as a collection item</li>
+<li>Querying the collection via some querying mechanism that allows determining if a given object is included in a collection.</li>
+<li>Having knowledge that the authority Added the object to the collection, with knowledge that the object wasn't subsequently Removed.</li>
+</ul>
+<h2 id="interacting-with-context">Interacting with <code>context</code></h2>
+<h3 id="choosing-whether-to-participate-in-the-same-context">Choosing whether to participate in the same context</h3>
+<p>When encountering an object with a <code>context</code> and choosing to author your own object or activity that interacts with this object:</p>
+<ul>
+<li>You MAY copy a <code>context</code> as-is, if you wish for your object to be included in that same context.</li>
+<li>You MAY set your own <code>context</code>, if you wish for your object to exist in a different context.</li>
+<li>You MAY remove the <code>context</code> entirely, if you wish for your object to exist on its own.</li>
+</ul>
+<p>Note that <code>context</code> can be present on either the object, the activity, or both. It is also possible for different <code>context</code> references to be placed on each. This depends on how <code>context</code> is used. In the case of an activity wrapping an object with context, if the activity is deemed to exist in the same context as the object, then you SHOULD use the same <code>context</code> reference on both the object and also on its wrapping activity.</p>
+<h3 id="keeping-relevant-entities-in-the-loop">Keeping relevant entities in the loop</h3>
+<p>Per <a href="https://www.w3.org/TR/activitypub/">PUB</a> Section 6.1 "Client Addressing":</p>
+<blockquote>
+<p>Clients SHOULD look at any objects attached to the new Activity via the <code>object</code>, <code>target</code>, <code>inReplyTo</code> and/or <code>tag</code> fields, retrieve their actor or attributedTo properties, and MAY also retrieve their addressing properties, and add these to the <code>to</code> or <code>cc</code> fields of the new Activity being created. Clients MAY recurse through attached objects, but if doing so, SHOULD set a limit for this recursion. (Note that this does not suggest that the client should "unpack" collections of actors being addressed as individual recipients).</p>
+<p>Clients MAY give the user the chance to amend this addressing in the UI.</p>
+</blockquote>
+<p>This FEP extends the recommendation to look at <code>object</code>, <code>target</code>, <code>inReplyTo</code>, and/or <code>tag</code> to also include <code>context</code>.</p>
+<p>If copying someone else's context, you SHOULD send your activity to the owner(s) of the context(s), defined via <code>context.attributedTo</code> if resolvable. This is similar to how one might address the author of an object that they are responding to via <code>inReplyTo.attributedTo</code>, as a social courtesy. You MAY also want to address <code>context.followers</code> and/or addressing properties like <code>context.audience</code>.</p>
+<hr />
+<h2 id="appendix-a-rationale">Appendix A: Rationale</h2>
+<p>(このセクションは非規範的です。)</p>
+<h3 id="the-existing-definition">The existing definition</h3>
+<p>From the current definition in <a href="https://www.w3.org/TR/activitystreams-vocabulary/">VOCAB</a>: https://www.w3.org/TR/activitystreams-vocabulary/#dfn-context</p>
+<blockquote>
+<p>Identifies the context within which the object exists or an activity was performed.</p>
+<p>The notion of "context" used is intentionally vague. The intended function is to serve as a means of grouping objects and activities that share a common originating context or purpose. An example could be all activities relating to a common project or event.</p>
+</blockquote>
+<p>Aside from being "intentionally vague", the definition is also somewhat circular; it requires knowing what a context is and having some conceptual understanding of the notion of "context". However, we are given some guidance towards its "intended function", which is to group objects by some common purpose or origin.</p>
+<h3 id="purpose-and-intent-or-why-not-use-a-tag">Purpose and intent; or, why not use a tag?</h3>
+<p>We might similarly use a <code>tag</code> for grouping objects and activities. Several fediverse projects often include a <code>Hashtag</code> (defined as an extension within the ActivityStreams namespace, but not actually adopted or defined formally). This <code>Hashtag</code> signals an intent to be included or discovered through a collection of objects bearing the same <code>Hashtag</code>, uniquely identified by its <code>name</code>. The maintenance of such implicit collections is assumed to be the responsibility of the receiving server, although an <code>href</code> might be provided for convenience, in order to browse the implicit collection of tagged objects as seen from that origin server. (This also makes the <code>Hashtag</code> a sub-type of <code>Link</code>.)</p>
+<p>The key property of such a tag is to signal a general, implicit association by reference. We might then consider a context to be an explicit association, but such an explicit association requires an explicit definition.</p>
+<h3 id="the-different-types-of-context-and-how-they-are-actually-the-same">The different types of context, and how they are actually the same</h3>
+<p>Various dictionaries define context generally as something that helps you understand the situation. Following from this, the context should be something that helps you process the activity or object. Ignoring the context may lead to misunderstanding the activity or object; the object or activity exists <em>within</em> that context, and should be understood <em>in context of</em> that context.</p>
+<p>Specific contexts can be thought of in several applications:</p>
+<ul>
+<li>the "authoritative context" is a context in which some authority can be applied;</li>
+<li>the "conversational context" is a context which represents some conversation and possibly its history;</li>
+<li>the "originating context" is a context which represents some intended starting point that you might look at first.</li>
+</ul>
+<p>We might continue to articulate further types of contexts, but the general pattern that emerges is that a context exists to form a purposeful grouping, regardless of the specific purpose. For example, if we had the notion of a conversation, then we might reasonably say that someone owns this conversation and can apply their authority to it. Looking at some object or activity within this context is generally not recommended on its own; it is better to view the entire conversation or some page of it rather than viewing a singular object.</p>
+<h3 id="sample-workflows-and-use-cases-involving-context">Sample workflows and use-cases involving context</h3>
+<p>The context may be presented using the following abstractions:</p>
+<ul>
+<li>A "topic" in a forum presentation</li>
+<li>A "conversation" in a social networking presentation</li>
+<li>A "room" in a chatting or messaging presentation</li>
+<li>A "thread" in any of the above contexts (forum thread, social media thread, chat thread)</li>
+</ul>
+<p>Contexts may be associated with other contexts:</p>
+<ul>
+<li>A forum topic/thread may be nested in a "forum" or "forum category", and may be nested in another parent forum as a sub-forum.</li>
+<li>A "wall" on a social networking profile may contain conversations, which in turn contain the posts/comments</li>
+<li>A "guild" or "space" may contain multiple chat rooms with a common audience</li>
+</ul>
+<p>It is also possible to <em>not</em> have a context. Such objects exist only in the general context of their author (via <code>attributedTo</code>) or other implicit contexts, and are otherwise self-sufficient. This can include:</p>
+<ul>
+<li>An article published on a web site, particularly one meant to be accessible directly via a permalink</li>
+<li>A post in a blogging or microblogging environment, particularly one that does not represent a conversation, or where <code>inReplyTo</code> is meant only as a loose reference.</li>
+<li>An activity intended for or acting upon an object without a context</li>
+</ul>
+<hr />
+<h2 id="appendix-b-examples">Appendix B: Examples</h2>
+<p>(このセクションは非規範的です。)</p>
+<h3 id="example-1-a-minimal-example-for-participating-in-a-context">Example 1: A minimal example for participating in a context</h3>
+<p>You encounter the following object:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://domain.example/some-object&quot;,
+  &quot;context&quot;: &quot;https://domain.example/some-context&quot;,
+  &quot;content&quot;: &quot;Hello world&quot;,
+  &quot;summary&quot;: &quot;&lt;some-object&gt; exists in &lt;some-context&gt; and has content saying \&quot;Hello world\&quot;.&quot;
+}
+</code></pre>
+<p>You wish to participate in the context, so you dereference the context:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://domain.example/some-context&quot;,
+  &quot;attributedTo&quot;: &quot;https://domain.example/context-owner&quot;,
+  &quot;audience&quot;: &quot;https://domain.example/context-audience&quot;,
+  &quot;type&quot;: &quot;https://extension.example/SomeType&quot;,
+  &quot;https://extension.example/someProperty&quot;: {
+    &quot;id&quot;: &quot;https://domain.example/some-context/collection&quot;,
+    &quot;type&quot;: &quot;OrderedCollection&quot;,
+    &quot;orderedItems&quot;: [&quot;https://domain.example/some-object&quot;],
+  },
+  &quot;summary&quot;: &quot;&lt;some-context&gt; is a context owned by &lt;context-owner&gt; and with an audience of &lt;context-audience&gt;. It has a canonical collection &lt;some-context/collection&gt; which currently contains &lt;some-object&gt;.&quot;
+}
+</code></pre>
+<p>You send your activity to the context authority, while copying their context:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://domain.example/your-activity&quot;,
+  &quot;actor&quot;: &quot;https://domain.example/you&quot;,
+  &quot;type&quot;: &quot;Create&quot;,
+  &quot;object&quot;: {
+    &quot;id&quot;: &quot;https://domain.example/your-object&quot;,
+    &quot;context&quot;: &quot;https://domain.example/some-context&quot;,
+    &quot;content&quot;: &quot;Hello!&quot;
+  },
+  &quot;audience&quot;: [&quot;https://domain.example/context-owner&quot;, &quot;https://domain.example/context-audience&quot;],
+  &quot;summary&quot;: &quot;&lt;you&gt; Created &lt;your-object&gt; in &lt;some-context&gt;, and are delivering this activity addressing &lt;context-owner&gt; and &lt;context-audience&gt;.&quot;
+}
+</code></pre>
+<p>The context authority then might forward this activity to the context audience.</p>
+<p>The context authority also might add your object or message to the context's canonical collection:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://domain.example/their-activity&quot;,
+  &quot;actor&quot;: &quot;https://domain.example/context-owner&quot;,
+  &quot;type&quot;: &quot;Add&quot;,
+  &quot;object&quot;: &quot;https://domain.example/your-object&quot;,
+  &quot;target&quot;: &quot;https://domain.example/some-context/collection&quot;,
+  &quot;audience&quot;: [
+    &quot;https://domain.example/context-owner-followers&quot;,
+    &quot;https://domain.example/context-audience&quot;,
+    &quot;https://domain.example/you&quot;, // to keep you in the loop
+    &quot;https://domain.example/your-followers&quot; // for inbox forwarding
+  ],
+  &quot;summary&quot;: &quot;The &lt;context-owner&gt; Added &lt;your-object&gt; to &lt;some-context/collection&gt;, and they are delivering this activity addressing their followers, the &lt;context-audience&gt;, &lt;you&gt;, and &lt;your-followers&gt;.&quot;
+}
+</code></pre>
+<p>The resulting state of the context's canonical collection is now like so:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://domain.example/some-context&quot;,
+  &quot;attributedTo&quot;: &quot;https://domain.example/context-owner&quot;,
+  &quot;audience&quot;: &quot;https://domain.example/context-audience&quot;,
+  &quot;type&quot;: &quot;https://extension.example/SomeType&quot;,
+  &quot;https://extension.example/someProperty&quot;: {
+    &quot;id&quot;: &quot;https://domain.example/some-context/collection&quot;,
+    &quot;type&quot;: &quot;OrderedCollection&quot;,
+    &quot;orderedItems&quot;: [
+      &quot;https://domain.example/some-object&quot;,
+      &quot;https://domain.example/your-object&quot;
+    ],
+  },
+  &quot;summary&quot;: &quot;&lt;some-context/collection&gt; now contains &lt;some-object&gt; and &lt;your-object&gt; after the latter has been Added to the OrderedCollection by &lt;context-owner&gt;.&quot;
+}
+</code></pre>
+<p>Third-party observers (such as members of <code>https://domain.example/context-audience</code>) can validate or identify the Add activity as modifying a canonical collection by using the following checks:</p>
+<ul>
+<li><code>Add.actor</code> == <code>target.attributedTo</code> (the actor is allowed to modify a collection that they own)</li>
+<li><code>target</code> == <code>object.context</code> (the object is being added into its declared context)</li>
+</ul>
+<p>Alternatively, observers can use the Add as a signal to invalidate their cache of the canonical collection and refetch it.</p>
+<h3 id="example-2-choosing-not-to-participate-in-the-same-context">Example 2: Choosing not to participate in the same context</h3>
+<p>You encounter the following object:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://domain.example/some-object&quot;,
+  &quot;context&quot;: &quot;https://domain.example/some-context&quot;,
+  &quot;content&quot;: &quot;Hello world&quot;,
+  &quot;summary&quot;: &quot;&lt;some-object&gt; exists in &lt;some-context&gt; and has content saying \&quot;Hello world\&quot;.&quot;
+}
+</code></pre>
+<p>You want to establish your own context, separately from the current object's context, so you create a canonical collection to be referenced from a context object, then create that context object. This results in two activities:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://domain.example/creating-a-context-collection&quot;,
+  &quot;actor&quot;: &quot;https://domain.example/you&quot;,
+  &quot;type&quot;: &quot;Create&quot;,
+  &quot;object&quot;: {
+    &quot;id&quot;: &quot;https://domain.example/a-different-context/collection&quot;,
+    &quot;type&quot;: &quot;OrderedCollection&quot;,
+    &quot;attributedTo&quot;: &quot;https://domain.example/you&quot;
+  },
+  &quot;summary&quot;: &quot;&lt;you&gt; Created &lt;a-different-context/collection&gt;, which is an OrderedCollection.&quot;
+}
+</code></pre>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://domain.example/creating-a-different-context&quot;,
+  &quot;actor&quot;: &quot;https://domain.example/you&quot;,
+  &quot;type&quot;: &quot;Create&quot;,
+  &quot;object&quot;: {
+    &quot;id&quot;: &quot;https://domain.example/a-different-context&quot;,
+    &quot;type&quot;: &quot;https://extension.example/SomeType&quot;,
+    &quot;https://extension.example/someProperty&quot;: &quot;https://domain.example/a-different-context/collection&quot;,
+    &quot;attributedTo&quot;: &quot;https://domain.example/you&quot;
+  },
+  &quot;summary&quot;: &quot;&lt;you&gt; Created &lt;a-different-context&gt;, which is SomeType and has an associated OrderedCollection via someProperty.&quot;
+}
+</code></pre>
+<p>You can now set this new context on your interaction, with the intent that your interaction is shown in a separate grouping from the original object:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://domain.example/creating-a-post-in-a-different-context&quot;,
+  &quot;actor&quot;: &quot;https://domain.example/you&quot;,
+  &quot;type&quot;: &quot;Create&quot;,
+  &quot;object&quot;: {
+    &quot;id&quot;: &quot;https://domain.example/a-post-in-a-different-context&quot;,
+    &quot;content&quot;: &quot;Starting a new thread to say \&quot;Hello World\&quot; in a different context.&quot;,
+    &quot;inReplyTo&quot;: {
+      &quot;id&quot;: &quot;https://domain.example/some-object&quot;,
+      &quot;context&quot;: &quot;https://domain.example/some-context&quot;,
+      &quot;content&quot;: &quot;Hello world&quot;,
+      &quot;summary&quot;: &quot;&lt;some-object&gt; exists in &lt;some-context&gt; and has content saying \&quot;Hello world\&quot;.&quot;
+    },
+    &quot;context&quot;: &quot;https://domain.example/a-different-context&quot;
+  },
+  &quot;summary&quot;: &quot;&lt;you&gt; Created &lt;a-post-in-a-different-context&gt; which is inReplyTo &lt;some-object&gt; in &lt;some-context&gt;, but your object is in &lt;a-different-context&gt;.&quot;
+}
+</code></pre>
+<p>You add your object to your own context's canonical collection:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://domain.example/their-activity&quot;,
+  &quot;actor&quot;: &quot;https://domain.example/you&quot;,
+  &quot;type&quot;: &quot;Add&quot;,
+  &quot;object&quot;: &quot;https://domain.example/a-post-in-a-different-context&quot;,
+  &quot;target&quot;: &quot;https://domain.example/a-different-context/collection&quot;,
+  &quot;summary&quot;: &quot;&lt;you&gt; Added &lt;a-post-in-a-different-context&gt; to &lt;a-different-context/collection&gt;.&quot;
+}
+</code></pre>
+<p>The original object's context is unchanged:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://domain.example/some-context&quot;,
+  &quot;attributedTo&quot;: &quot;https://domain.example/context-owner&quot;,
+  &quot;audience&quot;: &quot;https://domain.example/context-audience&quot;,
+  &quot;type&quot;: &quot;https://extension.example/SomeType&quot;,
+  &quot;https://extension.example/someProperty&quot;: {
+    &quot;id&quot;: &quot;https://domain.example/some-context/collection&quot;,
+    &quot;type&quot;: &quot;OrderedCollection&quot;,
+    &quot;orderedItems&quot;: [&quot;https://domain.example/some-object&quot;],
+  },
+  &quot;summary&quot;: &quot;&lt;some-context&gt; is a context owned by &lt;context-owner&gt; and with an audience of &lt;context-audience&gt;. It has a canonical collection &lt;some-context/collection&gt; which currently contains &lt;some-object&gt;.&quot;
+}
+</code></pre>
+<p>Your context now looks like this:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://domain.example/a-different-context&quot;,
+  &quot;attributedTo&quot;: &quot;https://domain.example/you&quot;,
+  &quot;audience&quot;: &quot;https://domain.example/some-audience&quot;,
+  &quot;type&quot;: &quot;https://extension.example/SomeType&quot;,
+  &quot;https://extension.example/someProperty&quot;: {
+    &quot;id&quot;: &quot;https://domain.example/a-different-context/collection&quot;,
+    &quot;type&quot;: &quot;OrderedCollection&quot;,
+    &quot;orderedItems&quot;: [&quot;https://domain.example/a-post-in-a-different-context&quot;],
+  },
+  &quot;summary&quot;: &quot;&lt;a-different-context&gt; is a context owned by &lt;you&gt; and with an audience of &lt;some-audience&gt;. It has a canonical collection &lt;a-different-context/collection&gt; which currently contains &lt;a-post-in-a-different-context&gt;.&quot;
+}
+</code></pre>
+<h3 id="example-3-encountering-multiple-contexts">Example 3: Encountering multiple contexts</h3>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://domain.example/some-object&quot;,
+  &quot;context&quot;: [&quot;https://domain.example/some-context&quot;, &quot;https://domain.example/some-other-context&quot;]
+  &quot;content&quot;: &quot;Hello world&quot;,
+  &quot;summary&quot;: &quot;&lt;some-object&gt; exists in &lt;some-context&gt; and &lt;some-other-context&gt; and has content saying \&quot;Hello world\&quot;.&quot;
+}
+</code></pre>
+<p>You dereference the two contexts:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://domain.example/some-context&quot;,
+  &quot;attributedTo&quot;: &quot;https://domain.example/context-owner&quot;,
+  &quot;type&quot;: &quot;Object&quot;,
+  &quot;summary&quot;: &quot;&lt;some-context&gt; is an Object owned by &lt;context-owner&gt;.&quot;,
+  &quot;https://extension.example/someProperty&quot;: &quot;https://domain.example/some-context/collection&quot;
+}
+</code></pre>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://domain.example/some-other-context&quot;,
+  &quot;attributedTo&quot;: &quot;https://domain.example/other-context-owner&quot;,
+  &quot;type&quot;: &quot;Object&quot;,
+  &quot;summary&quot;: &quot;&lt;some-other-context&gt; is an Object owned by &lt;other-context-owner&gt;.&quot;,
+  &quot;https://extension.example/someProperty&quot;: &quot;https://domain.example/some-other-context/collection&quot;
+}
+</code></pre>
+<p>You can now choose to participate in either context, both contexts, a different context, or no context.</p>
+<p>To participate in both contexts:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://domain.example/your-activity&quot;,
+  &quot;actor&quot;: &quot;https://domain.example/you&quot;,
+  &quot;type&quot;: &quot;Create&quot;,
+  &quot;object&quot;: {
+    &quot;id&quot;: &quot;https://domain.example/your-object&quot;,
+    &quot;context&quot;: [&quot;https://domain.example/some-context&quot;, &quot;https://domain.example/some-other-context&quot;],
+    &quot;content&quot;: &quot;Hello!&quot;
+  },
+  &quot;audience&quot;: [&quot;https://domain.example/context-owner&quot;, &quot;https://domain.example/other-context-owner&quot;],
+  &quot;summary&quot;: &quot;&lt;you&gt; Created &lt;your-object&gt; in &lt;some-context&gt; and &lt;some-other-context&gt;, and are delivering this activity addressing &lt;context-owner&gt; and &lt;other-context-owner&gt;.&quot;
+}
+</code></pre>
+<p>It may be that you are refused addition into some context, but granted addition into some other context:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://domain.example/context-1-activity&quot;,
+  &quot;actor&quot;: &quot;https://domain.example/context-owner&quot;,
+  &quot;type&quot;: &quot;Reject&quot;,
+  &quot;object&quot;: &quot;https://domain.example/your-activity&quot;,
+  &quot;summary&quot;: &quot;&lt;context-owner&gt; Rejected &lt;your-activity&gt;.&quot;,
+  &quot;content&quot;: &quot;Sorry, I don't want to add your object to my context.&quot;
+}
+</code></pre>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://domain.example/context-2-activity&quot;,
+  &quot;actor&quot;: &quot;https://domain.example/other-context-owner&quot;,
+  &quot;type&quot;: &quot;Add&quot;,
+  &quot;object&quot;: &quot;https://domain.example/your-object&quot;,
+  &quot;target&quot;: &quot;https://domain.example/some-other-context/collection&quot;,
+  &quot;summary&quot;: &quot;&lt;other-context-owner&gt; Added &lt;your-object&gt; to &lt;some-other-context&gt;.&quot;
+}
+</code></pre>
+<p>A third-party observer encounters your object:</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: &quot;https://domain.example/your-object&quot;,
+  &quot;context&quot;: [&quot;https://domain.example/some-context&quot;, &quot;https://domain.example/some-other-context&quot;],
+  &quot;content&quot;: &quot;Hello!&quot;
+}
+</code></pre>
+<p>They attempt to verify that your object is included in the first context, and find that it is not included:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://domain.example/some-context/collection&quot;,
+  &quot;attributedTo&quot;: &quot;https://domain.example/other-context-owner&quot;,
+  &quot;type&quot;: &quot;OrderedCollection&quot;,
+  &quot;orderedItems&quot;: [&quot;https://domain.example/some-object&quot;, &quot;https://domain.example/your-object&quot;],
+  &quot;summary&quot;: &quot;&lt;some-other-context/collection&gt; is an OrderedCollection owned by &lt;other-context-owner&gt;. It currently contains &lt;some-object&gt; and &lt;your-object&gt;.&quot;
+}
+</code></pre>
+<p>The third-party observer attempts to verify that your object is included in the second context, and finds that it is included:</p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;id&quot;: &quot;https://domain.example/some-other-context/collection&quot;,
+  &quot;attributedTo&quot;: &quot;https://domain.example/other-context-owner&quot;,
+  &quot;type&quot;: &quot;OrderedCollection&quot;,
+  &quot;orderedItems&quot;: [&quot;https://domain.example/some-other-object&quot;, &quot;https://domain.example/your-object&quot;],
+  &quot;summary&quot;: &quot;&lt;some-other-context/collection&gt; is an OrderedCollection owned by &lt;other-context-owner&gt;. It currently contains &lt;some-other-object&gt; and &lt;your-object&gt;.&quot;
+}
+</code></pre>
+<p>The third-party observer's client renders your object as unverifiably within some context, and verifiably within some other context.</p>
+<pre><code class="language-text">&lt;you&gt; Created &lt;your-object&gt;
+&lt;your-object&gt; has content: &quot;Hello!&quot;
+&lt;your-object&gt; is part of the following contexts:
+- &lt;some-context&gt; (❓ unverified)
+- &lt;some-other-context&gt; (✅ verified)
+</code></pre>
+<p>The third-party observer may then choose to navigate to (and possibly participate in) the latter context.</p>
+<hr />
+<h2 id="appendix-c-creating-and-maintaining-contexts-and-their-associated-collections-using-activitypub-c2s">Appendix C: Creating and maintaining contexts and their associated collections using ActivityPub C2S</h2>
+<p>(このセクションは非規範的です。)</p>
+<p>Because <a href="https://www.w3.org/TR/activitypub/">PUB</a> does not define the use of <code>context</code> as a property or the notion of a canonical collection, it is up to ActivityPub Clients to manage contexts and their canonical collections for themselves. The following algorithm may be used to create an object within a context that has a canonical collection:</p>
+<ol>
+<li><code>Create</code> the canonical <code>Collection</code> that will be associated with the context. Save the generated Collection <code>id</code> to be used in the next step.</li>
+<li>Create the Object that will be used as <code>context</code>. If the Object has a canonical Collection associated with it, then specify the appropriate property relation using the <code>id</code> from the previous step. Save the generated context <code>id</code> to be used in the next step.</li>
+<li>Create the Object that will exist within the context, and specify the <code>context</code> as the <code>id</code> from the previous step. Set an appropriate <code>audience</code> or use <code>to</code>/<code>cc</code> to deliver the Create activity as-is. Save the generated object <code>id</code> to be used in the next step.</li>
+<li>Add the Object to the context's canonical Collection, using the <code>id</code>s obtained from the responses for steps 1 and 3. You may wish to deliver this Add activity via <code>to</code>/<code>cc</code>/<code>audience</code> targeting your intended recipients, especially if you did not deliver the Create Object from step 3.</li>
+</ol>
+<hr />
+<h2 id="_1">参考文献</h2>
+<ul>
+<li><a href="https://www.w3.org/TR/activitystreams-vocabulary/">VOCAB</a> James M Snell, Evan Prodromou, <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Activity Vocabulary</a>, 2017</li>
+<li><a href="https://www.w3.org/TR/activitypub/">PUB</a> Christine Lemmer Webber, Jessica Tallon, <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>, 2018</li>
+</ul>
+<h2 id="_2">著作権</h2>
+<p>CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン</p>
+<p>法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-76ea/" class="btn btn-neutral float-left" title="FEP-76ea: Conversation Threads"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-7952/" class="btn btn-neutral float-right" title="FEP-7952: Roadmap For Actor and Object Portability">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-76ea/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-7952/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

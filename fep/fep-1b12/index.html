@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-1b12: Group federation - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-1b12: Group federation";
+        var mkdocs_page_input_path = "fep/fep-1b12.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-1b12: Group federation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#history">History</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#group-actor">Group actor</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#following-a-group">Following a Group</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#audience-property">Audience property</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#threads-and-comments">Threads and comments</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-announce-activity">The Announce activity</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#group-moderation">Group moderation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">実装</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">著作権</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-1b12: Group federation</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-1b12.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-1b12-group-federation">FEP-1b12: Group federation</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-1b12.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p>Internet forums are one of the oldest forms of social media. This document describes how they are implemented in existing Activitypub platforms using <code>Group</code> actors. It also introduces a new property to indicate that a given object belongs to a group.</p>
+<h2 id="history">History</h2>
+<p>Friendica released federated forums in version <a href="https://github.com/friendica/friendica/releases/tag/2019.03">2019.03</a>.</p>
+<p>Lemmy published the first public beta of federated groups in <a href="https://join-lemmy.org/news/2020-10-20_-_Lemmy_Release_v0.8.0_-_Federation_beta!">v0.8.0 (October 2020)</a>.</p>
+<p>[FEP-400e] introduces publicly appendable collections, which can also be used to implement forums. However they are incompatible with the implementations described here.</p>
+<h2 id="requirements">Requirements</h2>
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this specification are to be interpreted as described in [RFC-2119].</p>
+<h2 id="group-actor">Group actor</h2>
+<p>A federated forum is represented by a <code>Group</code> actor as specified in [Activity Vocabulary]. This actor is not directly controlled by a human, but can perform its main functionality in a fully automated way, essentially acting as a bot. It has the same general properties as any <code>Person</code> actor.</p>
+<h3 id="following-a-group">Following a Group</h3>
+<p>Public groups SHOULD support a standard <code>Follow</code>-<code>Accept</code> workflow. This ensures compatibility with existing implementations which support <code>Person</code> following using the same vocabulary. After receiving a valid <code>Follow</code> activity, the group SHOULD automatically respond with an <code>Accept/Follow</code>, and add the sender to its followers collection. Correspondingly actors can unfollow a group by sending an <code>Undo/Follow</code> activity.</p>
+<h2 id="audience-property">Audience property</h2>
+<p>In order to render content in a forum, it is necessary to know which particular forum the content belongs to. This way users can navigate up from a thread to the forum's main page, or view metadata like the description or moderators. With current implementations there is no easy way to determine which forum a given activity or object belongs to, if any.</p>
+<p>Currently there are different approaches to specify which group a given object or activity belongs to. Lemmy, Friendica and lotide put the group ID in the <code>to</code> field. Peertube uses <code>attributedTo</code>. Both properties have the problem that they are also used for different purposes by some platforms, and are represented as arrays. So to retrieve the group from a received object, an implementation needs to loop through these properties and resolve each URL, until it hits one which resolves to a <code>Group</code>. Clearly this is very inefficient.</p>
+<p>To simplify this process, we propose to specify the group identifier in the <code>audience</code> property. This property is part of Activitystreams, but not yet used in the wild. This way no extension is necessary, and neither will it cause problems for existing implementations. Additionally, platforms can continue to federate the group identifier in the existing format for backwards compatibility.</p>
+<h2 id="threads-and-comments">Threads and comments</h2>
+<p>Each <code>Group</code> actor represents a single forum. Forums contain many user-submitted threads, which can be represented by different objects depending on the implementation. Thread objects SHOULD have a <code>name</code> property which represents the thread title.</p>
+<p>Example thread:</p>
+<pre><code>{
+    &quot;type&quot;: &quot;Page&quot;,
+    &quot;id&quot;: &quot;https://sally.example.org/p/1&quot;,
+    &quot;attributedTo&quot;: &quot;https://sally.example.org&quot;,
+    &quot;name&quot;: &quot;Hello forum!&quot;,
+    &quot;audience&quot;: &quot;https://example.org/my-forum&quot;
+}
+</code></pre>
+<p>Threads can have replies, which are usually represented as <code>Note</code>s. They MUST have a property <code>inReplyTo</code> referencing either the thread they belong to, or the parent reply in case of nested replies.</p>
+<p>Example reply:</p>
+<pre><code>{
+    &quot;type&quot;: &quot;Note&quot;,
+    &quot;id&quot;: &quot;https://sally.example.org/p/3&quot;,
+    &quot;attributedTo&quot;: &quot;https://sally.example.org&quot;,
+    &quot;inReplyTo&quot;: &quot;https://sally.example.org/p/1&quot;,
+    &quot;content&quot;: &quot;My first comment&quot;,
+    &quot;audience&quot;: &quot;https://example.org/my-forum&quot;
+}
+</code></pre>
+<p>The properties <code>inReplyTo</code> and <code>audience</code> can be used to navigate up from a reply to a thread and forum. To navigate down from a group to threads and comments, groups MAY have a <code>replies</code> collection which contains all threads. Each thread MAY again have a <code>replies</code> collection which lists all top-level comments responding to the thread.</p>
+<h2 id="the-announce-activity">The Announce activity</h2>
+<p>The main task of a group is to distribute content among its followers.</p>
+<p>When a group receives a activity in its inbox, it SHOULD perform some automatic validation, such as checking for domain and user blocks. Groups MAY require additional validation, such as accepting content only from followers, or even manual approval from group moderators. In case an activity fails these checks, the group MAY respond to the sender with a <code>Reject</code> activity.</p>
+<p>In case the incoming activity is deemed valid, the group MUST wrap it in an <code>Announce</code> activity, with the original activity as object. The wrapped activity MUST be preserved exactly as it was received, without changing or removing any properties. This ensures that forwarded activities can be verified with [Object Integrity Proofs]. Announce activities SHOULD get added to the group outbox. If the group exposes collections of threads and comments, relevant items should also be added to them.</p>
+<p>Example:</p>
+<pre><code>{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;type&quot;: &quot;Announce&quot;,
+  &quot;actor&quot;: &quot;https://example.org/my-forum&quot;,
+  &quot;id&quot;: &quot;example.org/a/5&quot;,
+  &quot;object&quot;: {
+    &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;type&quot;: &quot;Create&quot;,
+    &quot;id&quot;: &quot;https://sally.example.org/a/2&quot;
+    &quot;actor&quot;: &quot;https://sally.example.org&quot;,
+    &quot;audience&quot;: &quot;https://example.org/my-forum&quot;,
+    &quot;object&quot;: {
+      &quot;type&quot;: &quot;Page&quot;,
+      &quot;id&quot;: &quot;https://sally.example.org/p/1&quot;,
+      &quot;content&quot;: &quot;Hello forum!&quot;,
+      &quot;audience&quot;: &quot;https://example.org/my-forum&quot;
+    }
+  }
+}
+</code></pre>
+<p>After the group successfully verifies and wraps the received activity, it sends it to the inboxes of its followers. Followers then use the outer <code>Announce</code> activity to verify that the content was really approved by the group. After this step the <code>Announce</code> can be discarded and only the inner activity shown to users.</p>
+<p>This mechanism can be used to publish any possible activity type. Examples include <code>Announce/Like</code>, <code>Announce/Delete/Note</code> or <code>Announce/Undo/Like</code>. Implementations may choose not to forward some activity types which are considered private, for example <code>Follow</code> activities.</p>
+<h2 id="group-moderation">Group moderation</h2>
+<p>Group moderators are those actors who control the group, are able to change its metadata and remove malicious content. They are listed in the group’s <code>attributedTo</code> collection. Moderation is an optional feature, implementations can safely ignore this entire section. At the moment it is only implemented by Lemmy.</p>
+<pre><code>{
+  &quot;id&quot;: &quot;https://example.org/my-forum&quot;,
+  &quot;type&quot;: &quot;Group&quot;,
+  &quot;name&quot;: &quot;Ten Forward&quot;,
+  &quot;attributedTo&quot;: &quot;https://example.org/my-forum/moderators&quot;,
+}
+</code></pre>
+<pre><code>{
+  &quot;type&quot;: &quot;OrderedCollection&quot;,
+  &quot;id&quot;: &quot;https://example.org/my-forum/moderators&quot;,
+  &quot;orderedItems&quot;: [
+    &quot;https://example.org/picard&quot;,
+    &quot;https://example.org/riker&quot;
+  ]
+}
+</code></pre>
+<p>Group moderators can be changed with <code>Add</code> and <code>Remove</code> activities:</p>
+<pre><code>{
+  &quot;@context&quot;: &quot;https://www.w3.org/ns/activitystreams&quot;,
+  &quot;type&quot;: &quot;Announce&quot;,
+  &quot;actor&quot;: &quot;https://example.org/my-forum&quot;,
+  &quot;id&quot;: &quot;example.org/a/8&quot;,
+  &quot;object&quot;: {
+    &quot;id&quot;: &quot;https://example.org/a/7&quot;,
+    &quot;type&quot;: &quot;Add&quot;,
+    &quot;actor&quot;: &quot;https://example.org/picard&quot;,
+    &quot;object&quot;: &quot;http://example.org/data&quot;,
+    &quot;audience&quot;: &quot;https://example.org/my-forum&quot;,
+    &quot;target&quot;: &quot;https://example.org/my-forum/moderators&quot;
+  }
+}
+</code></pre>
+<p>The actions which can be done by moderators are called moderation activities. These are implementation specific, examples include <code>Add</code>, <code>Remove</code> (to change the moderators collection), <code>Block</code> (ban malicious users) and <code>Update/Group</code> (change group metadata).</p>
+<p>If an group or group follower supports moderation, it MUST validate incoming moderation activities before further processing. Such activities MUST have an actor who is listed in <code>attributedTo</code>. Group followers MUST additionally verify that the moderation activity was announced by the group.</p>
+<p>Implementations SHOULD also accept moderation activities which come from the same server where the community is hosted, under the assumption that these are sent by server administrators. These moderation activities also need to be wrapped in <code>Announce</code> by the group.</p>
+<h2 id="_1">実装</h2>
+<p>This document is written based on existing group implementations in Lemmy, Friendica, Hubzilla, Lotide and Peertube. These already federate successfully in production.</p>
+<p>The <code>audience</code> field is an exception as it is not in use yet. Lemmy will add support for it in version 0.17.0.</p>
+<h2 id="_2">参考文献</h2>
+<ul>
+<li>[FEP-400e] Gregory Klyushnikov, <a href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a></li>
+<li>[RFC-2119] S. Bradner, <a href="https://tools.ietf.org/html/rfc2119.html">Key words for use in RFCs to Indicate Requirement Levels</a></li>
+<li>[Activity Vocabulary], James M Snell, Evan Prodromou, <a href="https://www.w3.org/TR/activitystreams-vocabulary/">Activity Vocabulary</a></li>
+<li>[Object Integrity Proofs] silverpill, <a href="../fep-8b32/">FEP-8b32: Object Integrity Proofs</a></li>
+</ul>
+<h2 id="_3">著作権</h2>
+<p>CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン</p>
+<p>法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-1985/" class="btn btn-neutral float-left" title="FEP-1985: Signaling how an OrderedCollection is ordered"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-2100/" class="btn btn-neutral float-right" title="FEP-2100: Unbound Group and Organization">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-1985/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-2100/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

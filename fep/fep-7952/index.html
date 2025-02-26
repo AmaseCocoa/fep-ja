@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-7952: Roadmap For Actor and Object Portability - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-7952: Roadmap For Actor and Object Portability";
+        var mkdocs_page_input_path = "fep/fep-7952.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-7952: Roadmap For Actor and Object Portability</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#migration-from-a-live-cooperating-server">Migration from a live (cooperating) server</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#migration-from-a-backupexport-produced-by-a-dead-or-non-cooperating-server">Migration from a backup/export produced by a dead (or non-cooperating) server</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#current-approaches">Current Approaches</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#roadmap-for-portability">Roadmap For Portability</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-unbundle-the-services-and-concerns-of-a-typical-instance">1. Unbundle the services and concerns of a typical instance</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-implement-portable-migration-stable-object-ids">2. Implement Portable (migration-stable) Object IDs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-create-account-exportimport-features-that-assume-actor-relative-urls-and-segmented-services">3. Create account export/import features that assume Actor-Relative URLs and segmented services</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-enable-verifiable-actor-url-migration">4. Enable verifiable Actor URL migration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#end-result-stable-migration-aware-distributed-data">End Result: Stable, migration-aware distributed data</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">例</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#example-1-standalone-activitypub-actor-profile">Example 1: Standalone ActivityPub Actor Profile</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">参考文献</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#copyright">Copyright</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d9ad/">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-7952: Roadmap For Actor and Object Portability</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-7952.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-7952-roadmap-for-actor-and-object-portability">FEP-7952: Roadmap For Actor and Object Portability</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-7952.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p><strong>Portability</strong>: A set of design choices, data models, and protocols, that
+enable an end-user to automatically migrate from one service provider to another
+<em>with the least amount of data loss and service disruption</em>, including loss of
+or disruption to the user's social graph (Followers and Following collections,
+etc).</p>
+<p>We focus on <em>automated</em> migration because the option of fully manual migration
+always exists, such as re-typing all of one's messages and content, manually
+re-adding everyone to one's following collection, manually contacting everyone
+on one's former followers list and asking them to re-follow, and so on. However,
+that's an extreme failure state in usability terms; we want to avoid that.</p>
+<p>This FEP targets two main categories of migration, covering user stories 1A-1F
+and 2 + 3 in <a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/73cd/fep-73cd.md#migration-user-stories">FEP-73cd: User Migration Stories</a>, respectively.
+It also draws inspiration from an earlier information document,
+<a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/cd47/fep-cd47.md">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>.</p>
+<h3 id="migration-from-a-live-cooperating-server">Migration from a live (cooperating) server</h3>
+<p>Note that the data handling and formatting recommendations made here will be
+strictly complementary to the in-progress <a href="https://swicg.github.io/activitypub-data-portability/lola.html">LOLA
+proposal</a>,
+which target the same user stories.</p>
+<h3 id="migration-from-a-backupexport-produced-by-a-dead-or-non-cooperating-server">Migration from a backup/export produced by a dead (or non-cooperating) server</h3>
+<h3 id="current-approaches">Current Approaches</h3>
+<p>Most current Fediverse implementations tend to follow a pattern of comprehensive
+service providers (or <strong>instances</strong>) that bundle the following concerns into a
+single service running on a web domain:</p>
+<ol>
+<li>Identity hosting (hosting of the Actor profile object, which serves as the
+   source of truth for all others in the list)</li>
+<li>Authentication and authorship/provenance of objects</li>
+<li>Key management (used for HTTP Signatures for Server to Server request authentication)</li>
+<li>ActivityPub Object and Collection storage (typically in a database)</li>
+<li>Message Transfer Services (hosting of inboxes and outboxes, delivering of
+   outgoing objects, notifications, etc)</li>
+<li>Instance-based content moderation</li>
+<li>Community discovery (via the instance's Local feed)</li>
+<li>Front-end clients, i.e. “website” and/or mobile app (most current
+   implementations bundle the backend system with a made-for-purpose front end
+   that runs off the same server)</li>
+</ol>
+<p>This tight coupling of concerns constrains the possibilities for migrating from
+a live server, and the daunting task of automating migrations to other,
+less-bundled architectures has yet to be attempted. Its strict reliance on
+interactive HTTP signatures in concern #2 also excludes migration from a dead
+server altogether, severely degrading user experience when servers go offline.</p>
+<p>For example, a typical current Move Actor implementation (such as the one
+<a href="https://docs.joinmastodon.org/spec/activitypub/#Move">implemented by Mastodon</a>,
+or specified in <a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/7628/fep-7628.md">FEP-7628</a>)
+only assists the user with automatically migrating their Followers list (by
+setting up a bi-directional <code>alsoKnownAs</code> links and sending the <code>Move</code> activity
+to all of their followers). In addition, some implementations allow the manual
+export and re-import of the Following lists, mutes, blocks and bookmarks.
+However, important content like posts, media attachments, reactions, reposts and
+so on, does not get automatically transferred.</p>
+<p>This FEP proposes a roadmap (a set of steps, design concepts, and recommendations)
+that enables more complete live migrations, as well as enabling migrations from
+dead server backups.</p>
+<h2 id="roadmap-for-portability">Roadmap For Portability</h2>
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this specification are to
+be interpreted as described in <a href="https://tools.ietf.org/html/rfc2119.html">RFC-2119</a>.</p>
+<h3 id="1-unbundle-the-services-and-concerns-of-a-typical-instance">1. Unbundle the services and concerns of a typical instance</h3>
+<ol>
+<li><strong>Sign everything</strong>: Recognize client-side cryptographic signatures as proof
+   of authorship, in addition to the current practice of relying solely on the
+   instance URL:</li>
+<li>add verification key(s) to the Actor object via
+      <a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/521a/fep-521a.md">FEP-521a</a></li>
+<li>Sign individual activities using the same key(s), as specified in
+      <a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/8b32/fep-8b32.md">FEP-8b32: Object Integrity Proofs</a></li>
+<li><strong>B.Y.O. Actor ID</strong>: Using Object Integrity proofs enables Identity Hosting
+   to be separated from the other instance concerns. Actor profiles can now be
+   hosted separately from the instance, which in turn enables service providers
+   to offer their users a “BYO (Bring Your Own) domain name” feature.</li>
+<li><strong>Separate Inbox/Outbox</strong>: (Optional) The previous steps enable message
+   transfer and Inbox/Outbox hosting to be outsourced to separate service
+   providers (the Actor profile links to these in the usual manner).</li>
+<li><strong>Separate Object and Collection hosting</strong>: (Optional) Similarly, AP Objects
+   and Collections can now be stored on domains separate from the Actor's domain
+   (since authorship and controller-ship can be proven cryptographically, in a
+   domain-independent way). This enables the user to migrate storage service
+   providers without having to change their Actor ID.</li>
+</ol>
+<h3 id="2-implement-portable-migration-stable-object-ids">2. Implement Portable (migration-stable) Object IDs</h3>
+<p>Separating the object storage provider from the Actor profile hosting provider
+enables the implementation of Object IDs that can remain unchanged through
+migrations and export/import cycles. Specifically, we're looking for Object IDs
+that remain unchanged even after migrating the objects to be hosted at a
+different storage provider.</p>
+<p>There are several methods of achieving these types of portable IDs, including:</p>
+<ul>
+<li><a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/ef61/fep-ef61.md">FEP-ef61: Portable Objects</a>,
+  which introduces a new <code>ap://</code> URI scheme.</li>
+<li>Actor-Relative URLs (regular <code>https</code> URLs that are redirected to their current
+  location), specified in <a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/e3e9/fep-e3e9.md">FEP-e3e9: Actor-Relative URLs</a></li>
+<li>Various content-based identifier schemes (such as IPFS CIDs, Named Information Hashes, etc.)</li>
+</ul>
+<p>As long as a user's identity provider's web domain remains constant, they can
+migrate to different inbox/outbox and storage providers, without breaking
+portable links. That is, users will be able to switch hosting and service
+providers to different domains, without breaking signatures, replies and
+threading, likes, following and followers, or anything else.</p>
+<p>This means that:</p>
+<ul>
+<li>Object and Collection hosting can now be extracted to general-purpose storage
+  providers that are on different domains than the Actor profiles</li>
+<li>Actors can migrate between different storage providers without changing the
+  Actor id and url.</li>
+<li>Moderation actions gain additional features for fine-grained handling of
+  services distinct from individual objects:</li>
+<li>Individual Actor IDs can be blocked/moderated, as is currently possible</li>
+<li>Actor profile providers (in the example above,
+    <code>https://alice-personal-site.example</code> or <code>https://example.com/users/alice</code>)
+    can now also be blocked/moderated or accrue reputational weighting</li>
+<li>Object-hosting or inbox providers (in the example below,
+    <code>https://storage-provider.example</code>) might also be worth tracking separately
+    for some moderation or spam-/sybil-protection use-cases.</li>
+</ul>
+<h3 id="3-create-account-exportimport-features-that-assume-actor-relative-urls-and-segmented-services">3. Create account export/import features that assume Actor-Relative URLs and segmented services</h3>
+<p>Exporting an account based on this model segments neatly and brings with it
+verifiability, if each object was separately signed by a key published in the
+still-live Actor object.
+Importing from such a file is trivial to implement compared to today's account
+migrations that need to be aware of the data structures and addressing schemes
+of the previous server.</p>
+<h3 id="4-enable-verifiable-actor-url-migration">4. Enable verifiable Actor URL migration</h3>
+<p>If the user wants to move their Actor to a different domain, or switch identity
+hosting services, a future FEP could define this in a simple,  Verifiable
+Credential-style data model containing attestations and proofs that the new
+actor is equivalent to the old, controlled by the same subject, etc.
+This would generalize and standardize one currently thorny requirement of
+interoperable migration, that of authenticating migration requests.</p>
+<p>Note: one possible extension of this authentication artefact would be to
+incorporate "pre-rotation" style commitments of the sort used in distributed key
+management.</p>
+<h3 id="end-result-stable-migration-aware-distributed-data">End Result: Stable, migration-aware distributed data</h3>
+<p>Taken together, these items allow for painless automated migration between
+service providers, without broken links or effort duplication, and enables
+restoration from backup and thus migration from dead servers.</p>
+<h2 id="_1">例</h2>
+<h3 id="example-1-standalone-activitypub-actor-profile">Example 1: Standalone ActivityPub Actor Profile</h3>
+<p>Hosted at <code>https://alice-personal-site.example/actor</code></p>
+<pre><code class="language-json">{
+  &quot;@context&quot;: [
+    &quot;https://www.w3.org/ns/activitystreams&quot;,
+    &quot;https://www.w3.org/ns/did/v1&quot;,
+    &quot;https://w3id.org/security/multikey/v1&quot;
+  ],
+  &quot;id&quot;: &quot;https://alice-personal-site.example/actor&quot;,
+  &quot;type&quot;: &quot;Person&quot;,
+  &quot;name&quot;: &quot;Alice&quot;,
+  &quot;preferredUsername&quot;: &quot;alice&quot;,
+  &quot;inbox&quot;: &quot;https://service-provider.example/users/alice/inbox&quot;,
+  &quot;outbox&quot;: &quot;https://service-provider.example/users/alice/outbox&quot;,
+  &quot;assertionMethod&quot;: [
+     {
+       &quot;id&quot;: &quot;https://alice-personal-site.example/actor#ed25519-key&quot;,
+       &quot;type&quot;: &quot;Multikey&quot;,
+       &quot;controller&quot;: &quot;https://alice-personal-site.example/actor&quot;,
+       &quot;publicKeyMultibase&quot;: &quot;z6MkrJVnaZkeFzdQyMZu1cgjg7k1pZZ6pvBQ7XJPt4swbTQ2&quot;
+     }
+  ],
+  &quot;service&quot;: [{
+     &quot;id&quot;: &quot;https://alice-personal-site.example/actor#storage&quot;,
+     &quot;serviceEndpoint&quot;: &quot;https://storage-provider.example/users/1234&quot;
+  }]
+}
+</code></pre>
+<p>Things to note:</p>
+<ul>
+<li>The Actor profile's URL is hosted on <code>https://alice-personal-site.example/actor</code>,
+  but the Inbox and Outbox services are hosted separately, at
+  <code>https://service-provider.example/users/alice/inbox</code></li>
+<li>The <code>assertionMethod</code> section, as defined in <a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/521a/fep-521a.md">FEP-521a</a>.</li>
+<li>The <code>service</code> section, which sets up the ability to use Actor-Relative URLs
+  for mapping (and thus routing) all requests to their current locations at
+  service providers (see <a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/e3e9/fep-e3e9.md">FEP-e939</a>).</li>
+</ul>
+<h2 id="_2">参考文献</h2>
+<ul>
+<li><a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/521a/fep-521a.md">FEP-521a: Representing actor's public keys</a></li>
+<li><a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/73cd/fep-73cd.md#migration-user-stories">FEP-73cd: Migration User Stories</a></li>
+<li><a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/8b32/fep-8b32.md">FEP-8b32: Object Integrity Proofs</a></li>
+<li><a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/cd47/fep-cd47.md">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a></li>
+<li>
+<p><a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/e3e9/fep-e3e9.md">FEP-e939: Actor-Relative URLs</a></p>
+</li>
+<li>
+<p>Christine Lemmer Webber, Jessica Tallon, <a href="https://www.w3.org/TR/activitypub/">ActivityPub</a>, 2018</p>
+</li>
+<li>S. Bradner, Key words for use in RFCs to Indicate Requirement Levels, 1997</li>
+<li>Dave Longley, Manu Sporny, <a href="https://w3c.github.io/vc-data-integrity/">Verifiable Credential Data Integrity 1.0</a>, 2023</li>
+<li>Manu Sporny, Dave Longley, Markus Sabadell, Drummond Reed, Orie Steele,  Christopher Allen, <a href="https://www.w3.org/TR/did-core/">Decentralized Identifiers</a> (DIDs) v1.0, 2022</li>
+<li>Dave Longley, Manu Sporny, <a href="https://w3c.github.io/vc-di-eddsa/#eddsa-jcs-2022">Data Integrity EdDSA Cryptosuites</a> v1.0, 2023</li>
+<li>A. Rundgren, B. Jordan, S. Erdtman, <a href="https://www.rfc-editor.org/rfc/rfc8785">JSON Canonicalization Scheme</a> (JCS), 2020</li>
+</ul>
+<h2 id="copyright">Copyright</h2>
+<p>CC0 1.0 Universal (CC0 1.0) Public Domain Dedication</p>
+<p>To the extent possible under law, the authors of this Fediverse Enhancement
+Proposal have waived all copyright and related or neighboring rights to this work.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-7888/" class="btn btn-neutral float-left" title="FEP-7888: Demystifying the context property"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-7d8c/" class="btn btn-neutral float-right" title="FEP-7d8c: Documentation: Automation of FEP">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-7888/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-7d8c/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

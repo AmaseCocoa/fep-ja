@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals - Fediverse Enhancement Proposals 非公式日本語訳</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals";
+        var mkdocs_page_input_path = "fep/fep-d9ad.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Fediverse Enhancement Proposals 非公式日本語訳
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Fep</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0391/">FEP-0391: Special collection proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-03c1/">FEP-03c1: Actors without acct-URI</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0499/">FEP-0499: Delivering to multiple inboxes with a multibox endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-07d7/">FEP-07d7: A Custom URL Scheme and Web-Based Protocol Handlers for Linking to ActivityPub Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0837/">FEP-0837: Federated Marketplace</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-0ea0/">FEP-0ea0: Payment Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1311/">FEP-1311: Media Attachments</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-171b/">FEP-171b: Conversation Containers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1970/">FEP-1970: Chat Links</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1985/">FEP-1985: Signaling how an OrderedCollection is ordered</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-1b12/">FEP-1b12: Group federation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2100/">FEP-2100: Unbound Group and Organization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2277/">FEP-2277: ActivityPub core types</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2677/">FEP-2677: Identifying the Application Actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-268d/">FEP-268d: Search consent signals for objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2c59/">FEP-2c59: Discovery of a Webfinger address from an ActivityPub actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-2e40/">FEP-2e40: The FEP Vocabulary Extension Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3264/">FEP-3264: Federated Work Coordination</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-37f2/">FEP-37f2: a policy for calls for consensus on SWICG group decisions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-3b86/">FEP-3b86: Activity Intents</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-400e/">FEP-400e: Publicly-appendable ActivityPub collections</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4adb/">FEP-4adb: Dereferencing identifiers with webfinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-4ccd/">FEP-4ccd: Pending Followers Collection and Pending Following Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a-test-case/">Actor Objects must express signing key as assertionMethod Multikey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-521a/">FEP-521a: Actorの公開鍵の表現</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5624/">FEP-5624: Per-object reply control policies</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5bf0/">FEP-5bf0: Collection sorting and filtering</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5e53/">FEP-5e53: Opt-out Preference Signals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-5feb/">FEP-5feb: Search indexing consent for actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-612d/">FEP-612d: Identifying ActivityPub Objects through DNS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-61cf/">FEP-61cf: The OpenWebAuth Protocol</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6481/">FEP-6481: Specifying ActivityPub extension support with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6606/">FEP-6606: ActivityPub client to server collections addressing conventions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-67ff/">FEP-67ff: FEDERATION.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-6fcd/">FEP-6fcd: Account Export Container Format</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-73cd/">FEP-73cd: Migration User Stories</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7458/">FEP-7458: Using the replies collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7502/">FEP-7502: Limiting visibility to authenticated actors</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7628/">FEP-7628: Move actor</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-76ea/">FEP-76ea: Conversation Threads</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7888/">FEP-7888: Demystifying the context property</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7952/">FEP-7952: Roadmap For Actor and Object Portability</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-7d8c/">FEP-7d8c: Documentation: Automation of FEP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-888d/">FEP-888d: Using https://w3id.org/fep as a base for FEP-specific namespaces</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8b32/">FEP-8b32: オブジェクト整合性証明</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8c3f/">FEP-8c3f: Web Monetization</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-8fcf/">FEP-8fcf: Followers collection synchronization across servers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9091/">FEP-9091: Export Actor Service Endpoint</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-96ff/">FEP-96ff: Explicit signalling of ActivityPub Semantics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9967/">FEP-9967: Polls</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-9fde/">FEP-9fde: Mechanism for servers to expose supported operations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a070/">FEP-a070: Ordered properties for plain JSON consumers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a4ed/">FEP-a4ed: The Fediverse Enhancement Proposal Process</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a5c5/">Web Syndication Methods</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-a974/">FEP-a974: All Actor types should be followable</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae0c/">FEP-ae0c: Fediverse Relay Protocols: Mastodon and LitePub</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ae97/">FEP-ae97: Client-side activity signing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-b2b8/">FEP-b2b8: Long-form Text</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-bad1/">FEP-bad1: Object history collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c0e0/">FEP-c0e0: Emoji reactions</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c118/">FEP-c118: Content licensing support</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c16b/">FEP-c16b: MFM機能のフォーマット</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c390/">FEP-c390: Identity Proofs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c4ad/">Viewership History</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c551/">FEP-c551: Use ECMAScript Modules to Create Conformance Tests for Fediverse Enhancement Proposals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c5a1/">FEP-c5a1: To-do's</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c648/">FEP-c648: Blocked Collection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c7d3/">FEP-c7d3: Ownership</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-c893/">DOAP</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cb76/">FEP-cb76: Content Addressed Vocabulary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-cd47/">FEP-cd47: Federation-friendly Addressing and Deduplication Use-Cases</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d36d/">FEP-d36d: Sharing Content Across Federated Forums</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d556/">FEP-d556: Server-Level Actor Discovery Using WebFinger</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d767/">FEP-d767: Extend ActivityPub with Valueflows</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-d8c2/">FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contents">Contents</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#context">Context</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#proposal">Proposal</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conformance-tests">Conformance Tests</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#w3c-accessibility-conformance-testing-act-rules-format">W3C Accessibility Conformance Testing (ACT) Rules Format</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#fep-d9ad-conformance-test-format">FEP-d9ad Conformance Test Format</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conformance-test-components">Conformance Test Components</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#applicability">Applicability</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#example">Example</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#uri">URI</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#change-log">Change Log</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#uri_1">URI</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#description">Description</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#example_1">Example</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#uri_2">URI</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#expectations">Expectations</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#uri_3">URI</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#glossary">Glossary</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#identifier">Identifier</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#uri_4">URI</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#input">Input</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#example-input-specification">Example Input Specification</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#example-input-as-json">Example Input as JSON</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#uri_5">URI</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#issues-list">Issues List</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#uri_6">URI</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#name">Name</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#example-name">Example Name</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#uri_7">URI</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#outcomes">Outcomes</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#uri_8">URI</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#requirements-mapping">Requirements Mapping</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#uri_9">URI</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#target">Target</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#uri_10">URI</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#test-cases">Test Cases</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#uri_11">URI</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#test-subject">Test Subject</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#test-suite-memberships">Test Suite Memberships</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#uri_12">URI</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conformance-with-this-specification">Conformance with this Specification</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#related-links">Related Links</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#appendix-conformance">Appendix: Conformance</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#what-is-conformance">What is Conformance?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#what-is-a-conformance-model">What is a Conformance Model?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#why-does-conformance-matter">Why does Conformance Matter?</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">著作権</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-db0e/">FEP-db0e: Authentication mechanism for non-public groups</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dc88/">FEP-dc88: Formatting Mathematics</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-dd4b/">FEP-dd4b: Quote Posts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e229/">FEP-e229: Best practices for extensibility</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e232/">FEP-e232: オブジェクトリンク</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e3e9/">FEP-e3e9: Actor-Relative URLs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965-test-case/">Actor Object Migration and Deactivation Syntax</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-e965/">FEP-e965: Move Activity for Migrations and Announce Activity for Tombstone Events</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb22/">FEP-eb22: Supported ActivityStreams types with NodeInfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-eb48/">Timeline Preferences</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-ef61/">FEP-ef61: Portable Objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-efda/">FEP-efda: Followable objects</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f06f/">FEP-f06f: Object observers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f1d5/">FEP-f1d5: FediverseソフトウェアのNodeinfo</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-f228/">FEP-f228: Backfilling conversations</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fb2a/">FEP-fb2a: Actor metadata</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fe34/">FEP-fe34: Origin-based security model</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fep-fffd/">FEP-fffd: Proxy Objects</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Fediverse Enhancement Proposals 非公式日本語訳</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Fep</li>
+      <li class="breadcrumb-item active">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-d9ad.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="fep-d9ad-create-conformance-tests-for-fediverse-enhancement-proposals">FEP-d9ad: Create Conformance Tests for Fediverse Enhancement Proposals</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>このFEPはまだ翻訳されていません。</p>
+<p><a href="https://github.com/AmaseCocoa/fep-ja/edit/master/docs/fep/fep-d9ad.md">ここ</a>から翻訳に協力することができます。</p>
+</div>
+<h2 id="summary">Summary</h2>
+<p>This is a proposal to enhance the fediverse by creating test cases for FEPs.
+The proposal describes a Conformance Test Rule format that FEP authors and testers may find useful when creating tests cases as proposed.</p>
+<h2 id="contents">Contents</h2>
+<ul>
+<li><a href="#context">Context</a></li>
+<li><a href="#proposal">Proposal</a></li>
+<li><a href="#conformance-tests">Conformance Tests</a></li>
+<li><a href="#w3c-accessibility-conformance-testing-act-rules-format">W3C Accessibility Conformance Testing (ACT) Rules Format</a></li>
+<li><a href="#fep-d9ad-conformance-test-format">FEP-d9ad Conformance Test Format</a></li>
+<li><a href="#conformance-test-components">Conformance Test Components</a></li>
+<li><a href="#applicability">Applicability</a></li>
+<li><a href="#change-log">Change Log</a></li>
+<li><a href="#description">Description</a></li>
+<li><a href="#expectations">Expectations</a></li>
+<li><a href="#glossary">Glossary</a></li>
+<li><a href="#identifier">Identifier</a></li>
+<li><a href="#input">Input</a></li>
+<li><a href="#issues-list">Issues List</a></li>
+<li><a href="#name">Name</a></li>
+<li><a href="#outcomes">Outcomes</a></li>
+<li><a href="#requirements-mapping">Requirements Mapping</a></li>
+<li><a href="#target">Target</a></li>
+<li><a href="#test-cases">Test Cases</a></li>
+<li><a href="#test-subject">Test Subject</a></li>
+<li><a href="#test-suite-memberships">Test Suite Memberships</a></li>
+<li><a href="#appendix-conformance">Appendix: Conformance</a></li>
+</ul>
+<h2 id="context">Context</h2>
+<p><a href="https://codeberg.org/fediverse/fep/src/branch/main/fep/a4ed/fep-a4ed.md#fep-a4ed-the-fediverse-enhancement-proposal-process">FEP-a4ed: The Fediverse Enhancement Proposal Process</a> describes a process for proposing enhancements to the fediverse (i.e. 'FEPs').</p>
+<p>However, this process says nothing about testing implementations claiming to conform to those proposals nor ways of making FEPs that are more conducive to consistent <a href="#appendix-conformance">conformance</a> testing.</p>
+<p>However, consistent testing is an important part of an interoperability and accessibility on the web:</p>
+<blockquote>
+<p>In order for web specifications to permit full interoperability and access to all, it is important that the quality of implementation be given as much attention as their development. Moreover, as the complexity of W3C specifications and their interdependencies increases, quality assurance becomes even more important to ensuring their acceptance and deployment in the market</p>
+</blockquote>
+<p>&horbar;<a href="https://www.nist.gov/publications/w3c-quality-assurance-activity-initiated">NIST.gov - W3C Quality Assurance Activity Initiated</a></p>
+<p>The goal of this FEP is to propose a way of proposing FEPs that may lead to more <a href="https://www.w3.org/WAI/standards-guidelines/act/implementations/#understanding-act-consistency">consistent testing</a> of candidate implementations claiming to conform to a FEP.</p>
+<p>For more context on conformance, see the <a href="#appendix-conformance">appendix on conformance</a> for:</p>
+<ul>
+<li><a href="#what-is-conformance">What is Conformance?</a></li>
+<li><a href="#what-is-a-conformance-model">What is a Conformance Model?</a></li>
+<li><a href="#why-does-conformance-matter">Why does Conformance Matter?</a></li>
+</ul>
+<h2 id="proposal">Proposal</h2>
+<p>FEPs authors MAY <a href="https://www.w3.org/TR/qaframe-spec/#include-conformance-clause-principle">include a conformance clause</a>.</p>
+<p>FEPs authors MAY <a href="https://www.w3.org/TR/qaframe-spec/#req-opt-conf-principle">Indicate which conformance requirements are mandatory, which are recommended, and which are optional</a>.</p>
+<p>FEP authors MAY <a href="https://www.w3.org/TR/qaframe-spec/#write-assertion-gp">write test assertions</a>.</p>
+<p>FEP authors and testers MAY <a href="https://www.w3.org/TR/qaframe-spec/#write-sample-gp">write tests</a>.</p>
+<p>FEP testers MAY publish a FEP test as a new FEP.</p>
+<p>FEP implementors MAY test their implementations.</p>
+<p>FEP implementors MAY publish an Implementation Conformance Statement explaining how the implementation conforms to a FEP</p>
+<p>Project and services claiming to implement a FEP SHOULD publish an Implementation Conformance Statement</p>
+<p>FEP testers MAY write tests using <a href="https://www.w3.org/TR/act-rules-format/#input">W3C Accessibility Conformance Testing (ACT) Rules Format 1.0</a></p>
+<h2 id="conformance-tests">Conformance Tests</h2>
+<p>Conformance Tests provide guidance for developers of automated testing tools and manual testing methodologies, to help ensure consistent interpretation of the FEP.</p>
+<h3 id="w3c-accessibility-conformance-testing-act-rules-format">W3C Accessibility Conformance Testing (ACT) Rules Format</h3>
+<p>W3C ACT (<a href="https://www.w3.org/TR/act-rules-format/#input">spec</a>) is a conformance test format that can be used to provide guidance for testing conformance to W3C's Web Content Accessibility Guidelines that are normatively referenced in other standards and <a href="https://en.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines#WCAG_referenced_by_law">laws</a> like <a href="https://www.section508.gov/">section508.gov</a>, <a href="https://www.gov.uk/guidance/accessibility-monitoring-how-we-test">gov.co.uk</a>, and Europe's <a href="https://www.etsi.org/human-factors-accessibility/en-301-549-v3-the-harmonized-european-standard-for-ict-accessibility">EN 301 549</a>.</p>
+<p>While there may be other formats for Conformance Tests, the ACT Format is sufficient for expressing Conformance Tests not only for accessibility, but for FEPs as well. This author was unable to find any other commonly used conformance test formats. At the same time, because the ACT format was designed specifically for accessibility guidelines, the ACT format may be imperfect for FEP Conformance Tests. So this FEP does not specify a strict conformance test format. Instead, it specifies useful <a href="#conformance-test-components">components of a Conformance Test</a>, most of which are inspired by similar subcomponents of ACT Rules.</p>
+<h3 id="fep-d9ad-conformance-test-format">FEP-d9ad Conformance Test Format</h3>
+<p>This FEP defines a kind of Conformance Test that may be used. It reuses many good decisions from the ACT Rule Format, while generalizing the format to be useful for expressing tests for things other than accessibility (e.g. FEPs).</p>
+<p>At a high level, a Conformance Test specifies</p>
+<ul>
+<li><strong><a href="#input">input</a></strong> required to run the test</li>
+<li><strong><a href="#applicability">applicability</a></strong>, or whether the rest of the test even applies to the input</li>
+<li><strong><a href="#target">targets</a></strong>, derived from input, that should be tested</li>
+<li><strong><a href="#expectations">expectations</a></strong> whose assertions about the targets are tested</li>
+<li><strong><a href="#outcomes">outcomes</a></strong> the result of testing expectations for each test target</li>
+<li><strong><a href="#requirements-mapping">requirements mapping</a></strong> how the outcomes affect claims about a test subject's conformance to any specific requirements</li>
+</ul>
+<h2 id="conformance-test-components">Conformance Test Components</h2>
+<p>Each of these components may be a part of a conformance test.</p>
+<ul>
+<li><a href="#applicability">Applicability</a></li>
+<li><a href="#change-log">Change Log</a></li>
+<li><a href="#description">Description</a></li>
+<li><a href="#expectations">Expectations</a></li>
+<li><a href="#glossary">Glossary</a></li>
+<li><a href="#identifier">Identifier</a></li>
+<li><a href="#input">Input</a></li>
+<li><a href="#issues-list">Issues List</a></li>
+<li><a href="#name">Name</a></li>
+<li><a href="#outcomes">Outcomes</a></li>
+<li><a href="#requirements-mapping">Requirements Mapping</a></li>
+<li><a href="#target">Target</a></li>
+<li><a href="#test-cases">Test Cases</a></li>
+<li><a href="#test-subject">Test Subject</a></li>
+<li><a href="#test-suite-memberships">Test Suite Memberships</a></li>
+</ul>
+<h3 id="applicability">Applicability</h3>
+<p>Applicability describes how to determine whether a test is even able to be applied to a particular <a href="#input">Input</a> and produce a meaningful outcome other than <code>inapplicable</code>.</p>
+<p>A test may have all kinds of outcomes, e.g. <code>inapplicable</code>. If there is a test specified to apply to an ActivityPub Actor Object and check that it is valid JSON, and the test is run with input of a fish, it's not even possible to check the fish for JSON Syntax conformance to derive any targets or apply expectations. It's a fish. The test doesn't apply <em>at all</em>, and in situations like this, the test run MAY have outcome <code>inapplicable</code>. The Applicability section in a Conformance Test specifies how to determine whether the test applies to the test <a href="#input">input</a> and, if so, how to derive the test <a href="#target">targets</a>.</p>
+<p>Inspired by</p>
+<ul>
+<li><a href="https://www.w3.org/TR/act-rules-format/#applicability-atomic">ACT Rule Applicability for Atomic Rules</a></li>
+</ul>
+<h4 id="example">Example</h4>
+<p>An example of an Applicability clause for a hypothetical conformance test is:</p>
+<blockquote>
+<p>This test applies to an ActivityPub Actor Object. If the value of the <code>actor</code> input's "type" property is an array, there should be a test target for each entry in the array. If it is not an array, there should be one test target whose value is the value of the <code>actor</code> input's "type" property.</p>
+</blockquote>
+<h4 id="uri">URI</h4>
+<p><a href="https://w3id.org/fep/d9ad/ns/test/applicability">https://w3id.org/fep/d9ad/ns/test/applicability</a></p>
+<!-- conformance test component separator -->
+
+<h3 id="change-log">Change Log</h3>
+<p>A log with entry for each change to the test over time.</p>
+<p>For example, if a test if maintained over many years, it is likely that the editors will learn from experience with implementations and usage of the test implementations that there were unexpected inputs the test might be presented with, and then update the test inputs, target, or expectations to better handle the situation. This kind of update is encouraged, but it should be logged in the Conformance Test's Change Log.</p>
+<h4 id="uri_1">URI</h4>
+<p><a href="https://w3id.org/fep/d9ad/ns/test/changeLog">https://w3id.org/fep/d9ad/ns/test/changeLog</a></p>
+<!-- conformance test component separator -->
+
+<h3 id="description">Description</h3>
+<p>A plain language overview of what the test does and why.</p>
+<p>Inspired by</p>
+<ul>
+<li><a href="https://www.w3.org/TR/act-rules-format/#rule-description">ACT Rule Description</a></li>
+</ul>
+<h4 id="example_1">Example</h4>
+<blockquote>
+<p>This is a conformance test that checks whether an ActivityPub Actor satisfies syntax requirements for the "type" property</p>
+</blockquote>
+<h4 id="uri_2">URI</h4>
+<p><a href="https://w3id.org/fep/d9ad/ns/test/description">https://w3id.org/fep/d9ad/ns/test/description</a></p>
+<h3 id="expectations">Expectations</h3>
+<p>Assertions about test targets.</p>
+<p>An Conformance Test MUST contain one or more expectations.</p>
+<p>The expectations describe what the requirements are for the test targets.</p>
+<p>An expectation is an assertion about a test target.</p>
+<p>Expectations determine test target <a href="#outcomes">outcomes</a></p>
+<ul>
+<li>When a test target meets all expectations, the test target passed the rule.</li>
+<li>If the test target does not meet all expectations, the test target failed the rule.</li>
+<li>If there are no test targets, the outcome for the rule is inapplicable.</li>
+</ul>
+<p>Each expectation must be distinct, unambiguous, and be written in plain language.</p>
+<p>Inspired by</p>
+<ul>
+<li><a href="https://www.w3.org/TR/act-rules-format/#expectations">ACT Rule Expectations</a></li>
+<li><a href="https://www.w3.org/TR/act-rules-format/#expectations-atomic">ACT Rule Expectations for Atomic Rules</a></li>
+</ul>
+<h4 id="uri_3">URI</h4>
+<p><a href="https://w3id.org/fep/d9ad/ns/test/expectations">https://w3id.org/fep/d9ad/ns/test/expectations</a></p>
+<!-- conformance test component separator -->
+
+<h3 id="glossary">Glossary</h3>
+<p>Definitions for common terms.</p>
+<p>The Glossary for a test MUST define each of the test's possible Outcomes.</p>
+<p>Inspired by</p>
+<ul>
+<li><a href="https://www.w3.org/TR/act-rules-format/#glossary">ACT Rule Glossary</a></li>
+</ul>
+<!-- conformance test component separator -->
+
+<h4 id="identifier">Identifier</h4>
+<p>a globally unique identifier that identifies the Conformance Test</p>
+<p>The Identifier MUST be a <a href="https://datatracker.ietf.org/doc/html/rfc3986#section-1.1">URI</a>.</p>
+<p>Inspired by</p>
+<ul>
+<li><a href="https://www.w3.org/TR/act-rules-format/#rule-identifier">ACT Rule Identifier</a></li>
+<li><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-id">ActivityStreams 2.0 id</a></li>
+</ul>
+<h5 id="_1">例</h5>
+<ul>
+<li><code>urn:uuid:93bafe14-b13f-4a9a-9d47-0a9316d50c97</code></li>
+<li><code>https://bengo.is/fep/d9ad</code></li>
+</ul>
+<h4 id="uri_4">URI</h4>
+<p><a href="https://w3id.org/fep/d9ad/ns/test/id">https://w3id.org/fep/d9ad/ns/test/id</a></p>
+<!-- conformance test component separator -->
+
+<h3 id="input">Input</h3>
+<p>This is what goes in to each run of the conformance test.</p>
+<p>The test input is the entirety of how each run of the test can be configured.</p>
+<p>An Input may itself have several components.</p>
+<h4 id="example-input-specification">Example Input Specification</h4>
+<p>Consider a hypothetical Conformance Test that tests conformance with <a href="https://www.w3.org/TR/activitypub/]">ActivityPub</a>. An Input to the test may have several components, for example:</p>
+<ul>
+<li><code>id</code> - URI - An ActivityPub Object ID</li>
+<li><code>authorization</code> - optional string - A value to pass with each request to fetch <code>id</code></li>
+</ul>
+<p>The Input and its components MAY be represented as a JSON Object with a property for each named component:</p>
+<h4 id="example-input-as-json">Example Input as JSON</h4>
+<pre><code class="language-json">{
+    &quot;object&quot;: &quot;https://bengo.is/fep/d9ad&quot;,
+    &quot;authorization&quot;: &quot;mellon&quot;
+}
+</code></pre>
+<h4 id="uri_5">URI</h4>
+<p><a href="https://w3id.org/fep/d9ad/ns/test/input">https://w3id.org/fep/d9ad/ns/test/input</a></p>
+<h3 id="issues-list">Issues List</h3>
+<p>A list of unresolved issues with the test.</p>
+<p>Tests should be published early and often, even and especially before there are no known issues with it. The issues may be considered over time, perhaps waiting for enough information to determine a resolution, and then the test may be updated accordingly. The Issues List makes test readers aware of unresolved issues that may lead to test changes later.</p>
+<p>Inspired by</p>
+<ul>
+<li><a href="https://www.w3.org/TR/act-rules-format/#issues-list">ACT Rule Issues List</a></li>
+</ul>
+<h4 id="uri_6">URI</h4>
+<p><a href="https://w3id.org/fep/d9ad/ns/test/issuesList">https://w3id.org/fep/d9ad/ns/test/issuesList</a></p>
+<h3 id="name">Name</h3>
+<p>A short label for the test that can distinguish it in a list of tests.</p>
+<p>The name MUST NOT include HTML markup.</p>
+<p>The name MAY have distinct values for distinct languages.</p>
+<p>The name may be a value that is not unique amongst all other test cases.
+However, test names should be sufficiently descriptive to distinguish them from other tests in the same test suite.</p>
+<p>Inspired by</p>
+<ul>
+<li>ACT Descriptive Title</li>
+<li><a href="https://www.w3.org/TR/activitystreams-vocabulary/#dfn-name">ActivityStreams 2.0 name</a>
+    &gt; A simple, human-readable, plain-text name for the object. HTML markup MUST NOT be included. The name MAY be expressed using multiple language-tagged values.</li>
+</ul>
+<h4 id="example-name">Example Name</h4>
+<p>An example name for a hypothetical test:</p>
+<blockquote>
+<p>ActivityPub Actors MUST have a valid "type" property value according to FEP-003c</p>
+</blockquote>
+<h4 id="uri_7">URI</h4>
+<p><a href="https://w3id.org/fep/d9ad/ns/test/name">https://w3id.org/fep/d9ad/ns/test/name</a></p>
+<!-- conformance test component separator -->
+
+<h3 id="outcomes">Outcomes</h3>
+<p>A test's glossary SHOULD define every possible outcome that the test may assign to test targets as a result of the test expectations.</p>
+<h4 id="uri_8">URI</h4>
+<p><a href="https://w3id.org/fep/d9ad/ns/test/glossary">https://w3id.org/fep/d9ad/ns/test/glossary</a></p>
+<!-- conformance test component separator -->
+
+<h3 id="requirements-mapping">Requirements Mapping</h3>
+<p>When a Conformance Test is designed to test conformance to one or more requirements documents, the test must list all requirements from those documents that are not satisfied when one or more of the outcomes of the test is failed.</p>
+<p>Each requirement in the mapping must include the following:</p>
+<ul>
+<li>the requirement</li>
+<li>name or summary</li>
+<li>uri identifier</li>
+<li>url to documentation</li>
+</ul>
+<p>Inspired by</p>
+<ul>
+<li><a href="https://www.w3.org/TR/act-rules-format/#accessibility-requirements-mapping">ACT Requirements Mapping</a></li>
+</ul>
+<h4 id="uri_9">URI</h4>
+<p><a href="https://w3id.org/fep/d9ad/ns/test/requirementsMapping">https://w3id.org/fep/d9ad/ns/test/requirementsMapping</a></p>
+<h3 id="target">Target</h3>
+<p>All parts of the test subject that will be checked by the test.</p>
+<p>Each target MUST have a test <a href="#outcomes">outcome</a>. Each possible outcome SHOULD be defined in the glossary.</p>
+<p>From a given <a href="#input">input</a>, the test may derive many targets. For example, from an input that is a JSON Object, a test could derive a test target for each JSON Object nested within the input Object. Then the test, for each target, could check for conformance to a hypothetical requirement that all objects within the input MUST have a certain property.</p>
+<p>Inspired by</p>
+<ul>
+<li><a href="https://www.w3.org/TR/act-rules-format/#input">ACT Rule Input</a></li>
+<li><a href="https://www.w3.org/TR/act-rules-format/#input-aspects">ACT Rule Input Aspects</a></li>
+</ul>
+<h4 id="uri_10">URI</h4>
+<p><a href="https://w3id.org/fep/d9ad/ns/test/input">https://w3id.org/fep/d9ad/ns/test/input</a></p>
+<h3 id="test-cases">Test Cases</h3>
+<p>Test Cases (i.e. test cases for the test itself) are a set of example inputs and corresponding results that implementors of the test can check to be confident they have implemented the test has specified in prose. The Test Cases may also be helpful to test readers seeking to understand the intention of the test <a href="#expectations">expectations</a>.</p>
+<p>Every Conformance Test Case SHOULD include</p>
+<ul>
+<li>input</li>
+<li>targets derived from input</li>
+<li>outcome for each target</li>
+<li>how outcomes map to requirements</li>
+</ul>
+<p>Inspired by</p>
+<ul>
+<li><a href="https://www.w3.org/TR/act-rules-format/#test-cases">ACT Rule Test Cases</a></li>
+</ul>
+<h4 id="uri_11">URI</h4>
+<p><a href="https://w3id.org/fep/d9ad/ns/test/testCases">https://w3id.org/fep/d9ad/ns/test/testCases</a></p>
+<h3 id="test-subject">Test Subject</h3>
+<p>An overview of what kind of thing the Conformance Test tests. For example, a FEP Conformance Test may apply to an ActivityPub Actor, or another ActivityPub Object, or some part of a server that hosts many ActivityPub Objects, or it could test something else entirely. The Test Subject is helpful for contextualizing the test <a href="#input">Input</a></p>
+<p>Inspired By</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/System_under_test">https://en.wikipedia.org/wiki/System_under_test</a></li>
+</ul>
+<h3 id="test-suite-memberships">Test Suite Memberships</h3>
+<p>The test suites that the test is a part of, if any.</p>
+<p>For each test suite membership, the test should specify:</p>
+<ul>
+<li>name: Plain language name of the Test Suite</li>
+<li>url: URL to the Test Suite</li>
+</ul>
+<h4 id="uri_12">URI</h4>
+<p><a href="https://w3id.org/fep/d9ad/ns/test/testSuiteMemberships">https://w3id.org/fep/d9ad/ns/test/testSuiteMemberships</a></p>
+<h2 id="conformance-with-this-specification">Conformance with this Specification</h2>
+<section id="conformance">Conformance requirements are indicated by sentences containing MUST a la <a href="https://datatracker.ietf.org/doc/html/rfc2119">RFC2119</a>. A FEP-d9ad Conformant Conformance Test is a document satisfying all conformance requirements in this document.</section>
+
+<h2 id="related-links">Related Links</h2>
+<p>These links were helpful when researching conformance testing</p>
+<ul>
+<li><a href="https://www.w3.org/TR/qaframe-spec/">w3.org - QA Framework: Specification Guidelines</a></li>
+<li><a href="https://act-rules.github.io/pages/implementations/testcases/">ACT Rules Test Cases</a></li>
+<li><a href="https://www.iso.org/obp/ui/#iso:std:iso-iec:17000:ed-1:v1:en">ISO 17000 - Conformity Assessment</a></li>
+</ul>
+<h2 id="appendix-conformance">Appendix: Conformance</h2>
+<h3 id="what-is-conformance">What is Conformance?</h3>
+<blockquote>
+<p>Conformance is the fulfillment of specified requirements by a product, process, or service. These requirements are detailed in a specification as part of a conformance clause and in the body of the specification. A conformance clause is the section of a specification that identifies all the criteria that must be satisfied in order to claim conformance to the specification.</p>
+</blockquote>
+<p>&horbar;<a href="https://www.w3.org/TR/qaframe-spec/#specify-conformance">w3.org - QA Framework: Specification Guidelines</a></p>
+<h3 id="what-is-a-conformance-model">What is a Conformance Model?</h3>
+<blockquote>
+<p>What does it mean?</p>
+<p>The conformance model is the conceptual framework in which conformance is defined. It consists of and is defined by addressing at least these three topics:</p>
+<ul>
+<li>What needs to conform and how — hereafter designated as class of products.</li>
+<li>Any special designations or concepts used to distinguish conformance categories, types, etc. (e.g., profile/module/level, well-formed/valid, A/AA/AAA).</li>
+<li>Ways that conforming implementations can vary from each other (e.g., optionality and extensions).</li>
+</ul>
+<p>Why care?</p>
+<p>The key is to communicate to the reader what conformance to the specification is all about. The model provides a framework for implementers, describes what they need to build in order to conform, and explains the different ways that they could claim conformance.  It provides users and customers with a basis on which to express their requirements.</p>
+</blockquote>
+<p>&horbar;<a href="https://www.w3.org/TR/qaframe-spec/#specify-conformance">w3.org - QA Framework: Specification Guidelines</a></p>
+<h3 id="why-does-conformance-matter">Why does Conformance Matter?</h3>
+<blockquote>
+<p>It is inevitable that people (e.g., vendors, purchasers) will either claim conformance or demand conformance to a technology. In fact, claiming conformance to a technology may be required in certain situations. Thus, it is important to provide a consistent and unambiguous way to make these claims. Identification of the specification version, class of products, and conformance label are some of the items that could be part of such wording.</p>
+<p>Why care?</p>
+<p>Having a framework, by which to make conformance claims for a particular usage of the technology, minimizes confusion by people who are interested in such claims. Many contexts use conformance claims, including legal as part of regulations, laws, or policies and commercial when selling or buying a product.</p>
+</blockquote>
+<p>&horbar;<a href="https://www.w3.org/TR/qaframe-spec/#specify-conformance">w3.org - QA Framework: Specification Guidelines</a></p>
+<h2 id="_2">著作権</h2>
+<p>CC0 1.0 ユニバーサル (CC0 1.0) パブリック ドメイン</p>
+<p>法律で認められる範囲において、この Fediverse 拡張提案の著者は、この作品に対するすべての著作権および関連する権利または隣接する権利を放棄しています。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fep-d8c2/" class="btn btn-neutral float-left" title="FEP-d8c2: OAuth 2.0 Profile for the ActivityPub API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fep-db0e/" class="btn btn-neutral float-right" title="FEP-db0e: Authentication mechanism for non-public groups">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/AmaseCocoa/fep-ja" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../fep-d8c2/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fep-db0e/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
