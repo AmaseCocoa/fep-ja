@@ -22,7 +22,7 @@ jobs:
         with:
           python-version: 3.11
       - run: |
-          ls
+          ls fep
           cp -R fep/fep/ docs/
           diff -ur fep/fep docs-i18n > translations.diff
           patch -p1 -d docs < translations.diff
