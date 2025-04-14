@@ -19,5 +19,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: 3.11
+      - run: |
+          cp -R fep/fep/ docs/
+          diff -ur fep/fep docs-i18n > translations.diff
+          patch -p1 -d docs < translations.diff
       - run: pip install mkdocs>=1.6.1
       - run: mkdocs gh-deploy --force
